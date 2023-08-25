@@ -14,7 +14,7 @@ const Card = () => {
                                 {data?.productName}
                                 <div className="badge badge-secondary">Abdullah</div>
                             </h2>
-                            <p>I'm Abdullah and brought a change shoes whose shoes does he choose?</p>
+                            <p>'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
                             <div className="card-actions justify-end">
                                 <div className="badge badge-outline">Fashion</div>
                                 <div className="badge badge-outline">Fashion</div>
