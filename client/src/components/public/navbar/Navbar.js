@@ -1,14 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 
 const Navbar = () => {
+    const { user, LogOut } = useContext(AuthContext);
+    console.log(user)
 
+    const handleSignOut = () => {
+        LogOut()
+    }
 
     const menuItems = <>
-        <li><Link to="/login">Login</Link></li>
 
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/dashboard">dashboard</Link></li>
 
         {/*    {!isAdmin && !isSeller && user &&
             <li><Link to="/myorders">My Orders</Link></li>
@@ -20,14 +26,16 @@ const Navbar = () => {
         {isSeller &&
             <li><Link to="/Seller_dashboard/">Seller Dashboard</Link></li>
         }
-        <li><Link>{user?.uid ?
+        */}
+        {user?.uid ?
             <>
-                <p>{user?.displayName}</p>
-                <li><Link onClick={handleSignOut}>logOut</Link></li>
+                <li><Link to="/myorders">My Orders</Link></li>
+                <li><p>{user?.displayName}</p></li>
+                <li> <Link onClick={handleSignOut} >logOut</Link></li>
             </>
-            : <li><Link to="login">Login</Link></li>
+            : <li>< Link to="login">Login</Link></li>
         }
-        </Link></li> */}
+
 
     </>
 
