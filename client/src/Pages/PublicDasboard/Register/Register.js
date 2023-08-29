@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider';
@@ -7,32 +8,48 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const handleSignUp = (data) => {
-       // console.log(data)
+    const [signupError, setSignupError] = useState('')
 
+    const handleSignUp = (data) => {
+        // console.log(data)
+        setSignupError('')
         createUser(data.email, data.password)
             .then(result => {
-             console.log(result.user)
+                console.log(result.user)
+                toast.success('Register Successfully.')
 
-               /*  const userUpdateInfo = {
+                const userUpdateInfo = {
                     displayName: data.name
                 }
-                updateUser(userUpdateInfo) */
-                   /*  .then(result => {
+                updateUser(userUpdateInfo)
+                    .then(result => {
                         toast.success('Register Successfully.')
-                        saveUser(data.name, data.email) 
+                        //saveUser(data.name, data.email)
                     }).catch(e => {
                         console.error(e)
-
-                    }
-                    )*/
-
+                    })
             })
             .catch(err => {
                 console.error(err)
-                /* toast.error('Google Register Unsuccess') */
+                toast.error(/* 'Google Register Unsuccess', */ err.message)
             })
     }
+
+    /* const saveUser = (name, email) => {
+        const user = { name, email };
+        fetch('http://localhost:5000/users', {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data, "user add database")
+                //  setCreatedUserEmail(email);
+            }).catch(e => console.error(e))
+    }
+ */
 
     return (
         <div className='h-full flex justify-center items-center'>
