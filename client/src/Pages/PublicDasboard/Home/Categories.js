@@ -1,10 +1,14 @@
 import React from 'react';
 import Card from '../../../components/public/card/Card';
+import CardCuztoms from '../../../components/public/card/CardCuztoms';
 
 const Categories = () => {
     return (
-        <div className='grid mt-8 gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-            <Card/>
+        <div className='w-11/12 mx-auto mt-0'>
+            <div className='grid mt-3 gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
+            {/*  <Card/> */}
+            <CardCuztoms></CardCuztoms>
+        </div>
         </div>
     );
 };

@@ -1,8 +1,10 @@
 import React from 'react';
 import useCategoryData from '../../../hooks/useCategoryData';
+import './Card.css';
 
 const Card = () => {
     const [categoryData] = useCategoryData()
+    console.log(categoryData)
     return (
         <>
             {
@@ -12,15 +14,14 @@ const Card = () => {
                         <div className="card-body">
                             <h2 className="card-title">
                                 {data?.productName}
-                                <div className="badge badge-secondary">Abdullah</div>
+                                <div className="badge badge-secondary">New</div>
                             </h2>
-                            <p>'AAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
-                            <div className="card-actions justify-end">
-                                <div className="badge badge-outline">Fashion</div>
-                                <div className="badge badge-outline">Fashion</div>
-                                <div className="badge badge-outline">Fashion</div>
-                                <div className="badge badge-outline">Products</div>
+                            <p></p>
+                            <div className="card-actions justify-start">
+                                <div className="text-3xl price_original">৳535</div>
+                                <div className="price_offer">৳354</div>
                             </div>
+                            <button className="btn btn-success btn-outline btn-sm">Shop Now</button>
                         </div>
                     </div>
 

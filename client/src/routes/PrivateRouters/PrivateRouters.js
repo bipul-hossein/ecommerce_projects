@@ -7,8 +7,8 @@ const PrivateRouters = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-       return <div className='h-screen flex justify-center content-center'>
-
+    return <div className='h-screen flex justify-center content-center'>
+        0-
            <span className="loading loading-ring loading-lg"></span>
        </div>
     }
