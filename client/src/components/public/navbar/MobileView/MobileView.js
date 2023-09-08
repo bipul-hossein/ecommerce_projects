@@ -16,13 +16,13 @@ const MobileView = () => {
     const [active, setActive] = useState(0);
 
     return (
-        <div className="bg-white max-h-[4.4rem] rounded-t-xl w-full">
+        <div className="bg-[#e7e7e7] max-h-[4.4rem] w-full">
             <ul className="flex relative">
 
                 {Menus.map((menu, i) => (
                     <li key={i} className="w-full">
                         <Link href='/' className={`flex flex-col justify-center items-center text-center ${i === active
-                            ? 'text-white bg-gray-700 pt-2'
+                            ? 'text-white bg-[#e74c3c] pt-2'
                             : 'pt-3 flex-none'
                             }`}
                             onClick={() => setActive(i)}
