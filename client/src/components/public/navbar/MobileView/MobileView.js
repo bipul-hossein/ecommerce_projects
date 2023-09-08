@@ -22,7 +22,7 @@ const MobileView = () => {
                 {Menus.map((menu, i) => (
                     <li key={i} className="w-full">
                         <Link href='/' className={`flex flex-col justify-center items-center text-center ${i === active
-                            ? 'text-white bg-gray-700'
+                            ? 'text-white bg-gray-700 pt-2'
                             : 'pt-3 flex-none'
                             }`}
                             onClick={() => setActive(i)}
@@ -33,7 +33,7 @@ const MobileView = () => {
                                 {menu.icon}
                             </span>
                             <span
-                                className={`${i === active
+                                className={`text-sm ${i === active
                                     ? "translate-x-6-4 opacity-100 "
                                     : "hidden opacity-0 translate-y-10 "
                                     }  `}

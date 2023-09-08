@@ -26,7 +26,8 @@ async function run() {
     try {
         // Connect the client to the server
        // const dbName = "myEcommerce_projects";
-        const categoriesCollection = client.db("myEcommerce_projects").collection("products");
+        // const categoriesCollection = client.db("localDb").collection("BooksCollection");
+        const categoriesCollection = client.db("LocalDb").collection("booksCollection");
         const usersCollection = client.db("myEcommerce_projects").collection("users");
 
 
