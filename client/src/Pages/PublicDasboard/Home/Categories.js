@@ -6,7 +6,7 @@ const Categories = () => {
     return (
         <div className='w-11/12 mx-auto mt-0'>
             <div className='grid mt-3 gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
-            {/*  <Card/> */}
+             {/* <Card/> */}
             <CardCuztoms></CardCuztoms>
         </div>
         </div>
