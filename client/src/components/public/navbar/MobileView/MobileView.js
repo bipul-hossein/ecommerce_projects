@@ -5,9 +5,11 @@ import { IoPersonOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
-const MobileView = () => {
+
+const MobileView = ({activeSearchBar, setActiveSearchBar}) => {
     const [active, setActive] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
+   
 
     const Menus = [
         { name: "Menu", icon: <AiOutlineMenu />, },
@@ -19,10 +21,19 @@ const MobileView = () => {
 
     const handleClick = (i) => {
         setActive(i)
-        if (i === 0){
+        if (i === 0) {
             setIsOpen(true)
         }
+
+        if (i === 1) {
+            setActiveSearchBar(!activeSearchBar)
+        }
+
+
+
     }
+
+    console.log(activeSearchBar)
 
     return (
         <>
