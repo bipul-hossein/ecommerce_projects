@@ -4,8 +4,8 @@ import { CgProfile, CgShoppingCart } from "react-icons/cg";
 
 const DesktopView = () => {
   return (
-    <div className="px-2 py-6">
-      <div className="flex justify-between items-center gap-10 max-w-[1500px] mx-auto">
+    <div className="py-6">
+      <div className="flex justify-between items-center gap-10 max-w-[1400px] mx-auto px-4">
         <img
           className=""
           src="https://fullkit.moxcreative.com/electrodeals/wp-content/uploads/sites/8/elementor/thumbs/Logo_electrodeals-1-pqh2rs7jj702t6120hf28oa9rgzhabts8ff3d9id4w.png"
@@ -45,14 +45,13 @@ const DesktopView = () => {
       </div>
       {/* Navbar Categories */}
       <div className="bg-[#e74c3c]">
-        <div className="px-4 py-6 text-white my-6 flex justify-between items-center max-w-[1500px] mx-auto">
+        <div className="px-4 py-6 text-white my-6 flex justify-between items-center max-w-[1400px] mx-auto">
           <div className="flex gap-[3%] w-full">
             <p className="font-bold">Home</p>
             <p className="font-bold">About</p>
             <p className="font-bold">Shop</p>
             <p className="font-bold">Contact Us</p>
             <p className="font-bold">Services</p>
-            <p className="font-bold">Services2</p>
           </div>
           <div className="w-[20%]">
             <span className="bg-yellow-400 rounded-full p-2 text-xs mr-2 text-red-500 font-bold">
