@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { AiOutlineHome, AiOutlineSearch, AiOutlineMenu, AiOutlineShopping } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
+import { CgShoppingCart } from "react-icons/cg";
 import { IoPersonOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
@@ -12,7 +13,7 @@ const MobileView = () => {
         { name: "Menu", icon: <AiOutlineMenu />, },
         { name: "Search", icon: <AiOutlineSearch /> },
         { name: "Home", icon: <AiOutlineHome /> },
-        { name: "Cart", icon: <AiOutlineShopping /> },
+        { name: "Cart", icon: <CgShoppingCart /> },
         { name: "Profile", icon: <IoPersonOutline /> },
     ];
 
