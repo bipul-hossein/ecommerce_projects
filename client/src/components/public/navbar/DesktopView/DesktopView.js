@@ -52,8 +52,6 @@ const DesktopView = () => {
             <p className="font-bold">Shop</p>
             <p className="font-bold">Contact Us</p>
             <p className="font-bold">Services</p>
-            <p className="font-bold">Services2</p>
-            <p className="font-bold">Services3</p>
           </div>
           <div className="w-[20%]">
             <span className="bg-yellow-400 rounded-full p-2 text-xs mr-2 text-red-500 font-bold">
