@@ -14,7 +14,7 @@ const Card = () => {
                             <div className='absolute rounded-full right-2 top-2 uppercase bg-[#fed700] '>
                                 <p className='text-black text-xs font-bold py-3 px-1'>sale!</p>
                             </div>
-                            <div className=' overflow-hidden'>
+                            <div className=''>
                                 <img className='aspect-square' src={data?.image} alt="" />
                             </div>
                             <h2 className='text-xl font-semibold font-sans py-2'>{data?.productName}</h2>
