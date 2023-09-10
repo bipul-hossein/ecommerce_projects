@@ -1,6 +1,6 @@
 import React from 'react';
 import useCategoryData from '../../../hooks/useCategoryData';
-import './Card.css';
+
 
 const Card = () => {
     const [categoryData] = useCategoryData()
@@ -8,23 +8,23 @@ const Card = () => {
     return (
         <>
             {
-                categoryData.map((data) => <>
-                    <div key={data._id} className="card w-auto bg-base-100 shadow-xl">
-                        <figure><img src={data?.image} alt="Shoes" className='h-44 w-full' /></figure>
-                        <div className="card-body">
-                            <h2 className="card-title">
-                                {data?.productName}
-                                <div className="badge badge-secondary">New</div>
-                            </h2>
-                            <p></p>
-                            <div className="card-actions justify-start">
-                                <div className="text-3xl price_original">৳535</div>
-                                <div className="price_offer">৳354</div>
+                categoryData.map((data, i) => <>
+                    <div key={i} className='flex flex-col justify-between items-start h-auto w-full bg-white p-4 border-[1px] hover:border-[#fa6602] relative'>
+                        <div>
+                            <div className='absolute rounded-full right-2 top-2 uppercase bg-[#fed700] '>
+                                <p className='text-black text-xs font-bold py-3 px-1'>sale!</p>
                             </div>
-                            <button className="btn btn-success btn-outline btn-sm">Shop Now</button>
+                            <div className=' overflow-hidden'>
+                                <img className='aspect-square' src={data?.image} alt="" />
+                            </div>
+                            <h2 className='text-xl font-semibold font-sans py-2'>{data?.productName}</h2>
+                            <div className="card-actions justify-start">
+                                <div className="text-xl whitespace-no-wrap text-[#fa6602] leading-6 font-bold">৳535</div>
+                                <div className="text-xl text-[#132a36] opacity-50  line-through pl-1">৳354</div>
+                            </div>
                         </div>
+                        <button className='mt-3 bg-[#e74c3c] hover:bg-[#fa6602] px-[14px] py-[8.5px] rounded-md'>Shop Now</button>
                     </div>
-
                 </>)
             }
         </>
