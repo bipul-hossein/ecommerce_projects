@@ -30,7 +30,7 @@ const Banner = () => {
           </div>
         ))}
       </div>
-      <div className="w-full md:w-[80%] relative h-[60vh] flex justify-center items-center bg-[#e4e4e4] rounded-md">
+      <div className="w-full md:w-[80%] relative py-8 md:py-0 md:h-[60vh] flex justify-center items-center bg-[#e4e4e4] rounded-md">
             <BannerSwiper/>
       </div>
     </div>

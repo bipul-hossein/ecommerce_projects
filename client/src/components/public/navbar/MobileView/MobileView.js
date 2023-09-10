@@ -40,7 +40,7 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar }) => {
                   href="/"
                   className={`flex flex-col justify-center items-center text-center ${
                     i === active
-                      ? "text-white bg-[#e74c3c] pt-2"
+                      ? "text-white bg-primary pt-2"
                       : "pt-3 flex-none"
                   }`}
                   onClick={() => handleClick(i)}
