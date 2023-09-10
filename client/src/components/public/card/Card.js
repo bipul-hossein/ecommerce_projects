@@ -1,7 +1,6 @@
 import React from 'react';
 import useCategoryData from '../../../hooks/useCategoryData';
-import './Card.css';
-import { AiFillFire } from 'react-icons/ai';
+
 
 const Card = () => {
     const [categoryData] = useCategoryData()
