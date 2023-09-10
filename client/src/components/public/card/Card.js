@@ -23,7 +23,7 @@ const Card = () => {
                                 <div className="text-xl text-[#132a36] opacity-50  line-through pl-1">৳354</div>
                             </div>
                         </div>
-                        <button className='mt-3 bg-[#e74c3c] hover:bg-[#fa6602] px-[14px] py-[8.5px] rounded-md'>Shop Now</button>
+                        <button className='mt-3 text-white bg-[#e74c3c] hover:bg-[#fa6602] px-[14px] py-[8.5px] rounded-md'>Shop Now</button>
                     </div>
                 </>)
             }
