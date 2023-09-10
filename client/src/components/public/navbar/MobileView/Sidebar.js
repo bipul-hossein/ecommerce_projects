@@ -6,11 +6,10 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   return (
     <div
-      className={`z-50 fixed top-0 bottom-0 p-2 w-full  duration-1000 ease-in-out overflow-y-auto bg-white ${
-        !isOpen
-          ? "-left-[100%]  duration-500 ease-in-out"
-          : "left-0 duration-500 ease-in-out"
-      }`}
+      className={`z-50 fixed top-0 bottom-0 p-2 w-full  duration-1000 ease-in-out overflow-y-auto bg-white ${!isOpen
+        ? "-left-[100%]  duration-500 ease-in-out"
+        : "left-0 duration-500 ease-in-out"
+        }`}
     >
       <div>
         <div className="flex justify-between">

@@ -42,22 +42,20 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar }) => {
                     i === active
                       ? "text-white bg-primary pt-2"
                       : "pt-3 flex-none"
-                  }`}
+                    }`}
                   onClick={() => handleClick(i)}
                 >
                   <span
-                    className={`text-xl cursor-pointer ${
-                      i === active && "text-white"
-                    }`}
+                    className={`text-xl cursor-pointer ${i === active && "text-white"
+                      }`}
                   >
                     {menu.icon}
                   </span>
                   <span
-                    className={`text-sm ${
-                      i === active
+                    className={`text-sm ${i === active
                         ? "translate-x-6-4 opacity-100 "
                         : "hidden opacity-0 translate-y-10 "
-                    }  `}
+                      }  `}
                   >
                     {menu.name}
                   </span>
@@ -72,3 +70,5 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar }) => {
 };
 
 export default MobileView;
+
+
