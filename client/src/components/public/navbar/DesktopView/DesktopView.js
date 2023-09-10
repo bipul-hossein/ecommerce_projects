@@ -16,10 +16,10 @@ const DesktopView = () => {
           <div className="flex overflow-hidden ">
             <input
               type="text"
-              className="w-full border-[1px] px-2 bg-[#f7f7f7] rounded-l-md focus:border-red-500 focus:border outline-none border-solid"
+              className="w-full border-[1px] px-2 bg-[#f7f7f7] rounded-l-md focus:border-primary focus:border outline-none border-solid"
               placeholder="Search..."
             />
-            <button className="bg-[#e74c3c] text-white px-6 text-lg py-3 rounded-r-md font-bold">
+            <button className="bg-primary text-white px-6 text-lg py-3 rounded-r-md font-bold">
               {" "}
               <GoSearch />
             </button>
@@ -28,7 +28,7 @@ const DesktopView = () => {
         <div className="flex gap-12 items-center">
           <div className="flex gap-2 items-center">
             <div>
-              <CgProfile className="text-[28px] text-[#e74c3c]" />
+              <CgProfile className="text-[28px] text-primary" />
             </div>
             <div>
               <p className="text-sm text-gray-400">Sing in</p>
@@ -36,15 +36,15 @@ const DesktopView = () => {
             </div>
           </div>
           <div className="relative">
-            <span className=" bg-yellow-400 text-xs text-red-500 rounded-full px-1 absolute -top-2 -right-2 font-bold">
+            <span className=" bg-yellow-400 text-xs text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
               1
             </span>
-            <CgShoppingCart className="text-[28px] text-[#e74c3c]" />
+            <CgShoppingCart className="text-[28px] text-primary" />
           </div>
         </div>
       </div>
       {/* Navbar Categories */}
-      <div className="bg-[#e74c3c]">
+      <div className="bg-primary">
         <div className="px-4 py-6 text-white my-6 flex justify-between items-center max-w-[1400px] mx-auto">
           <div className="flex gap-[3%] w-full">
             <p className="font-bold">Home</p>
@@ -54,7 +54,7 @@ const DesktopView = () => {
             <p className="font-bold">Services</p>
           </div>
           <div className="w-[20%]">
-            <span className="bg-yellow-400 rounded-full p-2 text-xs mr-2 text-red-500 font-bold">
+            <span className="bg-yellow-400 rounded-full p-2 text-xs mr-2 text-primary font-bold">
               %
             </span>
             <span className="font-bold">#WeekendDeals</span>

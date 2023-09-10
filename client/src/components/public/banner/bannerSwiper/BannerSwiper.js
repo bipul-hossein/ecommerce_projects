@@ -38,6 +38,7 @@ const BannerSwiper = () => {
         slidesPerView={1}
         spaceBetween={30}
         loop={true}
+        speed={1200}
         autoplay={{
             delay: 2500,
             disableOnInteraction: false,
@@ -50,12 +51,12 @@ const BannerSwiper = () => {
       >
         {swiperItems.map((item, i) => (
           <SwiperSlide key={i}>
-            <div className="flex gap-2 items-center justify-evenly px-8">
+            <div className="flex gap-2 items-center justify-evenly px-2 md:px-8">
               <div className="w-1/2">
-                <p className="text-md text-red-500 font-bold my-3">
+                <p className="text-sm md:text-base text-red-500 font-bold my-3">
                   {item.subTitle}
                 </p>
-                <h1 className="text-xl md:text-4xl font-bold">{item.title}</h1>
+                <h1 className="text-lg md:text-4xl font-bold">{item.title}</h1>
                 <button className="bg-yellow-400 p-2 rounded-md text-sm font-bold mt-5">
                   Shop New!
                 </button>
