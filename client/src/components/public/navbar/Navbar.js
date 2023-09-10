@@ -24,7 +24,7 @@ const Navbar = () => {
         <div
           className={`${
             activeSearchBar ? "block" : "hidden"
-          } bg-white py-3 fixed w-full z-10 border-b border-[1px] border-gray-400`}
+          } bg-white py-3 top-0 fixed w-full z-10 border-b border-[1px] border-gray-400`}
         >
           <SearchBar />
         </div>

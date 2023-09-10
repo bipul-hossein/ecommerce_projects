@@ -1,5 +1,6 @@
 import React from 'react';
 import Categories from './Categories';
+import Banner from '../../../components/public/banner/Banner';
 
 
 
@@ -7,7 +8,7 @@ const Home = () => {
 
     return (
         <div >
-            <h2 className='text-4xl font-semibold text-center pt-14'>Our All Products</h2>
+            <Banner/>
             <Categories />
         </div>
     );
