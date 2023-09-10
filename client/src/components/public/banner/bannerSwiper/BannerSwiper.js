@@ -16,18 +16,18 @@ const BannerSwiper = () => {
       img: "https://www.pngplay.com/wp-content/uploads/7/Grocery-Transparent-PNG.png",
     },
     {
-      subTitle: "Up to 30%",
-      title: "Extra Discounts up to 30% on Mobile App",
+      subTitle: "Up to 10%",
+      title: "Extra Discounts up to 10% on Mobile App",
       img: "https://www.pngplay.com/wp-content/uploads/7/Grocery-Transparent-PNG.png",
     },
     {
-      subTitle: "Up to 30%",
-      title: "Extra Discounts up to 30% on Mobile App",
+      subTitle: "Up to 25%",
+      title: "Extra Discounts up to 25%",
       img: "https://www.pngplay.com/wp-content/uploads/7/Grocery-Transparent-PNG.png",
     },
     {
-      subTitle: "Up to 30%",
-      title: "Extra Discounts up to 30% on Mobile App",
+      subTitle: "Up to 40%",
+      title: "Extra Discounts up to 40% on Mobile App",
       img: "https://www.pngplay.com/wp-content/uploads/7/Grocery-Transparent-PNG.png",
     },
   ];
