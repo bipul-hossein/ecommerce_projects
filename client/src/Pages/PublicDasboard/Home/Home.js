@@ -1,15 +1,15 @@
 import React from 'react';
-import Categories from './Categories';
 import Banner from '../../../components/public/banner/Banner';
+import LatestProducts from './LatestProducts';
 
 
 
 const Home = () => {
 
     return (
-        <div >
-            <Banner/>
-            <Categories />
+        <div className='h-[1500px]'>
+            <Banner />
+            <LatestProducts />
         </div>
     );
 };
