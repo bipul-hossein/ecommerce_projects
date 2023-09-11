@@ -6,7 +6,7 @@ const Card = () => {
     console.log(categoryData);
     return (
         <>
-            {categoryData?.slice(0, 8)?.map((data, i) => (
+            {categoryData?.slice(0, 4)?.map((data, i) => (
                 <>
                     <div
                         key={i}
@@ -14,7 +14,7 @@ const Card = () => {
                     >
                         <div>
                             <div className="absolute rounded-full right-1 md:right-2 top-1 md:top-2 md:uppercase bg-[#fed700] ">
-                                <p className="text-black text-[3px] md:text-xs md:font-bold py-[6px] md:py-3 px-[2px] md:px-1">sale!</p>
+                                <p className="text-black text-xs md:font-bold py-[6px] md:py-3 px-[2px] md:px-1">sale!</p>
                             </div>
                             <div className=" overflow-hidden rounded-sm ">
                                 <img className="aspect-square" src={data?.image} alt="" />
