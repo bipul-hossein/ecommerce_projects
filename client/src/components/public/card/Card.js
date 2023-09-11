@@ -24,7 +24,7 @@ const Card = () => {
                             </h2>
                             <div className="card-actions justify-start items-center my-2 md:my-3">
                                 <div className="text-[13px] md:text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
-                                    ৳535
+                                    ৳545
                                 </div>
                                 <div className="text-[13px] md:text-sm text-[#132a36] opacity-50  line-through pl-1">
                                     ৳354
