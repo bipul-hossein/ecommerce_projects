@@ -37,10 +37,9 @@ const TopCategories = () => {
       className="mySwiper"
     >
       <section>
-        
         <div>
           {categoryItems.map((category, i) => (
-            <SwiperSlide>
+            <SwiperSlide key={i}>
               <div
                 key={i}
                 className="px-6  py-4 flex flex-col gap-3 items-center justify-center bg-[#f5f5f5] rounded-md hover:bg-primary hover:text-white"

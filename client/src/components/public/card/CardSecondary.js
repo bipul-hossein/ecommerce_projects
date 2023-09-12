@@ -1,5 +1,5 @@
 import React from "react";
-import {IoMdHeartEmpty} from 'react-icons/io';
+import { IoMdHeartEmpty } from "react-icons/io";
 import useCategoryData from "../../../hooks/useCategoryData";
 
 const CardSecondary = () => {
@@ -11,9 +11,9 @@ const CardSecondary = () => {
           key={i}
           className="group flex flex-col rounded-md justify-between items-start h-auto w-full bg-white p-2 md:p-4 border-[1px] hover:border-[#fa6602] relative"
         >
-            <span className="absolute right-2 top-2 z-10 hidden group-hover:block">
-                <IoMdHeartEmpty className="w-9 h-9"/>
-            </span>
+          <span className="absolute right-2 top-2 z-10 hidden group-hover:block">
+            <IoMdHeartEmpty className="w-7 h-7 md:w-9 md:h-9" />
+          </span>
           <div className="mx-auto">
             <div className=" overflow-hidden rounded-sm mx-auto border-b-2">
               <img
