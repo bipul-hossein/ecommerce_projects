@@ -7,7 +7,7 @@ const LatestProducts = () => {
     return (
         <div style={{ boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)"}} className=' w-11/12 mx-auto mt-0 py-3 rounded-md md:my-[50]'
         >
-            <div className='md:flex p-2 md:px-5 md:py-10'>
+            <div className='md:flex p-2 md:px-4 md:py-10'>
             <h2 className="text-xl mb-2 font-bold md:hidden">Latest Products</h2>
                 <div className='hidden md:block pt-5 mb-6 md:mb-0 md:w-1/5 text-center'>
                     <div className='rounded-full flex justify-center'>
