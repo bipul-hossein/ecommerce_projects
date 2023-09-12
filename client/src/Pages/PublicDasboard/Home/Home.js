@@ -9,7 +9,7 @@ const Home = () => {
     <div>
       <Banner />
       <div className="relative mb-10 mt-20 md:max-w-[85%] mx-5  md:mx-auto">
-      <h2 className="text-xl my-5 font-bold -top-16 absolute z-10">Top Categories</h2>
+      <h2 className="text-xl my-5 font-bold -top-16 absolute -left-3 z-10">Top Categories</h2>
         <TopCategories />
       </div>
       <LatestProducts />
