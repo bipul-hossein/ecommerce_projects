@@ -13,7 +13,7 @@ const CardSecondary = () => {
                     <div>
 
                         <div className=" overflow-hidden rounded-sm ">
-                            <img className="aspect-square w-20" src={data?.image} alt="" />
+                            <img className="aspect-square" src={data?.image} alt="" />
                         </div>
                         <div className='text-center mx-auto'>
                             <p className='text-[14px] md:text-base font-medium md:font-semibold py-[7px] md:py-2'>fresh</p>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from '../../../../components/public/card/Card';
 import CardSecondary from '../../../../components/public/card/CardSecondary';
 
 const TopProducts = () => {
