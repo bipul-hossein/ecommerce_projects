@@ -22,7 +22,7 @@ const Banner = () => {
           <div
           key={i}
             className={`flex items-center gap-2 my-3 ${
-              i === 7 ? "border-none" : "border-b"
+              i === 7 ? "border-none" : "border-b pb-3"
             } py-2`}
           >
             <span className="text-red-400 mr-1">{menu.icon}</span>
@@ -30,7 +30,7 @@ const Banner = () => {
           </div>
         ))}
       </div>
-      <div className="w-full md:w-[80%] relative py-8 md:py-0 md:h-[60vh] flex justify-center items-center bg-[#e4e4e4] rounded-md">
+      <div className="w-full md:w-[80%] relative py-8 md:py-0 md:h-[60vh] flex justify-center items-center bg-secondary rounded-md">
             <BannerSwiper/>
       </div>
     </div>

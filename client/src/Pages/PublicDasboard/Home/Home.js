@@ -1,17 +1,16 @@
-import React from 'react';
-import Banner from '../../../components/public/banner/Banner';
-import LatestProducts from './LatestProducts';
-
-
+import React from "react";
+import MainFacilities from "../../../components/public/mainFacilities/MainFacilities";
+import Banner from "./Banner/Banner";
+import LatestProducts from "./LatestPorducts/LatestProducts";
 
 const Home = () => {
-
-    return (
-        <div className='h-[1500px]'>
-            <Banner />
-            <LatestProducts />
-        </div>
-    );
+  return (
+    <div>
+      <Banner />
+      <MainFacilities />
+      <LatestProducts />
+    </div>
+  );
 };
 
 export default Home;
