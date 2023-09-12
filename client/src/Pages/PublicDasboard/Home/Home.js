@@ -1,16 +1,16 @@
-import React from 'react';
-import Categories from './Categories';
-
-
+import React from "react";
+import MainFacilities from "../../../components/public/mainFacilities/MainFacilities";
+import Banner from "./Banner/Banner";
+import LatestProducts from "./LatestPorducts/LatestProducts";
 
 const Home = () => {
-
-    return (
-        <div >
-            <h2 className='text-4xl font-semibold text-center pt-14'>Our All Products</h2>
-            <Categories />
-        </div>
-    );
+  return (
+    <div>
+      <Banner />
+      <MainFacilities />
+      <LatestProducts />
+    </div>
+  );
 };
 
 export default Home;
