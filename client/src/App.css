@@ -1,12 +1,22 @@
-.mySwiper {
-  position: static !important;
-}
 
-.swiper-pagination {
-  position: absolute;
-  bottom: 20;
+/* Latest Porducts Swiper */
+.swiper-button-next::after{
+    font-size: 20px !important;
+    background: #e4e4e4;
+    padding: 10px 15px;
+    border-radius: 50%;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    right: -80%;
 }
-
-.swiper-pagination-bullet-active {
-  background-color: red !important;
+.swiper-button-prev::after{
+    font-size: 20px !important;
+    background: #e4e4e4;
+    padding: 10px 15px;
+    border-radius: 50%;
+    color: black;
+    font-weight: bold;
+    position: relative;
+    left: -80%;
 }
