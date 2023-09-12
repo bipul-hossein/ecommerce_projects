@@ -7,7 +7,7 @@ const LatestProducts = () => {
     return (
         <div style={{ boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)", margin: "50px auto" }} className=' w-11/12 mx-auto mt-0 py-3 rounded-md'
         >
-            <div className='md:flex px-6 py-10'>
+            <div className='md:flex px-5 py-10'>
                 <div className='pt-5 mb-6 md:mb-0 md:w-1/5 text-center'>
                     <div className='rounded-full flex justify-center'>
                         <img className='' src={product_icon} alt="" />
