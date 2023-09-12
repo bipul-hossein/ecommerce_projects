@@ -1,13 +1,13 @@
 import React from "react";
-import MainFacilities from "../../../components/public/mainFacilities/MainFacilities";
 import Banner from "./Banner/Banner";
 import LatestProducts from "./LatestPorducts/LatestProducts";
+import TopCategories from "./TopCategories/TopCategories";
 
 const Home = () => {
   return (
     <div>
       <Banner />
-      <MainFacilities />
+      <TopCategories/>      
       <LatestProducts />
     </div>
   );
