@@ -3,6 +3,7 @@ import Banner from "./Banner/Banner";
 import LatestProducts from "./LatestPorducts/LatestProducts";
 import TopProducts from "./TopProducts.js/TopProducts";
 import TopCategories from "./TopCategories/TopCategories";
+import OfferBanners from "./OfferBanners/OfferBanners";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       </div>
       <LatestProducts />
       <TopProducts />
+      <OfferBanners/>
     </div>
   );
 };
