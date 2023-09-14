@@ -8,6 +8,7 @@ import OfferBanners from "./OfferBanners/OfferBanners";
 import MainFacilities from "../../../components/public/mainFacilities/MainFacilities";
 import Newsletter from "./Newsletter/Newsletter";
 import AvailableAreas from "./AvailableAreas/AvailableAreas";
+import TopSellingAndTrending from "./TopSellingAndTrending/TopSellingAndTrending";
 
 
 const Home = () => {
@@ -27,6 +28,10 @@ const Home = () => {
       <Newsletter/>
       <Faq/>
       <AvailableAreas/>
+      <TopSellingAndTrending/>
+      <MainFacilities />
+      <Newsletter />
+      <Faq />
     </div>
   );
 };
