@@ -3,9 +3,11 @@ import Banner from "./Banner/Banner";
 import LatestProducts from "./LatestPorducts/LatestProducts";
 import TopProducts from "./TopProducts.js/TopProducts";
 import TopCategories from "./TopCategories/TopCategories";
+import Faq from "./FAQ/Faq";
 import OfferBanners from "./OfferBanners/OfferBanners";
 import MainFacilities from "../../../components/public/mainFacilities/MainFacilities";
 import Newsletter from "./Newsletter/Newsletter";
+
 
 const Home = () => {
   return (
@@ -22,6 +24,7 @@ const Home = () => {
       <OfferBanners />
       <MainFacilities/>
       <Newsletter/>
+      <Faq/>
     </div>
   );
 };
