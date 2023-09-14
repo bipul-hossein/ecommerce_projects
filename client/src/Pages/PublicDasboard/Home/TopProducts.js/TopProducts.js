@@ -3,7 +3,7 @@ import CardSecondary from '../../../../components/public/card/CardSecondary';
 
 const TopProducts = () => {
     return (
-        <section className='w-11/12 md:mx-auto px-2 my-16'>
+        <section className='md:w-11/12 mx-auto px-2 my-16'>
             <div>
                 <h3 className='text-xl my-5 font-bold'>Top Products</h3>
             </div>
