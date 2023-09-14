@@ -48,7 +48,7 @@ const TopSellingAndTrending = () => {
                   />
                 </div>
                 <div className="flex flex-col justify-center">
-                  <p>Natural Style Chicken</p>
+                  <p className="text-sm md:text-base">Natural Style Chicken</p>
                   <span className="flex my-1">
                     <FaStar className="w-4 h-4 text-yellow-400" />
                     <FaStar className="w-4 h-4 text-yellow-400" />
