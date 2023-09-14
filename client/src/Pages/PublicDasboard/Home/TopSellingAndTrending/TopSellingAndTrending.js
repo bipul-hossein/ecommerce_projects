@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
+import image from "../../../../Images/veggies.png";
 
 const TopSellingAndTrending = () => {
   const [activeIndex, setActiveIndex] = useState(1);
@@ -7,7 +8,7 @@ const TopSellingAndTrending = () => {
   const deviceWidth = window.innerWidth;
 
   return (
-    <section className="bg-[#e7edf0] p-5 my-10 rounded-md">
+    <section className="bg-[#f0f3f5] px-5 py-10 my-10 rounded-md">
       <div className="py-2 md:w-[80%] mx-auto">
         <div className="flex justify-evenly outline outline-1 rounded-sm">
           <p
@@ -42,7 +43,7 @@ const TopSellingAndTrending = () => {
                 <div>
                   <img
                     className="w-20"
-                    src="https://themepanthers.com/wp/nest/d2/wp-content/uploads/2022/02/product-2-1.jpg"
+                    src={image}
                     alt=""
                   />
                 </div>
