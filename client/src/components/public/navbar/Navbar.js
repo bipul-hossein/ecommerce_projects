@@ -14,7 +14,7 @@ const Navbar = () => {
 
       {/* Mobile View */}
       <div className="md:hidden">
-        <div className="border-b border-[1px] border-gray-400 py-1 fixed top-0 z-10 bg-white w-full">
+        <div className="border-b border-[1px] border-gray-400 py-1 fixed top-0 z-40 bg-white w-full">
           <img
             className="mx-auto"
             src="https://fullkit.moxcreative.com/electrodeals/wp-content/uploads/sites/8/elementor/thumbs/Logo_electrodeals-1-pqh2rs7jj702t6120hf28oa9rgzhabts8ff3d9id4w.png"
@@ -24,11 +24,11 @@ const Navbar = () => {
         <div
           className={`${
             activeSearchBar ? "block" : "hidden"
-          } bg-white py-3 top-0 fixed w-full z-10 border-b border-[1px] border-gray-400`}
+          } bg-white py-3 top-0 fixed w-full z-40 border-b border-[1px] border-gray-400`}
         >
           <SearchBar />
         </div>
-        <div className="fixed bottom-0 z-10 w-full ">
+        <div className="fixed bottom-0 z-40 w-full ">
           <MobileView
             activeSearchBar={activeSearchBar}
             setActiveSearchBar={setActiveSearchBar}

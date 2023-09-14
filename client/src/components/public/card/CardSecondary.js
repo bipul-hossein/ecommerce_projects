@@ -3,9 +3,9 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import useCategoryData from "../../../hooks/useCategoryData";
 
 const CardSecondary = () => {
+    const [categoryData] = useCategoryData();
   const [addToWhiteList, setAddToWhiteList] = useState(false);
   const [index, setIndex] = useState([]);
-  const [categoryData] = useCategoryData();
 
   const handleAddToCart = (i) => {
     setAddToWhiteList(!addToWhiteList);
@@ -23,18 +23,20 @@ const CardSecondary = () => {
           key={i}
           className="group flex flex-col rounded-md justify-between items-start h-auto w-full bg-white p-2 md:p-4 border-[1px] hover:border-[#fa6602] relative"
         >
-          <span
-            onClick={() => setAddToWhiteList(!addToWhiteList)}
+          <div
+            
             className={`absolute right-2 top-2 z-10 hidden group-hover:block `}
           >
-            <div onClick={() => handleAddToCart(i)}>
+            <div onClick={() => {handleAddToCart(i); setAddToWhiteList(!addToWhiteList)}}
+            className="cursor-pointer"
+            >
               {index.includes(i) ? (
                 <AiFillHeart className={`w-7 h-7 md:w-9 md:h-9 text-red-500`} />
               ) : (
                 <AiOutlineHeart className="w-7 h-7 md:w-9 md:h-9" />
               )}
             </div>
-          </span>
+          </div>
           <div className="mx-auto">
             <div className=" overflow-hidden rounded-sm mx-auto border-b-2">
               <img
