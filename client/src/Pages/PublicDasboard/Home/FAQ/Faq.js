@@ -32,7 +32,7 @@ const Faq = () => {
   ];
 
   return (
-    <section className="md:w-3/4 mx-auto my-10">
+    <section className=" mx-auto my-10">
       <div className="text-center mb-10">
         <h1 className="text-2xl font-bold mb-3">Frequently Ask Questions</h1>
         <p>

@@ -10,7 +10,6 @@ import Newsletter from "./Newsletter/Newsletter";
 import AvailableAreas from "./AvailableAreas/AvailableAreas";
 import TopSellingAndTrending from "./TopSellingAndTrending/TopSellingAndTrending";
 
-
 const Home = () => {
   return (
     <div>
@@ -24,11 +23,11 @@ const Home = () => {
       <LatestProducts />
       <TopProducts />
       <OfferBanners />
-      <MainFacilities/>
-      <Newsletter/>
-      <AvailableAreas/>
-      <Faq/>
-      <TopSellingAndTrending/>
+      <MainFacilities />
+      <TopSellingAndTrending />
+      <AvailableAreas />
+      <Newsletter />
+      <Faq />
     </div>
   );
 };

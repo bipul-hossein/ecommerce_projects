@@ -5,7 +5,7 @@ import SearchBar from "./MobileView/SearchBar";
 
 const Navbar = () => {
   const [activeSearchBar, setActiveSearchBar] = useState(false);
-
+  
   return (
     <>
       <div className="hidden md:block">
