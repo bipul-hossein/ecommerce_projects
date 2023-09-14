@@ -43,12 +43,12 @@ const Card = () => {
                 {data?.productName}
               </h2>
               <div className="card-actions justify-start items-center my-2 md:my-3">
-                <div className="text-[13px] md:text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
+                <p className="text-xs md:text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
                   ৳545
-                </div>
-                <div className="text-[13px] md:text-sm text-[#132a36] opacity-50  line-through pl-1">
+                </p>
+                <p className="text-xs md:text-sm text-[#132a36] opacity-50  line-through pl-1">
                   ৳354
-                </div>
+                </p>
               </div>
             </div>
             <button className="bg-primary hover:bg-[#fa6602] py-[4px] md:py-[8px] px-[8px] md:px-[14px] text-[13px] md:text-sm rounded-[4px] md:rounded-md text-white">
