@@ -26,12 +26,9 @@ const Home = () => {
       <OfferBanners />
       <MainFacilities/>
       <Newsletter/>
-      <Faq/>
       <AvailableAreas/>
+      <Faq/>
       <TopSellingAndTrending/>
-      <MainFacilities />
-      <Newsletter />
-      <Faq />
     </div>
   );
 };
