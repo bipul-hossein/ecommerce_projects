@@ -8,7 +8,7 @@ const TopSellingAndTrending = () => {
   const deviceWidth = window.innerWidth;
 
   return (
-    <section className="bg-[#f0f3f5] px-5 py-10 my-10 rounded-md">
+    <section className="bg-[#f8f9fa] px-5 py-10 my-10 rounded-md">
       <div className="py-2 md:w-[80%] mx-auto">
         <div className="flex justify-evenly outline outline-1 rounded-sm">
           <p
