@@ -13,7 +13,7 @@ import useCategoryData from "../../../hooks/useCategoryData";
 import CardExternal from "../../../components/public/card/CardExternal";
 
 const ProductDetails = () => {
-  window.scrollTo(0, 0);
+  // window.scrollTo(0, 0);
   const [categoryData] = useCategoryData();
   const [activeIndex, setActiveIndex] = useState(0);
   const [count, setCount] = useState(0);
