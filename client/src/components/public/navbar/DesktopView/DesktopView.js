@@ -69,6 +69,7 @@ const DesktopView = () => {
               1
             </span>
             <CgShoppingCart className="text-[28px] text-primary" />
+           <Link to='/cart_details'> <CgShoppingCart className="text-[28px] text-primary" /></Link>
           </div>
         </div>
       </div>
