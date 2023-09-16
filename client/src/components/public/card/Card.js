@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const Card = () => {
   const [categoryData] = useCategoryData();
@@ -36,12 +37,14 @@ const Card = () => {
                   sale!
                 </p>
               </div>
+              <Link to={`/product-details/${data._id}`}>
               <div className=" overflow-hidden rounded-sm ">
                 <img className="aspect-square" src={data?.image} alt="" />
               </div>
               <h2 className="text-[14px] md:text-base font-medium md:font-semibold py-[7px] md:py-2 md:tracking-[-.2px] ">
                 {data?.productName}
               </h2>
+              </Link>
               <div className="card-actions justify-start items-center my-2 md:my-3">
                 <p className="text-xs md:text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
                   ৳545
