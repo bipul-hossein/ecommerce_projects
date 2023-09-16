@@ -47,16 +47,16 @@ const Card = () => {
                 </div>
               </Link>
             </div>
-                <h2 className="text-[14px] md:text-base font-medium md:font-semibold py-[7px] md:py-2 md:tracking-[-.2px] ">
+                <h2 className="text-sm md:text-base font-medium md:font-semibold md:tracking-[-.2px] ">
                   Lorem ipsum dolor
                 </h2>
-              <div className="my-2 flex gap-2">
-                <p className="text-xs md:text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
+              <div className="my-2 ">
+                <span className="text-xs md:text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
                   ৳545
-                </p>
-                <p className="text-xs md:text-sm text-[#132a36] opacity-50  line-through pl-1">
+                </span>
+                <span className="ml-2 text-xs md:text-sm text-[#132a36] opacity-50  line-through pl-1">
                   ৳354
-                </p>
+                </span>
               </div>
             <button className="bg-primary hover:bg-[#fa6602] py-[4px] md:py-[8px] px-[8px] md:px-[14px] text-[13px] md:text-sm rounded-[4px] md:rounded-md text-white">
               Add to Cart

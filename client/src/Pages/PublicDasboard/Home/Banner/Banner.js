@@ -1,5 +1,5 @@
 import React from "react";
-import { FaPhone } from "react-icons/fa";
+// import { FaPhone } from "react-icons/fa";
 import BannerSwiper from "./bannerSwiper/BannerSwiper";
 import useMainCategories from "../../../../hooks/useMainCategories";
 
