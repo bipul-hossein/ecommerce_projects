@@ -230,8 +230,8 @@ const Footer = () => {
             <p className="font-medium text-gray-900">Contact Us</p>
 
             <ul className="mt-6 space-y-4 text-sm">
-              <li className="flex gap-2">
-                <div className="text-gray-700 transition hover:opacity-75">
+              <li className="md:flex md:mb-0 gap-2">
+                <div className="text-gray-700 mb-2 md:mb-0 transition hover:opacity-75">
                   <FaHeadphones className="text-primary w-10 h-10" />
                 </div>
                 <div>

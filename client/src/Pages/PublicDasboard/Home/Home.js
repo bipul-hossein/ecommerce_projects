@@ -11,6 +11,7 @@ import AvailableAreas from "./AvailableAreas/AvailableAreas";
 import TopSellingAndTrending from "./TopSellingAndTrending/TopSellingAndTrending";
 
 const Home = () => {
+  window.scrollTo(0, 0);
   return (
     <div>
       <Banner />
