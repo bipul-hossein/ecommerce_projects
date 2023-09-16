@@ -24,3 +24,7 @@
 .que:hover {
     color: #e74c3c !important
 }
+
+.button.image-gallery-icon.image-gallery-right-nav {
+    display: none !important;
+}
