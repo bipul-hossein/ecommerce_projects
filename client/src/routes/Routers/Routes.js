@@ -6,6 +6,7 @@ import Register from "../../Pages/PublicDasboard/Register/Register";
 import PrivateRouters from "../PrivateRouters/PrivateRouters";
 import AdminDasboard from "../../Pages/AdminDasboard/AdminDasboard";
 import CartDetails from "../../Pages/PublicDasboard/CartDetails/CartDetails";
+import ProductDetails from "../../Pages/PublicDasboard/ProductDetails/ProductDetails";
 
 const router = createBrowserRouter([
     {
@@ -29,9 +30,13 @@ const router = createBrowserRouter([
                 element: <Register />
             },
             {
-                path:'/cart_details',
-                element:<CartDetails/>
-            }
+                path: '/cart_details',
+                element: <CartDetails />
+            },
+            {
+                path: '/product-Details/:id',
+                element: <ProductDetails />
+            },
         ]
     },
     {
