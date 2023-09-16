@@ -5,6 +5,7 @@ import Login from "../../Pages/PublicDasboard/Login/Login";
 import Register from "../../Pages/PublicDasboard/Register/Register";
 import PrivateRouters from "../PrivateRouters/PrivateRouters";
 import AdminDasboard from "../../Pages/AdminDasboard/AdminDasboard";
+import CartDetails from "../../Pages/PublicDasboard/CartDetails/CartDetails";
 import ProductDetails from "../../Pages/PublicDasboard/ProductDetails/ProductDetails";
 
 const router = createBrowserRouter([
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register />
+            },
+            {
+                path: '/cart_details',
+                element: <CartDetails />
             },
             {
                 path: '/product-Details/:id',
