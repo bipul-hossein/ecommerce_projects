@@ -11,10 +11,19 @@ import veggies from "../../../../Images/veggies.png";
 import eggs from "../../../../Images/eggs.png";
 import snacks from "../../../../Images/snacks.png";
 import cake from "../../../../Images/cake.png";
+import useMainCategories from "../../../../hooks/useMainCategories";
+import { useNavigate } from "react-router-dom";
 
 const TopCategories = () => {
-  const categoryItems = [
-    { icon: dairy , name: "Dairy" },
+  const [mainCategories] = useMainCategories();
+
+  const navigate = useNavigate()
+  const handleContentDetails = (props) => {
+    navigate(`/product-category/${props}`)
+  }
+
+ /*  const categoryItems = [
+    { icon: dairy, name: "Dairy" },
     { icon: fruits, name: "Fruits" },
     { icon: flour, name: "Flour" },
     { icon: meat, name: "Meat" },
@@ -22,7 +31,7 @@ const TopCategories = () => {
     { icon: eggs, name: "Eggs" },
     { icon: snacks, name: "Snacks" },
     { icon: cake, name: "Cake" }
-  ];
+  ]; */
   return (
     <Swiper
       slidesPerView={3}
@@ -44,14 +53,15 @@ const TopCategories = () => {
     >
       <section>
         <div>
-          {categoryItems.map((category, i) => (
+          {mainCategories.map((category, i) => (
             <SwiperSlide key={i}>
               <div
                 key={i}
-                className="px-6  py-4 flex flex-col gap-3 items-center justify-center bg-[#f5f5f5] rounded-md hover:bg-primary hover:text-white"
+                onClick={()=>handleContentDetails(category.strCategory)}
+                className="px-6  py-4 flex flex-col gap-3 items-center justify-center bg-[#f5f5f5] rounded-md hover:bg-primary hover:text-white hover:cursor-pointer"
               >
-                <img className="h-10 w-10" src={category.icon} alt="" />
-                <p className="font-bold text-sm">{category.name}</p>
+                <img className="h-10 w-10" src={category.strCategoryThumb} alt="" />
+                <p className="font-bold text-sm">{category.strCategory}</p>
               </div>
             </SwiperSlide>
           ))}

@@ -36,11 +36,13 @@ const router = createBrowserRouter([
             },
             {
                 path: '/product-Details/:id',
-                element: <ProductDetails />
+                element: <ProductDetails />,
+                loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`)
             },
             {
-                path: '/product-category',
-                element: <ProductCategory />
+                path: '/product-category/:id',
+                element: <ProductCategory />,
+                loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.id}`)
             },
         ]
     },
