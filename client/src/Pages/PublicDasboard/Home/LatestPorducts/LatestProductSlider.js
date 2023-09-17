@@ -1,13 +1,13 @@
 import React from 'react';
-import useCategoryData from "../../../hooks/useCategoryData";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import CardExternal from '../../../../components/public/card/CardExternal';
+import useMainCategories from '../../../../hooks/useMainCategories';
+import Card from '../../../../components/public/card/Card';
 
 const LatestProductSlider = () => {
-    const [categoryData] = useMain();
+    const [fakeApiData] = useMainCategories();
 
     return (
         <Swiper
@@ -28,9 +28,9 @@ const LatestProductSlider = () => {
             }}
             className="mySwiper"
         >
-            {categoryData?.slice(0, 8)?.map((data, i) => (
+            {fakeApiData?.slice(0, 8)?.map((data, i) => (
                 <SwiperSlide key={i}>
-                    <CardExternal data={data}/>
+                    <Card data={data}/>
                 </SwiperSlide>
             ))}
         </Swiper>

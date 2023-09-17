@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from '../../../../components/public/card/Card';
 import product_icon from '../../../../Images/product_icon.jpeg';
+import LatestProductSlider from './LatestProductSlider';
 
 
 const LatestProducts = () => {
@@ -18,7 +18,7 @@ const LatestProducts = () => {
                         <p className='text-sm mt-3 md:mt-4 md:px-6'>Lorem ipsum dolor sit amet, consectetur adipisicing elit ipsum dolor sit amet, consectetur adipisicing elit</p>
                     </div>
                     <div className='relative md:mt-4 gap-2 md:w-4/5 md:gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-                        <Card />
+                       <LatestProductSlider/>
                     </div>
                 </div>
             </div>
