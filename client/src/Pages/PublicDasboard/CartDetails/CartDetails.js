@@ -29,10 +29,10 @@ const CartDetails = () => {
 
 
     const products = [
-        { name: 'allu', image: 'https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/cart_img01.jpg', price: '30tk', _id: '11' },
-        { name: 'potol', image: 'https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/cart_img02.jpg', price: '30tk', _id: '12' },
-        { name: 'allu', image: 'https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/cart_img01.jpg', price: '30tk', _id: '13' },
-        { name: 'allu', image: 'https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/cart_img02.jpg', price: '30tk', _id: '14' },
+        { name: 'allu 1kg per pack', image: 'https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/cart_img01.jpg', price: '30tk', _id: '11' },
+        { name: 'potol 1kg per pack', image: 'https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/cart_img02.jpg', price: '30tk', _id: '12' },
+        { name: 'allu1kg per pack', image: 'https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/cart_img01.jpg', price: '30tk', _id: '13' },
+        { name: 'allu1kg per pack', image: 'https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/cart_img02.jpg', price: '30tk', _id: '14' },
     ]
 
     return (
@@ -52,9 +52,9 @@ const CartDetails = () => {
                         {
                             products.map((product, i) =>
                                 <tr key={i} className=' text-center my-2 '>
-                                    <td className="md:flex md:items-center px-3 py-1 md:py-5 border-t-2"><img className='md:pr-3 h-14 w-14' src={product.image} alt="" />{product.name}</td>
-                                    <td className="px-3 py-1 md:py-5 border-t-2">{product.price}</td>
-                                    <td className="px-3 py-1 md:py-5 border-t-2">
+                                    <td className="md:flex md:items-center px-3 py-1 md:py-5 border-t-[1px]"><img className='md:pr-3 h-14 w-14' src={product.image} alt="" />{product.name}</td>
+                                    <td className="px-3 py-1 md:py-5 border-t-[1px]">{product.price}</td>
+                                    <td className="px-3 py-1 md:py-5 border-t-[1px]">
                                         <div className="flex items-center justify-center gap-1 p-2">
                                             <span className="">
                                                 <FiMinus onClick={handleMinus(product._id)} className="w-6 md:w-8 h-6 md:h-8 bg-secondary p-2 cursor-pointer font-semibold text-xs" />
@@ -65,8 +65,8 @@ const CartDetails = () => {
                                             </span>
                                         </div>
                                     </td>
-                                    <td className="px-3 py-1 md:py-5 border-t-2">100</td>
-                                    <td className="md:px-3 py-1 md:py-5 pr-4 border-t-2"><RiDeleteBinLine /></td>
+                                    <td className="px-3 py-1 md:py-5 border-t-[1px]">100</td>
+                                    <td className="md:px-3 py-1 md:py-5 pr-4 border-t-[1px]"><RiDeleteBinLine /></td>
                                 </tr>
                             )
                         }
@@ -83,20 +83,20 @@ const CartDetails = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className='flex justify-between'>
-                            <td className="px-3 py-5 border-t-2">Subtotals</td>
-                            <td className="px-3 py-5 border-t-2">00</td>
+                        <tr className='flex border-t-[1px] justify-between'>
+                            <td className="px-3 py-5">Subtotals</td>
+                            <td className="px-3 py-5">00</td>
                         </tr>
-                        <tr className='flex justify-between'>
-                            <td className="px-3 py-5 border-t-2">Shipping</td>
-                            <td className="px-3 py-5 border-t-2">
+                        <tr className='flex border-t-[1px] justify-between'>
+                            <td className="px-3 py-5">Shipping</td>
+                            <td className="px-3 py-5">
                                 <div className='flex gap-2'><input type="checkbox" /><p>Delivery Cost</p> <span>00</span></div>
                                 <div className='flex'><input type="checkbox" /><p className='ml-2'>FREE SHIPPING</p></div>
                             </td>
                         </tr>
-                        <tr className='flex justify-between'>
-                            <td className="px-3 py-5 border-t-2">Total Price</td>
-                            <td className="px-3 py-5 border-t-2">000</td>
+                        <tr className='flex border-t-[1px] justify-between'>
+                            <td className="px-3 py-5">Total Price</td>
+                            <td className="px-3 py-5">000</td>
                         </tr>
                     </tbody>
                 </table>

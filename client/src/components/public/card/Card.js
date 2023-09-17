@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ data }) => {
-
+const Card = ({ id, title, image }) => {
 
   return (
     <div className="flex flex-col rounded-md justify-between w-full bg-white p-2 md:p-4 border-[1px] hover:border-[#fa6602] relative ">
@@ -12,18 +11,18 @@ const Card = ({ data }) => {
             sale!
           </p>
         </div>
-        <Link to={`/product-details/${data.id}`}>
+        <Link to={`product-details/${id}`}>
           <div className=" overflow-hidden rounded-sm flex justify-center">
             <img
               className="aspect-square w-36"
-              src={data?.strCategoryThumb}
+              src={image}
               alt=""
             />
           </div>
         </Link>
       </div>
       <h2 className="text-sm md:text-base font-medium md:font-semibold md:tracking-[-.2px] ">
-        Lorem ipsum dolor
+        {title}
       </h2>
       <div className="my-2 ">
         <span className="text-xs md:text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
