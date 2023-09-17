@@ -25,7 +25,7 @@ const CardSecondary = () => {
           className="group flex flex-col rounded-md justify-between items-start h-auto w-full bg-white p-2 md:p-4 border-[1px] hover:border-[#fa6602] relative"
         >
           <div
-            className={`absolute right-2 top-2 z-10 hidden group-hover:block `}
+            className={`absolute right-2 top-2 z-10 md:hidden md:group-hover:block `}
           >
             <div
               onClick={() => {
