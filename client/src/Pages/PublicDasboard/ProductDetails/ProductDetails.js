@@ -9,12 +9,13 @@ import {
   FaArrowRight,
   FaArrowLeft,
 } from "react-icons/fa";
-import useCategoryData from "../../../hooks/useCategoryData";
+import useMainCategories from "../../../hooks/useMainCategories";
 import CardExternal from "../../../components/public/card/CardExternal";
 
+
 const ProductDetails = () => {
-  window.scrollTo(0, 0);
-  const [categoryData] = useCategoryData();
+  // window.scrollTo(0, 0);
+  const [mainCategories] = useMainCategories();
   const [activeIndex, setActiveIndex] = useState(0);
   const [count, setCount] = useState(0);
 
@@ -308,7 +309,9 @@ const ProductDetails = () => {
           <h2 className="text-base md:text-xl border-b pb-2 font-bold my-2">Related products</h2>
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
             {
-              categoryData?.slice(0, 5)?.map(data => (<CardExternal key={data?._id} data={data}/>))
+              mainCategories?.slice(0, 4)?.map(data => (
+                <CardExternal key={data?.id} data={data}/>
+                ))
             }
             </div>
       </div>

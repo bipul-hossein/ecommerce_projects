@@ -68,7 +68,7 @@ const DesktopView = () => {
             <span className=" bg-yellow-400 text-xs text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
               1
             </span>
-            <CgShoppingCart className="text-[28px] text-primary" />
+            
            <Link to='/cart_details'> <CgShoppingCart className="text-[28px] text-primary" /></Link>
           </div>
         </div>
