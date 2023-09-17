@@ -27,6 +27,7 @@ const ProductDetails = () => {
             src="https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/shop_details_img01.jpg"
             alt=""
           />
+       
         </div>
         <div className="md:w-1/2">
           <div>
