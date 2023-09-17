@@ -10,7 +10,7 @@ import {
   FaArrowLeft,
 } from "react-icons/fa";
 import useMainCategories from "../../../hooks/useMainCategories";
-import CardExternal from "../../../components/public/card/CardExternal";
+import Card from "../../../components/public/card/Card";
 
 
 const ProductDetails = () => {
@@ -28,6 +28,7 @@ const ProductDetails = () => {
             src="https://themebeyond.com/pre/ganic-prev/ganic-live/img/product/shop_details_img01.jpg"
             alt=""
           />
+       
         </div>
         <div className="md:w-1/2">
           <div>
@@ -309,7 +310,7 @@ const ProductDetails = () => {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
             {
               mainCategories?.slice(0, 4)?.map(data => (
-                <CardExternal key={data?.id} data={data}/>
+                <Card key={data?.id} data={data}/>
                 ))
             }
             </div>
