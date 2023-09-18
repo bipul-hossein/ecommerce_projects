@@ -4,7 +4,6 @@ import useTamporaryFakeData from '../../../hooks/useTamporaryFakeData';
 
 const RelatedProducts = () => {
   const [tamporaryFakeData] = useTamporaryFakeData()
-  console.log(tamporaryFakeData)
 
     return (
         <div className="my-10">

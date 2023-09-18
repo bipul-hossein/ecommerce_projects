@@ -9,7 +9,6 @@ import useTamporaryFakeData from '../../../../hooks/useTamporaryFakeData';
 
 const LatestProductSlider = () => {
     const [tamporaryFakeData] = useTamporaryFakeData()
-    console.log(tamporaryFakeData)
 
 
     return (
