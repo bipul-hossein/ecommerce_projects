@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import useMainCategories from '../../../../hooks/useMainCategories';
 import Card from '../../../../components/public/card/Card';
+import useProductsData from '../../../../hooks/useProductsData';
 
 const LatestProductSlider = () => {
-    const [fakeApiData] = useMainCategories();
+    const [products] = useProductsData();
 
     return (
         <Swiper
@@ -28,7 +28,7 @@ const LatestProductSlider = () => {
             }}
             className="mySwiper"
         >
-            {fakeApiData?.slice(0, 8)?.map((data, i) => (
+            {products?.slice(0, 8)?.map((data, i) => (
                 <SwiperSlide key={i}>
                     <Card data={data}/>
                 </SwiperSlide>

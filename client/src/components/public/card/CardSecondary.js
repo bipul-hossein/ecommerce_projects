@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import useMainCategories from "../../../hooks/useMainCategories";
 import { Link } from "react-router-dom";
 
-const CardSecondary = () => {
-  const [mainCategories] = useMainCategories();
+const CardSecondary = ({ products }) => {
   const [addToWhiteList, setAddToWhiteList] = useState(false);
   const [index, setIndex] = useState([]);
 
@@ -19,7 +17,7 @@ const CardSecondary = () => {
 
   return (
     <>
-      {mainCategories?.slice(0, 10)?.map((data, i) => (
+      {products?.slice(0, 10)?.map((data, i) => (
         <div
           key={i}
           className="group flex flex-col rounded-md justify-between items-start h-auto w-full bg-white p-2 md:p-4 border-[1px] hover:border-[#fa6602] relative"
@@ -43,21 +41,20 @@ const CardSecondary = () => {
           </div>
           <div className="mx-auto">
             <div className="overflow-hidden rounded-sm mx-auto border-b-2">
-              <Link to={`/product-details/23`}>
-              <img
-                className="aspect-square h-32 md:h-44"
-                src={data?.strCategoryThumb}
-                alt=""
-              />
+              <Link to={`/product-details/${data?.idMeal}`}>
+                <img
+                  className="aspect-square h-32 md:h-44"
+                  src={data?.strMealThumb}
+                  alt=""
+                />
               </Link>
             </div>
             <div className="text-center mx-auto">
-            <Link to={`/product-details/23`}>
-
-              <h3 className="text-sm md:text-base font-medium md:font-semibold pt-1 md:py-2">
-                Lorem ipsum dolor
-              </h3>
-            </Link>
+              <Link to={`/product-details/${data?.idMeal}`}>
+                <h3 className="text-sm md:text-base font-medium md:font-semibold pt-1 md:py-2">
+                  Lorem ipsum dolor
+                </h3>
+              </Link>
               <p className="text-xs font-medium text-gray-500 md:font-semibold py-1 md:tracking-[-.2px]">
                 Flesh
               </p>

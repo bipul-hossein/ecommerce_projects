@@ -15,7 +15,7 @@ const Card = ({ data }) => {
           <div className=" overflow-hidden rounded-sm flex justify-center">
             <img
               className="aspect-square w-36"
-              src={data?.strCategoryThumb}
+              src={data?.strMealThumb}
               alt=""
             />
           </div>
