@@ -1,5 +1,4 @@
 import React from "react";
-// import { FaPhone } from "react-icons/fa";
 import BannerSwiper from "./bannerSwiper/BannerSwiper";
 import useMainCategories from "../../../../hooks/useMainCategories";
 import { useNavigate } from "react-router-dom";
@@ -8,19 +7,10 @@ const Banner = () => {
   const [mainCategories] = useMainCategories();
 
   const navigate = useNavigate()
-  const handleContentDetails = (props) => {
-    navigate(`/product-category/${props}`)
+  const handleContentDetails = (category) => {
+    navigate(`/product-category/${category}`)
   }
-  // const bannerMenus = [
-  //   { icon: <FaPhone />, name: "Cell Phone" },
-  //   { icon: <FaPhone />, name: "Cell Phone" },
-  //   { icon: <FaPhone />, name: "Cell Phone" },
-  //   { icon: <FaPhone />, name: "Cell Phone" },
-  //   { icon: <FaPhone />, name: "Cell Phone" },
-  //   { icon: <FaPhone />, name: "Cell Phone" },
-  //   { icon: <FaPhone />, name: "Cell Phone" },
-  //   { icon: <FaPhone />, name: "Cell Phone" },
-  // ];
+ 
 
   return (
     <div className="my-4 flex gap-5 md:max-w-[1300px] md:mx-auto">

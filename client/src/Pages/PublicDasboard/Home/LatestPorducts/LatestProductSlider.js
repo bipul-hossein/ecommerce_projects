@@ -3,13 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-
 import Card from '../../../../components/public/card/Card';
-import useTamporaryFakeData from '../../../../hooks/useTamporaryFakeData';
+import useProductsData from '../../../../hooks/useProductsData';
 
 const LatestProductSlider = () => {
-    const [tamporaryFakeData] = useTamporaryFakeData()
-
+    const [products] = useProductsData();
 
     return (
         <Swiper
@@ -30,9 +28,9 @@ const LatestProductSlider = () => {
             }}
             className="mySwiper"
         >
-            {tamporaryFakeData?.map((data, i) => (
+            {products?.slice(0, 8)?.map((data, i) => (
                 <SwiperSlide key={i}>
-                    <Card id={data.idMeal} title={data.strMeal} image={data.strMealThumb} />
+                    <Card id={data.idMeal} data={data} />
                 </SwiperSlide>
             ))}
         </Swiper>
