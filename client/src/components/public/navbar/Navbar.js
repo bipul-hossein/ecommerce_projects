@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MobileView from "./MobileView/MobileView";
 import DesktopView from "./DesktopView/DesktopView";
 import SearchBar from "./MobileView/SearchBar";
+import logo from "../../../Images/logo.png";
 
 const Navbar = () => {
   const [activeSearchBar, setActiveSearchBar] = useState(false);
@@ -17,7 +18,7 @@ const Navbar = () => {
         <div className="border-b border-[1px] border-gray-400 py-1 fixed top-0 z-40 bg-white w-full">
           <img
             className="mx-auto"
-            src="https://fullkit.moxcreative.com/electrodeals/wp-content/uploads/sites/8/elementor/thumbs/Logo_electrodeals-1-pqh2rs7jj702t6120hf28oa9rgzhabts8ff3d9id4w.png"
+            src={logo}
             alt=""
           />
         </div>

@@ -4,6 +4,7 @@ import { GoSearch } from "react-icons/go";
 import { CgProfile, CgShoppingCart } from "react-icons/cg";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { AiOutlineHeart } from "react-icons/ai";
+import logo from "../../../../Images/logo.png";
 
 const DesktopView = () => {
   const [isFixed, setIsFixed] = useState(false);
@@ -30,7 +31,7 @@ const DesktopView = () => {
         <Link to="/">
         <img
           className=""
-          src="https://fullkit.moxcreative.com/electrodeals/wp-content/uploads/sites/8/elementor/thumbs/Logo_electrodeals-1-pqh2rs7jj702t6120hf28oa9rgzhabts8ff3d9id4w.png"
+          src={logo}
           alt=""
         />
         </Link>
