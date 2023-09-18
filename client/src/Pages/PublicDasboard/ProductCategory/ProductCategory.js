@@ -1,11 +1,13 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import CardSecondary from '../../../components/public/card/CardSecondary';
+import Card from '../../../components/public/card/Card';
 
 
 const ProductCategory = () => {
     const { meals } = useLoaderData()
     const category_name = useParams();
+
 
     return (
         <div className='my-10 w-11/12 mx-auto '>
@@ -26,7 +28,7 @@ const ProductCategory = () => {
             <div className='grid grid-cols-2 md:grid-cols-5'>
                 {
                     meals.map((meal, index) =>
-                        <CardSecondary key={index} id={meal.idMeal} title={meal.strMeal} image={meal.strMealThumb} />
+                        <Card key={index} data={meal}  />
                     )
                 }
             </div>

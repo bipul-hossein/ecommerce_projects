@@ -3,8 +3,12 @@ import Card from '../../../components/public/card/Card';
 import useTamporaryFakeData from '../../../hooks/useTamporaryFakeData';
 
 const RelatedProducts = () => {
+<<<<<<< HEAD
     const [tamporaryFakeData] = useTamporaryFakeData()
     console.log(tamporaryFakeData)
+=======
+  const [tamporaryFakeData] = useTamporaryFakeData()
+>>>>>>> development
 
     return (
         <div className="my-10">
