@@ -2,6 +2,7 @@ import React from 'react';
 import CardSecondary from '../../../../components/public/card/CardSecondary';
 
 const TopProducts = () => {
+
     return (
         <section className='md:w-11/12 mx-auto px-2 my-16'>
             <div>

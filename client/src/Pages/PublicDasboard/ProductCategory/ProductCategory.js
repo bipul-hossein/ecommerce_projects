@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
-import Card from '../../../components/public/card/Card';
+import CardSecondary from '../../../components/public/card/CardSecondary';
 
 
 const ProductCategory = () => {
@@ -9,12 +9,24 @@ const ProductCategory = () => {
 
     return (
         <div className='my-10 w-11/12 mx-auto '>
-            <h2 className='text-base md:text-xl mb-5'>{category_name.id}</h2>
+            <div className='py-3 flex'>
+                <h2 className='text-base md:text-xl mb-5'>{category_name.id}</h2>
+                <div className='flex'>
+                    <span className='flex'>
+                        <p>show</p>
+                        <p>20</p>
+                    </span>
+                    <span className='flex'>
+                        <p>Sort By</p>
+                        <p>Default</p>
+                    </span>
+                </div>
+            </div>
 
             <div className='grid grid-cols-2 md:grid-cols-5'>
                 {
                     meals.map((meal, index) =>
-                        <Card key={index} id={meal.idMeal} title={meal.strMeal} image={meal.strMealThumb}  />
+                        <CardSecondary key={index} id={meal.idMeal} title={meal.strMeal} image={meal.strMealThumb} />
                     )
                 }
             </div>

@@ -43,7 +43,8 @@ const CardSecondary = () => {
           </div>
           <div className="mx-auto">
             <div className="overflow-hidden rounded-sm mx-auto border-b-2">
-              <Link to={`/product-details/${data.idMeal}`}>
+              <Link to={`product-details/${data.idMeal}`}>
+
                 <img
                   className="aspect-square h-32 md:h-44"
                   src={data.strMealThumb}
