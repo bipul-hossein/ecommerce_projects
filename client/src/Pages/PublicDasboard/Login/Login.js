@@ -31,7 +31,7 @@ const Login = () => {
 
 
     return (
-        <div className='h-full flex justify-center items-center'>
+        <div className='h-full mb-10 flex justify-center items-center'>
             <div className='w-full p-7 md:w-2/4 lg:w-1/3'>
                 <h2 className='text-xl text-center'>Login</h2>
                 <form onSubmit={handleSubmit((handleSignIn))}>
@@ -51,7 +51,7 @@ const Login = () => {
                     </div>
                     <button className="btn btn-outline w-full mt-3">Submit</button>
                 </form>
-                <p>Don't have a Account ? Please <Link className='text-secondary' to="/register">Register</Link></p>
+                <p className='md:mt-2'>Don't have a Account ? Please <Link className='text-primary' to="/register">Register</Link></p>
                 <div className="divider">OR</div>
                 <button /* onClick={handleGoogleLogin} */ className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>

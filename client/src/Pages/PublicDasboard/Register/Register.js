@@ -52,7 +52,7 @@ const Register = () => {
  */
 
     return (
-        <div className='h-full flex justify-center items-center'>
+        <div className='h-full mb-10 flex justify-center items-center'>
             <div className='w-full p-7 md:w-2/4 lg:w-1/3'>
                 <h2 className='text-xl text-center'>Register</h2>
                 <form onSubmit={handleSubmit((handleSignUp))}>
@@ -79,7 +79,7 @@ const Register = () => {
                     </div>
                     <button className="btn btn-outline w-full mt-3">Submit</button>
                 </form>
-                <p>Don't have a Account ? Please <Link className='text-secondary' to="/login">LogIn</Link></p>
+                <p className='md:mt-2'>Don't have a Account ? Please <Link className='text-primary' to="/login">LogIn</Link></p>
             </div>
         </div>
     );

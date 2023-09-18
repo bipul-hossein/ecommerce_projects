@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 import { CgProfile, CgShoppingCart } from "react-icons/cg";
 import { BiSolidPhoneCall } from "react-icons/bi";
@@ -28,11 +28,11 @@ const DesktopView = () => {
     <div className="py-6">
       <div className="flex justify-between items-center gap-10 max-w-[1400px] mx-auto px-4 mb-4">
         <Link to="/">
-        <img
-          className=""
-          src="https://fullkit.moxcreative.com/electrodeals/wp-content/uploads/sites/8/elementor/thumbs/Logo_electrodeals-1-pqh2rs7jj702t6120hf28oa9rgzhabts8ff3d9id4w.png"
-          alt=""
-        />
+          <img
+            className=""
+            src="https://fullkit.moxcreative.com/electrodeals/wp-content/uploads/sites/8/elementor/thumbs/Logo_electrodeals-1-pqh2rs7jj702t6120hf28oa9rgzhabts8ff3d9id4w.png"
+            alt=""
+          />
         </Link>
 
         <div className="flex-1 items-center justify-center w-[70%]">
@@ -49,15 +49,17 @@ const DesktopView = () => {
           </div>
         </div>
         <div className="flex gap-12 items-center">
-          <div className="flex gap-2 items-center">
-            <div>
-              <CgProfile className="text-[28px] text-primary" />
+          <Link to="/login">
+            <div className="flex gap-2 items-center">
+              <div>
+                <CgProfile className="text-[28px] text-primary hover:cursor-pointer" />
+              </div>
+              <div>
+                <p className="text-sm text-gray-400">Sing in</p>
+                <p>Account</p>
+              </div>
             </div>
-            <div>
-              <p className="text-sm text-gray-400">Sing in</p>
-              <p>Account</p>
-            </div>
-          </div>
+          </Link>
           <div className="relative">
             <span className=" bg-yellow-400 text-xs text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
               1
@@ -68,16 +70,15 @@ const DesktopView = () => {
             <span className=" bg-yellow-400 text-xs text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
               1
             </span>
-            
-           <Link to='/cart'> <CgShoppingCart className="text-[28px] text-primary" /></Link>
+
+            <Link to='/cart'> <CgShoppingCart className="text-[28px] text-primary" /></Link>
           </div>
         </div>
       </div>
       {/* Navbar Categories */}
       <div
-        className={`bg-primary z-50 py-5 w-full ${
-          isFixed ? "fixed top-0" : ""
-        }`}
+        className={`bg-primary z-50 py-5 w-full ${isFixed ? "fixed top-0" : ""
+          }`}
       >
         <div className="px-4 text-white flex justify-between items-center max-w-[1400px] mx-auto">
           <div className="flex gap-[3%] w-full">
@@ -88,7 +89,7 @@ const DesktopView = () => {
             <p className="font-bold">Services</p>
           </div>
           <div className="w-[25%]">
-            <p className="text-sm font-bold flex justify-center items-center"><BiSolidPhoneCall className="w-5 h-5 mr-2"/> Call Us Now: 018-3234-5423</p>
+            <p className="text-sm font-bold flex justify-center items-center"><BiSolidPhoneCall className="w-5 h-5 mr-2" /> Call Us Now: 018-3234-5423</p>
           </div>
         </div>
       </div>
