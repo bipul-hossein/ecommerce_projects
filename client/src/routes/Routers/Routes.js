@@ -8,6 +8,7 @@ import AdminDasboard from "../../Pages/AdminDasboard/AdminDasboard";
 import CartDetails from "../../Pages/PublicDasboard/CartDetails/CartDetails";
 import ProductDetails from "../../Pages/PublicDasboard/ProductDetails/ProductDetails";
 import ProductCategory from "../../Pages/PublicDasboard/ProductCategory/ProductCategory";
+import UserDashboard from "../../Pages/PublicDasboard/UserDashboard/UserDashboard";
 
 const router = createBrowserRouter([
     {
@@ -22,9 +23,13 @@ const router = createBrowserRouter([
                 path: '/home',
                 element: <Home />
             },
+            // {
+            //     path: '/login',
+            //     element: <Login />
+            // },
             {
                 path: '/login',
-                element: <Login />
+                element: <UserDashboard />
             },
             {
                 path: '/register',
