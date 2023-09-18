@@ -36,6 +36,7 @@ const ProductCategory = () => {
                         )
                     }
                 </div>
+
             </div>
         </div>
     );

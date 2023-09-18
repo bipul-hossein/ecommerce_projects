@@ -43,7 +43,7 @@ const CardSecondary = ({ products }) => {
             <div className="overflow-hidden rounded-sm mx-auto border-b-2">
               <Link to={`/product-details/${data?.idMeal}`}>
                 <img
-                  className="aspect-square h-32 md:h-44"
+                  className="aspect-square h-32 md:h-44 group-hover:scale-110 duration-700 ease-in-out"
                   src={data?.strMealThumb}
                   alt=""
                 />
@@ -66,7 +66,7 @@ const CardSecondary = ({ products }) => {
                   ৳354
                 </div>
               </div>
-              <p className="cursor-pointer bg-white hover:border-none hover:text-white hover:bg-[#fa6602] py-1 md:py-2 px-2 md:px-[14px] text-sm rounded-xl md:rounded-3xl border-black border-[1px] text-black">
+              <p className="cursor-pointer bg-white hover:outline-[#fa6602] outline outline-1 hover:text-white hover:bg-[#fa6602] py-1 md:py-2 px-2 md:px-3 text-sm rounded-xl md:rounded-3xl text-black duration-500">
                 Add to Cart
               </p>
             </div>
