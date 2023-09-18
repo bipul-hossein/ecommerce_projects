@@ -106,7 +106,7 @@ const ProductDetails = () => {
           </p>
           <p
             onClick={() => setActiveIndex(1)}
-            className={`cursor-pointer text-gray-600 text-xs md:text-base text-center font-semibold bg-secondary p-2 border ${
+            className={`cursor-pointer text-gray-600 text-xs md:text-base text-center font-semibold bg-secondary p-2 border border-r-white border-l-white ${
               activeIndex === 1 ? "bg-white" : ""
             }`}
           >
@@ -293,13 +293,13 @@ const ProductDetails = () => {
               <p className="text-sm text-gray-500">Lorem ipsum, dolor sit amet consectetur adipisicing elit. At quo nobis error reiciendis nam ab, fugiat quasi enim nulla velit, odio, aliquam placeat nihil um, dolor sit amet consectetur adipisicing elit. At quo nobis error reiciendis nam ab, fugiat quasi enim nulla velit, odio, aliquam placeat nihil</p>
             </div>
             </div>
-            <div className="flex gap-1 justify-end items-center mt-4">
+            <div className="flex gap-1 justify-center md:justify-end items-center mt-4">
             <span className="w-8 text-center p-1 bg-gray-200 h-8 flex items-center justify-center"><FaArrowLeft className="text-gray-500"/></span>
               <span className="w-8 h-8 flex items-center justify-center text-gray-500 text-sm p-1 bg-gray-200">1</span>
               <span className="w-8 h-8 flex items-center justify-center text-gray-500 text-sm p-1 bg-gray-200">2</span>
-              <span className="w-8 h-8 flex items-center justify-center text-gray-500 text-sm p-1 bg-gray-200">3</span>
-              <span className="w-8 h-8 flex items-center justify-center text-gray-500 text-sm p-1 bg-gray-200">...</span>
-              <span className="w-8 h-8 flex items-center justify-center text-gray-500 text-sm p-1 bg-gray-200">10</span>
+              <span className="w-8 h-8 hidden md:flex items-center justify-center text-gray-500 text-sm p-1 bg-gray-200">3</span>
+              <span className="w-8 h-8 hidden md:flex items-center justify-center text-gray-500 text-sm p-1 bg-gray-200">...</span>
+              <span className="w-8 h-8 hidden md:flex items-center justify-center text-gray-500 text-sm p-1 bg-gray-200">10</span>
               <span className="w-8 text-center p-1 bg-gray-200 h-8 flex items-center justify-center"><FaArrowRight className="text-gray-500"/></span>
             </div>
           </div>
@@ -310,7 +310,7 @@ const ProductDetails = () => {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
             {
               mainCategories?.slice(0, 4)?.map(data => (
-                <Card key={data?.id} data={data}/>
+                <Card key={data?.idMeal} data={data}/>
                 ))
             }
             </div>

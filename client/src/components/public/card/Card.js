@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 const Card = ({ data }) => {
 
-
   return (
     <div className="flex flex-col rounded-md justify-between w-full bg-white p-2 md:p-4 border-[1px] hover:border-[#fa6602] relative ">
       <div className="mx-auto">
@@ -12,7 +11,7 @@ const Card = ({ data }) => {
             sale!
           </p>
         </div>
-        <Link to={`/product-details/${data.id}`}>
+        <Link to={`/product-details/${data.idMeal}`}>
           <div className=" overflow-hidden rounded-sm flex justify-center">
             <img
               className="aspect-square w-36"
