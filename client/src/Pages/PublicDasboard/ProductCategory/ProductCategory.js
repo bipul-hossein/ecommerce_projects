@@ -12,7 +12,7 @@ const ProductCategory = () => {
         <div className='my-10 w-11/12 mx-auto '>
             <h2 className='text-base md:text-xl mb-5'>{category_name.id}</h2>
 
-            <div className='grid grid-cols-2 md:grid-cols-5'>
+            <div className='grid grid-cols-2 md:grid-cols-4 gap-3'>
                 {
                     meals.map((meal, index) =>
                         <Card key={index} data={meal}  />
