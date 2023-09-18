@@ -5,7 +5,7 @@ import RelatedProduct from "./RelatedProduct/RelatedProduct";
 import { useLoaderData } from "react-router-dom";
 
 const ProductDetails = () => {
-  // window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
   const product = useLoaderData()?.meals[0];
   
   return (

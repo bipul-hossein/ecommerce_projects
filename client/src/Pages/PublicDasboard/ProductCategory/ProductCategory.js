@@ -6,6 +6,7 @@ import FilterSidebar from './FilterSidebar';
 
 
 const ProductCategory = () => {
+    window.scrollTo(0, 0);
     const { meals } = useLoaderData()
     const category_name = useParams();
     const [filterSidebar, setFilterSidebar] = useState(false)
@@ -63,7 +64,7 @@ const ProductCategory = () => {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-2 md:grid-cols-4'>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-3'>
                     {
                         meals.map((meal, index) =>
                             <Card key={index} data={meal} />

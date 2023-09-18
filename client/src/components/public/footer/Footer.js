@@ -3,6 +3,7 @@ import { BsFacebook } from "react-icons/bs";
 import { FiInstagram } from "react-icons/fi";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { FaHeadphones, FaWhatsapp } from "react-icons/fa";
+import logo from "../../../Images/logo.png";
 
 const Footer = () => {
   return (
@@ -11,7 +12,7 @@ const Footer = () => {
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="">
             <img
-              src="https://fullkit.moxcreative.com/electrodeals/wp-content/uploads/sites/8/elementor/thumbs/Logo_electrodeals-1-pqh2rs7jj702t6120hf28oa9rgzhabts8ff3d9id4w.png"
+              src={logo}
               alt=""
             />
           </div>
