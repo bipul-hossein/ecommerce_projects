@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
-import CardSecondary from '../../../components/public/card/CardSecondary';
 import Card from '../../../components/public/card/Card';
 
 
