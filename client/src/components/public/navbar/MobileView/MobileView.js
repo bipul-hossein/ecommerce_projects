@@ -13,8 +13,8 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar }) => {
     { name: "Menu", icon: <AiOutlineMenu /> },
     { name: "Search", icon: <AiOutlineSearch /> },
     { name: "Home", icon: <AiOutlineHome /> },
-    { name: "Cart", icon: <CgShoppingCart /> },
-    { name: "Profile", icon: <IoPersonOutline /> },
+    { name: "Cart", icon: <Link to={'/cart'}><CgShoppingCart /></Link> },
+    { name: "Profile", icon: <Link to={'/login'}><IoPersonOutline /></Link> },
   ];
 
   const handleClick = (i) => {
