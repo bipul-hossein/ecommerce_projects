@@ -59,11 +59,11 @@ const UserDashboard = () => {
       </div>
       <div className="my-5 grid grid-cols-3 md:grid-cols-4 gap-2">
         {options.map((option, i) => (
-          <div key={i} className="flex flex-col justify-center items-center gap-2 p-10 shadow-lg border rounded-md">
+          <div key={i} className="flex flex-col justify-center items-center gap-2 p-5 md:p-10 shadow-lg border rounded-md">
             <p className="bg-blue-100 rounded-full p-3">
               {option.icon}
             </p>
-            <p className="text-sm font-bold">{option.name}</p>
+            <p className="text-xs text-center md:text-sm font-bold">{option.name}</p>
           </div>
         ))}
       </div>

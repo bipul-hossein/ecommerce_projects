@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 import { CgProfile, CgShoppingCart } from "react-icons/cg";
 import { BiSolidPhoneCall } from "react-icons/bi";
-import { AiOutlineHeart } from "react-icons/ai";
 import logo from "../../../../Images/logo.png";
 
 const DesktopView = () => {
@@ -61,12 +60,6 @@ const DesktopView = () => {
               </div>
             </div>
           </Link>
-          <div className="relative">
-            <span className=" bg-yellow-400 text-xs text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
-              1
-            </span>
-            <AiOutlineHeart className="text-[28px] text-primary" />
-          </div>
           <div className="relative">
             <span className=" bg-yellow-400 text-xs text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
               1
