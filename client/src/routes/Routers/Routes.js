@@ -1,16 +1,16 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/PublicDashboardLayout/Main";
-import Home from "../../Pages/PublicDasboard/Home/Home";
-import Login from "../../Pages/PublicDasboard/Login/Login";
-import Register from "../../Pages/PublicDasboard/Register/Register";
+import Home from "../../Pages/PublicPages/Home/Home";
+import Login from "../../Pages/PublicPages/Login/Login";
+import Register from "../../Pages/PublicPages/Register/Register";
 import PrivateRouters from "../PrivateRouters/PrivateRouters";
 import AdminDashboard from "../../Pages/AdminDashboard/AdminDashboard";
-import CartDetails from "../../Pages/PublicDasboard/CartDetails/CartDetails";
-import ProductDetails from "../../Pages/PublicDasboard/ProductDetails/ProductDetails";
-import ProductCategory from "../../Pages/PublicDasboard/ProductCategory/ProductCategory";
-import UserDashboard from "../../Pages/PublicDasboard/UserDashboard/UserDashboard";
-import AdminLayout from "../../Layout/AdminDasboardLayout/AdminLayout";
 import Orders from "../../Pages/AdminDashboard/AdminComponents/Orders/Orders";
+import CartDetails from "../../Pages/PublicPages/CartDetails/CartDetails";
+import ProductDetails from "../../Pages/PublicPages/ProductDetails/ProductDetails";
+import ProductCategory from "../../Pages/PublicPages/ProductCategory/ProductCategory";
+import UserDashboard from "../../Pages/PublicPages/UserDashboard/UserDashboard";
+import AdminLayout from "../../Layout/AdminDashboardLayout/AdminLayout";
 
 const router = createBrowserRouter([
     {

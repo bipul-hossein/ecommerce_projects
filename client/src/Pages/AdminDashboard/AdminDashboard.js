@@ -57,7 +57,7 @@ const AdminDashboard = () => {
                 <div className='flex justify-between items-center mb-6'>
                     <div className="flex gap-1 items-end ">
                         <FcBusinessman className="w-8 md:w-12 h-8 md:h-12 p-1 rounded-full bg-red-100" />
-                        <h3 className="text-lg md:pb-1 font-semibold text-gray-600">Bipul HossaiN</h3>
+                        <h3 className="text-lg md:pb-1 font-semibold text-gray-600">Bipul Hossain</h3>
                     </div>
                     <div>
                         <button className="bg-red-200 text-black hover:bg-red-500 hover:text-white font-semibold px-3 py-2 rounded-md">
