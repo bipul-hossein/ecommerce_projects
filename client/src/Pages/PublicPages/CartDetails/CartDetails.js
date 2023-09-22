@@ -18,7 +18,7 @@ const CartDetails = () => {
         }
     }
 
-    function handleMinus(id) {
+    const handleMinus =(id)=> {
         /*   if (count > 0) {
             setCount(count - 1);
             setError(null);
