@@ -4,11 +4,15 @@ import Home from "../../Pages/PublicPages/Home/Home";
 import Login from "../../Pages/PublicPages/Login/Login";
 import Register from "../../Pages/PublicPages/Register/Register";
 import PrivateRouters from "../PrivateRouters/PrivateRouters";
-import AdminDasboard from "../../Pages/AdminDasboard/AdminDasboard";
+import AdminDashboard from "../../Pages/AdminDashboard/AdminDashboard";
+import Orders from "../../Pages/AdminDashboard/AdminComponents/Orders/Orders";
 import CartDetails from "../../Pages/PublicPages/CartDetails/CartDetails";
 import ProductDetails from "../../Pages/PublicPages/ProductDetails/ProductDetails";
 import ProductCategory from "../../Pages/PublicPages/ProductCategory/ProductCategory";
 import UserDashboard from "../../Pages/PublicPages/UserDashboard/UserDashboard";
+import AdminLayout from "../../Layout/AdminDashboardLayout/AdminLayout";
+import AddProduct from "../../Pages/AdminDashboard/AdminComponents/AddProduct/AddProduct";
+import SpecificOrderDetails from "../../Pages/AdminDashboard/AdminComponents/Orders/SpecificOrderDetails";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +46,7 @@ const router = createBrowserRouter([
             {
                 path: '/product-details/:id',
                 element: <ProductDetails />,
-                loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`) 
+                loader: ({ params }) => fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`)
             },
             {
                 path: '/product-category/:id',
@@ -53,9 +57,27 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRouters><AdminDasboard></AdminDasboard></PrivateRouters>
+        element: <AdminLayout />,
+        children: [
+            {
+                path: '/dashboard',
+                element: <AdminDashboard />
+            },
+            {
+                path: '/dashboard/orders',
+                element: <Orders />
+            },
+            {
+                path: '/dashboard/orders/details',
+                element: <SpecificOrderDetails />
+            },
+            {
+                path: '/dashboard/add_product',
+                element: <AddProduct />
+            },
+        ]
 
-    }
+    },
 ])
 
 export default router;
