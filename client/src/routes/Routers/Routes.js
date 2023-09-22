@@ -11,6 +11,8 @@ import ProductDetails from "../../Pages/PublicPages/ProductDetails/ProductDetail
 import ProductCategory from "../../Pages/PublicPages/ProductCategory/ProductCategory";
 import UserDashboard from "../../Pages/PublicPages/UserDashboard/UserDashboard";
 import AdminLayout from "../../Layout/AdminDashboardLayout/AdminLayout";
+import AddProduct from "../../Pages/AdminDashboard/AdminComponents/AddProduct/AddProduct";
+import SpecificOrderDetails from "../../Pages/AdminDashboard/AdminComponents/Orders/SpecificOrderDetails";
 
 const router = createBrowserRouter([
     {
@@ -55,7 +57,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <PrivateRouters><AdminLayout /></PrivateRouters>,
+        element: <AdminLayout />,
         children: [
             {
                 path: '/dashboard',
@@ -64,6 +66,14 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/orders',
                 element: <Orders />
+            },
+            {
+                path: '/dashboard/orders/details',
+                element: <SpecificOrderDetails />
+            },
+            {
+                path: '/dashboard/add_product',
+                element: <AddProduct />
             },
         ]
 
