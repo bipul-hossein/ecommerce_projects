@@ -26,52 +26,56 @@ const SpecificOrderDetails = () => {
                             <p className='pt-1 pl-4'>Note about Order</p>
                         </div>
                         <div className='bg-white mt-6 shadow shadow-[#00000026] '>
-                            <table class="table-auto w-full">
-                                <thead className='text-left'>
-                                    <tr className=''>
-                                        <th className="text-lg font-bold md:font-medium py-2 pl-3 md:pl-5 md:py-3">Items</th>
-                                        <th className="text-sm font-semibold md:font-medium py-2 md:p-2"></th>
-                                        <th className="text-sm font-semibold md:font-medium py-2 md:p-2"></th>
-                                        <th className="text-sm font-semibold md:font-medium py-2 md:p-2">Edit items</th>
+                            <div>
+                                <table class="table-auto w-full">
+                                    <thead className='text-left'>
+                                        <tr className=''>
+                                            <th className="text-lg font-bold md:font-medium py-2 pl-3 md:pl-5 md:py-3">Items</th>
+                                            <th className="text-sm font-semibold md:font-medium py-2 md:p-2"></th>
+                                            <th className="text-sm font-semibold md:font-medium py-2 md:p-2"></th>
+                                            <th className="text-end pr-6 text-sm font-semibold md:font-medium py-2 md:p-2 text-[#0b5be5]">Edit items</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        orders.map((order, i) =>
-                                            <tr key={i} className=' my-2 border '>
-                                                <td className=" pl-5 py-1 md:py-3 border-t-[1px] border-[#2125291a]">{order.product}</td>
-                                                <td className=" px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">{order.price}</td>
-                                                <td className=" px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">+ {order.quantity} +</td>
-                                                <td className=" px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">delete</td>
-                                            </tr>
-                                        )
-                                    }
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {
+                                            orders.map((order, i) =>
+                                                <tr key={i} className='my-2 text-base'>
+                                                    <td className="pl-5 py-1 md:py-3 border-t-[1px] border-[#2125291a]">{order.product}</td>
+                                                    <td className="text-center px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">{order.price}</td>
+                                                    <td className="text-center px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">+ {order.quantity} +</td>
+                                                    <td className="text-end pl-3 pr-6 px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">delete</td>
+                                                </tr>
+                                            )
+                                        }
 
-                                </tbody>
-                            </table>
-                            <table className='table-auto w-full'>
-                                <thead>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr className=' my-2 border '>
-                                        <td className=" pl-5 py-1 md:py-3 border-[#2125291a]">Subtotal</td>
-                                        <td className=" pl-5 py-1 md:py-3 border-[#2125291a]">$677</td>
-                                    </tr>
-                                    <tr className=' my-2 border '>
-                                        <td className=" pl-5 py-1 md:py-3 border-t-[1px] border-[#2125291a]">Subtotal</td>
-                                        <td className=" pl-5 py-1 md:py-3 border-t-[1px] border-[#2125291a]">$677</td>
-                                    </tr>
-                                    <tr className=' my-2 border '>
-                                        <td className=" pl-5 py-1 md:py-3 border-t-[1px] border-[#2125291a]">Subtotal</td>
-                                        <td className=" pl-5 py-1 md:py-3 border-t-[1px] border-[#2125291a]">$677</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                                <table className='table-auto w-full'>
+                                    <tbody className='text-'>
+                                        <tr className=' my-2 text-base'>
+                                            <td className="pl-5 py-1 md:pt-3 md:pb-1 border-t-[1px] border-[#2125291a]">Subtotal</td>
+
+                                            <td className="text-end pl-2 pr-6 py-1 md:pt-3 md:pb-1 border-t-[1px] border-[#2125291a]">$677</td>
+                                        </tr>
+                                        <tr className=' my-2 text-base'>
+                                            <td className="pl-5 py-1 md:py-1 ">Store Credit</td>
+                                            <td className="text-end pl-2 pr-6 py-1 md:py-1 ">$677</td>
+                                        </tr>
+                                        <tr className=' my-2 text-base'>
+                                            <td className="pl-5 py-1 md:pb-3 md:pt-1 ">
+                                                <p>Shipping </p>
+                                                <p className='text-xs'>via FedEx International </p>
+                                            </td>
+                                            <td className="text-end pl-2 pr-6 py-1 md:pb-3 md:pt-1 ">$677</td>
+                                        </tr>
+                                        <tr className=' my-2 border text-base'>
+                                            <td className="pl-5 py-1 md:py-1 border-t-[1px] border-[#2125291a]">Total</td>
+                                            <td className="text-end pl-2 pr-6 py-1 md:py-3 border-t-[1px] border-[#2125291a]">$677</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div className='bg-white mt-6 shadow shadow-[#00000026]'>
                             {/* Transactions */}
@@ -81,18 +85,18 @@ const SpecificOrderDetails = () => {
 
                                         <th className="text-lg font-bold md:font-medium py-2 md:py-4 pl-3 md:pl-5 ">Transactions</th>
                                         <th className="text-sm font-semibold md:font-medium py-2 md:p-2"></th>
-                                        <th className="text-sm font-semibold md:font-medium py-2 md:p-2">Edit Transactions</th>
+                                        <th className="text-end text-sm font-semibold md:font-medium py-2 md:p-2 text-[#0b5be5]">Edit Transactions</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
                                         orders.map((order, i) =>
-                                            <tr key={i} className=' my-2 border '>
+                                            <tr key={i} className=' my-2 border text-base'>
 
                                                 <td className=" pl-5 py-1 md:py-3 border-t-[1px] border-[#2125291a]"><p>payment</p> <p className='text-xs'>via bkash</p></td>
-                                                <td className=" px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">October 7, 2020</td>
-                                                <td className=" px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">$5665</td>
+                                                <td className="text-center px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">October 7, 2020</td>
+                                                <td className="text-end pl-2 pr-6 py-1 md:py-3 border-t-[1px] border-[#2125291a]">$5665</td>
                                             </tr>
                                         )
                                     }
@@ -106,20 +110,20 @@ const SpecificOrderDetails = () => {
                                     <tr className=''>
 
                                         <th className="text-lg font-bold md:font-medium py-2 md:py-4 pl-3 md:pl-5">Balance</th>
-                                        <th className="text-sm font-semibold md:font-medium py-2 md:p-2">Edit Balance</th>
+                                        <th className="text-end text-sm font-semibold md:font-medium py-2 md:p-2 text-[#0b5be5]">Edit Balance</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
                                         orders.map((order, i) =>
-                                            <tr key={i} className=' my-2 border '>
+                                            <tr key={i} className=' my-2 border text-base'>
 
                                                 <td className=" pl-5 py-1 md:py-3 border-t-[1px] border-[#2125291a]">
                                                     <p>Order Total</p>
                                                     <p className=''>Refund Total</p>
                                                 </td>
-                                                <td className=" px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">
+                                                <td className="text-end pl-2 pr-6 py-1 md:py-3 border-t-[1px] border-[#2125291a]">
                                                     <p>$00535</p>
                                                     <p>$00535</p>
                                                 </td>
@@ -137,12 +141,12 @@ const SpecificOrderDetails = () => {
                                 <h3 className='text-base font-bold'>Customer Name</h3>
                                 <p className='text-[#0b5be5] text-sm'>Edit</p>
                             </div>
-                            <div>
-                                <p>Bipul Hossain</p>
-                                <p>bipul@gmail.com</p>
-                                <p>000349u43</p>
-                            </div>
-                        </div>
+                            <div className='flex gap-2 items-center'>
+                               <img className='h-9 w-9 rounded-full' src="https://yt3.ggpht.com/lkpjG1TsZVdPweMitGGfbR7YEiI7eVSkiFJK8S55BI58fLD6YdT9vNGfkapCT9Aia_I_0i2n=s88-c-k-c0x00ffffff-no-rj" alt="" />
+                               <div>
+                                <p className='text-sm'>Bipul Hossain</p>
+                                 <p className='text-xs'>01303-378890</p></div> 
+                            </div>                        </div>
                         <div className='bg-white flex flex-col p-4 px-5 mb-3 shadow shadow-[#00000026]'>
                             <div className='flex justify-between pb-4'>
                                 <h3 className='text-base font-bold'>Contact person</h3>
