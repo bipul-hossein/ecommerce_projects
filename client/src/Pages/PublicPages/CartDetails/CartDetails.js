@@ -6,7 +6,9 @@ import { FiMinus, FiPlus } from 'react-icons/fi';
 const CartDetails = () => {
     const [count, setCount] = useState(null);
     const [error, setError] = useState(null);
+    
 
+ 
 
     function handlePlus(id) {
         console.log(id)
@@ -18,7 +20,7 @@ const CartDetails = () => {
         }
     }
 
-    function handleMinus(id) {
+    const handleMinus =(id)=> {
         /*   if (count > 0) {
             setCount(count - 1);
             setError(null);
