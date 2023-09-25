@@ -6,7 +6,7 @@ const UserDashboard = () => {
   return (
     <>
       <Navbar />
-      <div className="max-w-[1200px] mx-auto px-2 my-10 min-h-screen">
+      <div className="max-w-[1200px] mx-auto px-2 my-10 mt-20 md:mt-0">
         <div className="flex justify-between items-center">
           <div className="flex gap-3 items-center">
             <img
