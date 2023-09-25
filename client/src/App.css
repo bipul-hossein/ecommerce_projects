@@ -1,6 +1,5 @@
-
 /* Latest Porducts Swiper */
-.swiper-button-next::after{
+.swiper-button-next::after {
     font-size: 20px !important;
     background: #e4e4e4;
     padding: 10px 15px;
@@ -10,7 +9,8 @@
     position: relative;
     right: -80%;
 }
-.swiper-button-prev::after{
+
+.swiper-button-prev::after {
     font-size: 20px !important;
     background: #e4e4e4;
     padding: 10px 15px;
@@ -19,4 +19,12 @@
     font-weight: bold;
     position: relative;
     left: -80%;
+}
+
+.que:hover {
+    color: #e74c3c !important
+}
+
+.button.image-gallery-icon.image-gallery-right-nav {
+    display: none !important;
 }

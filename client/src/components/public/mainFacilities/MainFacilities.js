@@ -7,7 +7,7 @@ import { MdPayment } from "react-icons/md";
 const MainFacilities = () => {
   return (
     <section
-      className="grid grid-cols-2 md:grid-cols-4 gap-4 justify-center py-6 items-center mt-10 shadow-2xl md:w-[75%] mx-auto flex-wrap"
+      className="grid grid-cols-2 md:grid-cols-4 gap-4 justify-center py-6 items-center my-20 shadow-2xl mx-auto flex-wrap rounded-md"
       style={{ boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)" }}
     >
       <div className="border-r px-8 rounded-md text-center">
