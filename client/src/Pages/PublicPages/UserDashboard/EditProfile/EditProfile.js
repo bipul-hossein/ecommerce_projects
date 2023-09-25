@@ -6,7 +6,7 @@ const EditProfile = () => {
       <h1 className="text-base md:text-xl font-bold text-blue-500">
         Edit Profile
       </h1>
-      <div className="my-8">
+      <form className="my-8">
         <div className="md:flex gap-8">
           <div>
             <p className="text-sm font-semibold mb-1">
@@ -19,6 +19,7 @@ const EditProfile = () => {
               name="first name"
               id=""
               defaultValue="jubayer"
+              required
             />
           </div>
           <div className="mt-2 md:mt-0">
@@ -32,6 +33,7 @@ const EditProfile = () => {
               name="first name"
               id=""
               defaultValue="Ahmed"
+              required
             />
           </div>
         </div>
@@ -46,6 +48,7 @@ const EditProfile = () => {
             name="first name"
             id=""
             defaultValue="jubayer@gmail.com"
+            required
           />
         </div>
         <div className="mt-2">
@@ -60,16 +63,14 @@ const EditProfile = () => {
             id=""
             defaultValue="018234230324"
             readOnly
+            required
           />
         </div>
 
-        <input
-          className="text-sm font-bold w-full bg-blue-500 px-4 py-2 rounded-md text-white mt-3"
-          type="submit"
-          name="Update"
-          id=""
-        />
-      </div>
+        <button className="text-sm font-bold w-full bg-blue-500 px-4 py-2 rounded-md text-white mt-3">
+          Update
+        </button>
+      </form>
     </section>
   );
 };

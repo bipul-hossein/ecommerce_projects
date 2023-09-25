@@ -16,6 +16,9 @@ import SpecificOrderDetails from "../../Pages/AdminDashboard/AdminComponents/Ord
 import UserOrders from "../../Pages/PublicPages/UserDashboard/UserOrders/UserOrders";
 import AccountOptions from "../../Pages/PublicPages/UserDashboard/AccountOptions/AccountOptions";
 import EditProfile from "../../Pages/PublicPages/UserDashboard/EditProfile/EditProfile";
+import ChangePassword from "../../Pages/PublicPages/UserDashboard/ChangePassword/ChangePassword";
+import Address from "../../Pages/PublicPages/UserDashboard/Address/Address";
+import EditAddress from "../../Pages/PublicPages/UserDashboard/Address/EditAddress/EditAddress";
 
 const router = createBrowserRouter([
   {
@@ -100,6 +103,18 @@ const router = createBrowserRouter([
       {
         path: "/account/edit-profile",
         element: <EditProfile />,
+      },
+      {
+        path: "/account/change-password",
+        element: <ChangePassword />,
+      },
+      {
+        path: "/account/address",
+        element: <Address />,
+      },
+      {
+        path: "/account/edit-address",
+        element: <EditAddress />,
       },
     ],
   },
