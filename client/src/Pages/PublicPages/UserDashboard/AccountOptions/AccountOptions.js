@@ -26,10 +26,12 @@ const AccountOptions = () => {
     {
       icon: <FaLock className="h-7 w-7 text-blue-500" />,
       name: "Change Password",
+      route: "/account/change-password",
     },
     {
       icon: <FaAddressCard className="h-7 w-7 text-blue-500" />,
       name: "Addresses",
+      route: "/account/address",
     },
     { icon: <FaHeart className="h-7 w-7 text-blue-500" />, name: "Wish List" },
     {
