@@ -2,6 +2,7 @@ import React from 'react';
 import { BsFillCloudUploadFill } from 'react-icons/bs';
 
 const AddProduct = () => {
+
     return (
         <div className='w-11/12 mx-auto mb-24'>
             <h2 className='text-base font-bold md:text-xl'>Add a product</h2>
@@ -12,7 +13,10 @@ const AddProduct = () => {
                             <BsFillCloudUploadFill className='h-8 w-8 md:h-14 md:w-14' />
                             <p className='text-xs md:text-base'>Drag & Drop your files here</p>
                             <p className='text-xs md:text-base'>Or</p>
-                            <input type="button" value="Browse Files" className='bg-slate-200 px-3 py-2 rounded' />
+                            <div className='relative'>
+                                <p class="absolute top-2 left-2 -z-1">Browse Files</p>
+                                <input type="file" accept="image/png, image/jpeg" className='bg-slate-200 px-3 py-2 pl-[120px] rounded outline-none border opacity-50 text-black' />
+                            </div>
                         </div>
                         <div>
                             <p className='pb-2'>Uploaded File</p>
