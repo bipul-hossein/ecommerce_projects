@@ -89,7 +89,7 @@ const CartDetails = () => {
                             <td className="px-3 py-5">Subtotals</td>
                             <td className="px-3 py-5">00</td>
                         </tr>
-                        <tr className='flex border-t-[1px] justify-between'>
+                        <tr className='flex border-t-[1px] justify-between items-center'>
                             <td className="px-3 py-5">Shipping</td>
                             <td className="px-3 py-5">
                                 <div className='flex gap-2'><input type="checkbox" /><p>Delivery Cost</p> <span>00</span></div>
