@@ -15,6 +15,7 @@ import AddProduct from "../../Pages/AdminDashboard/AdminComponents/AddProduct/Ad
 import SpecificOrderDetails from "../../Pages/AdminDashboard/AdminComponents/Orders/SpecificOrderDetails";
 import UserOrders from "../../Pages/PublicPages/UserDashboard/UserOrders/UserOrders";
 import AccountOptions from "../../Pages/PublicPages/UserDashboard/AccountOptions/AccountOptions";
+import EditProfile from "../../Pages/PublicPages/UserDashboard/EditProfile/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  //Admin Dashboard
   {
     path: "/dashboard",
     element: <AdminLayout />,
@@ -94,6 +96,10 @@ const router = createBrowserRouter([
       {
         path: "/account/orders",
         element: <UserOrders />,
+      },
+      {
+        path: "/account/edit-profile",
+        element: <EditProfile />,
       },
     ],
   },

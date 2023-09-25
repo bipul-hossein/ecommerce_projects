@@ -4,7 +4,7 @@ import { FaCheckCircle } from "react-icons/fa";
 const UserOrders = () => {
   const orders = [1, 1, 1, 1, 1, 1, 1, 1];
   return (
-    <div className="max-w-[1000px] mx-auto">
+    <section className="max-w-[1000px] mx-auto">
       <h1 className="text-base md:text-xl font-bold text-blue-500">
         Orders History
       </h1>
@@ -42,7 +42,7 @@ const UserOrders = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
