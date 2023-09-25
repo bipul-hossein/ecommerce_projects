@@ -8,9 +8,7 @@ const Faq = () => {
     if (selected === i) {
       return setSelected(null)
     }
-
     else setSelected(i)
-
   }
 
 
@@ -27,11 +25,9 @@ const Faq = () => {
             <span>{selected === i ? <MdOutlineKeyboardArrowUp className="font-semibold" /> || "-" : <MdOutlineKeyboardArrowDown className="font-semibold" /> || "+"}</span>
           </div>
           <article className={selected === i ? "content show " : "content"}
-
           >{item.answer}</article>
         </div>
       ))}
-
     </section>
   );
 };

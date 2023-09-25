@@ -10,48 +10,7 @@ import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
 
-    const options = [
-        {
-            icon: <PiWalletFill className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
-            name: "Orders", routes: 'orders'
-        },
-        {
-            icon: <BsPencilFill className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
-            name: "Add Product", routes: 'add_product'
-        },
-        {
-            icon: <FaProductHunt className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
-            name: "Products", routes: ''
-        },
-        {
-            icon: <FaDollarSign className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
-            name: "Transactions", routes: ''
-        },
-        {
-            icon: <RiMessage2Fill className="h-7 md:h-9 w-7 md:w-9  text-blue-500" />,
-            name: "Message", routes: ''
-        },
-        {
-            icon: <BiSolidDoughnutChart className="h-7 md:h-9 w-7 md:w-9  text-blue-500" />,
-            name: "Analytics", routes: ''
-        },
-        {
-            icon: <BiSolidGroup className="h-7 md:h-9 w-7 md:w-9  text-blue-500" />,
-            name: "Team", routes: ''
-        },
-        {
-            icon: <FaLock className="h-7 md:h-9 w-7 md:w-9  text-blue-500" />,
-            name: "Settings", routes: ''
-        },
-        {
-            icon: <FaUserEdit className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
-            name: "Edit Profile", routes: ''
-        },
-    ];
-
     return (
-
-
         <div className='mb-10' >
             <div className='md:max-w-[1200px] md:w-11/12 md:mx-auto px-2 mt-20 mb-10'>
                 <h2 className='text-center text-2xl  font-semibold md:font-bold md:text-3xl mb-6'>Admin Panel</h2>
@@ -66,8 +25,6 @@ const AdminDashboard = () => {
                         </button>
                     </div>
                 </div>
-
-
                 <div className="my-5 grid grid-cols-3 md:grid-cols-5 gap-2">
                     {options.map((option, i) => (
                         <div key={i}>
@@ -78,8 +35,6 @@ const AdminDashboard = () => {
                                     </p>
                                     <p className="text-xs px-1 text-center md:text-base font-bold">{option.name}</p>
                                 </div>
-
-
                             </Link>
                         </div>
                     ))}
@@ -92,3 +47,43 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
+
+const options = [
+    {
+        icon: <PiWalletFill className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
+        name: "Orders", routes: 'orders'
+    },
+    {
+        icon: <BsPencilFill className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
+        name: "Add Product", routes: 'add_product'
+    },
+    {
+        icon: <FaProductHunt className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
+        name: "Products", routes: ''
+    },
+    {
+        icon: <FaDollarSign className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
+        name: "Transactions", routes: ''
+    },
+    {
+        icon: <RiMessage2Fill className="h-7 md:h-9 w-7 md:w-9  text-blue-500" />,
+        name: "Message", routes: ''
+    },
+    {
+        icon: <BiSolidDoughnutChart className="h-7 md:h-9 w-7 md:w-9  text-blue-500" />,
+        name: "Analytics", routes: ''
+    },
+    {
+        icon: <BiSolidGroup className="h-7 md:h-9 w-7 md:w-9  text-blue-500" />,
+        name: "Team", routes: ''
+    },
+    {
+        icon: <FaLock className="h-7 md:h-9 w-7 md:w-9  text-blue-500" />,
+        name: "Settings", routes: ''
+    },
+    {
+        icon: <FaUserEdit className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
+        name: "Edit Profile", routes: ''
+    },
+];
