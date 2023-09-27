@@ -52,7 +52,7 @@ const CartDetails = () => {
           ...restProducts,
           {
             ...findProduct,
-            quantity: 0,
+            quantity: 1,
           },
         ])
       );
@@ -63,7 +63,8 @@ const CartDetails = () => {
           ...restProducts,
           {
             ...findProduct,
-            quantity: findProduct?.quantity - 1,
+            quantity:
+              findProduct?.quantity === 1 ? 1 : findProduct?.quantity - 1,
           },
         ])
       );
@@ -104,7 +105,7 @@ const CartDetails = () => {
                   />
                   {product.strMeal}
                 </td>
-                <td className="px-3 py-1 md:py-5 border-t-[1px]">540tk</td>
+                <td className="px-3 py-1 md:py-5 border-t-[1px]">540 tk</td>
                 <td className="px-3 py-1 md:py-5 border-t-[1px]">
                   <div className="flex items-center justify-center gap-1 p-2">
                     <span className="">
@@ -124,7 +125,9 @@ const CartDetails = () => {
                     </span>
                   </div>
                 </td>
-                <td className="px-3 py-1 md:py-5 border-t-[1px]">100</td>
+                <td className="px-3 py-1 md:py-5 border-t-[1px]">
+                  {100 * product?.quantity}
+                </td>
                 <td className="md:px-3 py-1 md:py-5 pr-4 border-t-[1px]">
                   <RiDeleteBinLine />
                 </td>
