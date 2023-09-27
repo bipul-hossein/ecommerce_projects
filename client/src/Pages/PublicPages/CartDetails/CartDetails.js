@@ -72,7 +72,15 @@ const CartDetails = () => {
     setCount(count - 1);
   };
 
-  cartItems.sort((a, b) => a.idMeal - b.idMeal);
+  cartItems?.sort((a, b) => a.idMeal - b.idMeal);
+
+  if (!cartItems?.length) {
+    return (
+      <div className="my-10 min-h-[50vh]">
+        <h1 className="text-2xl text-center">No Cart Data Added</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="my-20 flex flex-wrap md:flex-nowrap gap-5">
@@ -115,7 +123,7 @@ const CartDetails = () => {
                       />
                     </span>
                     <span className="p-2">
-                      {product?.quantity ? product?.quantity : 0}
+                      {product?.quantity ? product?.quantity : 1}
                     </span>
                     <span className="">
                       <FiPlus
@@ -126,7 +134,7 @@ const CartDetails = () => {
                   </div>
                 </td>
                 <td className="px-3 py-1 md:py-5 border-t-[1px]">
-                  {100 * product?.quantity}
+                  {product?.quantity ? product?.quantity * 540 : 540}
                 </td>
                 <td className="md:px-3 py-1 md:py-5 pr-4 border-t-[1px]">
                   <RiDeleteBinLine />
