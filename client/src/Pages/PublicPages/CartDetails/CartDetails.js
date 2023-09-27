@@ -1,31 +1,77 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const CartDetails = () => {
-  const { cartItems } = useContext(ProductContext);
-  const [count, setCount] = useState(null);
-  //   const [error, setError] = useState(null);
+  const [cartItems, setCartItems] = useState([]);
+  const [count, setCount] = useState(0);
 
-  //   function handlePlus(id) {
-  //     console.log(id);
-  //     if (count === null || count === "") {
-  //       setCount(1);
-  //     } else {
-  //       setCount(count + 1);
-  //       setError(null);
-  //     }
-  //   }
+  useEffect(() => {
+    const cartData = JSON.parse(localStorage.getItem("e-bazar"));
+    setCartItems(cartData);
+  }, [count]);
 
-  //   const handleMinus = (id) => {
-  //     /*   if (count > 0) {
-  //             setCount(count - 1);
-  //             setError(null);
-  //           } else {
-  //             setError("Please Enter a Valid Number");
-  //           } */
-  //   };
+  const handlePlus = (id) => {
+    const findProduct = cartItems?.find((product) => product.idMeal === id);
+    const restProducts = cartItems?.filter((product) => product.idMeal !== id);
+
+    if (!findProduct?.quantity) {
+      localStorage.setItem(
+        "e-bazar",
+        JSON.stringify([
+          ...restProducts,
+          {
+            ...findProduct,
+            quantity: 1,
+          },
+        ])
+      );
+    } else {
+      localStorage.setItem(
+        "e-bazar",
+        JSON.stringify([
+          ...restProducts,
+          {
+            ...findProduct,
+            quantity: findProduct?.quantity + 1,
+          },
+        ])
+      );
+    }
+
+    setCount(count + 1);
+  };
+
+  const handleMinus = (id) => {
+    const findProduct = cartItems?.find((product) => product.idMeal === id);
+    const restProducts = cartItems?.filter((product) => product.idMeal !== id);
+    if (!findProduct?.quantity) {
+      localStorage.setItem(
+        "e-bazar",
+        JSON.stringify([
+          ...restProducts,
+          {
+            ...findProduct,
+            quantity: 0,
+          },
+        ])
+      );
+    } else {
+      localStorage.setItem(
+        "e-bazar",
+        JSON.stringify([
+          ...restProducts,
+          {
+            ...findProduct,
+            quantity: findProduct?.quantity - 1,
+          },
+        ])
+      );
+    }
+    setCount(count - 1);
+  };
+
+  cartItems.sort((a, b) => a.idMeal - b.idMeal);
 
   return (
     <div className="my-20 flex flex-wrap md:flex-nowrap gap-5">
@@ -62,11 +108,19 @@ const CartDetails = () => {
                 <td className="px-3 py-1 md:py-5 border-t-[1px]">
                   <div className="flex items-center justify-center gap-1 p-2">
                     <span className="">
-                      <FiMinus className="w-6 md:w-8 h-6 md:h-8 bg-secondary p-2 cursor-pointer font-semibold text-xs" />
+                      <FiMinus
+                        onClick={() => handleMinus(product.idMeal)}
+                        className="w-6 md:w-8 h-6 md:h-8 bg-secondary p-2 cursor-pointer font-semibold text-xs"
+                      />
                     </span>
-                    <span className="p-2">{count}</span>
+                    <span className="p-2">
+                      {product?.quantity ? product?.quantity : 0}
+                    </span>
                     <span className="">
-                      <FiPlus className="w-6 md:w-8 h-6 md:h-8 p-2 bg-secondary cursor-pointer text-xs" />
+                      <FiPlus
+                        onClick={() => handlePlus(product.idMeal)}
+                        className="w-6 md:w-8 h-6 md:h-8 p-2 bg-secondary cursor-pointer text-xs"
+                      />
                     </span>
                   </div>
                 </td>
