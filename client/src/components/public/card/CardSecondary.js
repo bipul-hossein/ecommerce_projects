@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const CardSecondary = ({ products }) => {
+  const { handleAddToLocalStorage } = useContext(ProductContext);
   const [addToWhiteList, setAddToWhiteList] = useState(false);
   const [index, setIndex] = useState([]);
 
@@ -66,7 +68,10 @@ const CardSecondary = ({ products }) => {
                   ৳354
                 </div>
               </div>
-              <p className="cursor-pointer bg-white hover:outline-[#fa6602] outline outline-1 hover:text-white hover:bg-[#fa6602] py-1 md:py-2 px-2 md:px-3 text-sm rounded-xl md:rounded-3xl text-black duration-500">
+              <p
+                onClick={() => handleAddToLocalStorage(data)}
+                className="cursor-pointer bg-white hover:outline-[#fa6602] outline outline-1 hover:text-white hover:bg-[#fa6602] py-1 md:py-2 px-2 md:px-3 text-sm rounded-xl md:rounded-3xl text-black duration-500"
+              >
                 Add to Cart
               </p>
             </div>

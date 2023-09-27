@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const Card = ({ data }) => {
+  const { handleAddToLocalStorage } = useContext(ProductContext);
 
   return (
     <div className="group flex flex-col rounded-md justify-between w-full bg-white p-2 md:p-4 border-[1px] hover:border-[#fa6602] relative ">
@@ -22,7 +24,7 @@ const Card = ({ data }) => {
         </Link>
       </div>
       <h2 className="text-sm md:text-base font-medium md:font-semibold md:tracking-[-.2px] mt-2">
-      Lorem ipsum dolor
+        Lorem ipsum dolor
       </h2>
       <div className="my-2 ">
         <span className="text-xs md:text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
@@ -32,7 +34,10 @@ const Card = ({ data }) => {
           ৳354
         </span>
       </div>
-      <button className="bg-primary hover:bg-[#fa6602] py-[4px] md:py-[8px] px-[8px] md:px-[14px] text-[13px] md:text-sm rounded-[4px] md:rounded-md text-white duration-500">
+      <button
+        onClick={() => handleAddToLocalStorage(data)}
+        className="bg-primary hover:bg-[#fa6602] py-[4px] md:py-[8px] px-[8px] md:px-[14px] text-[13px] md:text-sm rounded-[4px] md:rounded-md text-white duration-500"
+      >
         Add to Cart
       </button>
     </div>
