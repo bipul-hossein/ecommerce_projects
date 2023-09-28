@@ -56,16 +56,16 @@ const DesktopView = ({ cartQuantity }) => {
               </div>
             </div>
           </Link>
-          <div className="relative">
+          <Link to="/cart" className="relative">
             <span className=" bg-yellow-400 text-sm text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
               {cartQuantity}
             </span>
 
-            <Link to="/cart">
+            <p>
               {" "}
               <CgShoppingCart className="text-[28px] text-primary" />
-            </Link>
-          </div>
+            </p>
+          </Link>
         </div>
       </div>
       {/* Navbar Categories */}
@@ -89,16 +89,19 @@ const DesktopView = ({ cartQuantity }) => {
               <BiSolidPhoneCall className="w-5 h-5 mr-2" /> Call Us Now:
               018-3234-5423
             </p>
-            <div className={`relative ${isFixed ? "block" : "hidden"}`}>
+            <Link
+              to="/cart"
+              className={`relative ${isFixed ? "block" : "hidden"}`}
+            >
               <span className=" bg-yellow-400 text-sm text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
                 {cartQuantity}
               </span>
 
-              <Link to="/cart">
+              <p>
                 {" "}
                 <CgShoppingCart className="text-[28px] text-white" />
-              </Link>
-            </div>
+              </p>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FiMinus, FiPlus } from "react-icons/fi";
+import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const CartDetails = () => {
+  const { added, setAdded } = useContext(ProductContext);
   const [cartItems, setCartItems] = useState([]);
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const cartData = JSON.parse(localStorage.getItem("e-bazar"));
     setCartItems(cartData);
-  }, [count]);
+  }, [added]);
 
+  //quantity plus
   const handlePlus = (id) => {
     const findProduct = cartItems?.find((product) => product.idMeal === id);
     const restProducts = cartItems?.filter((product) => product.idMeal !== id);
@@ -22,7 +24,7 @@ const CartDetails = () => {
           ...restProducts,
           {
             ...findProduct,
-            quantity: 1,
+            quantity: 2,
           },
         ])
       );
@@ -39,9 +41,10 @@ const CartDetails = () => {
       );
     }
 
-    setCount(count + 1);
+    setAdded(!added);
   };
 
+  //quantity Minus
   const handleMinus = (id) => {
     const findProduct = cartItems?.find((product) => product.idMeal === id);
     const restProducts = cartItems?.filter((product) => product.idMeal !== id);
@@ -69,7 +72,13 @@ const CartDetails = () => {
         ])
       );
     }
-    setCount(count - 1);
+    setAdded(!added);
+  };
+
+  const handleRemoveToCart = (id) => {
+    const restProducts = cartItems?.filter((product) => product.idMeal !== id);
+    localStorage.setItem("e-bazar", JSON.stringify(restProducts));
+    setAdded(!added);
   };
 
   cartItems?.sort((a, b) => a.idMeal - b.idMeal);
@@ -137,7 +146,10 @@ const CartDetails = () => {
                   {product?.quantity ? product?.quantity * 540 : 540}
                 </td>
                 <td className="md:px-3 py-1 md:py-5 pr-4 border-t-[1px]">
-                  <RiDeleteBinLine />
+                  <RiDeleteBinLine
+                    onClick={() => handleRemoveToCart(product.idMeal)}
+                    className="w-6 h-6 text-red-500 cursor-pointer"
+                  />
                 </td>
               </tr>
             ))}
