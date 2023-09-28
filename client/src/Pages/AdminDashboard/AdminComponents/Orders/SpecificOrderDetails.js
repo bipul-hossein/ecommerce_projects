@@ -44,7 +44,7 @@ const SpecificOrderDetails = () => {
                                                     <td className="pl-5 py-1 md:py-3 border-t-[1px] border-[#2125291a]">{order.product}</td>
                                                     <td className="text-center px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">{order.price}</td>
                                                     <td className="text-center px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">+ {order.quantity} +</td>
-                                                    <td className="text-end pl-3 pr-6 px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">delete</td>
+                                                    <td className="text-end pl-3 pr-6 px-3 py-1 md:py-3 border-t-[1px] border-[#2125291a]">$123</td>
                                                 </tr>
                                             )
                                         }
