@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const Card = ({ data }) => {
-  const { handleAddToLocalStorage } = useContext(ProductContext);
+  const { handleAddToLocalStorage, cartItems } = useContext(ProductContext);
+
+  const findCartItem = cartItems?.find((item) => item?.idMeal === data?.idMeal);
 
   return (
     <div className="group flex flex-col rounded-md justify-between w-full bg-white p-2 md:p-4 border-[1px] hover:border-[#fa6602] relative ">
@@ -35,10 +37,13 @@ const Card = ({ data }) => {
         </span>
       </div>
       <button
+        disabled={findCartItem}
         onClick={() => handleAddToLocalStorage(data)}
-        className="bg-primary hover:bg-[#fa6602] py-[4px] md:py-[8px] px-[8px] md:px-[14px] text-[13px] md:text-sm rounded-[4px] md:rounded-md text-white duration-500"
+        className={`py-[4px] md:py-[8px] px-[8px] md:px-[14px] text-[13px] md:text-sm rounded-[4px] md:rounded-md text-white duration-500 ${
+          findCartItem ? "bg-gray-600" : "bg-primary hover:bg-[#fa6602]"
+        }`}
       >
-        Add to Cart
+        {findCartItem ? "Added" : "Add to Cart"}
       </button>
     </div>
   );
