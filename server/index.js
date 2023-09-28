@@ -65,30 +65,3 @@ app.post("/product", async (req, res) => {
   }
 });
 
-
-
-
-
-
-/* const uri = `mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverApi: ServerApiVersion.v1,
-});
-
-async function run() {
-  try {
-    const categoriesCollection = client.db("Ecommerce").collection("Products");
-    // const categoriesCollection = client.db("LocalDb").collection("booksCollection");
-
-    app.get("/categories", async (req, res) => {
-      const query = {};
-      const categories = await categoriesCollection.find(query).toArray();
-      res.send(categories);
-    });
-  } finally {
-  }
-}
-run().catch((err) => console.error(err));
- */
