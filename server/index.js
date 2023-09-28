@@ -30,7 +30,7 @@ const dataSchema = new mongoose.Schema({
 //set.4 create a schema model
 const Product = mongoose.model('products', dataSchema);
 
-// set.2 connect to DB
+// set.2 connect to DataBase
 const connectDB = async () => {
   try {
     await mongoose.connect('mongodb://127.0.0.1:27017/e-bazar');
