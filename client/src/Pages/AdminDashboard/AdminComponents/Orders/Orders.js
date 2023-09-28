@@ -11,7 +11,7 @@ const Orders = () => {
     return (
         <div className='md:w-11/12 md:mx-auto mt-20 md:px-2 md:mt-8'>
             <h2 className='text-base md:text-xl text-center md:text-left mb-3 md:mb-5 pl-4 md:pl-0'>Recent Orders</h2>
-            <div className=' overflow-scroll'>
+            <div className='overflow-scroll md:overflow-auto'>
                 <table class="table-auto rounded-t-md w-[750px] md:w-full">
                     <thead className='text-left '>
                         <tr className='text-center bg-blue-100 '>
@@ -29,7 +29,7 @@ const Orders = () => {
                         {
                             orders.map((order, i) =>
                                 <tr key={i} className=' text-center my-1'>
-                                    <td className="pr-2 rounded-l-xl md:px-0 bg-red-100 py-1 md:py-2 border-white border-y-[2px]"><Link to={'details'}> #0001 </Link>
+                                    <td className="pr-2 rounded-l-xl md:px-0 bg-red-100 py-1 md:py-2 border-white border-y-[2px] hover:underline hover:text-red-900"><Link to={'details'}> #0001 </Link>
                                     </td>
                                     <td className="pr-2 md:px-0 bg-red-100 py-1 md:py-2 border-white border-y-[2px]">{order.states}</td>
                                     <td className="pl-1 py-1 bg-red-100 md:py-2 border-white border-y-[2px]">
