@@ -22,7 +22,7 @@ const ProductsProvider = ({ children }) => {
     }
   };
 
-  const info = { handleAddToLocalStorage, cartItems };
+  const info = { handleAddToLocalStorage, cartItems, added, setAdded };
 
   return (
     <ProductContext.Provider value={info}>{children}</ProductContext.Provider>
