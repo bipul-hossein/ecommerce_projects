@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose'); //set.1 require mongoose
 const cors = require("cors");//middleware
+const categoriesRouter = require("./routes/categoriesRouter");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -30,27 +31,19 @@ const dataSchema = new mongoose.Schema({
 //set.4 create a schema model
 const Product = mongoose.model('products', dataSchema);
 
-// set.2 connect to DB
+// set.2 connect to DataBase
 const connectDB = async () => {
   try {
     await mongoose.connect('mongodb://127.0.0.1:27017/e-bazar');
 
     // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 
-    console.log("db is connected")
+    console.log("Database is connected")
   } catch (error) {
-    console.log("db is not connected");
+    console.log("Database is not connected");
     console.log(error);
   }
 }
-
-app.listen(port, async () => {
-  console.log(`server is running at http://localhost:${port}`); await connectDB();
-});
-
-app.get("/", (req, res) => {
-  res.send("welcome to home page");
-});
 
 app.post("/product", async (req, res) => {
   try {
@@ -65,30 +58,13 @@ app.post("/product", async (req, res) => {
   }
 });
 
+ app.use('/categories',categoriesRouter);
 
+ //end code
+ app.get("/", (req, res) => {
+   res.send("welcome to home page");
+  });
 
-
-
-
-/* const uri = `mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverApi: ServerApiVersion.v1,
-});
-
-async function run() {
-  try {
-    const categoriesCollection = client.db("Ecommerce").collection("Products");
-    // const categoriesCollection = client.db("LocalDb").collection("booksCollection");
-
-    app.get("/categories", async (req, res) => {
-      const query = {};
-      const categories = await categoriesCollection.find(query).toArray();
-      res.send(categories);
-    });
-  } finally {
-  }
-}
-run().catch((err) => console.error(err));
- */
+  app.listen(port, async () => {
+    console.log(`server is running at http://localhost:${port}`); await connectDB();
+  });
