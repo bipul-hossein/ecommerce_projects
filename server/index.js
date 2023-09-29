@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require('mongoose'); //set.1 require mongoose
 const cors = require("cors");//middleware
+const categoriesRouter = require("./routes/categoriesRouter");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -44,14 +45,6 @@ const connectDB = async () => {
   }
 }
 
-app.listen(port, async () => {
-  console.log(`server is running at http://localhost:${port}`); await connectDB();
-});
-
-app.get("/", (req, res) => {
-  res.send("welcome to home page");
-});
-
 app.post("/product", async (req, res) => {
   try {
     const newProduct = new Product({
@@ -65,3 +58,18 @@ app.post("/product", async (req, res) => {
   }
 });
 
+
+
+ app.use('/categories',categoriesRouter);
+
+ 
+
+
+ //end code
+ app.get("/", (req, res) => {
+   res.send("welcome to home page");
+  });
+
+  app.listen(port, async () => {
+    console.log(`server is running at http://localhost:${port}`); await connectDB();
+  });
