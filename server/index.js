@@ -38,9 +38,9 @@ const connectDB = async () => {
 
     // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 
-    console.log("db is connected")
+    console.log("Database is connected")
   } catch (error) {
-    console.log("db is not connected");
+    console.log("Database is not connected");
     console.log(error);
   }
 }
@@ -58,12 +58,7 @@ app.post("/product", async (req, res) => {
   }
 });
 
-
-
  app.use('/categories',categoriesRouter);
-
- 
-
 
  //end code
  app.get("/", (req, res) => {

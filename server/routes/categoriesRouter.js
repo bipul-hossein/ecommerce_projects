@@ -1,11 +1,14 @@
 const express = require('express');
-const { handleCreateCategory, handleGetCategory } = require("../controllers/categoriesController");
+const { handleCreateCategories, handleGetCategories, handleGetCategory } = require("../controllers/categoriesController");
 const categoriesRouter = express.Router();
 
 //POST /categories # create category
-categoriesRouter.post('/', handleCreateCategory);
- 
+categoriesRouter.post('/', handleCreateCategories);
+
 // Get /category # read category
-categoriesRouter.get('/', handleGetCategory);
+categoriesRouter.get('/', handleGetCategories);
+
+// Get /category # read category
+categoriesRouter.get('/:slug', handleGetCategory);
 
 module.exports = categoriesRouter;

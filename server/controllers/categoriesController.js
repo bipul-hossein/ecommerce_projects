@@ -2,7 +2,7 @@ const Category = require("../models/categoryModel");
 const { successResponse } = require("./responseController");
 const slugify = require('slugify')
 // create category function
-const handleCreateCategory = async (req, res, next) => {
+const handleCreateCategories = async (req, res, next) => {
     try {
         // step 1: get the data from request
         const { title } = req.body;
@@ -11,7 +11,6 @@ const handleCreateCategory = async (req, res, next) => {
             title: title,
             slug: slugify(title),
         })
-     
         // send response to FontEnd and thought response controller
         return successResponse(res, {
             statusCode: 200,
@@ -23,17 +22,27 @@ const handleCreateCategory = async (req, res, next) => {
     }
 };
 
-// get category function
+// get categories function
+const handleGetCategories = async (req, res, next) => {
+    try {
+        const getCategories = await Category.find({}).select('title slug').lean()
+
+        return successResponse(res, {
+            statusCode: 200,
+            message: "Category return successfully",
+            payload: getCategories,
+        })
+    } catch (error) {
+        next(error)
+    }
+};
+
+// get single category function
 const handleGetCategory = async (req, res, next) => {
     try {
-        // step 1: get the data from request
-        const { title } = req.body;
-        // step 2: get data with find method
-        // select - only get title, slug field
-        // lean -return javascript object
-        const getCategory = await Category.find({}).select('title slug').lean()
-     
-        // send response to FontEnd and thought response controller
+        const { slug } = req.params;
+        const getCategory = await Category.findOne({slug}).select('title slug').lean()
+
         return successResponse(res, {
             statusCode: 200,
             message: "Category return successfully",
@@ -44,6 +53,5 @@ const handleGetCategory = async (req, res, next) => {
     }
 };
 
-
 // exports handleCreateCategory to reuse from category routes
-module.exports = { handleCreateCategory,handleGetCategory }; 
+module.exports = { handleCreateCategories, handleGetCategories, handleGetCategory }; 
