@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { toast } from "react-toastify";
 
-const Categories = ({setCategoryEditInfo,categoriesItem}) => {
+const Categories = ({setCategoryEditInfo,categoriesItem,refetch}) => {
     
     const handleEdit = async (category) => {
         document.getElementById("category-edit-modal").showModal();
