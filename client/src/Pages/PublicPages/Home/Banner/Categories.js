@@ -1,41 +1,33 @@
+
 import React from "react";
-import BannerSwiper from "./bannerSwiper/BannerSwiper";
-import useMainCategories from "../../../../hooks/useMainCategories";
 import { useNavigate } from "react-router-dom";
 import useCategoryData from "../../../../hooks/useCategoryData";
 
-const Banner = () => {
-  const [mainCategories] = useMainCategories();
-  const [categoryData] =useCategoryData()
-  const categoriesItem =categoryData.payload;
-  console.log(categoriesItem);
- 
-  const navigate = useNavigate()
-  const handleContentDetails = (slug) => {
-    console.log(slug);
-    navigate(`/${slug}`)
-  }
- 
+  const Categories = () => {
+    const [categoryData] = useCategoryData()
+    const categoriesItem = categoryData.payload;
+    console.log(categoriesItem);
+  
+    const navigate = useNavigate()
+    const handleContentDetails = (slug) => {
+      console.log(slug);
+      navigate(`/${slug}`)
+    }
+  
+    return (
+        <div className="w-[250px] border py-2 px-4 rounded-md hidden md:block">
+          <h2 className="text-xl font-bold my-2">All Department</h2>
+          {categoriesItem?.slice(0, 8)?.map((category, i) => (
+            <div key={i} onClick={() => handleContentDetails(category.slug)} className={`flex items-center gap-2 my-3 hover:cursor-pointer hover:bg-gray-200 ${i === 7 ? "border-none" : "border-b pb-3"
+              } py-2`}
+            >
+              {/* <span className="text-red-400 mr-1">{category.icon}</span> */}
+              {/* <img className="w-6 h-6" src={category?.strCategoryThumb} alt="" /> */}
+              <span className="pl-2 text-gray-600 text-sm hover:text-primary">{category?.title}</span>
+            </div>
+          ))}
+        </div>
+    );
+  };
+  export default Categories;
 
-  return (
-    <div className="my-4 flex gap-5 md:max-w-[1300px] md:mx-auto">
-      <div className="w-[250px] border py-2 px-4 rounded-md hidden md:block">
-        <h2 className="text-xl font-bold my-2">All Department</h2>
-        {categoriesItem?.slice(0, 8)?.map((category, i) => (
-          <div key={i} onClick={() => handleContentDetails(category.slug)} className={`flex items-center gap-2 my-3 hover:cursor-pointer hover:bg-gray-200 ${i === 7 ? "border-none" : "border-b pb-3"
-            } py-2`}
-          >
-            {/* <span className="text-red-400 mr-1">{category.icon}</span> */}
-            {/* <img className="w-6 h-6" src={category?.strCategoryThumb} alt="" /> */}
-            <span className="text-gray-600 text-sm hover:text-primary">{category?.title}</span>
-          </div>
-        ))}
-      </div>
-      <div className="w-full md:w-[80%] relative py-8 md:py-0 md:h-[60vh] flex justify-center items-center bg-secondary rounded-md">
-        <BannerSwiper />
-      </div>
-    </div>
-  );
-};
-
-export default Banner;

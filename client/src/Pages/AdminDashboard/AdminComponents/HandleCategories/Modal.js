@@ -1,23 +1,13 @@
-import axios from "axios";
 import React from "react";
 
-const Modal = ({ handelEditInfo, categoryEditInfo, category, refetch }) => {
-  const handleSubmit = async () => {
-    // document.getElementById("category-edit-modal").showModal();
-    const res = await axios.put(
-      `http://localhost:5000/categories/${category?.slug}`,
-      { title: `${categoryEditInfo}` }
-    );
-    console.log(res.data);
-    refetch();
-  };
+const Modal = ({ handelEditInfo, categoryEditInfo,refetch }) => {
 
   return (
     <div>
       <dialog id="category-edit-modal" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg text-center">Edit Category Name!</h3>
-          <form onSubmit={(e) => handelEditInfo(e)}>
+          <form onSubmit={(e) =>( handelEditInfo(e))}>
             <div className="px-3 md:px-3 py-5 mx-auto md:w-3/4">
               <div className="mx-auto">
                 <label className="label">
@@ -25,13 +15,12 @@ const Modal = ({ handelEditInfo, categoryEditInfo, category, refetch }) => {
                 </label>
                 <input
                   type="text"
-                  placeholder="milk"
+                 defaultValue={categoryEditInfo?.title}
                   className="bg-red-50 rounded-md py-1 px-2 border-black border w-full"
                   name="categoryEditField"
                 />
               </div>
               <input
-                onClick={handleSubmit}
                 type="submit"
                 value="Submit"
                 className="py-1 bg-red-200 px-3 rounded-md w-1/2 hover:bg-red-500 my-4"

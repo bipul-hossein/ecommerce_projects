@@ -11,7 +11,7 @@ import ProductDetails from "../../Pages/PublicPages/ProductDetails/ProductDetail
 import ProductCategory from "../../Pages/PublicPages/ProductCategory/ProductCategory";
 import UserDashboard from "../../Pages/PublicPages/UserDashboard/UserDashboard";
 import AdminLayout from "../../Layout/AdminDashboardLayout/AdminLayout";
-import HanleProduct from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/HandleProduct";
+import HandleProduct from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/HandleProduct";
 import SpecificOrderDetails from "../../Pages/AdminDashboard/AdminComponents/Orders/SpecificOrderDetails";
 import UserOrders from "../../Pages/PublicPages/UserDashboard/UserOrders/UserOrders";
 import AccountOptions from "../../Pages/PublicPages/UserDashboard/AccountOptions/AccountOptions";
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/products",
-        element: <HanleProduct />,
+        element: <HandleProduct />,
       },
     ],
   },
