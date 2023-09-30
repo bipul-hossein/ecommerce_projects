@@ -7,16 +7,20 @@ import AuthProvider from "./contexts/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProductsProvider from "./contexts/ProductsProvider";
+import { QueryClient, QueryClientProvider } from 'react-query'
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <ProductsProvider>
-        <App />
-      </ProductsProvider>
-    </AuthProvider>
-    <ToastContainer />
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ProductsProvider>
+          <App />
+        </ProductsProvider>
+      </AuthProvider>
+      <ToastContainer />
+    </QueryClientProvider>
   </React.StrictMode>
 );
 reportWebVitals();

@@ -11,7 +11,7 @@ import ProductDetails from "../../Pages/PublicPages/ProductDetails/ProductDetail
 import ProductCategory from "../../Pages/PublicPages/ProductCategory/ProductCategory";
 import UserDashboard from "../../Pages/PublicPages/UserDashboard/UserDashboard";
 import AdminLayout from "../../Layout/AdminDashboardLayout/AdminLayout";
-import AddProduct from "../../Pages/AdminDashboard/AdminComponents/AddProduct/AddProduct";
+import HanleProduct from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/HandleProduct";
 import SpecificOrderDetails from "../../Pages/AdminDashboard/AdminComponents/Orders/SpecificOrderDetails";
 import UserOrders from "../../Pages/PublicPages/UserDashboard/UserOrders/UserOrders";
 import AccountOptions from "../../Pages/PublicPages/UserDashboard/AccountOptions/AccountOptions";
@@ -19,6 +19,7 @@ import EditProfile from "../../Pages/PublicPages/UserDashboard/EditProfile/EditP
 import ChangePassword from "../../Pages/PublicPages/UserDashboard/ChangePassword/ChangePassword";
 import Address from "../../Pages/PublicPages/UserDashboard/Address/Address";
 import EditAddress from "../../Pages/PublicPages/UserDashboard/Address/EditAddress/EditAddress";
+import HandleCategories from "../../Pages/AdminDashboard/AdminComponents/HandleCategories/HandleCategories";
 
 const router = createBrowserRouter([
   {
@@ -82,8 +83,12 @@ const router = createBrowserRouter([
         element: <SpecificOrderDetails />,
       },
       {
-        path: "/dashboard/add_product",
-        element: <AddProduct />,
+        path: "/dashboard/categories",
+        element: <HandleCategories/>,
+      },
+      {
+        path: "/dashboard/products",
+        element: <HanleProduct />,
       },
     ],
   },
