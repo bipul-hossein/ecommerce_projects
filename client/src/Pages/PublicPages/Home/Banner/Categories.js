@@ -27,7 +27,7 @@ const Banner = () => {
           >
             {/* <span className="text-red-400 mr-1">{category.icon}</span> */}
             {/* <img className="w-6 h-6" src={category?.strCategoryThumb} alt="" /> */}
-            <span className="text-gray-600 text-sm hover:text-primary">{category?.title}</span>
+            <span className="pl-2 text-gray-600 text-sm hover:text-primary">{category?.title}</span>
           </div>
         ))}
       </div>

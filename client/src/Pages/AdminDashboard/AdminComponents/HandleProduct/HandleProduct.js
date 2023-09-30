@@ -1,8 +1,19 @@
+import axios from 'axios';
 import React from 'react';
 import { BsFillCloudUploadFill } from 'react-icons/bs';
+import { useQuery } from 'react-query';
 
 const AddProduct = () => {
 
+    const { data: categoryList } = useQuery({
+        queryKey: ['category-name'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/categories`);
+            const data = await res.json();
+            return data;
+        }
+    });
+    console.log(categoryList?.payload);
     return (
         <div className='w-11/12 mx-auto mb-24'>
             <h2 className='text-base font-bold md:text-xl'>Add a product</h2>
@@ -42,9 +53,11 @@ const AddProduct = () => {
                                 id="category-select"
                                 className="bg-slate-100 px-2 py-2 rounded md:w-auto text-xs md:text-sm"
                             >
-                                <option value="">Organic Food</option>
-                                <option value="">Gardening</option>
-                                <option value="">Daily Needs</option>
+                                {
+                                    categoryList?.payload?.map((catList, i) =>
+                                        <option key={i} value="">{catList?.title}</option>
+                                    )
+                                }
                             </select>
                         </div>
                         <div className='form-control w-full md:w-4/5 mt-3 md:mt-4'>
