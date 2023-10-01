@@ -9,9 +9,7 @@ const CreateCategory = ({ refetch }) => {
         const data = {
             "title": `${categoryField}`
         }
-
-        const res = await axios.post('http://localhost:5000/categories', data)
-        // console.log(res.data);
+        await axios.post('http://localhost:5000/categories', data)
         refetch()
     }
     return (

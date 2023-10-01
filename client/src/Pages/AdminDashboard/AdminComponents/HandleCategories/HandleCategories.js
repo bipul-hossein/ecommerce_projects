@@ -32,7 +32,7 @@ const HandleCategories = () => {
     }
  
     return (
-        <div className='w-11/12 mx-auto mt-4 relative '>
+        <div className='w-11/12 mx-auto mt-4'>
             <div>
                 <h1 className='text-center text-xl mb-8 bg-blue-200 py-1 rounded-sm'>CATEGORIES</h1>
                 <div className='flex justify-between flex-wrap gap-5'>
