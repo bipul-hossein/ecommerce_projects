@@ -1,7 +1,10 @@
 const express = require("express");
+require('dotenv').config()
 const mongoose = require("mongoose");
 const cors = require("cors");
 const categoriesRouter = require("./routes/categoriesRouter");
+const seedRouter = require("./routes/seedRouter");
+const productRouter = require("./routes/productRouter");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -12,12 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 
 //
 app.use("/categories", categoriesRouter);
+app.use("/api/seed", seedRouter);//seeding data base
+app.use("/api/products", productRouter);//seeding data base
 
 // set.2 connect to DataBase
-
-const url = "mongodb://127.0.0.1:27017/e-bazar"
-//const url ="mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority"
-
+const url = process.env.DB_URL
 const connectDB = async () => {
   try {
     await mongoose.connect(url);
