@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 const categoriesRouter = require("./routes/categoriesRouter");
 const app = express();
 const port = process.env.PORT || 5000;
@@ -15,14 +16,12 @@ app.use("/categories", categoriesRouter);
 
 // set.2 connect to DataBase
 
-const url = "mongodb://127.0.0.1:27017/e-bazar"
-//const url ="mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority"
+const url = process.env.DB_URL;
 
 const connectDB = async () => {
   try {
     await mongoose.connect(url);
     console.log("Database is connected");
-    
   } catch (error) {
     console.log("Database is not connected", error);
   }
