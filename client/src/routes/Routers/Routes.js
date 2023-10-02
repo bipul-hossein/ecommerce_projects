@@ -11,7 +11,6 @@ import ProductDetails from "../../Pages/PublicPages/ProductDetails/ProductDetail
 import ProductCategory from "../../Pages/PublicPages/ProductCategory/ProductCategory";
 import UserDashboard from "../../Pages/PublicPages/UserDashboard/UserDashboard";
 import AdminLayout from "../../Layout/AdminDashboardLayout/AdminLayout";
-import HandleProduct from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/HandleProduct";
 import SpecificOrderDetails from "../../Pages/AdminDashboard/AdminComponents/Orders/SpecificOrderDetails";
 import UserOrders from "../../Pages/PublicPages/UserDashboard/UserOrders/UserOrders";
 import AccountOptions from "../../Pages/PublicPages/UserDashboard/AccountOptions/AccountOptions";
@@ -20,6 +19,7 @@ import ChangePassword from "../../Pages/PublicPages/UserDashboard/ChangePassword
 import Address from "../../Pages/PublicPages/UserDashboard/Address/Address";
 import EditAddress from "../../Pages/PublicPages/UserDashboard/Address/EditAddress/EditAddress";
 import HandleCategories from "../../Pages/AdminDashboard/AdminComponents/HandleCategories/HandleCategories";
+import Products from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/Products";
 
 const router = createBrowserRouter([
   {
@@ -88,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/products",
-        element: <HandleProduct />,
+        element: <Products />,
       },
     ],
   },
