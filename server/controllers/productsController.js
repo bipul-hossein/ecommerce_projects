@@ -6,8 +6,16 @@ const createError = require("http-errors");
 const handleCreateProducts = async (req, res, next) => {
   try {
     // step 1: get the data from request
-    const { title, description, price, quantity, shipping, category, sold, image } = req.body;
-    console.log(req.body);
+    const {
+      title,
+      description,
+      price,
+      quantity,
+      shipping,
+      category,
+      sold,
+      image,
+    } = req.body;
     // step 2: save to database with create function
     const newProduct = await Product.create({
       title: title,
@@ -18,8 +26,7 @@ const handleCreateProducts = async (req, res, next) => {
       shipping,
       category,
       sold,
-      image
-
+      image,
     });
     return successResponse(res, {
       statusCode: 200,
@@ -47,7 +54,7 @@ const handleGetProducts = async (req, res, next) => {
 
 const handleGetCategoryProducts = async (req, res, next) => {
   try {
-    const { id } = req.params
+    const { id } = req.params;
     const getProducts = await Product.find({ category: id }).lean();
 
     return successResponse(res, {
@@ -61,9 +68,8 @@ const handleGetCategoryProducts = async (req, res, next) => {
 };
 const handleGetProduct = async (req, res, next) => {
   try {
-
-    const { id } = req.params
-    const getProduct = await Product.find({ _id: id }).lean();
+    const { id } = req.params;
+    const getProduct = await Product.findOne({ _id: id }).lean();
 
     return successResponse(res, {
       statusCode: 200,
@@ -75,12 +81,19 @@ const handleGetProduct = async (req, res, next) => {
   }
 };
 
-
 const handleUpdateProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
-    console.log(id, req.body);
-    const { title, description, price, quantity, shipping, category, sold, image } = req.body;
+    const {
+      title,
+      description,
+      price,
+      quantity,
+      shipping,
+      category,
+      sold,
+      image,
+    } = req.body;
     const filter = { _id: id };
     const updateField = {
       $set: {
@@ -92,8 +105,8 @@ const handleUpdateProduct = async (req, res, next) => {
         shipping,
         category,
         sold,
-        image
-      }
+        image,
+      },
     };
     const option = {
       new: true,
@@ -133,7 +146,6 @@ const handleDeleteProduct = async (req, res, next) => {
   }
 };
 
-
 module.exports = {
   handleCreateProducts,
   handleGetProducts,
@@ -141,5 +153,4 @@ module.exports = {
   handleGetProduct,
   handleUpdateProduct,
   handleDeleteProduct,
-
 };

@@ -6,6 +6,8 @@ const seedRouter = require("./routes/seedRouter");
 const productRouter = require("./routes/productRouter");
 const { errorResponse } = require("./controllers/responseController");
 const morgan = require("morgan");
+const createError = require("http-errors");
+const port = process.env.PORT || 5000;
 
 const app = express();
 
@@ -25,8 +27,9 @@ app.use("/api/products", productRouter); //seeding data base
 
 // set.2 connect to DataBase
 
-const url = "mongodb://127.0.0.1:27017/e-bazar";
-//const url ="mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority"
+// const url = "mongodb://127.0.0.1:27017/e-bazar";
+const url =
+  "mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority";
 
 const connectDB = async () => {
   try {
