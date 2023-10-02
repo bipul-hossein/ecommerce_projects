@@ -4,12 +4,14 @@ import React from 'react';
 const CreateCategory = ({ refetch }) => {
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        const categoryField = e.target.categoryField.value
+        e.preventDefault();
+        const form = e.target;
+        const categoryField = form.categoryField.value
         const data = {
             "title": `${categoryField}`
         }
         await axios.post('http://localhost:5000/categories', data)
+        form.reset();
         refetch()
     }
     return (

@@ -1,13 +1,13 @@
 import React from "react";
 
-const Modal = ({ handelEditInfo, categoryEditInfo,refetch }) => {
+const Modal = ({ handelEditInfo, categoryEditInfo, refetch }) => {
 
   return (
     <div>
       <dialog id="category-edit-modal" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg text-center">Edit Category Name!</h3>
-          <form onSubmit={(e) =>( handelEditInfo(e))}>
+          <form onSubmit={(e) => (handelEditInfo(e))}>
             <div className="px-3 md:px-3 py-5 mx-auto md:w-3/4">
               <div className="mx-auto">
                 <label className="label">
@@ -15,7 +15,7 @@ const Modal = ({ handelEditInfo, categoryEditInfo,refetch }) => {
                 </label>
                 <input
                   type="text"
-                 defaultValue={categoryEditInfo?.title}
+                  defaultValue={categoryEditInfo?.title}
                   className="bg-red-50 rounded-md py-1 px-2 border-black border w-full"
                   name="categoryEditField"
                 />
