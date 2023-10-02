@@ -7,7 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const HandleCategories = () => {
-    const [categoryEditInfo, setCategoryEditInfo] = useState("")
+    const [categoryEditInfo, setCategoryEditInfo] = useState()
     // fetch data
     const { data: categories = [], refetch } = useQuery({
         queryKey: ['categoryData'],
@@ -17,11 +17,13 @@ const HandleCategories = () => {
             return data;
         }
     });
+
     const categoriesItem = categories.payload;
 
     const handelEditInfo = async (e) => {
-        e.preventDefault()
-        const categoryEditData = e.target.categoryEditField.value
+        e.preventDefault();
+        const form = e.target;
+        const categoryEditData = form.categoryEditField.value
         const res = await axios.put(
             `http://localhost:5000/categories/${categoryEditInfo?.slug}`,
             { title: `${categoryEditData}` }
@@ -30,9 +32,9 @@ const HandleCategories = () => {
         toast.success(payload.title + " " + message)
         refetch();
     }
- 
+
     return (
-        <div className='w-11/12 mx-auto mt-4'>
+        <div className='w-11/12 mx-auto mt-20 md:mt-4'>
             <div>
                 <h1 className='text-center text-xl mb-8 bg-blue-200 py-1 rounded-sm'>CATEGORIES</h1>
                 <div className='flex justify-between flex-wrap gap-5'>
