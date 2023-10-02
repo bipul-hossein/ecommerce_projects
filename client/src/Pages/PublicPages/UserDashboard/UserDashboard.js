@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "../../../components/public/navbar/Navbar";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const UserDashboard = () => {
+  const { LogOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    LogOut();
+  };
   return (
     <>
       <Navbar />
@@ -17,7 +22,10 @@ const UserDashboard = () => {
             <h3 className="text-lg font-bold text-gray-600">Jubayer Ahmed</h3>
           </div>
           <div>
-            <button className="bg-red-500 text-white font-semibold px-3 py-2 rounded-md">
+            <button
+              onClick={handleLogOut}
+              className="bg-red-500 text-white font-semibold px-3 py-2 rounded-md"
+            >
               Logout
             </button>
           </div>

@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     return () =>
       onAuthStateChanged(auth, (currentUser) => {
-        //console.log('user observing');
+        console.log(currentUser?.email);
         setUser(currentUser);
         setLoading(false);
       });

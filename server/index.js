@@ -28,8 +28,9 @@ app.use("/api/products", productRouter); //seeding data base
 // set.2 connect to DataBase
 
 // const url = "mongodb://127.0.0.1:27017/e-bazar";
-const url =
-  "mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority";
+const url = "mongodb://127.0.0.1:27017/LocalDb";
+// const url =
+//   "mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority";
 
 const connectDB = async () => {
   try {
