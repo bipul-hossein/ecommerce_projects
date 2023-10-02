@@ -1,19 +1,15 @@
 const Category = require("../models/categoryModel");
-const { successResponse } = require("./responseController");
+const { successResponse, errorResponse } = require("./responseController");
 const slugify = require("slugify");
 const createError = require("http-errors");
 // create category function
 const handleCreateCategories = async (req, res, next) => {
   try {
-    // step 1: get the data from request
     const { title } = req.body;
-    console.log(title);
-    // step 2: save to database with create function
     const newCategory = await Category.create({
       title: title,
       slug: slugify(title),
     });
-    // send response to FontEnd and thought response controller
     return successResponse(res, {
       statusCode: 200,
       message: "Category was created successfully",
@@ -24,29 +20,32 @@ const handleCreateCategories = async (req, res, next) => {
   }
 };
 
-// get categories function
 const handleGetCategories = async (req, res, next) => {
   try {
     const getCategories = await Category.find({}).select("title slug").lean();
-
-    return successResponse(res, {
-      statusCode: 200,
-      message: "Category return successfully",
-      payload: getCategories,
-    });
+    if (getCategories?.length) {
+      return successResponse(res, {
+        statusCode: 200,
+        message: "Category return successfully",
+        payload: getCategories,
+      });
+    } else {
+      return errorResponse(res, {
+        statusCode: 500,
+        message: "not found",
+      });
+    }
   } catch (error) {
     next(error);
   }
 };
 
-// get single category function
 const handleGetCategory = async (req, res, next) => {
   try {
     const { slug } = req.params;
     const getCategory = await Category.findOne({ slug })
       .select("title slug")
       .lean();
-
     return successResponse(res, {
       statusCode: 200,
       message: "Category return successfully",
@@ -57,7 +56,6 @@ const handleGetCategory = async (req, res, next) => {
   }
 };
 
-// Update a single category function
 const handleUpdateCategory = async (req, res, next) => {
   try {
     const { title } = req.body;
@@ -86,7 +84,6 @@ const handleUpdateCategory = async (req, res, next) => {
   }
 };
 
-// Delete a single category function
 const handleDeleteCategory = async (req, res, next) => {
   try {
     const { slug } = req.params;
@@ -104,7 +101,6 @@ const handleDeleteCategory = async (req, res, next) => {
   }
 };
 
-// exports handleCreateCategory to reuse from category routes
 module.exports = {
   handleCreateCategories,
   handleGetCategories,
