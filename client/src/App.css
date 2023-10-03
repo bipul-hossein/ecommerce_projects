@@ -33,3 +33,15 @@
 ::file-selector-button {
     display: none;
 }
+
+/* custom modal css */
+.custom_modal {
+    max-height: calc(100vh - 5em);
+    grid-column-start: 1;
+    grid-row-start: 1;
+    width: 91.666667%;
+    max-width: 32rem;
+    --tw-scale-x: .9;
+    --tw-scale-y: .9;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+}
