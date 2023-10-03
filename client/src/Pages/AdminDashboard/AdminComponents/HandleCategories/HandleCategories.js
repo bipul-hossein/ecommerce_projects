@@ -7,7 +7,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const HandleCategories = () => {
-    const [categoryEditInfo, setCategoryEditInfo] = useState()
+    const [categoryEditInfo, setCategoryEditInfo] = useState({})
+    console.log(categoryEditInfo)
     // fetch data
     const { data: categories = [], refetch } = useQuery({
         queryKey: ['categoryData'],
@@ -29,7 +30,7 @@ const HandleCategories = () => {
             { title: `${categoryEditData}` }
         );
         const { payload, message } = res.data;
-        toast.success(payload.title + " " + message)
+        toast.success(payload.title + " " + message);
         refetch();
     }
 
