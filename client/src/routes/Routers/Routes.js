@@ -20,6 +20,8 @@ import Address from "../../Pages/PublicPages/UserDashboard/Address/Address";
 import EditAddress from "../../Pages/PublicPages/UserDashboard/Address/EditAddress/EditAddress";
 import HandleCategories from "../../Pages/AdminDashboard/AdminComponents/HandleCategories/HandleCategories";
 import Products from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/Products";
+import Checkout from "../../Pages/PublicPages/Checkout/Checkout";
+import PrivateRouters from "./../PrivateRouters/PrivateRouters";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +65,10 @@ const router = createBrowserRouter([
             `https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.id}`
           ),
       },
+      {
+        path: "/checkout",
+        element: <Checkout />,
+      },
     ],
   },
   //Admin Dashboard
@@ -84,7 +90,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/categories",
-        element: <HandleCategories/>,
+        element: <HandleCategories />,
       },
       {
         path: "/dashboard/products",
