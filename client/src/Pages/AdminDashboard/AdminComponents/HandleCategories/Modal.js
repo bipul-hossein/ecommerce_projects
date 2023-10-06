@@ -8,12 +8,14 @@ const Modal = ({
 }) => {
   return (
     <div
-      className={`min-w-full min-h-[70vh] bg-gray-100 fixed top-0 left-0 bg-opacity-60 ${
-        modalOpen ? "block" : "hidden"
-      }`}
+      className={`min-w-full min-h-[70vh] bg-gray-100 fixed top-0 left-0 bg-opacity-60 ${modalOpen ? "block" : "hidden"
+        }`}
     >
-      <div className="w-[400px]">
-        <div className="modal-box bg-white w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="md:w-[400px]">
+        <div className="custom_modal pt-6 bg-white w-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <button
+            onClick={() => setModalOpen(false)}
+            className="w-3 h-3 bg-slate-50 font-bold cursor-pointer absolute right-3 top-2" >✕</button>
           <h3 className="font-bold text-lg text-center">Edit Category Name!</h3>
           <form onSubmit={(e) => handelEditInfo(e)}>
             <div className="px-3 md:px-3 py-5 mx-auto md:w-3/4">
@@ -34,14 +36,6 @@ const Modal = ({
                 className="py-1 bg-red-200 px-3 rounded-md w-1/2 hover:bg-red-500 my-4"
               />
             </div>
-          </form>
-          <form method="dialog">
-            <button
-              onClick={() => setModalOpen(false)}
-              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            >
-              ✕
-            </button>
           </form>
         </div>
       </div>

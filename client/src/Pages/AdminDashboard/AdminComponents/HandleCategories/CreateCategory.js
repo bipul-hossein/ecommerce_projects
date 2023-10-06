@@ -6,22 +6,32 @@ const CreateCategory = ({ refetch }) => {
     e.preventDefault();
     const form = e.target;
     const categoryField = form.categoryField.value;
+    //const image = form?.image?.files[0];
+
     const data = {
       title: `${categoryField}`,
+      //image: image,
     };
     try {
       const res = await axios.post("http://localhost:5000/categories", data);
       console.log(res);
-      form.reset();
       refetch();
     } catch (error) {
       console.log(error);
     }
+    form.reset();
   };
+
   return (
     <div className="w-full md:w-4/12 bg-slate-100 py-5 mx-auto rounded">
       <h2 className="text-lg pb-3 text-center">Create Category</h2>
       <form onSubmit={(e) => handleSubmit(e)}>
+        <div className="px-3 md:px-1 mx-auto md:w-3/4 mb-2">
+          <label className="label">
+            <span className="label-text">Select a Image:</span>
+          </label>
+          <input type="file" name="image" />
+        </div>
         <div className="px-3 md:px-1 mx-auto md:w-3/4">
           <div className="mx-auto">
             <label className="label">
