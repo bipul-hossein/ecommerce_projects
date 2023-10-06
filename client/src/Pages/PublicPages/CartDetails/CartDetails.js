@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { ProductContext } from "../../../contexts/ProductsProvider";
+import { Link } from "react-router-dom";
 
 const CartDetails = () => {
   const { added, setAdded } = useContext(ProductContext);
@@ -186,9 +187,11 @@ const CartDetails = () => {
             </tr>
           </tbody>
         </table>
-        <button className="w-full mt-4 md:mt-8 mb-3 rounded-3xl text-white bg-primary py-4 text-sm font-bold px-3">
-          PROCEED TO CHECKOUT
-        </button>
+        <Link to="/cart/checkout">
+          <button className="w-full mt-4 md:mt-8 mb-3 rounded-3xl text-white bg-primary py-4 text-sm font-bold px-3">
+            PROCEED TO CHECKOUT
+          </button>
+        </Link>
       </div>
     </div>
   );

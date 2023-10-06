@@ -50,6 +50,10 @@ const router = createBrowserRouter([
         element: <CartDetails />,
       },
       {
+        path: "/cart/checkout",
+        element: <Checkout/>,
+      },
+      {
         path: "/product-details/:id",
         element: <ProductDetails />,
         loader: ({ params }) =>
