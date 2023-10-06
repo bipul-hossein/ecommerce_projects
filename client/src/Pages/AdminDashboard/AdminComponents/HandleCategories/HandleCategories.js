@@ -57,8 +57,6 @@ const HandleCategories = () => {
           <CreateCategory refetch={refetch} />
         </div>
       </div>
-      {/* You can open the modal using document.getElementById('ID').showModal() method */}
-
       <Modal
         handelEditInfo={handelEditInfo}
         categoryEditInfo={categoryEditInfo}
