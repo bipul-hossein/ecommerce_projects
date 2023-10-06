@@ -1,12 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const createError = require("http-errors");
+require("dotenv").config();
 const cors = require("cors");
 const categoriesRouter = require("./routes/categoriesRouter");
 const seedRouter = require("./routes/seedRouter");
 const productRouter = require("./routes/productRouter");
 const { errorResponse } = require("./controllers/responseController");
 const morgan = require("morgan");
+const userRouter = require("./routes/userRouter");
+const ordersRouter = require("./routes/ordersRouter");
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -24,14 +26,12 @@ app.get("/", (req, res) => {
 app.use("/categories", categoriesRouter);
 app.use("/api/seed", seedRouter); //seeding data base
 app.use("/api/products", productRouter); //seeding data base
+app.use("/api/", userRouter); 
+app.use("/api/", ordersRouter); 
 
 // set.2 connect to DataBase
 
-// const url = "mongodb://127.0.0.1:27017/e-bazar";
-const url = "mongodb://127.0.0.1:27017/LocalDb";
-// const url =
-//   "mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority";
-
+const url = process.env.DB_URL;
 const connectDB = async () => {
   try {
     await mongoose.connect(url);

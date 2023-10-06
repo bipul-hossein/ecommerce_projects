@@ -21,7 +21,7 @@ import EditAddress from "../../Pages/PublicPages/UserDashboard/Address/EditAddre
 import HandleCategories from "../../Pages/AdminDashboard/AdminComponents/HandleCategories/HandleCategories";
 import Products from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/Products";
 import Checkout from "../../Pages/PublicPages/Checkout/Checkout";
-import PrivateRouters from "./../PrivateRouters/PrivateRouters";
+import OrderConfirmMessage from "../../Pages/PublicPages/Checkout/OrderConfirmMessage";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/cart/checkout",
         element: <Checkout/>,
+      },
+      {
+        path: "/checkout/order-confirm",
+        element: <OrderConfirmMessage/>,
       },
       {
         path: "/product-details/:id",

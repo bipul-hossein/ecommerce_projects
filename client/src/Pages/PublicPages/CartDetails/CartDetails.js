@@ -187,7 +187,7 @@ const CartDetails = () => {
             </tr>
           </tbody>
         </table>
-        <Link to="/cart/checkout">
+        <Link to="/cart/checkout" state={cartItems}>
           <button className="w-full mt-4 md:mt-8 mb-3 rounded-3xl text-white bg-primary py-4 text-sm font-bold px-3">
             PROCEED TO CHECKOUT
           </button>

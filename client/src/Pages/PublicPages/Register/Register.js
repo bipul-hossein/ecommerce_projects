@@ -1,22 +1,33 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import axios from 'axios';
 
 
 const Register = () => {
     const { createUser, updateUser } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm()
-    const [signupError, setSignupError] = useState('')
 
     const handleSignUp = (data) => {
-        // console.log(data)
-        setSignupError('')
-        createUser(data.email, data.password)
+        const userData = {
+            name: data?.name,
+            email: data?.email,
+        };
+         createUser(data.email, data.password)
             .then(result => {
-                console.log(result.user)
-                toast.success('Register Successfully.')
+                if(result?.user?.email){
+                    axios.post(`http://localhost:5000/api/user`, userData)
+                    .then((response)=> {
+                        toast.success('Register Successfully')
+                      })
+                      .catch((error)=> {
+                        console.log(error);
+                        toast.error('Something went wrong')
+                      })
+
+                }
 
                 const userUpdateInfo = {
                     displayName: data.name
