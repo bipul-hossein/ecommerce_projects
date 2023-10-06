@@ -1,5 +1,6 @@
 import React from "react";
 import { FiPlus } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   return (
@@ -159,9 +160,11 @@ const Checkout = () => {
               <p className="text-sm font-semibold">৳ 184</p>
             </div>
             <div className="my-2 flex justify-between items-center mt-5">
-              <button className="bg-primary text-white p-2 w-full font-bold rounded-sm">
-                Place Order
-              </button>
+              <Link to="/cart/checkout/order_confirm">
+                <button className="bg-primary text-white p-2 w-full font-bold rounded-sm">
+                  Place Order
+                </button>
+              </Link>
             </div>
           </div>
         </div>
