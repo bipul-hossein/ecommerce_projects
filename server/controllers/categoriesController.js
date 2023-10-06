@@ -6,9 +6,12 @@ const createError = require("http-errors");
 const handleCreateCategories = async (req, res, next) => {
   try {
     const { title } = req.body;
+    // const image = req.body;
+    // console.log(image);
     const newCategory = await Category.create({
       title: title,
       slug: slugify(title),
+      // image: image,
     });
     return successResponse(res, {
       statusCode: 200,

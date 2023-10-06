@@ -1,47 +1,47 @@
 /* Latest Porducts Swiper */
 .swiper-button-next::after {
-    font-size: 20px !important;
-    background: #e4e4e4;
-    padding: 10px 15px;
-    border-radius: 50%;
-    color: black;
-    font-weight: bold;
-    position: relative;
-    right: -80%;
+  font-size: 20px !important;
+  background: #e4e4e4;
+  padding: 10px 15px;
+  border-radius: 50%;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  right: -80%;
 }
 
 .swiper-button-prev::after {
-    font-size: 20px !important;
-    background: #e4e4e4;
-    padding: 10px 15px;
-    border-radius: 50%;
-    color: black;
-    font-weight: bold;
-    position: relative;
-    left: -80%;
+  font-size: 20px !important;
+  background: #e4e4e4;
+  padding: 10px 15px;
+  border-radius: 50%;
+  color: black;
+  font-weight: bold;
+  position: relative;
+  left: -80%;
 }
 
 .que:hover {
-    color: #e74c3c !important
+  color: #e74c3c !important;
 }
 
 .button.image-gallery-icon.image-gallery-right-nav {
-    display: none !important;
+  display: none !important;
 }
 
 /* add a product file upload style */
-::file-selector-button {
+/* ::file-selector-button {
     display: none;
-}
+} */
 
 /* custom modal css */
 .custom_modal {
-    max-height: calc(100vh - 5em);
-    grid-column-start: 1;
-    grid-row-start: 1;
-    width: 91.666667%;
-    max-width: 32rem;
-    --tw-scale-x: .9;
-    --tw-scale-y: .9;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y))
+  max-height: calc(100vh - 5em);
+  grid-column-start: 1;
+  grid-row-start: 1;
+  width: 91.666667%;
+  max-width: 32rem;
+  --tw-scale-x: 0.9;
+  --tw-scale-y: 0.9;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y));
 }
