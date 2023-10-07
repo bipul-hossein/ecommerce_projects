@@ -1,18 +1,10 @@
 const express = require('express');
 const ordersRouter = express.Router();
-const Orders = require('../models/ordersModal');
+const { handleNewOrders, handleGetUserOrders } = require('../controllers/ordersController');
 
-ordersRouter.put('/order', async(req, res, next) => {
-  const { userEmail, orders } = req.body;
-  console.log(userEmail, orders);
-  const newOrders = await Orders.create({userEmail, orders})
-  res.status(201).json(newOrders)
-});
-ordersRouter.get('/order', async(req, res, next) => {
-  const userEmail = req.query.email;
+ordersRouter.put('/order', handleNewOrders);
 
-  const newOrders = await Orders.findOne({ userEmail})
-  res.status(201).json(newOrders)
-});
+
+ordersRouter.get('/order', handleGetUserOrders);
 
 module.exports = ordersRouter;

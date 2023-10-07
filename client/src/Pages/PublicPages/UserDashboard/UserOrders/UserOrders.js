@@ -10,7 +10,7 @@ const UserOrders = () => {
 
   useEffect(() => {
     axios.get("http://localhost:5000/api/order?email=jubayerahmed@gmail.com")
-    .then(res => setOrders(res?.data?.orders))
+    .then(res => setOrders(res?.data))
     .catch(err => console.log(err))
   }, [])
 console.log(orders);

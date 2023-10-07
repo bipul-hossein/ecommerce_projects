@@ -10,13 +10,13 @@ const Checkout = () => {
   const cartItems = useLocation()?.state;
   const [openModal, setOpenModal] = useState(false);
   const [subTotal, setSubTotal] = useState(0);
-  const [orderProducts, setOrderProducts] = useState({});
+  const [orderProducts, setOrderProducts] = useState([]);
   const userEmail = user?.email;
   const navigate = useNavigate();
 
   useEffect(() => {
     if (cartItems) {
-      const newOrderProducts = {}; 
+      const newOrderProducts = []; 
   
       cartItems.forEach((item, i) => {
         newOrderProducts[i] = {
@@ -25,7 +25,7 @@ const Checkout = () => {
         };
       });
   
-      setOrderProducts({ ...orderProducts, ...newOrderProducts });
+      setOrderProducts([ ...orderProducts, ...newOrderProducts ]);
     }
   }, [cartItems]); //eslint-disable-line
   
@@ -33,6 +33,7 @@ const Checkout = () => {
   const handlePlaceOrder = async()=> {
     const res = await axios.put("http://localhost:5000/api/order", {userEmail, orders: orderProducts})
     if(res?.data){
+      setOrderProducts([])
       navigate('/checkout/order-confirm')
     }
   }
