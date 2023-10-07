@@ -20,7 +20,7 @@ const Checkout = () => {
   
       cartItems.forEach((item, i) => {
         newOrderProducts[i] = {
-          id: item.idMeal,
+          id: item._id,
           quantity: item.quantity ? item.quantity : 1,
         };
       });
