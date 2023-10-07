@@ -40,7 +40,7 @@ const Checkout = () => {
   const calculateSubTotal = () => {
     let total = 0;
     cartItems.forEach((item, i) => {
-      total += parseInt(item?.idMeal);
+      total += parseInt(item?.price);
     });
     return total;
   };
@@ -110,17 +110,17 @@ useEffect(()=> {
                 <div className="flex gap-2 items-center w-full">
                   <img
                     className="w-14 h-14 rounded-md"
-                    src={item?.strMealThumb}
+                    src={item?.image}
                     alt=""
                   />
                   <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center w-full">
                     <p className="text-xs-font-bold">
-                      {item?.strMeal}
+                      {item?.title}
                     </p>
   
                     <div className="flex justify-around w-[40%]">
                       <p className="text-xs font-bold">Qty: {item?.quantity ? item?.quantity : 1} </p>
-                      <p className="text-xs font-bold">৳ {item?.idMeal}</p>
+                      <p className="text-xs font-bold">৳ {item?.price}</p>
                     </div>
                   </div>
                 </div>
