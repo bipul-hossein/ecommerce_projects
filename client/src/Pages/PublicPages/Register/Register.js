@@ -12,7 +12,8 @@ const Register = () => {
 
     const handleSignUp = (data) => {
         const userData = {
-            name: data?.name,
+            firstName: data?.firstName,
+            lastName: data?.lastName,
             email: data?.email,
         };
          createUser(data.email, data.password)
@@ -20,17 +21,15 @@ const Register = () => {
                 if(result?.user?.email){
                     axios.post(`http://localhost:5000/api/user`, userData)
                     .then((response)=> {
-                        toast.success('Register Successfully')
+                       // toast.success('Register Successfully')
                       })
                       .catch((error)=> {
                         console.log(error);
                         toast.error('Something went wrong')
                       })
-
                 }
-
                 const userUpdateInfo = {
-                    displayName: data.name
+                    displayName: data?.firstName+" "+data?.lastName
                 }
                 updateUser(userUpdateInfo)
                     .then(result => {
@@ -46,22 +45,6 @@ const Register = () => {
             })
     }
 
-    /* const saveUser = (name, email) => {
-        const user = { name, email };
-        fetch('http://localhost:5000/users', {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        }).then(res => res.json())
-            .then(data => {
-                console.log(data, "user add database")
-                //  setCreatedUserEmail(email);
-            }).catch(e => console.error(e))
-    }
- */
-
     return (
         <div className='h-full mb-10 flex justify-center items-center'>
             <div className='w-full p-7 md:w-2/4 lg:w-1/3'>
@@ -69,10 +52,17 @@ const Register = () => {
                 <form onSubmit={handleSubmit((handleSignUp))}>
                     <div className="form-control w-full">
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text">First Name</span>
                         </label>
-                        <input type="text" {...register("name", { required: "Name is Required" })} placeholder="Type your Full Name" className="input input-bordered w-full" />
-                        {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
+                        <input type="text" {...register("firstName", { required: "First Name is Required" })} placeholder="Type your First Name" className="input input-bordered w-full" />
+                        {errors.firstName && <p className='text-red-500'>{errors.firstName.message}</p>}
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Last Name</span>
+                        </label>
+                        <input type="text" {...register("lastName", { required: "Last Name is Required" })} placeholder="Type your Last Name" className="input input-bordered w-full" />
+                        {errors.lastName && <p className='text-red-500'>{errors.lastName.message}</p>}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
