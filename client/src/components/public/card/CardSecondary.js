@@ -22,7 +22,7 @@ const CardSecondary = ({ products }) => {
     <>
       {products?.slice(0, 10)?.map((data, i) => {
         const isExist = cartItems?.find(
-          (item) => item?.idMeal === data?.idMeal
+          (item) => item?._id === data?._id
         );
 
         return (
@@ -51,18 +51,18 @@ const CardSecondary = ({ products }) => {
             </div>
             <div className="mx-auto">
               <div className="overflow-hidden rounded-sm mx-auto border-b-2">
-                <Link to={`/product-details/${data?.idMeal}`}>
+                <Link to={`/product-details/${data?._id}`}>
                   <img
                     className="aspect-square h-32 md:h-44 group-hover:scale-110 duration-700 ease-in-out"
-                    src={data?.strMealThumb}
+                    src={data?.image}
                     alt=""
                   />
                 </Link>
               </div>
               <div className="text-center mx-auto">
-                <Link to={`/product-details/${data?.idMeal}`}>
+                <Link to={`/product-details/${data?._id}`}>
                   <h3 className="text-sm md:text-base font-medium md:font-semibold pt-1 md:py-2">
-                    Lorem ipsum dolor
+                   {data?.title}
                   </h3>
                 </Link>
                 <p className="text-xs font-medium text-gray-500 md:font-semibold py-1 md:tracking-[-.2px]">
@@ -70,7 +70,7 @@ const CardSecondary = ({ products }) => {
                 </p>
                 <div className="flex justify-center card-actions items-center my-1">
                   <div className="text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
-                    ৳545
+                    ৳{data?.price}
                   </div>
                   <div className="text-sm text-[#132a36] opacity-50  line-through pl-1">
                     ৳354
