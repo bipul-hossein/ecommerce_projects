@@ -56,11 +56,15 @@ const options = [
     },
     {
         icon: <BsPencilFill className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
-        name: "Add Product", routes: 'add_product'
+        name: "Categories", routes: 'categories'
     },
     {
         icon: <FaProductHunt className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
-        name: "Products", routes: ''
+        name: "Products", routes: 'products'
+    },
+    {
+        icon: <FaProductHunt className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
+        name: "User Info", routes: 'products'
     },
     {
         icon: <FaDollarSign className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,

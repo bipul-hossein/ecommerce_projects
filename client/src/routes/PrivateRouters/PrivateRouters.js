@@ -1,23 +1,24 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthProvider';
-import { Navigate, useLocation } from 'react-router-dom';
+import React, { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthProvider";
+import { Navigate, useLocation } from "react-router-dom";
 
 const PrivateRouters = ({ children }) => {
-    const { user, loading } = useContext(AuthContext);
-    const location = useLocation();
+  const { user, loading } = useContext(AuthContext);
+  const location = useLocation();
 
-    if (loading) {
-    return <div className='h-screen flex justify-center content-center'>
-        0-
-           <span className="loading loading-ring loading-lg"></span>
-       </div>
-    }
+  if (loading) {
+    return (
+      <div className="h-screen flex justify-center content-center">
+        <span className="loading loading-ring loading-lg"></span>
+      </div>
+    );
+  }
 
-    if (user) {
-        return children;
-    }
+  if (user) {
+    return children;
+  }
 
-    return <Navigate to="/login" state={{ from: location }} replace />;
+  return <Navigate to="/login" state={{ from: location }} replace />;
 };
 
 export default PrivateRouters;

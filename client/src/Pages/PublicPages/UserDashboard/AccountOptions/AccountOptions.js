@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { PiWalletFill } from "react-icons/pi";
 import {
   FaAddressCard,
   FaHeart,
@@ -8,8 +9,6 @@ import {
   FaUserEdit,
   FaDollarSign,
 } from "react-icons/fa";
-import { PiWalletFill } from "react-icons/pi";
-import { RiComputerFill } from "react-icons/ri";
 
 const AccountOptions = () => {
   const options = [
@@ -26,16 +25,15 @@ const AccountOptions = () => {
     {
       icon: <FaLock className="h-7 w-7 text-blue-500" />,
       name: "Change Password",
+      route: "/account/change-password",
     },
     {
       icon: <FaAddressCard className="h-7 w-7 text-blue-500" />,
       name: "Addresses",
+      route: "/account/address",
     },
     { icon: <FaHeart className="h-7 w-7 text-blue-500" />, name: "Wish List" },
-    {
-      icon: <RiComputerFill className="h-7 w-7 text-blue-500" />,
-      name: "Save PC",
-    },
+
     { icon: <FaStar className="h-7 w-7 text-blue-500" />, name: "Star Points" },
     {
       icon: <FaDollarSign className="h-7 w-7 text-blue-500" />,

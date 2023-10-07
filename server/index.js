@@ -1,38 +1,61 @@
 const express = require("express");
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const mongoose = require("mongoose");
+require("dotenv").config();
 const cors = require("cors");
+const categoriesRouter = require("./routes/categoriesRouter");
+const seedRouter = require("./routes/seedRouter");
+const productRouter = require("./routes/productRouter");
+const { errorResponse } = require("./controllers/responseController");
+const morgan = require("morgan");
+const userRouter = require("./routes/userRouter");
+const ordersRouter = require("./routes/ordersRouter");
+const port = process.env.PORT || 5000;
+
 const app = express();
-const port = 5000;
 
 //middleware
+app.use(morgan("dev"));
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.send("Hell world!");
+  res.send("welcome to home page");
 });
 
-app.listen(port, () => {
-  console.log("Example app listening on port", port);
-});
+app.use("/categories", categoriesRouter);
+app.use("/api/seed", seedRouter); //seeding data base
+app.use("/api/products", productRouter); //seeding data base
+app.use("/api/", userRouter); 
+app.use("/api/", ordersRouter); 
 
-const uri = `mongodb+srv://ecommerce2023:SA76m2EtbuUUIOIW@cluster0.wzvkotr.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  serverApi: ServerApiVersion.v1,
-});
+// set.2 connect to DataBase
 
-async function run() {
+const url = process.env.DB_URL;
+const connectDB = async () => {
   try {
-    const categoriesCollection = client.db("Ecommerce").collection("Products");
-    // const categoriesCollection = client.db("LocalDb").collection("booksCollection");
-
-    app.get("/categories", async (req, res) => {
-      const query = {};
-      const categories = await categoriesCollection.find(query).toArray();
-      res.send(categories);
-    });
-  } finally {
+    await mongoose.connect(url);
+    console.log("Database is connected");
+  } catch (error) {
+    console.log("Database is not connected", error);
   }
-}
-run().catch((err) => console.error(err));
+};
+
+// express error handling middleware
+// client error handling
+app.use((req, res, next) => {
+  next(res.status(404).json({ message: "route not found" }));
+});
+
+// server error handling -all the error coming here.
+app.use((err, req, res, next) => {
+  return errorResponse(res, {
+    statusCode: 500,
+    message: "Internal Server Error end",
+  });
+});
+
+app.listen(port, async () => {
+  console.log(`Server is running at http://localhost:${port}`);
+  await connectDB();
+});

@@ -11,11 +11,18 @@ import ProductDetails from "../../Pages/PublicPages/ProductDetails/ProductDetail
 import ProductCategory from "../../Pages/PublicPages/ProductCategory/ProductCategory";
 import UserDashboard from "../../Pages/PublicPages/UserDashboard/UserDashboard";
 import AdminLayout from "../../Layout/AdminDashboardLayout/AdminLayout";
-import AddProduct from "../../Pages/AdminDashboard/AdminComponents/AddProduct/AddProduct";
 import SpecificOrderDetails from "../../Pages/AdminDashboard/AdminComponents/Orders/SpecificOrderDetails";
 import UserOrders from "../../Pages/PublicPages/UserDashboard/UserOrders/UserOrders";
 import AccountOptions from "../../Pages/PublicPages/UserDashboard/AccountOptions/AccountOptions";
 import EditProfile from "../../Pages/PublicPages/UserDashboard/EditProfile/EditProfile";
+import ChangePassword from "../../Pages/PublicPages/UserDashboard/ChangePassword/ChangePassword";
+import Address from "../../Pages/PublicPages/UserDashboard/Address/Address";
+import EditAddress from "../../Pages/PublicPages/UserDashboard/Address/EditAddress/EditAddress";
+import HandleCategories from "../../Pages/AdminDashboard/AdminComponents/HandleCategories/HandleCategories";
+import Products from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/Products";
+import Checkout from "../../Pages/PublicPages/Checkout/Checkout";
+import OrderConfirmMessage from "../../Pages/PublicPages/Checkout/OrderConfirmMessage";
+import PrivateRouters from './../PrivateRouters/PrivateRouters';
 
 const router = createBrowserRouter([
   {
@@ -44,20 +51,32 @@ const router = createBrowserRouter([
         element: <CartDetails />,
       },
       {
+        path: "/cart/checkout",
+        element: <Checkout/>,
+      },
+      {
+        path: "/checkout/order-confirm",
+        element: <OrderConfirmMessage/>,
+      },
+      {
         path: "/product-details/:id",
         element: <ProductDetails />,
         loader: ({ params }) =>
           fetch(
-            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`
+            `http://localhost:5000/api/products/${params.id}`
           ),
       },
       {
-        path: "/product-category/:id",
+        path: "/:id",
         element: <ProductCategory />,
         loader: ({ params }) =>
           fetch(
-            `https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.id}`
+            `http://localhost:5000/api/products/category/${params.id}`
           ),
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
     ],
   },
@@ -79,15 +98,19 @@ const router = createBrowserRouter([
         element: <SpecificOrderDetails />,
       },
       {
-        path: "/dashboard/add_product",
-        element: <AddProduct />,
+        path: "/dashboard/categories",
+        element: <HandleCategories />,
+      },
+      {
+        path: "/dashboard/products",
+        element: <Products />,
       },
     ],
   },
   //User Dashboard
   {
     path: "/account",
-    element: <UserDashboard />,
+    element:<PrivateRouters> <UserDashboard /></PrivateRouters>,
     children: [
       {
         path: "/account",
@@ -100,6 +123,18 @@ const router = createBrowserRouter([
       {
         path: "/account/edit-profile",
         element: <EditProfile />,
+      },
+      {
+        path: "/account/change-password",
+        element: <ChangePassword />,
+      },
+      {
+        path: "/account/address",
+        element: <Address />,
+      },
+      {
+        path: "/account/edit-address",
+        element: <EditAddress />,
       },
     ],
   },
