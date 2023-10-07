@@ -26,9 +26,13 @@ const ordersSchema = new Schema({
         required: true
     },
     orders:  [{
-        id: Number,
+        id: Schema.ObjectId,
         quantity: Number
-      }]
+      }],
+      createdAt: {
+        type: Date,
+        default: Date.now,
+      },
 });
 
 const Orders = mongoose.model("Orders", ordersSchema);
