@@ -13,11 +13,12 @@ const ProductsProvider = ({ children }) => {
 
   const handleAddToLocalStorage = (product) => {
     const data = JSON.parse(localStorage.getItem("e-bazar"));
+    const newCart = {...product, cartPosition: data?.length ? data?.length : 0}
     if (!data) {
-      localStorage.setItem("e-bazar", JSON.stringify([product]));
+      localStorage.setItem("e-bazar", JSON.stringify([newCart]));
       setAdded(!added);
     } else {
-      localStorage.setItem("e-bazar", JSON.stringify([...data, product]));
+      localStorage.setItem("e-bazar", JSON.stringify([...data, newCart]));
       setAdded(!added);
     }
   };

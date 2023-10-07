@@ -89,10 +89,6 @@ const CartDetails = () => {
     );
   }
 
-  //console.log(cartItems);
-  
-cartItems?.sort((a, b) => a._id - b._id);
-
   return (
     <div className="my-20 flex flex-wrap md:flex-nowrap mx-auto bg-slate-50 ">
       <div className="w-full md:w-11/12 px-5 pb-14 pt-7 border-b-2 mb-3 rounded-2xl md:rounded-none md:border-[1px]">
@@ -103,7 +99,7 @@ cartItems?.sort((a, b) => a._id - b._id);
           </p>
         </div>
         <div className="flex flex-col mx-auto gap-4">
-          {cartItems?.map((product, i) => (
+          {cartItems?.sort((a, b) => a.cartPosition - b.cartPosition)?.map((product, i) => (
             <div key={i} className="border bg-white w-full rounded-xl">
               <div className="flex justify-between gap-2 px-4 py-3 md:px-4 md:py-4 ">
                 <div className="h-full flex justify-center gap-2 md:gap-4 ">
