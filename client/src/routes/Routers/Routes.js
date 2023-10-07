@@ -22,6 +22,7 @@ import HandleCategories from "../../Pages/AdminDashboard/AdminComponents/HandleC
 import Products from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/Products";
 import Checkout from "../../Pages/PublicPages/Checkout/Checkout";
 import OrderConfirmMessage from "../../Pages/PublicPages/Checkout/OrderConfirmMessage";
+import PrivateRouters from './../PrivateRouters/PrivateRouters';
 
 const router = createBrowserRouter([
   {
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
         element: <Checkout/>,
       },
       {
-        path: "/cart/checkout/order_confirm",
+        path: "/checkout/order-confirm",
         element: <OrderConfirmMessage/>,
       },
       {
@@ -109,7 +110,7 @@ const router = createBrowserRouter([
   //User Dashboard
   {
     path: "/account",
-    element: <UserDashboard />,
+    element:<PrivateRouters> <UserDashboard /></PrivateRouters>,
     children: [
       {
         path: "/account",

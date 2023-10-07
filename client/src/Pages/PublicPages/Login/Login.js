@@ -18,11 +18,9 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const handleSignIn = (data) => {
-    console.log(data);
     setLoginError("");
     signIn(data.email, data.password)
       .then((result) => {
-        console.log(result.user);
         toast.success("Login successfully");
         navigate(from, { replace: true });
       })
