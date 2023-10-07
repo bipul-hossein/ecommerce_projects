@@ -8,7 +8,7 @@ import useProductsData from '../../../../hooks/useProductsData';
 
 const LatestProductSlider = () => {
     const [products] = useProductsData();
-
+console.log(products);
     return (
         <Swiper
             slidesPerView={2}
@@ -30,7 +30,7 @@ const LatestProductSlider = () => {
         >
             {products?.slice(0, 8)?.map((data, i) => (
                 <SwiperSlide key={i}>
-                    <Card id={data.idMeal} data={data} />
+                    <Card id={data._id} data={data} />
                 </SwiperSlide>
             ))}
         </Swiper>

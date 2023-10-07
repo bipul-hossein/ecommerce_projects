@@ -6,8 +6,8 @@ import { useLoaderData } from "react-router-dom";
 
 const ProductDetails = () => {
   window.scrollTo(0, 0);
-  const product = useLoaderData()?.meals[0];
-  
+  const {payload:product}= useLoaderData();
+  console.log(product);  
   return (
     <section className="my-10 max-w-[1200px] mx-auto px-2">
       {/* DetailsPage top section */}
