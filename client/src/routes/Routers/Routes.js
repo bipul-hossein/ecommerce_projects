@@ -66,11 +66,11 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "/product-category/:id",
+        path: "/:id",
         element: <ProductCategory />,
         loader: ({ params }) =>
           fetch(
-            `https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.id}`
+            `http://localhost:5000/api/products/category/${params.id}`
           ),
       },
       {

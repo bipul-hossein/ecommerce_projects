@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useLocation, useParams } from "react-router-dom";
 import Card from "../../../components/public/card/Card";
 import { BiMenuAltLeft } from "react-icons/bi";
 
 const ProductCategory = () => {
   window.scrollTo(0, 0);
-  const { meals } = useLoaderData();
-  const category_name = useParams();
+ const category_name = useParams();
+  //  const categoryProduct = useLocation().state
+
+  const {payload:products} = useLoaderData();
+
+  console.log(products);
   const [filterSidebar, setFilterSidebar] = useState(false);
 
   return (
@@ -140,8 +144,8 @@ const ProductCategory = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {meals.map((meal, index) => (
-            <Card key={index} data={meal} />
+          {products.map((product, index) => (
+            <Card key={index} data={product} />
           ))}
         </div>
       </div>

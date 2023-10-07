@@ -91,6 +91,10 @@ const CartDetails = () => {
     );
   }
 
+  // const subtotal =()=>{
+  //   cartItems.filter(price=>p)
+  // }
+
   return (
     <div className="my-20 flex flex-wrap md:flex-nowrap mx-auto bg-slate-50 ">
       <div className="w-full md:w-11/12 px-5 pb-14 pt-7 border-b-2 mb-3 rounded-2xl md:rounded-none md:border-[1px]">
