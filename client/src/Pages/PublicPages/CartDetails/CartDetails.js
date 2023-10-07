@@ -14,8 +14,8 @@ const CartDetails = () => {
 
   //quantity plus
   const handlePlus = (id) => {
-    const findProduct = cartItems?.find((product) => product.idMeal === id);
-    const restProducts = cartItems?.filter((product) => product.idMeal !== id);
+    const findProduct = cartItems?.find((product) => product._id === id);
+    const restProducts = cartItems?.filter((product) => product._id !== id);
 
     if (!findProduct?.quantity) {
       localStorage.setItem(
@@ -46,8 +46,8 @@ const CartDetails = () => {
 
   //quantity Minus
   const handleMinus = (id) => {
-    const findProduct = cartItems?.find((product) => product.idMeal === id);
-    const restProducts = cartItems?.filter((product) => product.idMeal !== id);
+    const findProduct = cartItems?.find((product) => product._id === id);
+    const restProducts = cartItems?.filter((product) => product._id !== id);
     if (!findProduct?.quantity) {
       localStorage.setItem(
         "e-bazar",
@@ -76,13 +76,11 @@ const CartDetails = () => {
   };
 
   const handleRemoveToCart = (id) => {
-    const restProducts = cartItems?.filter((product) => product.idMeal !== id);
+    const restProducts = cartItems?.filter((product) => product._id !== id);
     localStorage.setItem("e-bazar", JSON.stringify(restProducts));
     setAdded(!added);
   };
-  console.log(cartItems);
-  cartItems?.sort((a, b) => a.idMeal - b.idMeal);
-
+  
   if (!cartItems?.length) {
     return (
       <div className="my-10 min-h-[50vh]">
@@ -91,9 +89,9 @@ const CartDetails = () => {
     );
   }
 
-  // const subtotal =()=>{
-  //   cartItems.filter(price=>p)
-  // }
+  //console.log(cartItems);
+  
+cartItems?.sort((a, b) => a._id - b._id);
 
   return (
     <div className="my-20 flex flex-wrap md:flex-nowrap mx-auto bg-slate-50 ">
@@ -110,14 +108,14 @@ const CartDetails = () => {
               <div className="flex justify-between gap-2 px-4 py-3 md:px-4 md:py-4 ">
                 <div className="h-full flex justify-center gap-2 md:gap-4 ">
                   <img
-                    src={product.strMealThumb}
+                    src={product?.image}
                     alt=""
                     className="w-14 h-full md:w-16 md:h-16 rounded"
                   />
                   <div className="flex flex-col w-full md:flex-row md:items-center justify-between md:gap-10">
                     <p className="text-sm font-semibold md:text-lg">
                       {" "}
-                      {product.strMeal}
+                      {product?.title}
                     </p>
                     <p className="text-sm font-bold text-blue-900 md:text-lg">
                       ৳ 234
@@ -129,7 +127,7 @@ const CartDetails = () => {
                   <div className="flex items-center justify-center gap-1 md:px-2">
                     <span>
                       <FiMinus
-                        onClick={() => handleMinus(product.idMeal)}
+                        onClick={() => handleMinus(product?._id)}
                         className="w-6 md:w-8 h-6 md:h-8 bg-white border-secondary border-[2px] rounded-full p-1 cursor-pointer font-semibold text-xs"
                       />
                     </span>
@@ -138,14 +136,14 @@ const CartDetails = () => {
                     </span>
                     <span>
                       <FiPlus
-                        onClick={() => handlePlus(product.idMeal)}
+                        onClick={() => handlePlus(product?._id)}
                         className="w-6 md:w-8 h-6 md:h-8 bg-white border-secondary border-[2px] rounded-full p-1 cursor-pointer font-semibold text-xs"
                       />
                     </span>
                   </div>
                   <div className=" w-full flex flex-row-reverse items-center gap-2">
                     <span
-                      onClick={() => handleRemoveToCart(product.idMeal)}
+                      onClick={() => handleRemoveToCart(product?._id)}
                       className="absolute md:static text-base text-red-500 bg-white border-gray-400 border rounded-full p-1 cursor-pointer font-semibold px-[7px] py-[2px] -top-5 -right-6 md:font-bold"
                     >
                       ✕

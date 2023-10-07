@@ -7,8 +7,8 @@ const Categories = () => {
   const categoriesItem = categoryData.payload;
 
   const navigate = useNavigate();
-  const handleContentDetails = (slug) => {
-    navigate(`/${slug}`);
+  const handleContentDetails = (_id) => {
+    navigate(`/${_id}`);
   };
 
   return (
@@ -17,7 +17,7 @@ const Categories = () => {
       {categoriesItem?.slice(0, 8)?.map((category, i) => (
         <div
           key={i}
-          onClick={() => handleContentDetails(category.slug)}
+          onClick={() => handleContentDetails(category._id)}
           className={`flex items-center gap-2 my-3 hover:cursor-pointer hover:bg-gray-200 ${
             i === 7 ? "border-none" : "border-b pb-3"
           } py-2`}

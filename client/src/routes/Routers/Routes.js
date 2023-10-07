@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         element: <ProductDetails />,
         loader: ({ params }) =>
           fetch(
-            `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`
+            `http://localhost:5000/api/products/${params.id}`
           ),
       },
       {
