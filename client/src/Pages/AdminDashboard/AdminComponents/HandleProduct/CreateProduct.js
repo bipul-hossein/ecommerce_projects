@@ -27,10 +27,7 @@ const CreateProduct = () => {
     };
 
     setRequiredCategory(category?.length);
-    const createProductRes = await axios.post(
-      "http://localhost:5000/api/products",
-      createProductInfo
-    );
+    await axios.post("http://localhost:5000/api/products", createProductInfo);
   };
 
   const { data: categoryList } = useQuery({

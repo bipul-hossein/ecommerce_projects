@@ -4,7 +4,7 @@ import Navbar from "../../../components/public/navbar/Navbar";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const UserDashboard = () => {
-  const { LogOut } = useContext(AuthContext);
+  const { LogOut,user } = useContext(AuthContext);
   const handleLogOut = () => {
     LogOut();
   };
@@ -19,7 +19,7 @@ const UserDashboard = () => {
               src="https://www.vhv.rs/dpng/d/119-1199788_user-vector-icon-png-clipart-png-download-icon.png"
               alt=""
             />
-            <h3 className="text-lg font-bold text-gray-600">Jubayer Ahmed</h3>
+            <h3 className="text-lg font-bold text-gray-600">{user?.displayName}</h3>
           </div>
           <div>
             <button
