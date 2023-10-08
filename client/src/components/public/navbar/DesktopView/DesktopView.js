@@ -45,7 +45,7 @@ const DesktopView = ({ cartQuantity }) => {
           </div>
         </div>
         <div className="flex gap-12 items-center">
-          <Link to="/login">
+          <Link to="/account">
             <div className="flex gap-2 items-center">
               <div>
                 <CgProfile className="text-[28px] text-primary hover:cursor-pointer" />

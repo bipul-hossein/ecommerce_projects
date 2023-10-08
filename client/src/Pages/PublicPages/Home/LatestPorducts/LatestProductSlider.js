@@ -8,7 +8,7 @@ import useProductsData from '../../../../hooks/useProductsData';
 
 const LatestProductSlider = () => {
     const [products] = useProductsData();
-console.log(products);
+
     return (
         <Swiper
             slidesPerView={2}
