@@ -11,16 +11,16 @@ const ProductsProvider = ({ children }) => {
     setCartItems(cartData);
   }, [added]);
 
+
   const handleAddToLocalStorage = (product) => {
     const data = JSON.parse(localStorage.getItem("e-bazar"));
-    const newCart = {...product, cartPosition: data?.length ? data?.length : 0}
     if (!data) {
-      localStorage.setItem("e-bazar", JSON.stringify([newCart]));
-      setAdded(!added);
+      localStorage.setItem("e-bazar", JSON.stringify([{...product, cartPosition: 0}]))
     } else {
-      localStorage.setItem("e-bazar", JSON.stringify([...data, newCart]));
-      setAdded(!added);
+      const newCart = data.map((item, index) => ({...item, cartPosition: index}));
+      localStorage.setItem("e-bazar", JSON.stringify([...newCart, {...product, cartPosition: newCart.length}]));
     }
+    setAdded(!added);
   };
 
   const info = { handleAddToLocalStorage, cartItems, added, setAdded };

@@ -27,7 +27,7 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
     {
       name: "Profile",
       icon: (
-        <Link to={"/login"}>
+        <Link to={"/account"}>
           <IoPersonOutline />
         </Link>
       ),
