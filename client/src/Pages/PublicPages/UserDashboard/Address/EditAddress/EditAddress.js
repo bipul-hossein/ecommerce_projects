@@ -36,8 +36,8 @@ const EditAddress = () => {
       // console.log(payload);
       toast.success(message);
     }
-    // refetch();
-    // form.reset();
+    refetch();
+    form.reset();
   };
   const division = [
     "Khulna",
