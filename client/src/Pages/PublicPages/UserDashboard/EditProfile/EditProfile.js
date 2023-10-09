@@ -1,46 +1,36 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const EditProfile = () => {
-  const { user } = useContext(AuthContext);
-  const [dbUserInfo, setDbUserInfo] = useState({});
+  const { user, userOldDbInfo, refetch } = useContext(AuthContext);
 
-  //console.log(dbUserInfo);
-
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/user?email=${user?.email}`)
-      .then((res) => {
-        setDbUserInfo(res?.data?.payload);
-       //console.log(res?.data);
-      })
-      .catch((err) => console.log(err));
-  }, [user]);
 
   const handelEditUser = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const userFirstName = form.firstName.value;
-    const userLastName = form.lastName.value;
-    const userEmail = form.email.value;
-    const userPhoneNumber = form.phoneNumber.value;
+    const userFirstName = form?.firstName?.value;
+    const userLastName = form?.lastName?.value;
+    const userEmail = form?.email?.value;
+    const userPhoneNumber = form?.phoneNumber?.value;
     const userEditInfo = {
       userFirstName,
       userLastName,
       userEmail,
-      userPhoneNumber
-    }
-    //console.log(userEditInfo);
+      userPhoneNumber,
+    };
     const res = await axios.put(
-      `http://localhost:5000/api/user?email=${user?.email}`,userEditInfo);
-    const /* { payload, message } */data = res?.data;
-    console.log(data);
-    // if (res?.data) {
-    //   //setUserEditInfo(payload?.title);
-    // }
-    // //toast.success(payload.title + " " + message);
-    // form.reset();
+      `http://localhost:5000/api/user?email=${user?.email}`,
+      userEditInfo
+    );
+    const { message } = res?.data;
+    if (res?.data) {
+      // console.log(payload);
+      toast.success(message);
+    }
+    refetch();
+    form.reset();
   };
 
   return (
@@ -60,7 +50,7 @@ const EditProfile = () => {
               type="text"
               name="firstName"
               id=""
-              defaultValue={dbUserInfo.firstName}
+              defaultValue={userOldDbInfo?.payload?.name?.firstName}
               required
             />
           </div>
@@ -74,7 +64,7 @@ const EditProfile = () => {
               type="text"
               name="lastName"
               id=""
-              defaultValue={dbUserInfo.lastName}
+              defaultValue={userOldDbInfo?.payload?.name?.lastName}
               required
             />
           </div>
@@ -82,14 +72,14 @@ const EditProfile = () => {
         <div className="mt-2">
           <p className="text-sm font-semibold mb-1">
             Email Address
-            <span className="text-base text-red-500">*</span>
           </p>
           <input
-            className="p-2 w-full focus:border-blue-500 border-[1px] rounded-md outline-none"
+            className="p-2 w-full focus:border-none rounded-md outline-none"
             type="text"
             name="email"
             id=""
-            defaultValue={dbUserInfo.email}
+            readOnly
+            defaultValue={userOldDbInfo?.payload?.email}
             required
           />
         </div>
@@ -103,7 +93,7 @@ const EditProfile = () => {
             type="text"
             name="phoneNumber"
             id=""
-            defaultValue={dbUserInfo?.phone}
+            defaultValue={userOldDbInfo?.payload?.phone}
             required
           />
         </div>

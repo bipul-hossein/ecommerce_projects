@@ -8,6 +8,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
+import { useQuery } from "react-query";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -15,6 +16,22 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const { data: userOldDbInfo = [], refetch } = useQuery({
+        queryKey: ["userData"],
+        queryFn: async () => {
+          const res = await fetch(
+            `http://localhost:5000/api/user?email=${user?.email}`
+          );
+          const data = await res.json();
+          return data;
+        },
+      });
+useEffect(()=>{
+if(user?.email){
+  refetch()
+}
+},[user?.email])
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -53,6 +70,8 @@ const AuthProvider = ({ children }) => {
     setUser,
     loading,
     LogOut,
+    userOldDbInfo,
+    refetch
   };
 
   return (

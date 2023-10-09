@@ -3,7 +3,15 @@ const { successResponse } = require("./responseController");
 
 const handleCreateUser = async (req, res, next) => {
   try {
-    const data = req.body;
+    const { firstName, lastName, email } = req.body;
+    console.log(firstName, lastName, email);
+    const data = {
+      name: {
+        firstName: firstName,
+        lastName: lastName,
+      },
+      email: email,
+    };
     const newUser = await User.create(data);
     return successResponse(res, {
       statusCode: 200,
@@ -31,15 +39,16 @@ const handleGetUser = async (req, res, next) => {
 const handleUpdateUser = async (req, res, next) => {
   try {
     const { email } = req.query;
-    console.log(email,"find email");
     const { userFirstName, userLastName, userEmail, userPhoneNumber } =
       req.body;
-    console.log( userFirstName, userLastName, userEmail, userPhoneNumber);
+    console.log(userFirstName, userLastName, userEmail, userPhoneNumber);
     const filter = { email: email };
     const updates = {
       $set: {
-        firstName: userFirstName,
-        lastName: userLastName,
+        name: {
+          firstName: userFirstName,
+          lastName: userLastName,
+        },
         email: userEmail,
         phone: userPhoneNumber,
       },
@@ -47,11 +56,7 @@ const handleUpdateUser = async (req, res, next) => {
     const option = {
       new: true,
     };
-     const updateUser = await User.findOneAndUpdate(
-       filter,
-       updates,
-       option
-     );
+    const updateUser = await User.findOneAndUpdate(filter, updates, option);
 
     return successResponse(res, {
       statusCode: 200,
@@ -63,8 +68,56 @@ const handleUpdateUser = async (req, res, next) => {
   }
 };
 
+const handleCreateAddress = async (req, res, next) => {
+  try {
+    const { email } = req.query;
+    console.log(email, "find email");
+    const { division, cityArea, postcode, address } = req.body;
+    console.log(division, cityArea, postcode, address);
+    const filter = { email: email };
+    const updates = {
+      $set: {
+        address: {
+          division: division,
+          city: cityArea,
+          postCode: postcode,
+          addressDetails: address,
+        },
+      },
+    };
+    const option = {
+      new: true,
+    };
+    const updateUser = await User.findOneAndUpdate(filter, updates, option);
+    return successResponse(res, {
+      statusCode: 200,
+      message: "User Address Created Successfully",
+      payload: updateUser,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const handleGetAddress = async (req, res, next) => {
+  try {
+    const { email } = req.query;
+    console.log(email, "find email");
+    const getUserAddress = await User.findOne({ email: email }).select({address:1,_id:0}).lean();
+    return successResponse(res, {
+      statusCode: 200,
+      message: "User Address Return Successfully",
+      payload: getUserAddress,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   handleCreateUser,
   handleGetUser,
   handleUpdateUser,
+  handleCreateAddress,
+  handleGetAddress,
 };
