@@ -27,12 +27,12 @@ const userSchema = new Schema({
   address: {
     division: {
       type: String,
-      required: [true, "Division is required"],
+     // required: [true, "Division is required"],
       trim: true,
     },
     city: {
       type: String,
-      required: [true, "City is required"],
+     // required: [true, "City is required"],
       trim: true,
     },
     postCode: {
@@ -41,7 +41,7 @@ const userSchema = new Schema({
     },
     addressDetails: {
       type: String,
-      required: [true, "Address is required"],
+      //required: [true, "Address is required"],
       trim: true,
     },
   },

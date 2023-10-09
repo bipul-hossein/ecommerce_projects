@@ -9,9 +9,9 @@ const UserDashboard = () => {
   const handleLogOut = () => {
     LogOut();
   };
-  // const ProfileIcon =
-  //   userOldDbInfo?.payload?.name?.firstName[0] +
-  //   userOldDbInfo?.payload?.name?.lastName[0];
+  const ProfileIcon =
+    userOldDbInfo?.payload?.name?.firstName[0] +
+    userOldDbInfo?.payload?.name?.lastName[0];
   return (
     <>
       <Navbar />
@@ -19,7 +19,7 @@ const UserDashboard = () => {
         <div className="flex justify-between items-center">
           <div className="flex gap-3 items-center">
             <p className="w-16 h-16 rounded-full text-xl text-white font-bold bg-blue-500 flex justify-center items-center uppercase">
-             {/*  {ProfileIcon} */}
+              {ProfileIcon}
             </p>
             <h3 className="text-lg font-bold text-gray-600">
               {userOldDbInfo?.payload?.name?.firstName +
