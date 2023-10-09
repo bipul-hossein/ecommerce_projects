@@ -4,22 +4,28 @@ import Navbar from "../../../components/public/navbar/Navbar";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const UserDashboard = () => {
-  const { LogOut,user } = useContext(AuthContext);
+  const { LogOut, userOldDbInfo } = useContext(AuthContext);
+  console.log(userOldDbInfo);
   const handleLogOut = () => {
     LogOut();
   };
+  // const ProfileIcon =
+  //   userOldDbInfo?.payload?.name?.firstName[0] +
+  //   userOldDbInfo?.payload?.name?.lastName[0];
   return (
     <>
       <Navbar />
       <div className="max-w-[1200px] mx-auto px-2 my-10 mt-20 md:mt-0">
         <div className="flex justify-between items-center">
           <div className="flex gap-3 items-center">
-            <img
-              className="w-16 h-16 rounded-full"
-              src="https://www.vhv.rs/dpng/d/119-1199788_user-vector-icon-png-clipart-png-download-icon.png"
-              alt=""
-            />
-            <h3 className="text-lg font-bold text-gray-600">{user?.displayName}</h3>
+            <p className="w-16 h-16 rounded-full text-xl text-white font-bold bg-blue-500 flex justify-center items-center uppercase">
+             {/*  {ProfileIcon} */}
+            </p>
+            <h3 className="text-lg font-bold text-gray-600">
+              {userOldDbInfo?.payload?.name?.firstName +
+                " " +
+                userOldDbInfo?.payload?.name?.lastName}
+            </h3>
           </div>
           <div>
             <button
