@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { BsFillCloudUploadFill } from "react-icons/bs";
 import { useQuery } from "react-query";
 
@@ -26,7 +27,9 @@ const CreateProduct = () => {
       "http://localhost:5000/api/products",
       formData
     );
-    console.log(res.data);
+    if(res?.data){
+      toast.success("porduct successfully added")
+    }
   };
 
   const { data: categoryList } = useQuery({
@@ -37,6 +40,9 @@ const CreateProduct = () => {
       return data;
     },
   });
+
+
+
 
   return (
     <div className="w-11/12 mx-auto mb-24 min-h-screen">
@@ -88,7 +94,7 @@ const CreateProduct = () => {
                 >
                   <option value="">select one</option>
                   {categoryList?.payload?.map((catList, i) => (
-                    <option key={i} value={catList?.title}>
+                    <option key={i} value={catList?._id}>
                       {catList?.title}
                     </option>
                   ))}
