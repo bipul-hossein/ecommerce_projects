@@ -1,11 +1,16 @@
+
 const Product = require("../models/productModel");
 const { successResponse } = require("./responseController");
 const slugify = require("slugify");
 const createError = require("http-errors");
-// create product function
+require('dotenv').config();
+
+
+
 const handleCreateProducts = async (req, res, next) => {
   try {
-    // step 1: get the data from request
+    const image = req?.file?.filename;
+    
     const {
       title,
       description,
@@ -14,9 +19,9 @@ const handleCreateProducts = async (req, res, next) => {
       shipping,
       category,
       sold,
-      image,
     } = req.body;
-    // step 2: save to database with create function
+
+
     const newProduct = await Product.create({
       title: title,
       slug: slugify(title),
@@ -26,7 +31,7 @@ const handleCreateProducts = async (req, res, next) => {
       shipping,
       category,
       sold,
-      image,
+      image: `${process.env.SERVER_URL}/uploads/${image}`
     });
     return successResponse(res, {
       statusCode: 200,
