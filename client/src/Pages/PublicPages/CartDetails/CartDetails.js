@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const CartDetails = () => {
   const { added, setAdded } = useContext(ProductContext);
   const [cartItems, setCartItems] = useState([]);
+  const [subTotal, setSubTotal] = useState(0);
 
   useEffect(() => {
     const cartData = JSON.parse(localStorage.getItem("e-bazar"));
@@ -81,6 +82,25 @@ const CartDetails = () => {
     setAdded(!added);
   };
   
+  const calculateSubTotal = () => {
+    let total = 0;
+    cartItems.forEach((item, i) => {
+      const calculate = parseInt(item?.quantity) * parseInt(item?.price);
+      total = total + calculate
+    });
+    return total;
+  };
+
+
+  useEffect(()=> {
+    setSubTotal(calculateSubTotal());
+  }, [cartItems, added]) //eslint-disable-line
+  
+
+
+
+
+
   if (!cartItems?.length) {
     return (
       <div className="my-10 min-h-[50vh]">
@@ -95,7 +115,7 @@ const CartDetails = () => {
         <div className="flex px-1 pr-2 justify-between items-center mb-4 md:mb-8">
           <h2 className="text-lg font-semibold md:text-3xl">Shopping Cart</h2>
           <p className="text-base font-medium md:text-xl">
-            <span>0</span> Items
+            <span>{cartItems?.length}</span> Items
           </p>
         </div>
         <div className="flex flex-col mx-auto gap-4">
@@ -114,7 +134,7 @@ const CartDetails = () => {
                       {product?.title}
                     </p>
                     <p className="text-sm font-bold text-blue-900 md:text-lg">
-                      ৳ 234
+                      ৳ {product?.price}
                     </p>
                   </div>
                 </div>
@@ -145,7 +165,7 @@ const CartDetails = () => {
                       ✕
                     </span>
                     <p className="text-sm font-bold md:text-lg mr-4">
-                      ৳ {product?.quantity ? product?.quantity * 234 : 234}
+                      ৳ {product?.quantity ? product?.quantity * product?.price : product?.price}
                     </p>
                   </div>
                 </div>
@@ -164,14 +184,14 @@ const CartDetails = () => {
           <tbody>
             <tr className="flex border-t-[1px] justify-between">
               <td className="px-3 py-5">Subtotals</td>
-              <td className="px-3 py-5">00</td>
+              <td className="px-3 py-5">৳ {subTotal}</td>
             </tr>
             <tr className="flex border-t-[1px] justify-between items-center">
               <td className="px-3 py-5">Shipping</td>
               <td className="px-3 py-5">
                 <div className="flex gap-2">
                   <input type="checkbox" />
-                  <p>Delivery Cost</p> <span>00</span>
+                  <p>Delivery Cost</p> <span> ৳ 60</span>
                 </div>
                 <div className="flex">
                   <input type="checkbox" />
@@ -181,7 +201,7 @@ const CartDetails = () => {
             </tr>
             <tr className="flex border-t-[1px] justify-between">
               <td className="px-3 py-5">Total Price</td>
-              <td className="px-3 py-5">000</td>
+              <td className="px-3 py-5">৳ {subTotal + 60}</td>
             </tr>
           </tbody>
         </table>
