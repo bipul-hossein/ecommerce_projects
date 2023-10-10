@@ -17,7 +17,6 @@ const EditAddress = () => {
     },
   });
   const dbUserAddress = userOldDbAddress.payload;
-  console.log(dbUserAddress);
   const handelEditUserAddress = async (e) => {
     e.preventDefault();
     const form = e.target;
