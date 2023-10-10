@@ -5,33 +5,32 @@ import { useQuery } from "react-query";
 
 const CreateProduct = () => {
   const [requiredCategory, setRequiredCategory] = useState(0);
+  const [file, setFile] = useState({});
+
   const handleCreateProduct = async (event) => {
     event.preventDefault();
     const form = event.target;
-    const title = form.title.value;
-    const price = form.price.value;
-    const description = form.description.value;
-    const shippingCost = form.shipping.value;
-    const quantity = form.quantity.value;
-    const sold = form.sold.value;
-    const category = form.category.value;
-
-    const createProductInfo = {
-      title,
-      price,
-      description,
-      shippingCost,
-      quantity,
-      sold,
-      category,
-    };
+    const category = form.category;
+    const formData = new FormData();
+    formData.append("title", form.title.value);
+    formData.append("price", form.price.value);
+    formData.append("description", form.description.value);
+    formData.append("shipping", form.shipping.value);
+    formData.append("quantity", form.quantity.value);
+    formData.append("sold", form.sold.value);
+    formData.append("category", form.category.value);
+    formData.append("file", file);
 
     setRequiredCategory(category?.length);
-    await axios.post("http://localhost:5000/api/products", createProductInfo);
+    const res = await axios.post(
+      "http://localhost:5000/api/products",
+      formData
+    );
+    console.log(res.data);
   };
 
   const { data: categoryList } = useQuery({
-    queryKey: ["category-name"],
+    queryKey: [],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/categories`);
       const data = await res.json();
@@ -40,8 +39,8 @@ const CreateProduct = () => {
   });
 
   return (
-    <div className="w-11/12 mx-auto mb-24">
-      <h2 className="text-base font-bold md:text-xl">Add a product</h2>
+    <div className="w-11/12 mx-auto mb-24 min-h-screen">
+      <h2 className="text-base font-bold md:text-xl text-center">Add a product</h2>
       <div className="mt-5">
         <form onSubmit={handleCreateProduct} className="">
           <div className="">
@@ -51,12 +50,14 @@ const CreateProduct = () => {
                 Drag & Drop your files here
               </p>
               <p className="text-xs md:text-base">Or</p>
-              <div className="relative">
-                <p className="absolute top-2 left-2 -z-1">Browse Files</p>
+              <div className="">
                 <input
+                  onChange={(e) => setFile(e.target.files[0])}
                   type="file"
-                  accept="image/png, image/jpeg"
-                  className="bg-slate-200 px-3 py-2 pl-[120px] w-2/3 mx-auto rounded outline-none border opacity-50 text-black"
+                  accept="image/png, image/jpeg, image/jpg"
+                  name="image"
+                  required
+                  className="py-2 outline-none"
                 />
               </div>
             </div>
@@ -67,7 +68,8 @@ const CreateProduct = () => {
                 <span className="label-text">Title</span>
               </label>
               <input
-                className="bg-slate-100 px-2 py-2 rounded"
+                required
+                className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                 type="text"
                 placeholder="Title"
                 name="title"
@@ -82,7 +84,7 @@ const CreateProduct = () => {
                   name="category"
                   required={requiredCategory > 0}
                   id="category-select"
-                  className="bg-slate-100 px-2 py-2 rounded md:w-auto text-xs md:text-sm"
+                  className="bg-slate-100 px-2 py-2 rounded md:w-auto text-xs md:text-sm border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                 >
                   <option value="">select one</option>
                   {categoryList?.payload?.map((catList, i) => (
@@ -97,7 +99,7 @@ const CreateProduct = () => {
                   <span className="label-text">Shipping Cost</span>
                 </label>
                 <input
-                  className="bg-slate-100 px-2 py-2 rounded"
+                  className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                   type="text"
                   placeholder="shipping cost"
                   name="shipping"
@@ -110,7 +112,8 @@ const CreateProduct = () => {
                   <span className="label-text">Price</span>
                 </label>
                 <input
-                  className="bg-slate-100 px-2 py-2 rounded"
+                  required
+                  className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                   type="text"
                   placeholder="price"
                   name="price"
@@ -121,7 +124,8 @@ const CreateProduct = () => {
                   <span className="label-text">Quantity</span>
                 </label>
                 <input
-                  className="bg-slate-100 px-2 py-2 rounded"
+                  required
+                  className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                   type="text"
                   placeholder="quantity"
                   name="quantity"
@@ -132,7 +136,8 @@ const CreateProduct = () => {
                   <span className="label-text">Sold Quantity</span>
                 </label>
                 <input
-                  className="bg-slate-100 px-2 py-2 rounded"
+                  required
+                  className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                   type="text"
                   placeholder="sold quantity"
                   name="sold"
@@ -144,7 +149,8 @@ const CreateProduct = () => {
                 <span className="label-text">description</span>
               </label>
               <textarea
-                className="bg-slate-100 px-2 py-2 rounded"
+                required
+                className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                 id="w3review"
                 name="description"
                 rows="4"
@@ -155,7 +161,7 @@ const CreateProduct = () => {
           <input
             type="submit"
             value="Submit"
-            className="bg-slate-500 text-white px-5 py-2 rounded hover:bg-red-500 hover:text-black"
+            className="bg-primary text-white px-5 py-2 rounded hover:bg-slate-500 cursor-pointer"
           />
         </form>
       </div>

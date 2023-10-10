@@ -4,9 +4,11 @@ import { FiPlus } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from './../../../contexts/AuthProvider';
 import axios from 'axios';
+import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const Checkout = () => {
   const {user} = useContext(AuthContext);
+  const { added, setAdded } = useContext(ProductContext);
   const cartItems = useLocation()?.state;
   const [openModal, setOpenModal] = useState(false);
   const [subTotal, setSubTotal] = useState(0);
@@ -33,7 +35,8 @@ const Checkout = () => {
   const handlePlaceOrder = async()=> {
     const res = await axios.put("http://localhost:5000/api/order", {userEmail, orders: orderProducts})
     if(res?.data){
-      setOrderProducts([])
+      localStorage.removeItem("e-bazar")
+      setAdded(!added)
       navigate('/checkout/order-confirm')
     }
   }
