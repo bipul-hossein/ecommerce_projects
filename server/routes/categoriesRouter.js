@@ -6,11 +6,10 @@ const {
   handleUpdateCategory,
   handleDeleteCategory,
 } = require("../controllers/categoriesController");
-const upload = require("../middleware/uploadFile");
 const categoryRouter = express.Router();
 
 //POST /categories # create category
-categoryRouter.post("/", /* upload.single("image") */ handleCreateCategories);
+categoryRouter.post("/", handleCreateCategories);
 
 // Get /category # read category
 categoryRouter.get("/", handleGetCategories);
