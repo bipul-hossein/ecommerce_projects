@@ -60,7 +60,7 @@ const handleGetProducts = async (req, res, next) => {
 const handleGetCategoryProducts = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const getProducts = await Product.find({ categoryId: id }).lean();
+    const getProducts = await Product.find({ category: id }).lean();
 
     return successResponse(res, {
       statusCode: 200,
