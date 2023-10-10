@@ -5,7 +5,6 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 
 const UserDashboard = () => {
   const { LogOut, userOldDbInfo } = useContext(AuthContext);
-  console.log(userOldDbInfo);
   const handleLogOut = () => {
     LogOut();
   };
