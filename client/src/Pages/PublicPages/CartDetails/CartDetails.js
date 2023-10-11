@@ -96,7 +96,6 @@ const CartDetails = () => {
     setSubTotal(calculateSubTotal());
   }, [cartItems, added]); //eslint-disable-line
 
-console.log(cartItems[0]?.quantity);
 
 
   if (!cartItems?.length) {

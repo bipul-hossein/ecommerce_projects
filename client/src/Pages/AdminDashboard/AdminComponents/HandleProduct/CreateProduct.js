@@ -28,7 +28,7 @@ const CreateProduct = () => {
       formData
     );
     if(res?.data){
-      toast.success("porduct successfully added")
+      toast.success("product successfully added")
     }
   };
 

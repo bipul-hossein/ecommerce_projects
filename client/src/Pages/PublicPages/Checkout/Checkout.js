@@ -7,7 +7,7 @@ import axios from "axios";
 import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const Checkout = () => {
-  const { user } = useContext(AuthContext);
+  const { user, userOldDbInfo } = useContext(AuthContext);
   const { added, setAdded } = useContext(ProductContext);
   const cartItems = useLocation()?.state;
   const [openModal, setOpenModal] = useState(false);
@@ -16,6 +16,13 @@ const Checkout = () => {
   const userEmail = user?.email;
   const navigate = useNavigate();
 
+  const userInfo = userOldDbInfo?.payload;
+  let validUser = false;
+  if(userInfo?.phone && userInfo?.address){
+    validUser = true;
+  }
+
+
   useEffect(() => {
     if (cartItems) {
       const newOrderProducts = [];
@@ -23,13 +30,13 @@ const Checkout = () => {
       cartItems.forEach((item, i) => {
         newOrderProducts[i] = {
           id: item._id,
-          quantity: item.quantity ? item.quantity : 1,
+          quantity: item.quantity ? item.quantity : 1, 
         };
       });
 
       setOrderProducts([...orderProducts, ...newOrderProducts]);
     }
-    setSubTotal(calculateSubTotal());
+    
   }, [cartItems]); //eslint-disable-line
 
   const handlePlaceOrder = async (e) => {
@@ -47,28 +54,27 @@ const Checkout = () => {
   const calculateSubTotal = () => {
     let total = 0;
     cartItems?.forEach((item, i) => {
-      total += parseInt(item?.price);
+      total  = total + (item?.quantity ? item?.quantity : 1)* parseInt(item?.price);
     });
     return total;
   };
 
-  // useEffect(() => {
-    
-  // }, [cartItems]); //eslint-disable-line
+  useEffect(() => {
+    setSubTotal(calculateSubTotal());  
+  }, [cartItems]); //eslint-disable-line
+
 
   return (
     <>
       <div className="max-w-[1200px] mx-auto my-10 p-2 flex gap-5 flex-col md:flex-row">
         <div className="md:w-[70%]">
-          <div
-            className="p-4 rounded-md w-full"
-            style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}
-          >
-            <div>
-              {/* <h4 className="text-lg font-bold text-center text-gray-600">
+
+      <div className={`${!validUser ? "block" : "hidden"}`} style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}>
+          <div>
+            {/* <h4 className="text-lg font-bold text-center text-gray-600">
               Checkout
             </h4> */}
-              <div
+              <div 
                 onClick={() => setOpenModal(true)}
                 className="p-4 rounded-md border-[1px] flex gap-4 justify-center items-center cursor-pointer"
               >
@@ -77,14 +83,25 @@ const Checkout = () => {
                   Add Your Delivery Address
                 </span>
               </div>
-              <div className="hidden justify-between">
+          </div>
+      </div>
+
+
+
+          <div
+            className={`p-4 rounded-md w-full ${validUser ? "block" : "hidden"}`}
+            style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}
+          >
+            <div>
+              
+              <div className={`flex justify-between`}>
                 <div>
                   <p className="text-base font-semibold my-2">Deliver to:</p>
                   <p className="text-sm font-semibold my-2">
-                    Name: jubayer ahmed
+                    Name: {userInfo?.name?.firstName} {userInfo?.name?.lastName}
                   </p>
                   <p className="text-sm my-1 font-semibold">
-                    Phone: 01759865636
+                    Phone: {userInfo?.phone}
                   </p>
                   <p className="text-sm my-1 font-semibold">
                     Address: bangladesh
