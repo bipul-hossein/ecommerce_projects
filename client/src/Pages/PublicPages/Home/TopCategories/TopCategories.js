@@ -13,6 +13,7 @@ const TopCategories = () => {
     navigate (`/${category._id}`, { state: category });
   };
 
+
   return (
     <Swiper
       slidesPerView={3}

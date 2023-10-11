@@ -46,7 +46,7 @@ const handleGetCategories = async (req, res, next) => {
 const handleGetCategory = async (req, res, next) => {
   try {
     const { slug } = req.params;
-    const getCategory = await Category.findOne({ slug })
+    const getCategory = await Category.findOne({ _id: slug })
       .select("title slug")
       .lean();
     return successResponse(res, {
