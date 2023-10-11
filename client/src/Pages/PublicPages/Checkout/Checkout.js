@@ -50,9 +50,10 @@ const Checkout = () => {
     return total;
   };
 
-  useEffect(() => {
-    setSubTotal(calculateSubTotal());
-  }, [cartItems]); //eslint-disable-line
+useEffect(()=> {
+  setSubTotal(calculateSubTotal());
+}, [cartItems]) //eslint-disable-line
+
 
   return (
     <>
