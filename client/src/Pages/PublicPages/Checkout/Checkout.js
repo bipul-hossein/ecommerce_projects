@@ -29,9 +29,11 @@ const Checkout = () => {
 
       setOrderProducts([...orderProducts, ...newOrderProducts]);
     }
+    setSubTotal(calculateSubTotal());
   }, [cartItems]); //eslint-disable-line
 
-  const handlePlaceOrder = async () => {
+  const handlePlaceOrder = async (e) => {
+    e.preventDefault()
     const res = await axios.put("http://localhost:5000/api/order", {
       userEmail,
       orders: orderProducts,
@@ -44,15 +46,15 @@ const Checkout = () => {
   };
   const calculateSubTotal = () => {
     let total = 0;
-    cartItems.forEach((item, i) => {
+    cartItems?.forEach((item, i) => {
       total += parseInt(item?.price);
     });
     return total;
   };
 
-  useEffect(() => {
-    setSubTotal(calculateSubTotal());
-  }, [cartItems]); //eslint-disable-line
+  // useEffect(() => {
+    
+  // }, [cartItems]); //eslint-disable-line
 
   return (
     <>
@@ -139,7 +141,7 @@ const Checkout = () => {
           </div>
         </div>
         <div>
-          <div
+          <form onSubmit={(e)=>handlePlaceOrder(e)}
             className="p-4 rounded-md w-full"
             style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}
           >
@@ -150,6 +152,7 @@ const Checkout = () => {
                 <input
                   type="checkbox"
                   name=""
+                  required
                   id="payment"
                   className="cursor-pointer w-4 h-4"
                 />
@@ -183,14 +186,14 @@ const Checkout = () => {
               </div>
               <div className="my-2 flex justify-between items-center mt-5">
                 <button
-                  onClick={handlePlaceOrder}
+                type="onsubmit"
                   className="bg-primary text-white p-2 w-full font-bold rounded-sm flex justify-center items-center"
                 >
                   Place Order
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
       <div className={`${openModal ? "block" : "hidden"}`}>
