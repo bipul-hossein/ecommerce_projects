@@ -18,14 +18,14 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/uploads', express.static('uploads'));
+app.use("/uploads", express.static("uploads"));
 
 //routes
 app.use("/categories", categoriesRouter);
 app.use("/api/seed", seedRouter); //seeding data base
 app.use("/api/products", productRouter); //seeding data base
-app.use("/api/", userRouter); 
-app.use("/api/", ordersRouter); 
+app.use("/api/", userRouter);
+app.use("/api/", ordersRouter);
 
 // connect to DataBase
 const url = process.env.DB_URL;
@@ -37,8 +37,6 @@ const connectDB = async () => {
     console.log("Database is not connected", error);
   }
 };
-
-
 
 app.get("/", (req, res) => {
   res.send("welcome to home page");
@@ -57,9 +55,6 @@ app.use((err, req, res, next) => {
     message: "Internal Server Error end",
   });
 });
-
-
-
 
 app.listen(port, async () => {
   console.log(`Server is running at http://localhost:${port}`);
