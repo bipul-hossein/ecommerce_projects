@@ -8,7 +8,7 @@ const { successResponse } = require('./responseController');
 const seedProducts = async (req, res, next) => {
   try {
     // Delete all existing products
-   //await Product.deleteMany({});
+   await Product.deleteMany({});
 
     // Create new product
     const products = await Product.insertMany(data.products);

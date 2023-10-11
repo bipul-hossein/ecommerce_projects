@@ -52,10 +52,10 @@ const CreateProduct = () => {
           <div className="">
             <div className="flex flex-col gap-1 md:gap-2 items-center bg-slate-100 py-6 md:py-12 mb-4 ">
               <BsFillCloudUploadFill className="h-8 w-8 md:h-14 md:w-14" />
-              <p className="text-xs md:text-base">
+              {/* <p className="text-xs md:text-base">
                 Drag & Drop your files here
               </p>
-              <p className="text-xs md:text-base">Or</p>
+              <p className="text-xs md:text-base">Or</p> */}
               <div className="">
                 <input
                   onChange={(e) => setFile(e.target.files[0])}
@@ -68,7 +68,7 @@ const CreateProduct = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 mb-3">
             <div className="form-control w-full md:w-4/5 mt-3 md:mt-4">
               <label className="label">
                 <span className="label-text">Title</span>
@@ -112,8 +112,8 @@ const CreateProduct = () => {
                 />
               </div>
             </div>
-            <div className="md:flex md:gap-4">
-              <div className="form-control w-full md:w-1/4 mt-3 md:mt-4">
+            <div className="flex justify-between md:justify-normal md:gap-4">
+              <div className="form-control w-[30%] md:w-1/4 mt-3 md:mt-4">
                 <label className="label">
                   <span className="label-text">Price</span>
                 </label>
@@ -125,7 +125,7 @@ const CreateProduct = () => {
                   name="price"
                 />
               </div>
-              <div className="form-control w-full md:w-1/4 mt-3 md:mt-4">
+              <div className="form-control w-[30%] md:w-1/4 mt-3 md:mt-4">
                 <label className="label">
                   <span className="label-text">Quantity</span>
                 </label>
@@ -137,9 +137,9 @@ const CreateProduct = () => {
                   name="quantity"
                 />
               </div>
-              <div className="form-control w-full md:w-1/4 mt-3 md:mt-4">
+              <div className="form-control w-[30%] md:w-1/4 mt-3 md:mt-4">
                 <label className="label">
-                  <span className="label-text">Sold Quantity</span>
+                  <span className="label-text">Sold Qty</span>
                 </label>
                 <input
                   required

@@ -98,9 +98,6 @@ const CartDetails = () => {
   
 
 
-
-
-
   if (!cartItems?.length) {
     return (
       <div className="my-10 min-h-[50vh]">

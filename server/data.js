@@ -9,8 +9,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/mobile/samsung/galaxy-a03-core/a03-core-002-228x228.webp",
-          "categoryId": "65205289e9fa4d75f4347890",
-          "categoryName": "Smart Phone"
+          "category": "65205289e9fa4d75f4347890",
           },
         {
           "title": "Vivo Y36 Smartphone",
@@ -21,8 +20,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/mobile/vivo/y36/y36-gold-228x228.webp",
-          "categoryId": "65205289e9fa4d75f4347890",
-          "categoryName": "Smart Phone"
+          "category": "65205289e9fa4d75f4347890",
           },
         {
           "title": "Samsung Galaxy F13",
@@ -33,8 +31,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/mobile/samsung/galaxy-f13/galaxy-f13-001-228x228.webp",
-          "categoryId": "65205289e9fa4d75f4347890",
-          "categoryName": "Smart Phone"
+          "category": "65205289e9fa4d75f4347890",
           },
         {
           "title": "ROWA 32S52 32 Inch",
@@ -45,8 +42,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/television/rowa/32s52/32s52-01-500x500.webp",
-          "categoryId": "6520525ee9fa4d75f4347889",
-          "categoryName": "Smart Tv"
+          "category": "6520525ee9fa4d75f4347889",
           },
         {
           "title": "JVCO J9TS 32 Inch",
@@ -57,8 +53,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/television/jvco/j9ts/j9ts-01-500x500.webp",
-          "categoryId": "6520525ee9fa4d75f4347889",
-          "categoryName": "Smart Tv"
+          "category": "6520525ee9fa4d75f4347889",
           },
         {
           "title": "OnePlus 32 Y1 Y Series 32-Inch",
@@ -69,8 +64,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/television/oneplus/Y1G-1-500x500.webp",
-          "categoryId": "65205243e9fa4d75f4347882",
-          "categoryName": "Tablet"
+          "category": "65205243e9fa4d75f4347882",
           },
         {
           "title": "Apple iPad 10.9-Inch",
@@ -81,8 +75,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/tablet-pc/apple/ipad-9th-gen/ipad-silver-wifi-228x228.webp",
-          "categoryId": "65205243e9fa4d75f4347882",
-          "categoryName": "Tablet"
+          "category": "65205243e9fa4d75f4347882",
           },
         {
           "title": "Apple iPad Air",
@@ -93,8 +86,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/tablet/apple/ipad-air-5th-gen/ipad-air-space-gray-01-228x228.jpg",
-          "categoryId": "65205243e9fa4d75f4347882",
-          "categoryName": "Tablet"
+          "category": "65205243e9fa4d75f4347882",
           },
         {
           "title": "Toshiba Dynabook",
@@ -105,8 +97,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/laptop/toshiba/satellite-pro-c40-g-109/satellite-pro-c40-g-109-01-228x228.webp",
-          "categoryId": "6520521ee9fa4d75f434787b",
-          "categoryName": "Laptop"
+          "category": "6520521ee9fa4d75f434787b",
           },
         {
           "title": "Asus P1511CMA",
@@ -117,8 +108,7 @@ const data = {
           "sold": 21,
           "shipping": 0,
           "image": "https://www.startech.com.bd/image/cache/catalog/laptop/asus/p1511cma/p1511cma-slate-grey-01-228x228.webp",
-          "categoryId": "\"6520521ee9fa4d75f434787b\"",
-          "categoryName": "Laptop"
+          "category": "\"6520521ee9fa4d75f434787b\"",
           }
       ]
       
