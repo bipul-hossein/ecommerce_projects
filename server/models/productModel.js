@@ -44,7 +44,12 @@ const productSchema = new Schema({
     type: String,
     require: true
   },
-  category: {
+  categoryId: {
+    type: String,
+    ref: "Category",
+    require: true
+  },
+  categoryName: {
     type: String,
     ref: "Category",
     require: true

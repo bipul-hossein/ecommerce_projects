@@ -24,7 +24,6 @@ const Categories = ({
       refetch();
     }
   };
-  console.log(categoriesItem);
 
   return (
     <div className="w-full md:w-7/12 bg-slate-100 py-5 mx-auto rounded">
