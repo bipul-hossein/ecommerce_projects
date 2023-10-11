@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import AddDeliveryAddressModal from "../../../components/public/addDeliveryAddressModal/AddDeliveryAddressModal";
 import { FiPlus } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from './../../../contexts/AuthProvider';
-import axios from 'axios';
+import { AuthContext } from "./../../../contexts/AuthProvider";
+import axios from "axios";
 import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const Checkout = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const { added, setAdded } = useContext(ProductContext);
   const cartItems = useLocation()?.state;
   const [openModal, setOpenModal] = useState(false);
@@ -18,28 +18,30 @@ const Checkout = () => {
 
   useEffect(() => {
     if (cartItems) {
-      const newOrderProducts = []; 
-  
+      const newOrderProducts = [];
+
       cartItems.forEach((item, i) => {
         newOrderProducts[i] = {
           id: item._id,
           quantity: item.quantity ? item.quantity : 1,
         };
       });
-  
-      setOrderProducts([ ...orderProducts, ...newOrderProducts ]);
+
+      setOrderProducts([...orderProducts, ...newOrderProducts]);
     }
   }, [cartItems]); //eslint-disable-line
-  
 
-  const handlePlaceOrder = async()=> {
-    const res = await axios.put("http://localhost:5000/api/order", {userEmail, orders: orderProducts})
-    if(res?.data){
-      localStorage.removeItem("e-bazar")
-      setAdded(!added)
-      navigate('/checkout/order-confirm')
+  const handlePlaceOrder = async () => {
+    const res = await axios.put("http://localhost:5000/api/order", {
+      userEmail,
+      orders: orderProducts,
+    });
+    if (res?.data) {
+      localStorage.removeItem("e-bazar");
+      setAdded(!added);
+      navigate("/checkout/order-confirm");
     }
-  }
+  };
   const calculateSubTotal = () => {
     let total = 0;
     cartItems.forEach((item, i) => {
@@ -47,7 +49,6 @@ const Checkout = () => {
     });
     return total;
   };
-
 
 useEffect(()=> {
   setSubTotal(calculateSubTotal());
@@ -101,35 +102,38 @@ useEffect(()=> {
             className="p-4 rounded-md w-full mt-4"
             style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}
           >
-            {
-              cartItems?.map((item, i)=> {
-                  
-                
-                return <div key={i}><div className="flex justify-between items-center mt-4">
-                <div className="flex gap-2 items-center w-full">
-                  <img
-                    className="w-14 h-14 rounded-md"
-                    src={item?.image}
-                    alt=""
-                  />
-                  <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center w-full">
-                    <p className="text-xs-font-bold">
-                      {item?.title}
-                    </p>
-  
-                    <div className="flex justify-around w-[40%]">
-                      <p className="text-xs font-bold">Qty: {item?.quantity ? item?.quantity : 1} </p>
-                      <p className="text-xs font-bold">৳ {item?.price}</p>
+            {cartItems?.map((item, i) => {
+              return (
+                <div key={i}>
+                  <div className="flex justify-between items-center mt-4">
+                    <div className="flex gap-2 items-center w-full">
+                      <img
+                        className="w-14 h-14 rounded-md"
+                        src={item?.image}
+                        alt=""
+                      />
+                      <div className="flex flex-col md:flex-row gap-2 justify-between md:items-center w-full">
+                        <p className="text-xs-font-bold">{item?.title}</p>
+
+                        <div className="flex justify-around w-[40%]">
+                          <p className="text-xs font-bold">
+                            Qty: {item?.quantity ? item?.quantity : 1}{" "}
+                          </p>
+                          <p className="text-xs font-bold">৳ {item?.price}</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
+                  <hr className="mt-2" />
                 </div>
-              </div>
-              <hr className="mt-2" /></div>
-              })}
+              );
+            })}
             <div className="flex justify-between items-center mt-2">
               <div className="gap-2 items-center hidden md:flex"></div>
               <div className="flex justify-between w-full ">
-                <p className="text-sm font-bold">Total Items: {cartItems?.length}</p>
+                <p className="text-sm font-bold">
+                  Total Items: {cartItems?.length}
+                </p>
                 <p className="text-sm font-bold">Sub Total: ৳ {subTotal}</p>
               </div>
             </div>
@@ -179,9 +183,10 @@ useEffect(()=> {
                 <p className="text-sm font-semibold">৳ {subTotal + 60}</p>
               </div>
               <div className="my-2 flex justify-between items-center mt-5">
-                <button 
-                onClick={handlePlaceOrder}
-                className="bg-primary text-white p-2 w-full font-bold rounded-sm flex justify-center items-center">
+                <button
+                  onClick={handlePlaceOrder}
+                  className="bg-primary text-white p-2 w-full font-bold rounded-sm flex justify-center items-center"
+                >
                   Place Order
                 </button>
               </div>
