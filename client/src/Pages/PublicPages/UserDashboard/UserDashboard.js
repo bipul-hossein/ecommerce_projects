@@ -1,16 +1,24 @@
 import React, { useContext } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../../components/public/navbar/Navbar";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const UserDashboard = () => {
   const { LogOut, userOldDbInfo } = useContext(AuthContext);
+  const pathname = useLocation()?.pathname;
+
+  let subMenu = false;
+  if (pathname === "/account/" || pathname === "/account") {
+    subMenu = true;
+  }
+
   const handleLogOut = () => {
     LogOut();
   };
   const ProfileIcon =
     userOldDbInfo?.payload?.name?.firstName[0] +
     userOldDbInfo?.payload?.name?.lastName[0];
+
   return (
     <>
       <Navbar />
@@ -35,6 +43,26 @@ const UserDashboard = () => {
             </button>
           </div>
         </div>
+        <div
+          className={`w-full p-2 rounded-md border borer-1px mt-2 bg-blue-200 hidden ${
+            subMenu ? "md:hidden" : "md:block"
+          }`}
+        >
+          <div className="ml-10 flex items-center gap-10 font-bold text-sm text-gray-600">
+            <Link to="/account">Dashboard</Link>
+            {subMenuItems?.map((item, i) => (
+              <NavLink 
+              key={i}
+                to={item.to}
+                className={({ isActive }) =>
+                  isActive ? "text-blue-500 underline" : ""
+                }
+              >
+                {item.text}
+              </NavLink>
+            ))}
+          </div>
+        </div>
         <div className="my-10">
           <Outlet />
         </div>
@@ -44,3 +72,30 @@ const UserDashboard = () => {
 };
 
 export default UserDashboard;
+
+const subMenuItems = [
+  {
+    to: "/account/orders",
+    text: "Orders",
+  },
+  {
+    to: "/account/edit-profile",
+    text: "Edit Profile",
+  },
+  {
+    to: "/account/change-password",
+    text: "Change Password",
+  },
+  {
+    to: "/account/address",
+    text: "Address",
+  },
+  {
+    to: "/account/wish-list",
+    text: "Wish List",
+  },
+  {
+    to: "/account/transactions",
+    text: "Transactions",
+  },
+];
