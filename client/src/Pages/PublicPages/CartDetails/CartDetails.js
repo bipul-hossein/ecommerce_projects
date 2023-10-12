@@ -84,8 +84,9 @@ const CartDetails = () => {
 
   const calculateSubTotal = () => {
     let total = 0;
-    cartItems.forEach((item, i) => {
-      const calculate = parseInt(item?.quantity) * parseInt(item?.price);
+    cartItems?.forEach((item, i) => {
+      const quantity = item?.quantity ? parseInt(item?.quantity) : 1
+      const calculate = quantity * parseInt(item?.price);
       total = total + calculate;
     });
     return total;
@@ -94,6 +95,8 @@ const CartDetails = () => {
   useEffect(() => {
     setSubTotal(calculateSubTotal());
   }, [cartItems, added]) //eslint-disable-line
+
+
 
 
   if (!cartItems?.length) {
@@ -205,7 +208,7 @@ const CartDetails = () => {
             </tr>
           </tbody>
         </table>
-        <Link to="/cart/checkout" state={cartItems}>
+        <Link to="/checkout" state={cartItems}>
           <button className="w-full mt-4 md:mt-8 mb-3 rounded-3xl text-white bg-primary py-4 text-sm font-bold px-3">
             PROCEED TO CHECKOUT
           </button>
