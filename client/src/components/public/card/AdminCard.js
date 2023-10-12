@@ -5,8 +5,8 @@ const AdminCard = ({
   data,
   handleUpdateProduct,
   handleDeleteProduct,
+  setProductId,
   setFile,
-  requiredCategory,
 }) => {
   //console.log(data);
   const [openModal, setOpenModal] = useState(false);
@@ -42,11 +42,17 @@ const AdminCard = ({
         <div className="">
           <button
             className="py-1 px-3 rounded hover:bg-blue-400 hover:text-black bg-primary text-white mr-3"
-            onClick={() => setOpenModal(true)}
+            onClick={() => {
+              setOpenModal(true);
+              setProductId(data?._id);
+            }}
           >
             Edit
           </button>
-          <button onClick={()=>handleDeleteProduct(data?._id)} className="py-1 px-3 rounded hover:bg-blue-400 hover:text-black bg-primary text-white">
+          <button
+            onClick={() => handleDeleteProduct(data)}
+            className="py-1 px-3 rounded hover:bg-blue-400 hover:text-black bg-primary text-white"
+          >
             Delete
           </button>
         </div>
@@ -57,7 +63,6 @@ const AdminCard = ({
           data={data}
           handleUpdateProduct={handleUpdateProduct}
           setFile={setFile}
-          requiredCategory={requiredCategory}
         />
       </div>
     </div>

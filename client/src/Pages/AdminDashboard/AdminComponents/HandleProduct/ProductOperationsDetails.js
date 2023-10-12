@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import AdminCard from "../../../../components/public/card/AdminCard";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ProductOperationsDetails = () => {
-  const [requiredCategory, setRequiredCategory] = useState(0);
+  const [productId, setProductId] = useState({});
   const [file, setFile] = useState({});
-
   const categoryId = useParams();
-
+  console.log(productId);
   // fetch data
   const { data: CategoryProducts = [], refetch } = useQuery({
     queryKey: ["CategoryProduct "],
@@ -34,25 +35,37 @@ const ProductOperationsDetails = () => {
     formData.append("sold", form.sold.value);
     formData.append("category", form.category.value);
     formData.append("file", file);
-    console.log(form);
 
-    // const res = await axios.put(
-    //   `http://localhost:5000/api/products/${id}`,
-    //   formData
-    // );
-    // if(res?.data){
-    //   toast.success("Product updated successfully")
-    // }
+    const res = await axios.put(
+      `http://localhost:5000/api/products/${productId}`,
+      formData
+    );
+    const { message } = res?.data;
+    if (message) {
+      toast.success(message);
+    } else {
+      toast.error(message);
+    }
+    refetch();
   };
 
   // delete product
-  const handleDeleteProduct = (id) => {
-    console.log(id)
-    // const res = await axios.delete(
-    //   `http://localhost:5000/api/products/${id}`);
-    // if(res?.data){
-    //   toast.success("Product Deleted Successfully")
-    // }
+  const handleDeleteProduct = async (product) => {
+    const agree = window.confirm(
+      `Are you went delete ${product?.title} category?`
+    );
+    if (agree) {
+      const res = await axios.delete(
+        `http://localhost:5000/api/products/${product?._id}`
+      );
+      const { message, } = res?.data;
+      if (message) {
+        toast.success(message);
+      } else {
+        toast.error(message);
+      }
+      refetch();
+    }
   };
 
   return (
@@ -63,8 +76,8 @@ const ProductOperationsDetails = () => {
           data={product}
           handleUpdateProduct={handleUpdateProduct}
           handleDeleteProduct={handleDeleteProduct}
+          setProductId={setProductId}
           setFile={setFile}
-          requiredCategory={requiredCategory}
         />
       ))}
     </div>

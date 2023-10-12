@@ -33,12 +33,10 @@ const productSchema = new Schema({
     type: Number,
     trim: true,
     default: 0,
-    require: true
   },
   shipping: {
     type: Number,
     default: 0, 
-    require: true
   },
   image: {
     type: String,

@@ -25,6 +25,7 @@ import OrderConfirmMessage from "../../Pages/PublicPages/Checkout/OrderConfirmMe
 import PrivateRouters from './../PrivateRouters/PrivateRouters';
 import ProductOperations from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/ProductOperations";
 import ProductOperationsDetails from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/ProductOperationsDetails";
+import UserInfo from "../../Pages/AdminDashboard/AdminComponents/UserInfo/UserInfo";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/orders",
         element: <Orders />,
+      },
+      {
+        path: "/dashboard/users",
+        element: <UserInfo />,
       },
       {
         path: "/dashboard/orders/details",
