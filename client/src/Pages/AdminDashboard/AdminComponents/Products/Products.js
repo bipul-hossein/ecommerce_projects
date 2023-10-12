@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-//import { Link } from "react-router-dom";
-import CreateProduct from "./CreateProduct";
-import ProductOperations from "./ProductOperations";
+import CreateProduct from "./productsComponents/CreateProduct";
+import ProductManager from "./productsComponents/ProductManager";
 
 const Products = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -29,7 +28,7 @@ const Products = () => {
         <CreateProduct />
       </div>
       <div className={`${activeIndex === 1 ? "block" : "hidden"}`}>
-        <ProductOperations />
+        <ProductManager />
       </div>
     </div>
   );

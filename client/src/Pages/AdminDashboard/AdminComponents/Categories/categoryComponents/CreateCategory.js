@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import toast from "react-hot-toast";
 
 const CreateCategory = ({ refetch }) => {
   const handleSubmit = async (e) => {
@@ -14,7 +15,12 @@ const CreateCategory = ({ refetch }) => {
     };
     try {
       const res = await axios.post("http://localhost:5000/categories", data);
-      console.log(res);
+      const { message } = res?.data;
+      if (message) {
+        toast.success(message);
+      } else {
+        toast.error(message);
+      }
       refetch();
     } catch (error) {
       console.log(error);

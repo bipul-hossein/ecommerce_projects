@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const ProductOperations = () => {
   const navigate = useNavigate();
   // fetch data
-  const { data: categories = [], refetch } = useQuery({
+  const { data: categories = []} = useQuery({
     queryKey: ["categoryData"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/categories`);
@@ -23,13 +23,13 @@ const ProductOperations = () => {
       <div className="md:w-4/6">
         <h4 className="text-base text-center mb-3">PRODUCTS CATEGORY</h4>
         <div className="grid grid-cols-2 gap-2">
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <p
               onClick={() => handleRedirect(category?._id)}
               key={category?._id}
               className="py-5 px-2 text-center text-base bg-blue-50 rounded"
             >
-              {category.title}
+              {category?.title}
             </p>
           ))}
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminCard from "../../../../components/public/card/AdminCard";
+import AdminCard from "./ProductCard";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import axios from "axios";
@@ -46,6 +46,7 @@ const ProductOperationsDetails = () => {
     } else {
       toast.error(message);
     }
+    form.reset()
     refetch();
   };
 
