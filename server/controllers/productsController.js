@@ -10,7 +10,6 @@ require('dotenv').config();
 const handleCreateProducts = async (req, res, next) => {
   try {
     const image = req?.file?.filename;
-    
     const {
       title,
       description,
@@ -20,7 +19,6 @@ const handleCreateProducts = async (req, res, next) => {
       category,
       sold,
     } = req.body;
-
 
     const newProduct = await Product.create({
       title: title,
@@ -71,6 +69,7 @@ const handleGetCategoryProducts = async (req, res, next) => {
     next(error);
   }
 };
+
 const handleGetProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -89,6 +88,7 @@ const handleGetProduct = async (req, res, next) => {
 const handleUpdateProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
+    const image = req?.file?.filename;
     const {
       title,
       description,
@@ -97,7 +97,6 @@ const handleUpdateProduct = async (req, res, next) => {
       shipping,
       category,
       sold,
-      image,
     } = req.body;
     const filter = { _id: id };
     const updateField = {
@@ -110,7 +109,7 @@ const handleUpdateProduct = async (req, res, next) => {
         shipping,
         category,
         sold,
-        image,
+        image: `${process.env.SERVER_URL}/uploads/${image}`
       },
     };
     const option = {
@@ -122,7 +121,7 @@ const handleUpdateProduct = async (req, res, next) => {
       option
     );
     if (!updateProduct) {
-      throw createError(404, "Product not found");
+      res.status(404).json({ message: "Product not Updated" })
     }
     return successResponse(res, {
       statusCode: 200,

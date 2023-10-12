@@ -1,12 +1,21 @@
 import React from "react";
+import { useQuery } from "react-query";
 
 const AdminEditProductModal = ({
   data,
   setOpenModal,
   handleUpdateProduct,
   setFile,
-  requiredCategory,
 }) => {
+  const { data: categoryList } = useQuery({
+    queryKey: [],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/categories`);
+      const data = await res.json();
+      return data;
+    },
+  });
+
   return (
     <div className="w-full h-screen z-40 fixed top-0 left-0 bg-opacity-70 bg-gray-400">
       <div className="w-[430px] md:w-[500px] relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-3 md:p-5 rounded-md border">
@@ -28,7 +37,7 @@ const AdminEditProductModal = ({
                   type="file"
                   accept="image/png, image/jpeg, image/jpg"
                   name="image"
-                  required
+                //  required
                   className="py-2 outline-none"
                 />
               </div>
@@ -59,16 +68,17 @@ const AdminEditProductModal = ({
                 </label>
                 <select
                   name="category"
-                  required={requiredCategory > 0}
                   id="category-select"
                   className="bg-slate-100 px-2 py-2 rounded md:w-auto text-xs md:text-sm border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                 >
-                  <option value="">select one</option>
-                  {/* {categoryList?.payload?.map((catList, i) => (
+                  <option defaultValue={data?.category} value="">
+                  select one
+                  </option>
+                  {categoryList?.payload?.map((catList, i) => (
                     <option key={i} value={catList?._id}>
                       {catList?.title}
                     </option>
-                  ))} */}
+                  ))}
                 </select>
               </div>
               <div className="form-control w-2/5 mt-3 md:mt-4">
