@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const Address = () => {
+  const { userOldDbInfo, } = useContext(AuthContext);
   return (
     <section className="max-w-[500px] my-10">
       <h1 className="text-base md:text-xl font-bold text-blue-500">
         Your Address
       </h1>
       <p className="text-gray-500 p-2 rounded-md mt-2">
-        1401 US-18, Hot Springs, SD 57747, United States
+      {userOldDbInfo?.payload?.address?.addressDetails}
       </p>
       <div className="mt-4">
         <Link

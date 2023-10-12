@@ -56,7 +56,6 @@ if(user?.email){
   useEffect(() => {
     return () =>
       onAuthStateChanged(auth, (currentUser) => {
-        console.log(currentUser?.email);
         setUser(currentUser);
         setLoading(false);
       });

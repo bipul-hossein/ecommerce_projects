@@ -23,6 +23,9 @@ import Products from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/P
 import Checkout from "../../Pages/PublicPages/Checkout/Checkout";
 import OrderConfirmMessage from "../../Pages/PublicPages/Checkout/OrderConfirmMessage";
 import PrivateRouters from './../PrivateRouters/PrivateRouters';
+import ProductOperations from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/ProductOperations";
+import ProductOperationsDetails from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/ProductOperationsDetails";
+import UserInfo from "../../Pages/AdminDashboard/AdminComponents/UserInfo/UserInfo";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +97,10 @@ const router = createBrowserRouter([
         element: <Orders />,
       },
       {
+        path: "/dashboard/users",
+        element: <UserInfo />,
+      },
+      {
         path: "/dashboard/orders/details",
         element: <SpecificOrderDetails />,
       },
@@ -104,6 +111,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/products",
         element: <Products />,
+      },
+      {
+        path: "/dashboard/products/operation",
+        element: <ProductOperations/>,
+      },
+      {
+        path: "/dashboard/products/operation/:id",
+        element: <ProductOperationsDetails/>,
       },
     ],
   },

@@ -22,6 +22,19 @@ const handleCreateUser = async (req, res, next) => {
     next(error);
   }
 };
+const handleGetAllUser = async (req, res, next) => {
+  try {
+    const getAllUser = await User.find({}).lean();
+    return successResponse(res, {
+      statusCode: 200,
+      message: "User Get Successfully",
+      payload: getAllUser,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const handleGetUser = async (req, res, next) => {
   try {
     const { email } = req.query;
@@ -116,6 +129,7 @@ const handleGetAddress = async (req, res, next) => {
 
 module.exports = {
   handleCreateUser,
+  handleGetAllUser,
   handleGetUser,
   handleUpdateUser,
   handleCreateAddress,

@@ -94,7 +94,8 @@ const CartDetails = () => {
 
   useEffect(() => {
     setSubTotal(calculateSubTotal());
-  }, [cartItems, added]); //eslint-disable-line
+  }, [cartItems, added]) //eslint-disable-line
+
 
 
 
