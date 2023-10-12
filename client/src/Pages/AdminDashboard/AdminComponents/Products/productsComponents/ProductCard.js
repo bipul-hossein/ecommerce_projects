@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminEditProductModal from "../adminEditProductModal/AdminEditProductModal";
+import AdminEditProductModal from "./EditModal";
 
 const AdminCard = ({
   data,
@@ -59,6 +59,7 @@ const AdminCard = ({
       </div>
       <div className={`${openModal ? "block" : "hidden"}`}>
         <AdminEditProductModal
+          openModal={openModal}
           setOpenModal={setOpenModal}
           data={data}
           handleUpdateProduct={handleUpdateProduct}

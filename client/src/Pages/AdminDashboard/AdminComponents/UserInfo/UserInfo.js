@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 
 const UserInfo = () => {
-  const { data: users = [], refetch } = useQuery({
+  const { data: users = [],} = useQuery({
     queryKey: ["usersData"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/api/users`);

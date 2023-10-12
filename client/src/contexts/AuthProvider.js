@@ -31,7 +31,7 @@ useEffect(()=>{
 if(user?.email){
   refetch()
 }
-},[user?.email])
+},[user?.email,refetch])
 
   const createUser = (email, password) => {
     setLoading(true);
