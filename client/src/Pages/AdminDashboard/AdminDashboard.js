@@ -13,9 +13,9 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="mb-10">
+    <div className="mb-5">
       <Navbar />
-      <div className="md:max-w-[1200px] md:w-11/12 md:mx-auto px-2 mt-20 mb-10">
+      <div className="md:max-w-[1200px] md:mx-auto px-2 mt-4 mb-4">
         <h2 className="text-center text-2xl  font-semibold md:font-bold md:text-3xl mb-6">
           Admin Panel
         </h2>

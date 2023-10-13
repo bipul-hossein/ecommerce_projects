@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 const AdminOptions = () => {
     return (
         <div>
-            <div className='md:max-w-[1200px] md:w-11/12 md:mx-auto px-2 mt-20 mb-10'>
+            <div className='md:max-w-[1200px] md:mx-auto px-2 mt-8'>
                 <div className="my-5 grid grid-cols-3 md:grid-cols-5 gap-2">
                     {options.map((option, i) => (
                         <div key={i}>
