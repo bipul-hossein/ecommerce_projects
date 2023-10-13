@@ -52,7 +52,6 @@ const AdminEditProductModal = ({
                   type="file"
                   accept="image/png, image/jpeg, image/jpg"
                   name="image"
-                  //  required
                   className="py-2 outline-none"
                 />
               </div>
@@ -84,7 +83,6 @@ const AdminEditProductModal = ({
                 <select
                   name="category"
                   id="category-select"
-                  // defaultValue={product?.category}
                   className="bg-slate-100 px-2 py-2 rounded md:w-auto text-xs md:text-sm border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                 >
                   <option value={defaultCategory?._id}>{defaultCategory?.title}</option>
@@ -102,7 +100,7 @@ const AdminEditProductModal = ({
                 <input
                   required
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
-                  type="text"
+                  type="number"
                   placeholder="Available Qty"
                   defaultValue={product?.stock}
                   name="quantity"
@@ -116,7 +114,7 @@ const AdminEditProductModal = ({
                 </label>
                 <input
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
-                  type="text"
+                  type="number"
                   placeholder="shipping cost"
                   defaultValue={product?.shipping}
                   name="shipping"
@@ -131,7 +129,7 @@ const AdminEditProductModal = ({
                 <input
                   required
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
-                  type="text"
+                  type="number"
                   placeholder="price"
                   defaultValue={product?.price}
                   name="price"
@@ -145,7 +143,7 @@ const AdminEditProductModal = ({
                 <input
                   required
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
-                  type="text"
+                  type="number"
                   placeholder="sold quantity"
                   defaultValue={product?.sold}
                   name="sold"

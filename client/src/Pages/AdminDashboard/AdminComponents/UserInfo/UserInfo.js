@@ -10,11 +10,10 @@ const UserInfo = () => {
       return data?.payload;
     },
   });
-  console.log(users);
 
   return (
     <div>
-      <p className="text-xl text-center">User Info</p>
+      <p className="text-xl text-center font-semibold mb-3">User Info</p>
       {users?.map((user) => (
         <div key={user?._id}>
           <p>{user?.name?.firstName+" "+user?.name?.lastName}</p>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import AdminEditProductModal from "./EditModal";
 
 const AdminCard = ({
@@ -7,10 +7,11 @@ const AdminCard = ({
   handleDeleteProduct,
   setProductId,
   setFile,
-  defaultCategory
+  defaultCategory,
+  openModal,
+  setOpenModal,
 }) => {
   //console.log(data);
-  const [openModal, setOpenModal] = useState(false);
 
   return (
     <div>

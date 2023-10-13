@@ -17,6 +17,10 @@ const ProductOperations = () => {
     navigate(`/dashboard/products/operation/${id}`);
   };
 
+  if(!categories?.length){
+   return <h2 className="text-2xl font-semibold my-10 text-center">Loading...</h2>
+  }
+
   return (
     <div className="flex flex-col-reverse gap-10 md:flex-row px-3">
       {/* PRODUCTS CATEGORY */}

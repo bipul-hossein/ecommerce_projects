@@ -106,7 +106,7 @@ const CreateProduct = () => {
                 </label>
                 <input
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
-                  type="text"
+                  type="number"
                   placeholder="shipping cost"
                   name="shipping"
                 />
@@ -120,7 +120,7 @@ const CreateProduct = () => {
                 <input
                   required
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
-                  type="text"
+                  type="number"
                   placeholder="price"
                   name="price"
                 />
@@ -132,7 +132,7 @@ const CreateProduct = () => {
                 <input
                   required
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
-                  type="text"
+                  type="number"
                   placeholder="quantity"
                   name="quantity"
                 />
@@ -144,7 +144,7 @@ const CreateProduct = () => {
                 <input
                   required
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
-                  type="text"
+                  type="number"
                   placeholder="sold quantity"
                   name="sold"
                 />

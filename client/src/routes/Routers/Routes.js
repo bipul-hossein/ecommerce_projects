@@ -25,6 +25,7 @@ import ProductManagerDetails from "../../Pages/AdminDashboard/AdminComponents/Pr
 import ProductManager from "../../Pages/AdminDashboard/AdminComponents/Products/productsComponents/ProductManager";
 import Products from "../../Pages/AdminDashboard/AdminComponents/Products/Products";
 import Categories from "../../Pages/AdminDashboard/AdminComponents/Categories/Categories";
+import AdminOptions from "../../Pages/AdminDashboard/AdminComponents/AdminOptions/AdminOptions";
 
 const router = createBrowserRouter([
   {
@@ -85,11 +86,11 @@ const router = createBrowserRouter([
   //Admin Dashboard
   {
     path: "/dashboard",
-    element: <AdminLayout />,
+    element: <AdminDashboard />,
     children: [
       {
         path: "/dashboard",
-        element: <AdminDashboard />,
+        element: <AdminOptions />,
       },
       {
         path: "/dashboard/orders",
