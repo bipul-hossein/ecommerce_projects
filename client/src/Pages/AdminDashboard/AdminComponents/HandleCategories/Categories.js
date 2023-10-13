@@ -24,7 +24,6 @@ const Categories = ({
       refetch();
     }
   };
-  console.log(categoriesItem);
 
   return (
     <div className="w-full md:w-7/12 bg-slate-100 py-5 mx-auto rounded">
@@ -34,7 +33,6 @@ const Categories = ({
             <th className="text-left md:text-center pl-2 text-sm font-medium md:font-semibold py-2 md:p-2">
               Category Name
             </th>
-            {/*   <th className="text-sm font-medium md:font-semibold py-2 md:p-2"></th> */}
             <th className="text-sm font-medium md:font-semibold py-2 md:p-2">
               Operation
             </th>
@@ -61,9 +59,6 @@ const Categories = ({
                   Delete
                 </button>
               </td>
-
-              {/*  <td className=" bg-red-100 py-1 md:py-2 border-t-[10px] border-white">
-              </td> */}
             </tr>
           ))}
         </tbody>

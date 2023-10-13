@@ -40,7 +40,7 @@ productRouter.get("/category/:id", handleGetCategoryProducts);
 productRouter.get("/:id", handleGetProduct);
 
 //Put:api/id update a single product by product id
-productRouter.put("/:id", handleUpdateProduct);
+productRouter.put("/:id",upload, handleUpdateProduct);
 
 //Put:api/id delete a single product by product id
 productRouter.delete("/:id", handleDeleteProduct);

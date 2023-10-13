@@ -23,6 +23,8 @@ import Products from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/P
 import Checkout from "../../Pages/PublicPages/Checkout/Checkout";
 import OrderConfirmMessage from "../../Pages/PublicPages/Checkout/OrderConfirmMessage";
 import PrivateRouters from './../PrivateRouters/PrivateRouters';
+import ProductOperations from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/ProductOperations";
+import ProductOperationsDetails from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/ProductOperationsDetails";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +106,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/products",
         element: <Products />,
+      },
+      {
+        path: "/dashboard/products/operation",
+        element: <ProductOperations/>,
+      },
+      {
+        path: "/dashboard/products/operation/:id",
+        element: <ProductOperationsDetails/>,
       },
     ],
   },

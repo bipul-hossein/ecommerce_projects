@@ -87,51 +87,56 @@ const handleGetProduct = async (req, res, next) => {
 };
 
 const handleUpdateProduct = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const {
-      title,
-      description,
-      price,
-      quantity,
-      shipping,
-      category,
-      sold,
-      image,
-    } = req.body;
-    const filter = { _id: id };
-    const updateField = {
-      $set: {
-        title: title,
-        slug: slugify(title),
-        description,
-        price,
-        quantity,
-        shipping,
-        category,
-        sold,
-        image,
-      },
-    };
-    const option = {
-      new: true,
-    };
-    const updateProduct = await Product.findOneAndUpdate(
-      filter,
-      updateField,
-      option
-    );
-    if (!updateProduct) {
-      throw createError(404, "Product not found");
-    }
-    return successResponse(res, {
-      statusCode: 200,
-      message: "Product updated successfully",
-      payload: updateProduct,
-    });
-  } catch (error) {
-    next(error);
-  }
+
+  console.log(req.body, req.file.filename);
+
+
+  // try {
+  //   const { id } = req.params;
+  //   const image = req?.file?.filename;
+  //   const {
+  //     title,
+  //     description,
+  //     price,
+  //     quantity,
+  //     shipping,
+  //     category,
+  //     sold,
+  //   } = req.body;
+    
+  //   const filter = { _id: id };
+  //   const updateField = {
+  //     $set: {
+  //       title: title,
+  //       slug: slugify(title),
+  //       description,
+  //       price,
+  //       quantity,
+  //       shipping,
+  //       category,
+  //       sold,
+  //       image,
+  //     },
+  //   };
+  //   const option = {
+  //     new: true,
+  //   };
+  //   const updateProduct = await Product.findOneAndUpdate(
+  //     filter,
+  //     updateField,
+  //     option
+  //   );
+  //   if (!updateProduct) {
+  //     throw createError(404, "Product not found");
+  //   }
+  //   return successResponse(res, {
+  //     statusCode: 200,
+  //     message: "Product updated successfully",
+  //     payload: updateProduct,
+  //   });
+  // } catch (error) {
+  //   next(error);
+  // }
 };
 
 const handleDeleteProduct = async (req, res, next) => {

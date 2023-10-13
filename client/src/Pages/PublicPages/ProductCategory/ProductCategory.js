@@ -10,6 +10,7 @@ const ProductCategory = () => {
  const category_name = useParams();
 
   const {payload:products} = useLoaderData();
+  console.log(products);
 
   const [filterSidebar, setFilterSidebar] = useState(false);
 
