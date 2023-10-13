@@ -1,8 +1,8 @@
 import axios from "axios";
 import React from "react";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
-const Categories = ({
+const CategoryManager = ({
   setCategoryEditInfo,
   categoriesItem,
   refetch,
@@ -67,4 +67,4 @@ const Categories = ({
   );
 };
 
-export default Categories;
+export default CategoryManager;

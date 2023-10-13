@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import AdminCard from "../../../../components/public/card/AdminCard";
+import React, { useEffect, useState } from "react";
+import AdminCard from "./ProductCard";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import axios from 'axios';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const ProductOperationsDetails = () => {
-  const [requiredCategory, setRequiredCategory] = useState(0);
-  const [productId, setProductId] = useState("");
+  const [productId, setProductId] = useState({});
+  const [defaultCategory, setDefaultCategory] = useState("");
   const [file, setFile] = useState({});
-
   const categoryId = useParams();
 
   // fetch data
@@ -24,6 +23,15 @@ const ProductOperationsDetails = () => {
     },
   });
 
+//get single category with Id
+  useEffect(()=> {
+    axios.get(`http://localhost:5000/categories/${categoryId?.id}`)
+    .then(data => setDefaultCategory(data?.data?.payload))
+    .catch(err => console.log(err))
+  }, [categoryId])
+
+
+
   //   edit product
   const handleUpdateProduct = async (event) => {
     event.preventDefault();
@@ -37,25 +45,38 @@ const ProductOperationsDetails = () => {
     formData.append("sold", form.sold.value);
     formData.append("category", form.category.value);
     formData.append("file", file);
-    console.log(form);
 
     const res = await axios.put(
       `http://localhost:5000/api/products/${productId}`,
       formData
     );
-    if(res?.data){
-      toast.success("Product updated successfully")
+    const { message } = res?.data;
+    if (message) {
+      toast.success(message);
+    } else {
+      toast.error(message);
     }
+    form.reset()
+    refetch();
   };
 
   // delete product
-  const handleDeleteProduct = (id) => {
-    console.log(id)
-    // const res = await axios.delete(
-    //   `http://localhost:5000/api/products/${id}`);
-    // if(res?.data){
-    //   toast.success("Product Deleted Successfully")
-    // }
+  const handleDeleteProduct = async (product) => {
+    const agree = window.confirm(
+      `Are you went delete ${product?.title} category?`
+    );
+    if (agree) {
+      const res = await axios.delete(
+        `http://localhost:5000/api/products/${product?._id}`
+      );
+      const { message, } = res?.data;
+      if (message) {
+        toast.success(message);
+      } else {
+        toast.error(message);
+      }
+      refetch();
+    }
   };
 
   return (
@@ -66,9 +87,9 @@ const ProductOperationsDetails = () => {
           data={product}
           handleUpdateProduct={handleUpdateProduct}
           handleDeleteProduct={handleDeleteProduct}
-          setFile={setFile}
-          requiredCategory={requiredCategory}
           setProductId={setProductId}
+          setFile={setFile}
+          defaultCategory={defaultCategory}
         />
       ))}
     </div>

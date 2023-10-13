@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 
 const AdminEditProductModal = ({
   data,
+  openModal,
   setOpenModal,
   handleUpdateProduct,
   setFile,
-  requiredCategory,
+  defaultCategory
 }) => {
-
-
-
+  const [product, setProduct] = useState(null);
   const { data: categoryList } = useQuery({
     queryKey: [],
     queryFn: async () => {
@@ -20,7 +19,17 @@ const AdminEditProductModal = ({
     },
   });
 
-
+  
+  
+  useEffect(() => {
+    if (!openModal) {
+      setProduct(null);
+    } else {
+      setProduct(data);
+    }
+  }, [data,openModal]);
+  
+  const filteredCategory = categoryList?.payload?.filter(cat => defaultCategory?._id !== cat?._id);
 
   return (
     <div className="w-full h-screen z-40 fixed top-0 left-0 bg-opacity-70 bg-gray-400">
@@ -43,13 +52,13 @@ const AdminEditProductModal = ({
                   type="file"
                   accept="image/png, image/jpeg, image/jpg"
                   name="image"
-                  required
+                  //  required
                   className="py-2 outline-none"
                 />
               </div>
               <div className="flex flex-col">
                 <p>previous image</p>
-                <img src={data?.image} alt="" className="h-24 w-24" />
+                <img src={product?.image} alt="" className="h-24 w-24" />
               </div>
             </div>
           </div>
@@ -63,7 +72,7 @@ const AdminEditProductModal = ({
                 className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                 type="text"
                 placeholder="Title"
-                defaultValue={data?.title}
+                defaultValue={product?.title}
                 name="title"
               />
             </div>
@@ -74,12 +83,12 @@ const AdminEditProductModal = ({
                 </label>
                 <select
                   name="category"
-                  required={requiredCategory > 0}
                   id="category-select"
-                  defaultValue={data?.category}
+                  // defaultValue={product?.category}
                   className="bg-slate-100 px-2 py-2 rounded md:w-auto text-xs md:text-sm border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                 >
-                  {categoryList?.payload?.map((catList, i) => (
+                  <option value={defaultCategory?._id}>{defaultCategory?.title}</option>
+                  {filteredCategory?.map((catList, i) => (
                     <option key={i} value={catList?._id}>
                       {catList?.title}
                     </option>
@@ -95,7 +104,7 @@ const AdminEditProductModal = ({
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                   type="text"
                   placeholder="Available Qty"
-                  defaultValue={data?.stock}
+                  defaultValue={product?.stock}
                   name="quantity"
                 />
               </div>
@@ -109,7 +118,7 @@ const AdminEditProductModal = ({
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                   type="text"
                   placeholder="shipping cost"
-                  defaultValue={data?.shipping}
+                  defaultValue={product?.shipping}
                   name="shipping"
                 />
               </div>
@@ -124,7 +133,7 @@ const AdminEditProductModal = ({
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                   type="text"
                   placeholder="price"
-                  defaultValue={data?.price}
+                  defaultValue={product?.price}
                   name="price"
                 />
               </div>
@@ -138,7 +147,7 @@ const AdminEditProductModal = ({
                   className="bg-slate-100 px-2 py-2 rounded border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                   type="text"
                   placeholder="sold quantity"
-                  defaultValue={data?.sold}
+                  defaultValue={product?.sold}
                   name="sold"
                 />
               </div>
@@ -154,7 +163,7 @@ const AdminEditProductModal = ({
               id="w3review"
               name="description"
               placeholder="description"
-              defaultValue={data?.description}
+              defaultValue={product?.description}
               rows="4"
               cols="50"
             ></textarea>

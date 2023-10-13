@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
-import CreateCategory from "./CreateCategory";
-import Categories from "./Categories";
-import Modal from "./Modal";
+import CreateCategory from "./categoryComponents/CreateCategory";
+import CategoryManager from "./categoryComponents/CategoryManager";
+import Modal from "./categoryComponents/EditModal";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const HandleCategories = () => {
+const Categories = () => {
   const [categoryEditInfo, setCategoryEditInfo] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   // fetch data
@@ -46,7 +46,7 @@ const HandleCategories = () => {
           CATEGORIES
         </h1>
         <div className="flex justify-between flex-wrap gap-5">
-          <Categories
+          <CategoryManager
             categoriesItem={categoriesItem}
             refetch={refetch}
             categoryEditInfo={categoryEditInfo}
@@ -67,4 +67,4 @@ const HandleCategories = () => {
   );
 };
 
-export default HandleCategories;
+export default Categories;

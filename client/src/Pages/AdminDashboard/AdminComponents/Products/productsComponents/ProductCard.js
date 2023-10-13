@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import AdminEditProductModal from "../adminEditProductModal/AdminEditProductModal";
+import AdminEditProductModal from "./EditModal";
 
 const AdminCard = ({
   data,
   handleUpdateProduct,
   handleDeleteProduct,
+  setProductId,
   setFile,
-  requiredCategory,
-  setProductId
+  defaultCategory
 }) => {
   //console.log(data);
   const [openModal, setOpenModal] = useState(false);
@@ -43,22 +43,29 @@ const AdminCard = ({
         <div className="">
           <button
             className="py-1 px-3 rounded hover:bg-blue-400 hover:text-black bg-primary text-white mr-3"
-            onClick={() => {setOpenModal(true); setProductId(data?._id)}}
+            onClick={() => {
+              setOpenModal(true);
+              setProductId(data?._id);
+            }}
           >
             Edit
           </button>
-          <button onClick={()=>handleDeleteProduct(data?._id)} className="py-1 px-3 rounded hover:bg-blue-400 hover:text-black bg-primary text-white">
+          <button
+            onClick={() => handleDeleteProduct(data)}
+            className="py-1 px-3 rounded hover:bg-blue-400 hover:text-black bg-primary text-white"
+          >
             Delete
           </button>
         </div>
       </div>
       <div className={`${openModal ? "block" : "hidden"}`}>
         <AdminEditProductModal
+          openModal={openModal}
           setOpenModal={setOpenModal}
           data={data}
           handleUpdateProduct={handleUpdateProduct}
           setFile={setFile}
-          requiredCategory={requiredCategory}
+          defaultCategory={defaultCategory}
         />
       </div>
     </div>

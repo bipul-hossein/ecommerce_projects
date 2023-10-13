@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-//import { Link } from "react-router-dom";
-import CreateProduct from "./CreateProduct";
-import ProductOperations from "./ProductOperations";
+import CreateProduct from "./productsComponents/CreateProduct";
+import ProductManager from "./productsComponents/ProductManager";
 
 const Products = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -14,7 +13,7 @@ const Products = () => {
              activeIndex === 0 && "bg-blue-400"
            }`}
         >
-          Add Product
+          Manage Products
         </p>
         <p
           onClick={() => setActiveIndex(1)}
@@ -22,14 +21,14 @@ const Products = () => {
             activeIndex === 1 && "bg-blue-400"
           }`}
         >
-          Manage Products
+          Add Product
         </p>
       </div>
-      <div className={`${activeIndex === 0 ? "block" : "hidden"}`}>
+      <div className={`${activeIndex === 1 ? "block" : "hidden"}`}>
         <CreateProduct />
       </div>
-      <div className={`${activeIndex === 1 ? "block" : "hidden"}`}>
-        <ProductOperations />
+      <div className={`${activeIndex === 0 ? "block" : "hidden"}`}>
+        <ProductManager />
       </div>
     </div>
   );

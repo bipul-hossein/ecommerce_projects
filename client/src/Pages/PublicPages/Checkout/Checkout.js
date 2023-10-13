@@ -63,6 +63,8 @@ const Checkout = () => {
     setSubTotal(calculateSubTotal());
   }, [cartItems]); //eslint-disable-line
 
+
+
   return (
     <>
       <div className="max-w-[1200px] mx-auto my-10 p-2 flex gap-5 flex-col md:flex-row">

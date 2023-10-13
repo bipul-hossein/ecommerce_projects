@@ -64,7 +64,7 @@ const options = [
     },
     {
         icon: <FaProductHunt className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
-        name: "User Info", routes: 'products'
+        name: "User Info", routes: 'users'
     },
     {
         icon: <FaDollarSign className="h-7 md:h-9 w-7 md:w-9 text-blue-500" />,
