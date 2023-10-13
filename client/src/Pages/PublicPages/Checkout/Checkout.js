@@ -60,7 +60,7 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    setSubTotal(calculateSubTotal());  
+    setSubTotal(calculateSubTotal());
   }, [cartItems]); //eslint-disable-line
 
 

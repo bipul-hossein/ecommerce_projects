@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AdminCard from "./ProductCard";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
@@ -7,9 +7,10 @@ import toast from "react-hot-toast";
 
 const ProductOperationsDetails = () => {
   const [productId, setProductId] = useState({});
+  const [defaultCategory, setDefaultCategory] = useState("");
   const [file, setFile] = useState({});
   const categoryId = useParams();
-  console.log(productId);
+
   // fetch data
   const { data: CategoryProducts = [], refetch } = useQuery({
     queryKey: ["CategoryProduct "],
@@ -21,6 +22,15 @@ const ProductOperationsDetails = () => {
       return data?.payload;
     },
   });
+
+//get single category with Id
+  useEffect(()=> {
+    axios.get(`http://localhost:5000/categories/${categoryId?.id}`)
+    .then(data => setDefaultCategory(data?.data?.payload))
+    .catch(err => console.log(err))
+  }, [categoryId])
+
+
 
   //   edit product
   const handleUpdateProduct = async (event) => {
@@ -79,6 +89,7 @@ const ProductOperationsDetails = () => {
           handleDeleteProduct={handleDeleteProduct}
           setProductId={setProductId}
           setFile={setFile}
+          defaultCategory={defaultCategory}
         />
       ))}
     </div>

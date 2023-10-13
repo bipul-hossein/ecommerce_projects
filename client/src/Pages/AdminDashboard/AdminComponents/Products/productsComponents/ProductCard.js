@@ -7,6 +7,7 @@ const AdminCard = ({
   handleDeleteProduct,
   setProductId,
   setFile,
+  defaultCategory
 }) => {
   //console.log(data);
   const [openModal, setOpenModal] = useState(false);
@@ -64,6 +65,7 @@ const AdminCard = ({
           data={data}
           handleUpdateProduct={handleUpdateProduct}
           setFile={setFile}
+          defaultCategory={defaultCategory}
         />
       </div>
     </div>

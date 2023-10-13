@@ -13,7 +13,7 @@ const Products = () => {
              activeIndex === 0 && "bg-blue-400"
            }`}
         >
-          Add Product
+          Manage Products
         </p>
         <p
           onClick={() => setActiveIndex(1)}
@@ -21,13 +21,13 @@ const Products = () => {
             activeIndex === 1 && "bg-blue-400"
           }`}
         >
-          Manage Products
+          Add Product
         </p>
       </div>
-      <div className={`${activeIndex === 0 ? "block" : "hidden"}`}>
+      <div className={`${activeIndex === 1 ? "block" : "hidden"}`}>
         <CreateProduct />
       </div>
-      <div className={`${activeIndex === 1 ? "block" : "hidden"}`}>
+      <div className={`${activeIndex === 0 ? "block" : "hidden"}`}>
         <ProductManager />
       </div>
     </div>

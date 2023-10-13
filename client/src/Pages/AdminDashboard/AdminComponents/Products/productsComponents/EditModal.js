@@ -7,6 +7,7 @@ const AdminEditProductModal = ({
   setOpenModal,
   handleUpdateProduct,
   setFile,
+  defaultCategory
 }) => {
   const [product, setProduct] = useState(null);
   const { data: categoryList } = useQuery({
@@ -18,6 +19,8 @@ const AdminEditProductModal = ({
     },
   });
 
+  
+  
   useEffect(() => {
     if (!openModal) {
       setProduct(null);
@@ -25,8 +28,9 @@ const AdminEditProductModal = ({
       setProduct(data);
     }
   }, [data,openModal]);
+  
+  const filteredCategory = categoryList?.payload?.filter(cat => defaultCategory?._id !== cat?._id);
 
-  console.log(product);
   return (
     <div className="w-full h-screen z-40 fixed top-0 left-0 bg-opacity-70 bg-gray-400">
       <div className="w-[430px] md:w-[500px] relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-3 md:p-5 rounded-md border">
@@ -80,10 +84,11 @@ const AdminEditProductModal = ({
                 <select
                   name="category"
                   id="category-select"
-                  defaultValue={product?.category}
+                  // defaultValue={product?.category}
                   className="bg-slate-100 px-2 py-2 rounded md:w-auto text-xs md:text-sm border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                 >
-                  {categoryList?.payload?.map((catList, i) => (
+                  <option value={defaultCategory?._id}>{defaultCategory?.title}</option>
+                  {filteredCategory?.map((catList, i) => (
                     <option key={i} value={catList?._id}>
                       {catList?.title}
                     </option>
