@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 const ProductOperationsDetails = () => {
   const [productId, setProductId] = useState({});
+  const [openModal, setOpenModal] = useState(false);
   const [defaultCategory, setDefaultCategory] = useState("");
   const [file, setFile] = useState({});
   const categoryId = useParams();
@@ -23,14 +24,13 @@ const ProductOperationsDetails = () => {
     },
   });
 
-//get single category with Id
-  useEffect(()=> {
-    axios.get(`http://localhost:5000/categories/${categoryId?.id}`)
-    .then(data => setDefaultCategory(data?.data?.payload))
-    .catch(err => console.log(err))
-  }, [categoryId])
-
-
+  //get single category with Id
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/categories/${categoryId?.id}`)
+      .then((data) => setDefaultCategory(data?.data?.payload))
+      .catch((err) => console.log(err));
+  }, [categoryId]);
 
   //   edit product
   const handleUpdateProduct = async (event) => {
@@ -53,10 +53,13 @@ const ProductOperationsDetails = () => {
     const { message } = res?.data;
     if (message) {
       toast.success(message);
+      setFile({});
+      form.reset()
+      setOpenModal(false);
     } else {
       toast.error(message);
     }
-    form.reset()
+
     refetch();
   };
 
@@ -69,7 +72,7 @@ const ProductOperationsDetails = () => {
       const res = await axios.delete(
         `http://localhost:5000/api/products/${product?._id}`
       );
-      const { message, } = res?.data;
+      const { message } = res?.data;
       if (message) {
         toast.success(message);
       } else {
@@ -90,6 +93,8 @@ const ProductOperationsDetails = () => {
           setProductId={setProductId}
           setFile={setFile}
           defaultCategory={defaultCategory}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
         />
       ))}
     </div>

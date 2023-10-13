@@ -10,9 +10,9 @@ const Orders = () => {
 
     return (
         <div className='md:w-11/12 md:mx-auto mt-20 md:px-2 md:mt-8'>
-            <h2 className='text-base md:text-xl text-center md:text-left mb-3 md:mb-5 pl-4 md:pl-0'>Recent Orders</h2>
+            <h2 className='text-base md:text-xl text-center md:text-left mb-3 md:mb-5 pl-4 md:pl-0 font-semibold'>Recent Orders</h2>
             <div className='overflow-scroll md:overflow-auto'>
-                <table class="table-auto rounded-t-md w-[750px] md:w-full">
+                <table className="table-auto rounded-t-md w-[750px] md:w-full">
                     <thead className='text-left '>
                         <tr className='text-center bg-blue-100 '>
                             <th className="text-sm font-semibold md:font-medium py-2 md:p-2">ORDER NO.</th>

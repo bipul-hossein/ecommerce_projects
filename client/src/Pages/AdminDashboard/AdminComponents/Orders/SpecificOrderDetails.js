@@ -27,7 +27,7 @@ const SpecificOrderDetails = () => {
                         </div>
                         <div className='bg-white mt-6 shadow shadow-[#00000026] '>
                             <div>
-                                <table class="table-auto w-full">
+                                <table className="table-auto w-full">
                                     <thead className='text-left'>
                                         <tr className=''>
                                             <th className="text-lg font-bold md:font-medium py-2 pl-3 md:pl-5 md:py-3">Items</th>
@@ -79,7 +79,7 @@ const SpecificOrderDetails = () => {
                         </div>
                         <div className='bg-white mt-6 shadow shadow-[#00000026]'>
                             {/* Transactions */}
-                            <table class="table-auto rounded-t-md w-full">
+                            <table className="table-auto rounded-t-md w-full">
                                 <thead className='text-left'>
                                     <tr className=''>
 
@@ -105,7 +105,7 @@ const SpecificOrderDetails = () => {
                         </div>
                         <div className='bg-white mt-6 shadow shadow-[#00000026]'>
                             {/* Balance */}
-                            <table class="table-auto rounded-t-md w-full">
+                            <table className="table-auto rounded-t-md w-full">
                                 <thead className='text-left'>
                                     <tr className=''>
 
