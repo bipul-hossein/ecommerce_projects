@@ -5,13 +5,12 @@ import { BsFillCloudUploadFill } from "react-icons/bs";
 import { useQuery } from "react-query";
 
 const CreateProduct = () => {
-  const [requiredCategory, setRequiredCategory] = useState(0);
+  const [requiredCategory, setRequiredCategory] = useState("");
   const [file, setFile] = useState({});
 
   const handleCreateProduct = async (event) => {
     event.preventDefault();
     const form = event.target;
-    const category = form.category;
     const formData = new FormData();
     formData.append("title", form.title.value);
     formData.append("price", form.price.value);
@@ -22,13 +21,14 @@ const CreateProduct = () => {
     formData.append("category", form.category.value);
     formData.append("file", file);
 
-    setRequiredCategory(category?.length);
     const res = await axios.post(
       "http://localhost:5000/api/products",
       formData
     );
-    if(res?.data){
-      toast.success("product successfully added")
+    if (res?.data) {
+      toast.success("product successfully added");
+      form.reset();
+      setRequiredCategory("");
     }
   };
 
@@ -42,11 +42,11 @@ const CreateProduct = () => {
   });
 
 
-
-
   return (
     <div className="w-11/12 mx-auto mb-24 min-h-screen">
-      <h2 className="text-base font-bold md:text-xl text-center">Add a product</h2>
+      <h2 className="text-base font-bold md:text-xl text-center">
+        Add a product
+      </h2>
       <div className="mt-5">
         <form onSubmit={handleCreateProduct} className="">
           <div className="">
@@ -88,7 +88,8 @@ const CreateProduct = () => {
                 </label>
                 <select
                   name="category"
-                  required={requiredCategory > 0}
+                  required={!requiredCategory}
+                  onChange={(e) => setRequiredCategory(e?.target?.value)}
                   id="category-select"
                   className="bg-slate-100 px-2 py-2 rounded md:w-auto text-xs md:text-sm border-[1px] border-blue-500 focus:outline-1 focus:outline-green-500"
                 >
