@@ -28,21 +28,21 @@ const upload = multer({
 }).single("file");
 
 //POST:api/products
-productRouter.post("/", upload, handleCreateProducts);
+productRouter.post("/products", upload, handleCreateProducts);
 
 //Get:api/products all product
-productRouter.get("/", handleGetProducts);
+productRouter.get("/products", handleGetProducts);
 
 //Get:api/id --category wise all product by category id
-productRouter.get("/category/:id", handleGetCategoryProducts);
+productRouter.get("/products/category/:id", handleGetCategoryProducts);
 
 //Get:api/id single product by product id
-productRouter.get("/:id", handleGetProduct);
+productRouter.get("/products/:id", handleGetProduct);
 
 //Put:api/id update a single product by product id
-productRouter.put("/:id",upload, handleUpdateProduct);
+productRouter.put("/products/:id",upload, handleUpdateProduct);
 
 //Put:api/id delete a single product by product id
-productRouter.delete("/:id", handleDeleteProduct);
+productRouter.delete("/products/:id", handleDeleteProduct);
 
 module.exports = productRouter;

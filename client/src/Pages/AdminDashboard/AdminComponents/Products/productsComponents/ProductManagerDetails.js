@@ -27,7 +27,7 @@ const ProductOperationsDetails = () => {
   //get single category with Id
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/categories/${categoryId?.id}`)
+      .get(`http://localhost:5000/api/categories/${categoryId?.id}`)
       .then((data) => setDefaultCategory(data?.data?.payload))
       .catch((err) => console.log(err));
   }, [categoryId]);

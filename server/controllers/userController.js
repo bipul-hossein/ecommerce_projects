@@ -84,18 +84,16 @@ const handleUpdateUser = async (req, res, next) => {
 const handleCreateAddress = async (req, res, next) => {
   try {
     const { email } = req.query;
-    console.log(email, "find email");
-    const { division, cityArea, postcode, address } = req.body;
-    console.log(division, cityArea, postcode, address);
     const filter = { email: email };
     const updates = {
       $set: {
         address: {
-          division: division,
-          city: cityArea,
-          postCode: postcode,
-          addressDetails: address,
+          division: req.body.division,
+          city: req.body.cityArea,
+          postCode: req.body.postcode,
+          addressDetails: req.body.address
         },
+        phone: req.body?.phone
       },
     };
     const option = {

@@ -13,7 +13,7 @@ const AdminEditProductModal = ({
   const { data: categoryList } = useQuery({
     queryKey: [],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/categories`);
+      const res = await fetch(`http://localhost:5000/api/categories`);
       const data = await res.json();
       return data;
     },
@@ -33,7 +33,7 @@ const AdminEditProductModal = ({
 
   return (
     <div className="w-full h-screen z-40 fixed top-0 left-0 bg-opacity-70 bg-gray-400">
-      <div className="w-[430px] md:w-[500px] relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-3 md:p-5 rounded-md border">
+      <div className="w-[400px] md:w-[500px] relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-3 md:p-5 rounded-md border">
         <span
           onClick={() => setOpenModal(false)}
           className="cursor-pointer w-10 h-10 border border-gray-500 bg-white  rounded-full p-2 absolute -top-5 -right-5 flex justify-center items-center font-bold text-red-500"
