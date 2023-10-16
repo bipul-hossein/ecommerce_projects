@@ -5,7 +5,7 @@ const useMainCategories = () => {
 
     useEffect(()=> {
         //fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-       fetch('http://localhost:5000/categories')
+       fetch('http://localhost:5000/api/categories')
         .then(res => res.json())
         .then(data => {
         //  console.log(data);

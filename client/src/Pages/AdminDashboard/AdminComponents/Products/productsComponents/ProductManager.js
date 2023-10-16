@@ -8,7 +8,7 @@ const ProductOperations = () => {
   const { data: categories = []} = useQuery({
     queryKey: ["categoryData"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/categories`);
+      const res = await fetch(`http://localhost:5000/api/categories`);
       const data = await res.json();
       return data?.payload;
     },

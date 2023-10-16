@@ -13,7 +13,7 @@ const Categories = () => {
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["categoryData"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/categories`);
+      const res = await fetch(`http://localhost:5000/api/categories`);
       const data = await res.json();
       return data;
     },
@@ -26,7 +26,7 @@ const Categories = () => {
     const form = e.target;
     const categoryEditData = form.categoryEditField.value;
     const res = await axios.put(
-      `http://localhost:5000/categories/${categoryEditInfo?.slug}`,
+      `http://localhost:5000/api/categories/${categoryEditInfo?.slug}`,
       { title: `${categoryEditData}` }
     );
     const { payload, message } = res?.data;

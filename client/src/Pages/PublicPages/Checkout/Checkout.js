@@ -21,6 +21,7 @@ const Checkout = () => {
   if(userInfo?.phone && userInfo?.address){
     validUser = true;
   }
+  
 
 
   useEffect(() => {
@@ -41,6 +42,9 @@ const Checkout = () => {
 
   const handlePlaceOrder = async (e) => {
     e.preventDefault()
+    if(!validUser){
+      return
+    }
     const res = await axios.put("http://localhost:5000/api/order", {
       userEmail,
       orders: orderProducts,
@@ -51,6 +55,7 @@ const Checkout = () => {
       navigate("/checkout/order-confirm");
     }
   };
+
   const calculateSubTotal = () => {
     let total = 0;
     cartItems?.forEach((item, i) => {
@@ -63,8 +68,7 @@ const Checkout = () => {
     setSubTotal(calculateSubTotal());
   }, [cartItems]); //eslint-disable-line
 
-
-
+  
   return (
     <>
       <div className="max-w-[1200px] mx-auto my-10 p-2 flex gap-5 flex-col md:flex-row">
@@ -205,7 +209,8 @@ const Checkout = () => {
               <div className="my-2 flex justify-between items-center mt-5">
                 <button
                 type="onsubmit"
-                  className="bg-primary text-white p-2 w-full font-bold rounded-sm flex justify-center items-center"
+                disabled={!validUser}
+                  className={`bg-primary text-white p-2 w-full font-bold rounded-sm flex justify-center items-center ${!validUser && "bg-blue-300"}`}
                 >
                   Place Order
                 </button>
@@ -215,7 +220,7 @@ const Checkout = () => {
         </div>
       </div>
       <div className={`${openModal ? "block" : "hidden"}`}>
-        <AddDeliveryAddressModal setOpenModal={setOpenModal} />
+        <AddDeliveryAddressModal openModal={openModal} setOpenModal={setOpenModal} userInfo={userInfo}/>
       </div>
     </>
   );

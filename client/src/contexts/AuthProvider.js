@@ -16,9 +16,10 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  
 
   const { data: userOldDbInfo = [], refetch } = useQuery({
-        queryKey: ["userData"],
+        queryKey: [user],
         queryFn: async () => {
           const res = await fetch(
             `http://localhost:5000/api/user?email=${user?.email}`

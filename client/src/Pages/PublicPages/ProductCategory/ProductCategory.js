@@ -15,7 +15,7 @@ const ProductCategory = () => {
   const [filterSidebar, setFilterSidebar] = useState(false);
 
   const getCategoryName = async () => {
-    const res = await axios.get(`http://localhost:5000/categories/${category_name?.id}`)
+    const res = await axios.get(`http://localhost:5000/api/categories/${category_name?.id}`)
     setCategoryName(res?.data?.payload?.title);
   }
 
