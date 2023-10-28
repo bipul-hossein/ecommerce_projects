@@ -1,4 +1,6 @@
+const { createJsonWebToken } = require("../helper/jsonwebtoken");
 const User = require("../models/userModel");
+const secretJWTKey=process.env.ACCESS_WEB_SECRET
 const { successResponse } = require("./responseController");
 
 const handleCreateUser = async (req, res, next) => {
@@ -22,6 +24,11 @@ const handleCreateUser = async (req, res, next) => {
     next(error);
   }
 };
+
+// create jwt
+const token = createJsonWebToken({email},secretJWTKey,'10m')
+console.log(token);
+
 const handleGetAllUser = async (req, res, next) => {
   try {
     const getAllUser = await User.find({}).lean();

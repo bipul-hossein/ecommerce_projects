@@ -12,3 +12,8 @@
 1. create category
 2. update category Name
 3. delete category
+
+### Generate token using crypto library
+run ```node``` command and press enter to go into REPL mode. The you can enter
+```require('crypto').randomBytes(64).toString('hex')```
+ The error is thrown because the characters after node are interpreted as options passed to command.

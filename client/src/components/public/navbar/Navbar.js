@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import MobileView from "./MobileView/MobileView";
 import DesktopView from "./DesktopView/DesktopView";
 import SearchBar from "./MobileView/SearchBar";
-import logo from "../../../Images/logo.png";
+import logo from "../../../Images/Logo/eGonj_logo.png";
 import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const Navbar = () => {
