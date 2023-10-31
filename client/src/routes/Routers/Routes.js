@@ -125,7 +125,7 @@ const router = createBrowserRouter([
   //User Dashboard
   {
     path: "/account",
-    element:<PrivateRouters> <UserDashboard /></PrivateRouters>,
+    element:<UserDashboard />,
     children: [
       {
         path: "/account",

@@ -2,11 +2,11 @@
 1. express js
 2. cors middleware
 3. Express error handling middleware
-4. http errors middleware
+4. http errors middleware[Now working]
 5. nodemon package
 6. morgan package for server auto request showing
 7. secure Api -xss-clean, express-rate-limit// NOT USE YET -anisul Islam -mern series video no. 10 -must use
- 
+8. create a custom user register & login system but server not secured yet.[Not Done] 
 
 ## Admin can control
 1. create category

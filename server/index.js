@@ -5,6 +5,7 @@ const cors = require("cors");
 const categoriesRouter = require("./routes/categoriesRouter");
 const seedRouter = require("./routes/seedRouter");
 const productRouter = require("./routes/productRouter");
+const createError = require('http-errors')
 const { errorResponse } = require("./controllers/responseController");
 const morgan = require("morgan");
 const userRouter = require("./routes/userRouter");
@@ -44,6 +45,18 @@ app.get("/", (req, res) => {
 
 // express error handling middleware
 // client error handling
+// app.use((req, res, next) => {
+//   next(createError(404,"Route Not Found"))
+// });
+
+// // server error handling -all the error coming here.
+// app.use((err, req, res, next) => {
+//   return errorResponse(res, {
+//     statusCode: err.status,
+//     message: err.message,
+//   });
+// });
+
 app.use((req, res, next) => {
   next(res.status(404).json({ message: "route not found" }));
 });

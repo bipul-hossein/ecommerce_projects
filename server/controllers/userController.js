@@ -1,7 +1,10 @@
-const { createJsonWebToken } = require("../helper/jsonwebtoken");
+//const { mongoose } = require("mongoose");
 const User = require("../models/userModel");
-const secretJWTKey=process.env.ACCESS_WEB_SECRET
+//const createError = require('http-errors')
 const { successResponse } = require("./responseController");
+//const secretJWTKey=process.env.ACCESS_WEB_SECRET
+//const { createJsonWebToken } = require("../helper/jsonwebtoken");
+
 
 const handleCreateUser = async (req, res, next) => {
   try {
@@ -25,9 +28,36 @@ const handleCreateUser = async (req, res, next) => {
   }
 };
 
+// const handleCreateUser = async (req, res, next) => {
+//   try {
+//     const { firstName, lastName, email } = req.body;
+//     console.log("clg",firstName, lastName, email);
+//     const data = {
+//       name: {
+//         firstName: firstName,
+//         lastName: lastName,
+//       },
+//       email: email,
+//     };
+//     const newUser = await User.create(data);
+//     res.send(newUser)
+//     // return successResponse(res, {
+//     //   statusCode: 200,
+//     //   message: "User Created Successfully",
+//     //   payload: newUser,
+//     // });
+//   } catch (error) {
+//     // if(error instanceof mongoose.Error){
+//     //   next(createError(400, 'User Created UnSuccess'))
+//     //  return;
+//     // }
+//     next(error);
+//   }
+// };
+
 // create jwt
-const token = createJsonWebToken({email},secretJWTKey,'10m')
-console.log(token);
+// const token = createJsonWebToken({email},secretJWTKey,'10m')
+// console.log(token);
 
 const handleGetAllUser = async (req, res, next) => {
   try {
