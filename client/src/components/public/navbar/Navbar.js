@@ -18,7 +18,7 @@ const Navbar = () => {
       {/* Mobile View */}
       <div className="md:hidden">
         <div className="border-b border-[1px] border-gray-400 py-1 fixed top-0 z-40 bg-white w-full">
-          <img className="mx-auto" src={logo} alt="" />
+          <img className="mx-auto h-14" src={logo} alt="" />
         </div>
         <div
           className={`${

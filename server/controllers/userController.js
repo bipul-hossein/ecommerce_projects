@@ -1,15 +1,14 @@
-//const { mongoose } = require("mongoose");
+const { mongoose } = require("mongoose");
 const User = require("../models/userModel");
-//const createError = require('http-errors')
+const createError = require('http-errors')
 const { successResponse } = require("./responseController");
 //const secretJWTKey=process.env.ACCESS_WEB_SECRET
 //const { createJsonWebToken } = require("../helper/jsonwebtoken");
 
-
 const handleCreateUser = async (req, res, next) => {
   try {
     const { firstName, lastName, email } = req.body;
-    console.log(firstName, lastName, email);
+    console.log("clg",firstName, lastName, email);
     const data = {
       name: {
         firstName: firstName,
@@ -18,42 +17,20 @@ const handleCreateUser = async (req, res, next) => {
       email: email,
     };
     const newUser = await User.create(data);
+    res.send(newUser)
     return successResponse(res, {
       statusCode: 200,
       message: "User Created Successfully",
       payload: newUser,
     });
   } catch (error) {
+    if(error instanceof mongoose.Error){
+      next(createError(400, 'User Created UnSuccess'))
+     return;
+    }
     next(error);
   }
 };
-
-// const handleCreateUser = async (req, res, next) => {
-//   try {
-//     const { firstName, lastName, email } = req.body;
-//     console.log("clg",firstName, lastName, email);
-//     const data = {
-//       name: {
-//         firstName: firstName,
-//         lastName: lastName,
-//       },
-//       email: email,
-//     };
-//     const newUser = await User.create(data);
-//     res.send(newUser)
-//     // return successResponse(res, {
-//     //   statusCode: 200,
-//     //   message: "User Created Successfully",
-//     //   payload: newUser,
-//     // });
-//   } catch (error) {
-//     // if(error instanceof mongoose.Error){
-//     //   next(createError(400, 'User Created UnSuccess'))
-//     //  return;
-//     // }
-//     next(error);
-//   }
-// };
 
 // create jwt
 // const token = createJsonWebToken({email},secretJWTKey,'10m')

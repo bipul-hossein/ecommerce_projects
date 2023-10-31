@@ -101,7 +101,7 @@ const CartDetails = () => {
 
   if (!cartItems?.length) {
     return (
-      <div className="my-10 min-h-[50vh]">
+      <div className="mt-32 min-h-screen md:my-10 md:min-h-[50vh]">
         <h1 className="text-2xl text-center">No Cart Data Added</h1>
       </div>
     );
