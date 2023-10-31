@@ -5,7 +5,7 @@ const RatingsAndReviews = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     return (
         <div>
-        <div className="flex justify-between border-b my-10">
+        <div className="flex border-b my-10">
           <p
             onClick={() => setActiveIndex(0)}
             className={`cursor-pointer text-gray-600 bg-secondary text-xs md:text-base text-center font-semibold p-2 border-l border-t rounded-l-md ${

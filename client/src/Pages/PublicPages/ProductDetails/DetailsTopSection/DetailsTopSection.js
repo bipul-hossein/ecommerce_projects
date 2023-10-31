@@ -9,8 +9,15 @@ import {
 import { ProductContext } from "../../../../contexts/ProductsProvider";
 
 const DetailsTopSection = ({ product }) => {
-  const { handleAddToLocalStorage } = useContext(ProductContext);
+  const { handleAddToLocalStorage, cartItems } = useContext(ProductContext);
   const [count, setCount] = useState(0);
+  const isExist = cartItems?.find(
+    (item) => item?._id === product?._id
+  );
+
+
+
+
   return (
     <div className="md:flex gap-10 justify-center">
       <div className="md:w-1/2 bg-secondary">
@@ -66,9 +73,10 @@ const DetailsTopSection = ({ product }) => {
               </div>
               <button
                 onClick={() => handleAddToLocalStorage(product)}
-                className="py-1 px-4 text-sm font-semibold text-white rounded-3xl bg-primary hover:bg-secondary hover:text-gray-700"
+                disabled={isExist}
+                className={`py-1 px-4 text-sm font-semibold  rounded-3xl ${isExist ? "bg-gray-300 text-black px-9" : "text-white bg-primary hover:bg-secondary hover:text-gray-700"}`}
               >
-                ADD TO CART
+                {isExist ? "Added" : "Add to Cart"}
               </button>
             </div>
           </div>
