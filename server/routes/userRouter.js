@@ -1,6 +1,6 @@
 const express = require('express');
 const { handleCreateUser, handleGetUser, handleUpdateUser, handleCreateAddress, handleGetAddress, handleGetAllUser } = require('../controllers/userController');
-const { handleGetUserOrders } = require('../controllers/ordersController');
+//const { handleGetUserOrders } = require('../controllers/ordersController');
 const userRouter = express.Router();
 
 userRouter.post('/user', handleCreateUser);

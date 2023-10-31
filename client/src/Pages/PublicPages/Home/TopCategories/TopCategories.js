@@ -35,7 +35,7 @@ const TopCategories = () => {
     >
       <section>
         <div>
-          {mainCategories.map((category, i) => (
+          {mainCategories?.map((category, i) => (
             <SwiperSlide key={i}>
               <div
                 key={i}

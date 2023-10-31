@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import axios from 'axios';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -16,23 +17,22 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  
 
   const { data: userOldDbInfo = [], refetch } = useQuery({
-        queryKey: [user],
-        queryFn: async () => {
-          const res = await fetch(
-            `http://localhost:5000/api/user?email=${user?.email}`
-          );
-          const data = await res.json();
-          return data;
-        },
-      });
-useEffect(()=>{
-if(user?.email){
-  refetch()
-}
-},[user?.email,refetch])
+    queryKey: [user],
+    queryFn: async () => {
+      const res = await fetch(
+        `http://localhost:5000/api/user?email=${user?.email}`
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
+  useEffect(() => {
+    if (user?.email) {
+      refetch();
+    }
+  }, [user?.email, refetch]);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -57,7 +57,14 @@ if(user?.email){
   useEffect(() => {
     return () =>
       onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
+        setUser("current user", currentUser);
+        //get and set token
+// if(currentUser){
+//   axios.post('http://localhost:5000/jwt',{email:currentUser?.email})
+//   .then(data=>{
+//     console.log(data); 
+//   })
+// }
         setLoading(false);
       });
   }, []);
@@ -71,7 +78,7 @@ if(user?.email){
     loading,
     LogOut,
     userOldDbInfo,
-    refetch
+    refetch,
   };
 
   return (

@@ -5,6 +5,7 @@ const cors = require("cors");
 const categoriesRouter = require("./routes/categoriesRouter");
 const seedRouter = require("./routes/seedRouter");
 const productRouter = require("./routes/productRouter");
+const createError = require('http-errors')
 const { errorResponse } = require("./controllers/responseController");
 const morgan = require("morgan");
 const userRouter = require("./routes/userRouter");
@@ -31,7 +32,7 @@ app.use("/api", ordersRouter);
 const url = process.env.DB_URL;
 const connectDB = async () => {
   try {
-    await mongoose.connect(url);
+    await mongoose.connect(url, {dbName: 'egonj'} );
     console.log("Database is connected");
   } catch (error) {
     console.log("Database is not connected", error);
@@ -45,14 +46,14 @@ app.get("/", (req, res) => {
 // express error handling middleware
 // client error handling
 app.use((req, res, next) => {
-  next(res.status(404).json({ message: "route not found" }));
+  next(createError(404,"Route Not Found"))
 });
 
 // server error handling -all the error coming here.
 app.use((err, req, res, next) => {
   return errorResponse(res, {
-    statusCode: 500,
-    message: "Internal Server Error end",
+    statusCode: err.status,
+    message: err.message,
   });
 });
 
@@ -60,3 +61,6 @@ app.listen(port, async () => {
   console.log(`Server is running at http://localhost:${port}`);
   await connectDB();
 });
+
+// Export app for deploy purpose
+module.exports = app;
