@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
-import CreateCategory from "./CreateCategory";
-import Categories from "./Categories";
-import Modal from "./Modal";
+import CreateCategory from "./categoryComponents/CreateCategory";
+import CategoryManager from "./categoryComponents/CategoryManager";
+import Modal from "./categoryComponents/EditModal";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const HandleCategories = () => {
+const Categories = () => {
   const [categoryEditInfo, setCategoryEditInfo] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   // fetch data
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["categoryData"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/categories`);
+      const res = await fetch(`http://localhost:5000/api/categories`);
       const data = await res.json();
       return data;
     },
@@ -26,7 +26,7 @@ const HandleCategories = () => {
     const form = e.target;
     const categoryEditData = form.categoryEditField.value;
     const res = await axios.put(
-      `http://localhost:5000/categories/${categoryEditInfo?.slug}`,
+      `http://localhost:5000/api/categories/${categoryEditInfo?.slug}`,
       { title: `${categoryEditData}` }
     );
     const { payload, message } = res?.data;
@@ -42,11 +42,11 @@ const HandleCategories = () => {
   return (
     <div className="w-11/12 mx-auto mt-20 md:mt-4">
       <div>
-        <h1 className="text-center text-xl mb-8 bg-blue-200 py-1 rounded-sm">
+        <h1 className="text-center text-xl mb-8 font-semibold py-1 rounded-sm">
           CATEGORIES
         </h1>
         <div className="flex justify-between flex-wrap gap-5">
-          <Categories
+          <CategoryManager
             categoriesItem={categoriesItem}
             refetch={refetch}
             categoryEditInfo={categoryEditInfo}
@@ -67,4 +67,4 @@ const HandleCategories = () => {
   );
 };
 
-export default HandleCategories;
+export default Categories;

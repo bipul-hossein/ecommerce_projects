@@ -13,6 +13,7 @@ const TopCategories = () => {
     navigate (`/${category._id}`, { state: category });
   };
 
+
   return (
     <Swiper
       slidesPerView={3}
@@ -34,7 +35,7 @@ const TopCategories = () => {
     >
       <section>
         <div>
-          {mainCategories.map((category, i) => (
+          {mainCategories?.map((category, i) => (
             <SwiperSlide key={i}>
               <div
                 key={i}

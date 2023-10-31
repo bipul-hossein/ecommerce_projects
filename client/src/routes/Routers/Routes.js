@@ -3,7 +3,6 @@ import Main from "../../Layout/PublicDashboardLayout/Main";
 import Home from "../../Pages/PublicPages/Home/Home";
 import Login from "../../Pages/PublicPages/Login/Login";
 import Register from "../../Pages/PublicPages/Register/Register";
-// import PrivateRouters from "../PrivateRouters/PrivateRouters";
 import AdminDashboard from "../../Pages/AdminDashboard/AdminDashboard";
 import Orders from "../../Pages/AdminDashboard/AdminComponents/Orders/Orders";
 import CartDetails from "../../Pages/PublicPages/CartDetails/CartDetails";
@@ -18,11 +17,15 @@ import EditProfile from "../../Pages/PublicPages/UserDashboard/EditProfile/EditP
 import ChangePassword from "../../Pages/PublicPages/UserDashboard/ChangePassword/ChangePassword";
 import Address from "../../Pages/PublicPages/UserDashboard/Address/Address";
 import EditAddress from "../../Pages/PublicPages/UserDashboard/Address/EditAddress/EditAddress";
-import HandleCategories from "../../Pages/AdminDashboard/AdminComponents/HandleCategories/HandleCategories";
-import Products from "../../Pages/AdminDashboard/AdminComponents/HandleProduct/Products";
 import Checkout from "../../Pages/PublicPages/Checkout/Checkout";
 import OrderConfirmMessage from "../../Pages/PublicPages/Checkout/OrderConfirmMessage";
 import PrivateRouters from './../PrivateRouters/PrivateRouters';
+import UserInfo from "../../Pages/AdminDashboard/AdminComponents/UserInfo/UserInfo";
+import ProductManagerDetails from "../../Pages/AdminDashboard/AdminComponents/Products/productsComponents/ProductManagerDetails";
+import ProductManager from "../../Pages/AdminDashboard/AdminComponents/Products/productsComponents/ProductManager";
+import Products from "../../Pages/AdminDashboard/AdminComponents/Products/Products";
+import Categories from "../../Pages/AdminDashboard/AdminComponents/Categories/Categories";
+import AdminOptions from "../../Pages/AdminDashboard/AdminComponents/AdminOptions/AdminOptions";
 
 const router = createBrowserRouter([
   {
@@ -51,7 +54,7 @@ const router = createBrowserRouter([
         element: <CartDetails />,
       },
       {
-        path: "/cart/checkout",
+        path: "/checkout",
         element: <Checkout/>,
       },
       {
@@ -83,15 +86,19 @@ const router = createBrowserRouter([
   //Admin Dashboard
   {
     path: "/dashboard",
-    element: <AdminLayout />,
+    element: <AdminDashboard />,
     children: [
       {
         path: "/dashboard",
-        element: <AdminDashboard />,
+        element: <AdminOptions />,
       },
       {
         path: "/dashboard/orders",
         element: <Orders />,
+      },
+      {
+        path: "/dashboard/users",
+        element: <UserInfo />,
       },
       {
         path: "/dashboard/orders/details",
@@ -99,18 +106,26 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/categories",
-        element: <HandleCategories />,
+        element: <Categories />,
       },
       {
         path: "/dashboard/products",
         element: <Products />,
+      },
+      {
+        path: "/dashboard/products/operation",
+        element: <ProductManager/>,
+      },
+      {
+        path: "/dashboard/products/operation/:id",
+        element: <ProductManagerDetails/>,
       },
     ],
   },
   //User Dashboard
   {
     path: "/account",
-    element:<PrivateRouters> <UserDashboard /></PrivateRouters>,
+    element:<UserDashboard />,
     children: [
       {
         path: "/account",

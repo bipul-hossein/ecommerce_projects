@@ -1,31 +1,48 @@
 const express = require("express");
+const multer = require("multer");
 const {
-  handleCreateProducts,
   handleGetProducts,
   handleGetCategoryProducts,
   handleGetProduct,
   handleUpdateProduct,
   handleDeleteProduct,
+  handleCreateProducts,
 } = require("../controllers/productsController");
-const upload = require("../middleware/uploadFile");
 const productRouter = express.Router();
 
+// Image upload with multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    return cb(null, "./uploads");
+  },
+  filename: function (req, file, cb) {
+    return cb(
+      null,
+      file.fieldname + "_" + Date.now() + "_" + file.originalname
+    );
+  },
+});
+
+const upload = multer({
+  storage: storage,
+}).single("file");
+
 //POST:api/products
-productRouter.post("/", handleCreateProducts);
+productRouter.post("/products", upload, handleCreateProducts);
 
 //Get:api/products all product
-productRouter.get("/", handleGetProducts);
+productRouter.get("/products", handleGetProducts);
 
 //Get:api/id --category wise all product by category id
-productRouter.get("/category/:id", handleGetCategoryProducts);
+productRouter.get("/products/category/:id", handleGetCategoryProducts);
 
 //Get:api/id single product by product id
-productRouter.get("/:id", handleGetProduct);
+productRouter.get("/products/:id", handleGetProduct);
 
 //Put:api/id update a single product by product id
-productRouter.put("/:id", handleUpdateProduct);
+productRouter.put("/products/:id",upload, handleUpdateProduct);
 
 //Put:api/id delete a single product by product id
-productRouter.delete("/:id", handleDeleteProduct);
+productRouter.delete("/products/:id", handleDeleteProduct);
 
 module.exports = productRouter;

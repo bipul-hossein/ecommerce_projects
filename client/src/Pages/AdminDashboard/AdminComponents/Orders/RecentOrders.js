@@ -10,7 +10,7 @@ const RecentOrders = () => {
     return (
         <div className='md:w-11/12 md:mx-auto mt-10 md:px-2 md:mt-12'>
             <h2 className='text-base md:text-xl mb-5 pl-4 md:pl-0'>Recent Orders</h2>
-            <table class="table-auto rounded-t-md w-full">
+            <table className="table-auto rounded-t-md w-full">
                 <thead className='text-left'>
                     <tr className='text-center bg-blue-100'>
                         <th className="text-sm font-semibold md:font-medium py-2 md:p-2">User</th>

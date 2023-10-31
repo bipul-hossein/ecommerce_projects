@@ -1,8 +1,8 @@
 import axios from "axios";
 import React from "react";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
-const Categories = ({
+const CategoryManager = ({
   setCategoryEditInfo,
   categoriesItem,
   refetch,
@@ -17,14 +17,13 @@ const Categories = ({
     const agree = window.confirm(`Are you went delete ${title} category?`);
     if (agree) {
       const res = await axios.delete(
-        `http://localhost:5000/categories/${slug}`
+        `http://localhost:5000/api/categories/${slug}`
       );
       const { message, payload } = res.data;
       toast.success(payload.title + " " + message);
       refetch();
     }
   };
-  console.log(categoriesItem);
 
   return (
     <div className="w-full md:w-7/12 bg-slate-100 py-5 mx-auto rounded">
@@ -34,7 +33,6 @@ const Categories = ({
             <th className="text-left md:text-center pl-2 text-sm font-medium md:font-semibold py-2 md:p-2">
               Category Name
             </th>
-            {/*   <th className="text-sm font-medium md:font-semibold py-2 md:p-2"></th> */}
             <th className="text-sm font-medium md:font-semibold py-2 md:p-2">
               Operation
             </th>
@@ -61,9 +59,6 @@ const Categories = ({
                   Delete
                 </button>
               </td>
-
-              {/*  <td className=" bg-red-100 py-1 md:py-2 border-t-[10px] border-white">
-              </td> */}
             </tr>
           ))}
         </tbody>
@@ -72,4 +67,4 @@ const Categories = ({
   );
 };
 
-export default Categories;
+export default CategoryManager;

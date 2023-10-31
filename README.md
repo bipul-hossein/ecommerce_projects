@@ -37,3 +37,8 @@ git merge [name of the branch you want to merge from]
 #### [How to Use Context Api](https://github.com/bipul-hossein/How-to-use-Context)
 #### [Create a Api Server and How To Deploy an Express API on Vercel.](https://github.com/bipul-hossein/frist-api-deploy)
 #### [Mongodb-CRUD Example](https://github.com/bipul-hossein/Mongodb-CRUD/blob/main/README.md)
+
+### Generate token using crypto library
+run ```node``` command and press enter to go into REPL mode. The you can enter
+```require('crypto').randomBytes(64).toString('hex')```
+ The error is thrown because the characters after node are interpreted as options passed to command.

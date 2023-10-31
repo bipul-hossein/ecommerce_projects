@@ -2,31 +2,28 @@ const Product = require("../models/productModel");
 const { successResponse } = require("./responseController");
 const slugify = require("slugify");
 const createError = require("http-errors");
-// create product function
+require("dotenv").config();
+const fs = require("fs");
+const path = require("path");
+const uploadsDirectory = "uploads";
+
+
 const handleCreateProducts = async (req, res, next) => {
   try {
-    // step 1: get the data from request
-    const {
-      title,
-      description,
-      price,
-      quantity,
-      shipping,
-      category,
-      sold,
-      image,
-    } = req.body;
-    // step 2: save to database with create function
+    const image = req?.file?.filename;
+    const { title, description, price, quantity, shipping, category, sold } =
+      req.body;
+
     const newProduct = await Product.create({
-      title: title,
+      title,
       slug: slugify(title),
       description,
       price,
-      quantity,
+      stock: quantity,
       shipping,
       category,
       sold,
-      image,
+      image: `${process.env.SERVER_URL}/uploads/${image}`,
     });
     return successResponse(res, {
       statusCode: 200,
@@ -66,6 +63,7 @@ const handleGetCategoryProducts = async (req, res, next) => {
     next(error);
   }
 };
+
 const handleGetProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -84,18 +82,43 @@ const handleGetProduct = async (req, res, next) => {
 const handleUpdateProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const {
-      title,
-      description,
-      price,
-      quantity,
-      shipping,
-      category,
-      sold,
-      image,
-    } = req.body;
+    const image = req?.file?.filename;
+    const { title, description, price, quantity, shipping, category, sold } =
+      req.body;
+
+    if (image) {
+      const findImage = await Product.findById({ _id: id });
+      const oldImage = findImage?.image?.split("/")[4];
+      const imagePath = path.join(uploadsDirectory, oldImage);
+
+      if (fs.existsSync(imagePath)) {
+        fs.unlink(imagePath, (err) => {
+          if (err) {
+            console.error(`Error deleting ${oldImage}:`, err);
+          } else {
+            console.log(`${oldImage} has been deleted.`);
+          }
+        });
+      } else {
+        console.log(`${oldImage} does not exist in the "uploads" directory.`);
+      }
+    }
+
     const filter = { _id: id };
-    const updateField = {
+    const filedWithImage = {
+      $set: {
+        title,
+        slug: slugify(title),
+        description,
+        price,
+        quantity,
+        shipping,
+        category,
+        sold,
+        image: `${process.env.SERVER_URL}/uploads/${image}`,
+      },
+    };
+    const filedWithOutImage = {
       $set: {
         title: title,
         slug: slugify(title),
@@ -105,19 +128,19 @@ const handleUpdateProduct = async (req, res, next) => {
         shipping,
         category,
         sold,
-        image,
       },
     };
+
     const option = {
       new: true,
     };
     const updateProduct = await Product.findOneAndUpdate(
       filter,
-      updateField,
+      image ? filedWithImage : filedWithOutImage,
       option
     );
     if (!updateProduct) {
-      throw createError(404, "Product not found");
+      res.status(404).json({ message: "Product not Updated" });
     }
     return successResponse(res, {
       statusCode: 200,
@@ -133,8 +156,24 @@ const handleDeleteProduct = async (req, res, next) => {
   try {
     const { id } = req.params;
     const deleteProduct = await Product.findOneAndDelete({ _id: id });
+
     if (!deleteProduct) {
       throw createError(404, "Product not found");
+    } else{
+      const oldImage = deleteProduct?.image?.split("/")[4];
+      const imagePath = path.join(uploadsDirectory, oldImage);
+
+      if (fs.existsSync(imagePath)) {
+        fs.unlink(imagePath, (err) => {
+          if (err) {
+            console.error(`Error deleting ${oldImage}:`, err);
+          } else {
+            console.log(`${oldImage} has been deleted.`);
+          }
+        });
+      } else {
+        console.log(`${oldImage} does not exist in the "uploads" directory.`);
+      }
     }
     return successResponse(res, {
       statusCode: 200,

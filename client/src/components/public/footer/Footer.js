@@ -3,7 +3,7 @@ import { BsFacebook } from "react-icons/bs";
 import { FiInstagram } from "react-icons/fi";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { FaHeadphones, FaWhatsapp } from "react-icons/fa";
-import logo from "../../../Images/logo.png";
+import logo from "../../../Images/Logo/egonj_logo3.png";
 
 const Footer = () => {
   return (
@@ -11,10 +11,7 @@ const Footer = () => {
       <div className="mx-auto max-w-screen-xl space-y-8 px-4 py-6 md:py-16 sm:px-6 lg:space-y-16 lg:px-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <div className="">
-            <img
-              src={logo}
-              alt=""
-            />
+            <img className="h-12" src={logo} alt="" />
           </div>
 
           <ul className="mt-8 flex justify-start gap-6 sm:mt-0 sm:justify-end">
@@ -70,7 +67,6 @@ const Footer = () => {
 
         <div>
           <div className="grid gap-8 border-t border-gray-100 pt-4 md:pt-8 grid-cols-2 lg:grid-cols-5 lg:pt-16">
-
             <div>
               <p className="font-medium text-gray-900">Services</p>
 
@@ -256,8 +252,6 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-
-
         </div>
 
         <p className="text-xs text-gray-700">
@@ -269,4 +263,3 @@ const Footer = () => {
 };
 
 export default Footer;
-

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { GoSearch } from "react-icons/go";
 import { CgProfile, CgShoppingCart } from "react-icons/cg";
 import { BiSolidPhoneCall } from "react-icons/bi";
-import logo from "../../../../Images/logo.png";
+import logo from "../../../../Images/Logo/egonj_logo3.png";
 
 const DesktopView = ({ cartQuantity }) => {
   const [isFixed, setIsFixed] = useState(false);
@@ -28,7 +28,7 @@ const DesktopView = ({ cartQuantity }) => {
     <div className="py-6">
       <div className="flex justify-between items-center gap-10 max-w-[1400px] mx-auto px-4 mb-4">
         <Link to="/">
-          <img className="" src={logo} alt="" />
+          <img className="h-14" src={logo} alt="" />
         </Link>
 
         <div className="flex-1 items-center justify-center w-[70%]">
@@ -45,7 +45,7 @@ const DesktopView = ({ cartQuantity }) => {
           </div>
         </div>
         <div className="flex gap-12 items-center">
-          <Link to="/login">
+          <Link to="/account">
             <div className="flex gap-2 items-center">
               <div>
                 <CgProfile className="text-[28px] text-primary hover:cursor-pointer" />
