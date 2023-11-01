@@ -1,5 +1,5 @@
 // Import required modules
-const data = require('../data');
+const data = require('../data/data');
 const Product = require('../models/productModel');
 const { successResponse } = require('./responseController');
 
