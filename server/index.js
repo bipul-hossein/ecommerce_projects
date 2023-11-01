@@ -40,7 +40,7 @@ const connectDB = async () => {
 };
 
 app.get("/", (req, res) => {
-  res.send("welcome to home page");
+  res.send("Welcome to eGonj Root");
 });
 
 // express error handling middleware
