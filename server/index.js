@@ -15,9 +15,14 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
+const corsConfig = {
+  origin: '*',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+  }
+  app.use(cors(corsConfig))
 //middleware
 app.use(morgan("dev"));
-app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
@@ -35,13 +40,13 @@ app.use("/api", ordersRouter);
 //const url = `mongodb://localhost:27017/LocalDb`
 const url = process.env.DB_URL;
 const connectDB = async() => {
-     await mongoose.connect(url, {dbName: 'egonj'} );
-     //await mongoose.connect(url);
-  // try {
-  //   console.log("Database is connected");
-  // } catch (error) {
-  //   console.log("Database is not connected", error);
-  // }
+  //await mongoose.connect(url);
+  try {
+    await mongoose.connect(url, {dbName: 'egonj'} );
+    console.log("Database is connected");
+  } catch (error) {
+    console.log("Database is not connected", error);
+  }
 };
 
 app.get("/", (req, res) => {
