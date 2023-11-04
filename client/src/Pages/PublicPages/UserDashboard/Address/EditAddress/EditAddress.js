@@ -3,28 +3,35 @@ import { useQuery } from "react-query";
 import { AuthContext } from "../../../../../contexts/AuthProvider";
 import { toast } from "react-toastify";
 import axios from "axios";
+import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
 
 const EditAddress = () => {
   const { user } = useContext(AuthContext);
-  const { data: userOldDbAddress = [], refetch } = useQuery({
+  const [axiosSecure] = useAxiosSecure();
+
+  const { data: userOldDbAddress, refetch } = useQuery({
     queryKey: ["userAddress"],
+    // queryFn: async () => {
+    //   const res = await fetch(
+    //     `http://localhost:5000/api/user/address?email=${user?.email}`
+    //   );
+    //   const data = await res.json();
+    //   return data;
+    // },
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/api/user/address?email=${user?.email}`
-      );
-      const data = await res.json();
-      return data;
+      const res = await axiosSecure(`/api/user/address?email=${user?.email}`);
+      return res?.data;
     },
   });
-  const dbUserAddress = userOldDbAddress.payload;
+  const dbUserAddress = userOldDbAddress?.payload;
   const handelEditUserAddress = async (e) => {
     e.preventDefault();
     const form = e.target;
     const userEditAddressInfo = {
-      address:form?.address?.value,
-      postcode:form?.postCode?.value,
-      cityArea:form?.city?.value,
-      division:form?.division?.value,
+      address: form?.address?.value,
+      postcode: form?.postCode?.value,
+      cityArea: form?.city?.value,
+      division: form?.division?.value,
     };
     const res = await axios.put(
       `http://localhost:5000/api/user/address?email=${user?.email}`,
@@ -32,7 +39,7 @@ const EditAddress = () => {
     );
     const { message } = res?.data;
     if (res?.data) {
-      // console.log(payload);
+      console.log(res?.data?.payload);
       toast.success(message);
     }
     refetch();

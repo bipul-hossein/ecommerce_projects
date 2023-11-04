@@ -26,6 +26,7 @@ import ProductManager from "../../Pages/AdminDashboard/AdminComponents/Products/
 import Products from "../../Pages/AdminDashboard/AdminComponents/Products/Products";
 import Categories from "../../Pages/AdminDashboard/AdminComponents/Categories/Categories";
 import AdminOptions from "../../Pages/AdminDashboard/AdminComponents/AdminOptions/AdminOptions";
+import AboutPage from "../../Pages/PublicPages/AboutPage/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
       },
       {
         path: "/cart",

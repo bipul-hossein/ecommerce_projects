@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const cors = require("cors");
+const bodyParser = require('body-parser')
 const categoriesRouter = require("./routes/categoriesRouter");
 const seedRouter = require("./routes/seedRouter");
 const productRouter = require("./routes/productRouter");
@@ -18,6 +19,7 @@ const app = express();
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads"));
 
@@ -28,19 +30,22 @@ app.use("/api", productRouter); //seeding data base
 app.use("/api", userRouter);
 app.use("/api", ordersRouter);
 
+
 // connect to DataBase
+//const url = `mongodb://localhost:27017/LocalDb`
 const url = process.env.DB_URL;
-const connectDB = async () => {
-  try {
-    await mongoose.connect(url, {dbName: 'egonj'} );
-    console.log("Database is connected");
-  } catch (error) {
-    console.log("Database is not connected", error);
-  }
+const connectDB = async() => {
+     await mongoose.connect(url, {dbName: 'egonj'} );
+     //await mongoose.connect(url);
+  // try {
+  //   console.log("Database is connected");
+  // } catch (error) {
+  //   console.log("Database is not connected", error);
+  // }
 };
 
 app.get("/", (req, res) => {
-  res.send("Welcome to eGonj Root");
+  res.send("Welcome to Home Page");
 });
 
 // express error handling middleware
