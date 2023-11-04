@@ -28,7 +28,7 @@ const AdminDashboard = () => {
           </div>
           <div>
             <button className="bg-red-200 text-black hover:bg-red-500 hover:text-white font-semibold px-3 py-2 rounded-md">
-              Logout
+            logOut
             </button>
           </div>
         </div>

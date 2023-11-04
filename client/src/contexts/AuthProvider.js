@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import axios from 'axios';
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -18,16 +17,16 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
   const { data: userOldDbInfo = [], refetch } = useQuery({
     queryKey: [user],
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/api/user?email=${user?.email}`
-      );
+      const res = await fetch(`http://localhost:5000/api/user?email=${user?.email}`);
       const data = await res.json();
       return data;
     },
   });
+ 
   useEffect(() => {
     if (user?.email) {
       refetch();
@@ -49,7 +48,7 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, userUpdateInfo);
   };
 
-  const LogOut = () => {
+  const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
@@ -57,15 +56,22 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     return () =>
       onAuthStateChanged(auth, (currentUser) => {
-        setUser("current user", currentUser);
+        setUser(currentUser);
         //get and set token
-// if(currentUser){
-//   axios.post('http://localhost:5000/jwt',{email:currentUser?.email})
-//   .then(data=>{
-//     console.log(data); 
-//   })
-// }
-        setLoading(false);
+        if (currentUser) {
+          fetch(`http://localhost:5000/api/jwt?email=${currentUser?.email}`
+          )
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.payload.accessToken) {
+                //console.log(data.accessToken);
+                localStorage.setItem("accessToken",data?.payload?.accessToken);
+                setLoading(false);
+              }
+            });
+        } else {
+          localStorage.removeItem("accessToken");
+        }    
       });
   }, []);
 
@@ -76,7 +82,7 @@ const AuthProvider = ({ children }) => {
     user,
     setUser,
     loading,
-    LogOut,
+    logOut,
     userOldDbInfo,
     refetch,
   };

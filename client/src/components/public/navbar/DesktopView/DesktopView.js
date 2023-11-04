@@ -79,7 +79,11 @@ const DesktopView = ({ cartQuantity }) => {
             <Link to="/" className="font-bold">
               Home
             </Link>
-            <p className="font-bold">About</p>
+            
+            <Link to="/about" className="font-bold">
+              About
+            </Link>
+
             <p className="font-bold">Shop</p>
             <p className="font-bold">Contact Us</p>
             <p className="font-bold">Services</p>
