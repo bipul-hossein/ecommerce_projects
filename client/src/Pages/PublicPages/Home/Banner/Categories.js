@@ -4,11 +4,11 @@ import useCategoryData from "../../../../hooks/useCategoryData";
 
 const Categories = () => {
   const [categoryData] = useCategoryData();
-  const categoriesItem = categoryData.payload;
+  const categoriesItem = categoryData?.payload;
 
   const navigate = useNavigate();
-  const handleContentDetails = (_id) => {
-    navigate(`/${_id}`);
+  const handleContentDetails = (slug) => {
+    navigate(`/${slug}`);
   };
 
   return (
@@ -17,7 +17,7 @@ const Categories = () => {
       {categoriesItem?.slice(0, 8)?.map((category, i) => (
         <div
           key={i}
-          onClick={() => handleContentDetails(category._id)}
+          onClick={() => handleContentDetails(category?.slug)}
           className={`flex items-center gap-2 my-3 hover:cursor-pointer hover:bg-gray-200 ${
             i === 7 ? "border-none" : "border-b pb-3"
           } py-2`}

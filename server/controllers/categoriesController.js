@@ -10,7 +10,7 @@ const handleCreateCategories = async (req, res, next) => {
     // console.log(image);
     const newCategory = await Category.create({
       title: title,
-      slug: slugify(title),
+      slug: slugify(title).toLowerCase(),
       // image: image,
     });
     return successResponse(res, {
@@ -46,6 +46,7 @@ const handleGetCategories = async (req, res, next) => {
 const handleGetCategory = async (req, res, next) => {
   try {
     const { slug } = req.params;
+    console.log(slug);
     const getCategory = await Category.findOne({ _id: slug })
       .select("title slug")
       .lean();

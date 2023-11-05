@@ -37,13 +37,13 @@ app.use("/api", ordersRouter);
 
 
 // connect to DataBase
-//const url = `mongodb://localhost:27017/LocalDb`
-const url = process.env.DB_URL;
+const url = `mongodb://localhost:27017/LocalDb`
+//const url = process.env.DB_URL;
 const connectDB = async() => {
-  //await mongoose.connect(url);
   try {
-    await mongoose.connect(url, {dbName: 'egonj'} );
-    console.log("Database is connected");
+    await mongoose.connect(url);
+    //await mongoose.connect(url, {dbName: 'egonj'} );
+    console.log("Database is connected now");
   } catch (error) {
     console.log("Database is not connected", error);
   }
