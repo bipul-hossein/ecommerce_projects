@@ -10,7 +10,7 @@ const handleCreateCategories = async (req, res, next) => {
     // console.log(image);
     const newCategory = await Category.create({
       title: title,
-      slug: slugify(title).toLowerCase(),
+      slug: slugify(title)
       // image: image,
     });
     return successResponse(res, {
