@@ -1,11 +1,18 @@
 import React, { useContext } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Navbar from "../../../components/public/navbar/Navbar";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const UserDashboard = () => {
-  const { LogOut, userOldDbInfo } = useContext(AuthContext);
+  const { logOut, userOldDbInfo } = useContext(AuthContext);
   const pathname = useLocation()?.pathname;
+  const navigate = useNavigate();
 
   let subMenu = false;
   if (pathname === "/account/" || pathname === "/account") {
@@ -13,12 +20,12 @@ const UserDashboard = () => {
   }
 
   const handleLogOut = () => {
-    LogOut();
+    logOut();
+    navigate("/login")
   };
   const ProfileIcon =
     userOldDbInfo?.payload?.name?.firstName[0] +
     userOldDbInfo?.payload?.name?.lastName[0];
-
 
   return (
     <>
@@ -52,8 +59,8 @@ const UserDashboard = () => {
           <div className="ml-10 flex items-center gap-10 font-bold text-sm text-gray-600">
             <Link to="/account">Dashboard</Link>
             {subMenuItems?.map((item, i) => (
-              <NavLink 
-              key={i}
+              <NavLink
+                key={i}
                 to={item.to}
                 className={({ isActive }) =>
                   isActive ? "text-blue-500 underline" : ""

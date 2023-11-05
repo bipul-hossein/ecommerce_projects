@@ -1,14 +1,15 @@
 const { mongoose } = require("mongoose");
 const User = require("../models/userModel");
-const createError = require('http-errors')
-const { successResponse } = require("./responseController");
-//const secretJWTKey=process.env.ACCESS_WEB_SECRET
-//const { createJsonWebToken } = require("../helper/jsonwebtoken");
+const createError = require("http-errors");
+const { successResponse, errorResponse } = require("./responseController");
+const jwt = require("jsonwebtoken");
+// const secretJWTKey=process.env.ACCESS_WEB_SECRET
+// const { createJsonWebToken } = require("../helper/jsonwebtoken");
 
 const handleCreateUser = async (req, res, next) => {
   try {
     const { firstName, lastName, email } = req.body;
-    console.log("clg",firstName, lastName, email);
+    console.log("clg", firstName, lastName, email);
     const data = {
       name: {
         firstName: firstName,
@@ -17,16 +18,16 @@ const handleCreateUser = async (req, res, next) => {
       email: email,
     };
     const newUser = await User.create(data);
-    res.send(newUser)
+    res.send(newUser);
     return successResponse(res, {
       statusCode: 200,
       message: "User Created Successfully",
       payload: newUser,
     });
   } catch (error) {
-    if(error instanceof mongoose.Error){
-      next(createError(400, 'User Created UnSuccess'))
-     return;
+    if (error instanceof mongoose.Error) {
+      next(createError(400, "User Created UnSuccess"));
+      return;
     }
     next(error);
   }
@@ -35,6 +36,58 @@ const handleCreateUser = async (req, res, next) => {
 // create jwt
 // const token = createJsonWebToken({email},secretJWTKey,'10m')
 // console.log(token);
+
+const verifyJWT = async (req, res, next) => {
+  try {
+    const authorization = req.headers.authorization;
+    // if token not get
+    if (!authorization) {
+      return errorResponse(res, {
+        statusCode: 401,
+        message: "Unauthorized access verify jwt",
+      });
+    }
+    // if get token as [ bearer token]
+    const token = authorization.split(" ")[1];
+
+    jwt.verify(token, process.env.ACCESS_WEB_SECRET, (err, decoded) => {
+      if (err) {
+        return errorResponse(res, {
+          statusCode: 401,
+          message: "Unauthorized access",
+        });
+      }
+      req.decoded = decoded;
+      next();
+    });
+  } catch (error) {
+    return errorResponse(res, {
+      statusCode: 401,
+      message: "Unauthorized access",
+    });
+  }
+};
+
+const handleJWT = async (req, res, next) => {
+  try {
+    const email = req.query.email;
+    const query = { email: email };
+    const user = await User.findOne(query);
+    if (user) {
+      const token = jwt.sign({ email }, process.env.ACCESS_WEB_SECRET, {
+        expiresIn: "1d",
+      });
+
+      return successResponse(res, {
+        statusCode: 200,
+        message: "User Get Successfully",
+        payload: { accessToken: token },
+      });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
 
 const handleGetAllUser = async (req, res, next) => {
   try {
@@ -105,9 +158,9 @@ const handleCreateAddress = async (req, res, next) => {
           division: req.body.division,
           city: req.body.cityArea,
           postCode: req.body.postcode,
-          addressDetails: req.body.address
+          addressDetails: req.body.address,
         },
-        phone: req.body?.phone
+        phone: req.body?.phone,
       },
     };
     const option = {
@@ -127,8 +180,10 @@ const handleCreateAddress = async (req, res, next) => {
 const handleGetAddress = async (req, res, next) => {
   try {
     const { email } = req.query;
-    console.log(email, "find email");
-    const getUserAddress = await User.findOne({ email: email }).select({address:1,_id:0}).lean();
+    console.log(email);
+    const getUserAddress = await User.findOne({ email: email })
+      .select({ address: 1, _id: 0 })
+      .lean();
     return successResponse(res, {
       statusCode: 200,
       message: "User Address Return Successfully",
@@ -146,4 +201,6 @@ module.exports = {
   handleUpdateUser,
   handleCreateAddress,
   handleGetAddress,
+  handleJWT,
+  verifyJWT,
 };

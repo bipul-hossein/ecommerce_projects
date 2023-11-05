@@ -4,8 +4,8 @@ const useMainCategories = () => {
     const [mainCategories, setMainCategories] = useState([])
 
     useEffect(()=> {
-        //fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-       fetch('http://localhost:5000/api/categories')
+        //fetch('https://faithful-jade-tie.cyclic.app')
+       fetch('https://faithful-jade-tie.cyclic.app/api/categories')
         .then(res => res.json())
         .then(data => {
         //  console.log(data);

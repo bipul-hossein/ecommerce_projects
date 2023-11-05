@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const cors = require("cors");
+const bodyParser = require('body-parser')
 const categoriesRouter = require("./routes/categoriesRouter");
 const seedRouter = require("./routes/seedRouter");
 const productRouter = require("./routes/productRouter");
@@ -14,10 +15,16 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
+const corsConfig = {
+  origin: '*',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
+  }
+  app.use(cors(corsConfig))
 //middleware
 app.use(morgan("dev"));
-app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads"));
 
@@ -28,19 +35,22 @@ app.use("/api", productRouter); //seeding data base
 app.use("/api", userRouter);
 app.use("/api", ordersRouter);
 
+
 // connect to DataBase
-const url = process.env.DB_URL;
-const connectDB = async () => {
+const url = `mongodb://localhost:27017/LocalDb`
+//const url = process.env.DB_URL;
+const connectDB = async() => {
   try {
-    await mongoose.connect(url, {dbName: 'egonj'} );
-    console.log("Database is connected");
+    await mongoose.connect(url);
+    //await mongoose.connect(url, {dbName: 'egonj'} );
+    console.log("Database is connected now");
   } catch (error) {
     console.log("Database is not connected", error);
   }
 };
 
 app.get("/", (req, res) => {
-  res.send("Welcome to eGonj Root");
+  res.send("Welcome to Home Page");
 });
 
 // express error handling middleware

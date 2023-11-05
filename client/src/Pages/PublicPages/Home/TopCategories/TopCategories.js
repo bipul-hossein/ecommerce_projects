@@ -9,8 +9,8 @@ import { useNavigate } from "react-router-dom";
 const TopCategories = () => {
   const [mainCategories] = useMainCategories();
   const navigate = useNavigate();
-  const handleContentDetails = (category) => {
-    navigate (`/${category._id}`, { state: category });
+  const handleContentDetails = (slug) => {
+    navigate (`/${slug}`);
   };
 
 
@@ -39,15 +39,15 @@ const TopCategories = () => {
             <SwiperSlide key={i}>
               <div
                 key={i}
-                onClick={() => handleContentDetails(category)}
+                onClick={() => handleContentDetails(category?.slug)}
                 className="px-6  py-4 flex flex-col gap-3 items-center justify-center bg-[#f5f5f5] rounded-md hover:bg-primary hover:text-white hover:cursor-pointer"
               >
-                <img
+                {/* <img
                   className="h-10 w-10"
                   src="https://www.themealdb.com/images/category/lamb.png"
                   alt=""
-                />
-                <p className="font-bold text-sm">{category.title}</p>
+                /> */}
+                <p className="font-bold text-sm">{category?.title}</p>
               </div>
             </SwiperSlide>
           ))}

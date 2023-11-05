@@ -235,13 +235,13 @@ const Footer = () => {
                   </div>
                   <div>
                     <p className="text-base font-semibold">Through Whatsapp</p>
-                    <h3 className="mt-1 font-bold">+018-3234-5423</h3>
+                    <h3 className="mt-1 font-bold">+8801728-525953</h3>
                   </div>
                 </li>
 
                 <li>
                   <p className="text-gray-700 transition hover:opacity-75">
-                    No: 58 A, East Madison Street, Baltimore, MD, USA 4508
+                    Jashore,Bangladesh
                   </p>
                 </li>
                 <li>
@@ -255,7 +255,7 @@ const Footer = () => {
         </div>
 
         <p className="text-xs text-gray-700">
-          2023. Company Name. All rights reserved.
+          2023. egonj. All rights reserved.
         </p>
       </div>
     </footer>

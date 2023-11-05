@@ -26,6 +26,7 @@ import ProductManager from "../../Pages/AdminDashboard/AdminComponents/Products/
 import Products from "../../Pages/AdminDashboard/AdminComponents/Products/Products";
 import Categories from "../../Pages/AdminDashboard/AdminComponents/Categories/Categories";
 import AdminOptions from "../../Pages/AdminDashboard/AdminComponents/AdminOptions/AdminOptions";
+import AboutPage from "../../Pages/PublicPages/AboutPage/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
+        path: "/about",
+        element: <AboutPage />,
+      },
+      {
         path: "/cart",
         element: <CartDetails />,
       },
@@ -66,15 +71,15 @@ const router = createBrowserRouter([
         element: <ProductDetails />,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/api/products/${params.id}`
+            `https://faithful-jade-tie.cyclic.app/api/products/${params.id}`
           ),
       },
       {
-        path: "/:id",
+        path: "/:slug",
         element: <ProductCategory />,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/api/products/category/${params.id}`
+            `https://faithful-jade-tie.cyclic.app/api/products/category/${params.slug}`
           ),
       },
       {
