@@ -34,7 +34,7 @@ productRouter.post("/products", upload, handleCreateProducts);
 productRouter.get("/products", handleGetProducts);
 
 //Get:api/id --category wise all product by category id
-productRouter.get("/products/category/:id", handleGetCategoryProducts);
+productRouter.get("/products/category/:slug", handleGetCategoryProducts);
 
 //Get:api/id single product by product id
 productRouter.get("/products/:id", handleGetProduct);

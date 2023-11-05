@@ -5,8 +5,8 @@ const createError = require("http-errors");
 require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
+const Category = require("../models/categoryModel");
 const uploadsDirectory = "uploads";
-
 
 const handleCreateProducts = async (req, res, next) => {
   try {
@@ -41,7 +41,7 @@ const handleGetProducts = async (req, res, next) => {
 
     return successResponse(res, {
       statusCode: 200,
-      message: "Product return successfully",
+      message: "Products return successfully",
       payload: getProducts,
     });
   } catch (error) {
@@ -51,16 +51,23 @@ const handleGetProducts = async (req, res, next) => {
 
 const handleGetCategoryProducts = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const getProducts = await Product.find({ category: id }).lean();
+    const { slug } = req.params;
+    const getCategory = await Category.findOne({ slug }, [
+      "_id",
+      "title",
+    ]).lean();
+    const { _id, title } = getCategory;
+    // console.log(getCategory, categoryId);
+    console.log(getCategory);
+    const getProducts = await Product.find({ category: _id }).lean();
 
     return successResponse(res, {
       statusCode: 200,
-      message: "Product return successfully",
-      payload: getProducts,
+      message: "Category Products return Successfully",
+      payload: { categoryName: title, getProducts },
     });
   } catch (error) {
-    next(error);
+    next(createError(401, "Category Products return failed"));
   }
 };
 
@@ -71,7 +78,7 @@ const handleGetProduct = async (req, res, next) => {
 
     return successResponse(res, {
       statusCode: 200,
-      message: "Product return successfully",
+      message: "Product return success",
       payload: getProduct,
     });
   } catch (error) {
@@ -159,7 +166,7 @@ const handleDeleteProduct = async (req, res, next) => {
 
     if (!deleteProduct) {
       throw createError(404, "Product not found");
-    } else{
+    } else {
       const oldImage = deleteProduct?.image?.split("/")[4];
       const imagePath = path.join(uploadsDirectory, oldImage);
 

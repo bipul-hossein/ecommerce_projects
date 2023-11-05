@@ -1,28 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useLoaderData,  useParams } from "react-router-dom";
+import { React, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import Card from "../../../components/public/card/Card";
 import { BiMenuAltLeft } from "react-icons/bi";
-import axios from 'axios';
 
 const ProductCategory = () => {
   window.scrollTo(0, 0);
-  const [categoryName, setCategoryName] = useState("")
- const category_name = useParams();
-
-  const {payload:products} = useLoaderData();
-  console.log(products);
-
   const [filterSidebar, setFilterSidebar] = useState(false);
+  const { payload: categoryProducts } = useLoaderData();
+  const { categoryName, getProducts: products } = categoryProducts;
 
-  const getCategoryName = async () => {
-    const res = await axios.get(`https://faithful-jade-tie.cyclic.app/api/categories/${category_name?.id}`)
-    setCategoryName(res?.data?.payload?.title);
-  }
-
-
-  useEffect(()=> {
-    getCategoryName()
-  }, [categoryName]) //eslint-disable-line
 
   return (
     <div className="my-10 md:flex gap-2 md:gap-4 w-full md:w-11/12 mx-auto">
@@ -121,7 +107,9 @@ const ProductCategory = () => {
       </div>
 
       <div className="w-full md:w-4/5">
-        <h3 className="text-xl text-center font-bold text-gray-600 my-2 md:hidden">{categoryName}</h3>
+        <h3 className="text-xl text-center font-bold text-gray-600 my-2 md:hidden">
+          {categoryName}
+        </h3>
         <div className="bg-slate-50 border-[1px] p-[10px] flex justify-between mb-5 rounded-md">
           <h3 className="hidden md:block text-xl font-bold pl-2">
             {categoryName}
@@ -155,7 +143,7 @@ const ProductCategory = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {products.map((product, index) => (
+          {products?.map((product, index) => (
             <Card key={index} data={product} />
           ))}
         </div>
