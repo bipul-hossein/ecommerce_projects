@@ -16,9 +16,8 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 const corsConfig = {
-  origin: '*',
+  origin:"*",
   credentials: true,
-  methods: ["PUT, POST, GET, DELETE, PATCH, OPTIONS"]
   }
   app.use(cors(corsConfig))
 //middleware
