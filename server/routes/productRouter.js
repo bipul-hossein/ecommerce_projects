@@ -8,6 +8,7 @@ const {
   handleDeleteProduct,
   handleCreateProducts,
 } = require("../controllers/productsController");
+
 const productRouter = express.Router();
 
 // Image upload with multer
