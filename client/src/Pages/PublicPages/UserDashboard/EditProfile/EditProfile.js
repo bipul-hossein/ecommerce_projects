@@ -21,7 +21,7 @@ const EditProfile = () => {
       userPhoneNumber,
     };
     const res = await axios.put(
-      `http://localhost:5000/api/user?email=${user?.email}`,
+      `https://faithful-jade-tie.cyclic.app/api/user?email=${user?.email}`,
       userEditInfo
     );
     const { message } = res?.data;

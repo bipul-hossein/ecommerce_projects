@@ -12,7 +12,7 @@ const EditAddress = () => {
   const { data: userOldDbAddress, refetch } = useQuery({
     queryKey: ["userAddress"],
     queryFn: async () => {
-      const res = await axiosSecure(`http://localhost:5000/api/user/address?email=${user?.email}`);
+      const res = await axiosSecure(`https://faithful-jade-tie.cyclic.app/api/user/address?email=${user?.email}`);
       return res?.data;
     },
   });
@@ -27,7 +27,7 @@ const EditAddress = () => {
       division: form?.division?.value,
     };
     const res = await axios.put(
-      `http://localhost:5000/api/user/address?email=${user?.email}`,
+      `https://faithful-jade-tie.cyclic.app/api/user/address?email=${user?.email}`,
       userEditAddressInfo
     );
     const { message } = res?.data;

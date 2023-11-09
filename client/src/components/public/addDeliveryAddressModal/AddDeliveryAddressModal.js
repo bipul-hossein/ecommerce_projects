@@ -24,7 +24,7 @@ const AddDeliveryAddressModal = ({ openModal, setOpenModal, userInfo }) => {
 
     if(userInfo){
       const res = await axios.put(
-        `http://localhost:5000/api/user/address?email=${userInfo?.email}`,
+        `https://faithful-jade-tie.cyclic.app/api/user/address?email=${userInfo?.email}`,
         updateData
       );
       if (res?.data?.payload) {
