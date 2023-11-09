@@ -5,7 +5,7 @@ const useMainCategories = () => {
 
     useEffect(()=> {
         //fetch('')
-       fetch('http://localhost:5000/api/categories')
+       fetch('https://faithful-jade-tie.cyclic.app/api/categories')
         .then(res => res.json())
         .then(data => {
         //  console.log(data);

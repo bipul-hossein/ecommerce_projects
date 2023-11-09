@@ -23,7 +23,7 @@ const CreateProduct = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/products",
+        "https://faithful-jade-tie.cyclic.app/api/products",
         formData
       );
       const { message } = res?.data;
@@ -41,7 +41,7 @@ const CreateProduct = () => {
     queryKey: [],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/api/categories`
+        `https://faithful-jade-tie.cyclic.app/api/categories`
       );
       const data = await res.json();
       return data;

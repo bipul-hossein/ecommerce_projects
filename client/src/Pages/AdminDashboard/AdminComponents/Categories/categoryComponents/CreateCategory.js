@@ -14,7 +14,7 @@ const CreateCategory = ({ refetch }) => {
       //image: image,
     };
     try {
-      const res = await axios.post("http://localhost:5000/api/categories", data);
+      const res = await axios.post("https://faithful-jade-tie.cyclic.app/api/categories", data);
       const { message } = res?.data;
       if (message) {
         toast.success(message);
