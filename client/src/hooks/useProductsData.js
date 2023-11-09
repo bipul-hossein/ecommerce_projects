@@ -5,7 +5,7 @@ const useProductsData = () => {
 
     useEffect(()=> {
         //fetch('https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast')
-       fetch('https://faithful-jade-tie.cyclic.app/api/products')
+       fetch('/api/products')
         .then(res => res.json())
         .then(data => {
           setProducts(data?.payload)

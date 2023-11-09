@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4854fef8.css",
+    "main.js": "/static/js/main.3b54be32.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/subscribe_bg.png": "/static/media/subscribe_bg.fc2557b5b945bb2f2e65.png",
+    "static/media/veggies.png": "/static/media/veggies.4f2e714e220cb56ed590.png",
+    "static/media/egonj_logo3.png": "/static/media/egonj_logo3.45d2a90e43ed1f0fb1f2.png",
+    "static/media/eGonj_logo.png": "/static/media/eGonj_logo.9f6bf80bb283863b56f6.png",
+    "static/media/food1.jpg": "/static/media/food1.bc7a33356d87f9fa90a7.jpg",
+    "static/media/food2.jpg": "/static/media/food2.30624ce21a42b8a004a1.jpg",
+    "static/media/food3.jpg": "/static/media/food3.3ee64c7869b6b18cc31f.jpg",
+    "index.html": "/index.html",
+    "main.4854fef8.css.map": "/static/css/main.4854fef8.css.map",
+    "main.3b54be32.js.map": "/static/js/main.3b54be32.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4854fef8.css",
+    "static/js/main.3b54be32.js"
+  ]
+}

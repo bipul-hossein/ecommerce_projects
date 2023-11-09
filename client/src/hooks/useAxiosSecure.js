@@ -5,7 +5,7 @@ import useAuth from "./useAuth";
 
 
 const axiosSecure = axios.create({
-  baseURL: "https://faithful-jade-tie.cyclic.app",
+  baseURL: "",
 });
 
 const useAxiosSecure = () => {
