@@ -56,6 +56,10 @@ const DesktopView = ({ cartQuantity }) => {
               </div>
             </div>
           </Link>
+              
+          <Link to="/dashboard" className="font-bold">
+              Admin Dashboard
+            </Link>
           <Link to="/cart" className="relative">
             <span className=" bg-yellow-400 text-sm text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
               {cartQuantity}
@@ -83,6 +87,7 @@ const DesktopView = ({ cartQuantity }) => {
             <Link to="/about" className="font-bold">
               About
             </Link>
+
 
             <p className="font-bold">Shop</p>
             <p className="font-bold">Contact Us</p>
