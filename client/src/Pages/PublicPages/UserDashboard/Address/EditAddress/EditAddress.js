@@ -13,7 +13,7 @@ const EditAddress = () => {
     queryKey: ["userAddress"],
     // queryFn: async () => {
     //   const res = await fetch(
-    //     `https://faithful-jade-tie.cyclic.app/api/user/address?email=${user?.email}`
+    //     `/api/user/address?email=${user?.email}`
     //   );
     //   const data = await res.json();
     //   return data;
@@ -34,7 +34,7 @@ const EditAddress = () => {
       division: form?.division?.value,
     };
     const res = await axios.put(
-      `https://faithful-jade-tie.cyclic.app/api/user/address?email=${user?.email}`,
+      `/api/user/address?email=${user?.email}`,
       userEditAddressInfo
     );
     const { message } = res?.data;

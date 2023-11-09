@@ -26,6 +26,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("build"))
 app.use("./uploads", express.static("uploads"));
 
 //routes
@@ -49,8 +50,8 @@ const connectDB = async() => {
   }
 };
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Home Page");
+app.get("/api", (req, res) => {
+  res.send("Welcome to Backend Home Page");
 });
 
 // express error handling middleware
