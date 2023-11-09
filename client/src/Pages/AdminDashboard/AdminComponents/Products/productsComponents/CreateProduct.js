@@ -23,25 +23,25 @@ const CreateProduct = () => {
 
     try {
       const res = await axios.post(
-        "/api/products",
+        "http://localhost:5000/api/products",
         formData
       );
       const { message } = res?.data;
       if (message) {
         toast.success(message);
         setRequiredCategory("");
+        form.reset();
       }
     } catch (error) {
       console.log(error);
     }
-    form.reset();
   };
 
   const { data: categoryList } = useQuery({
     queryKey: [],
     queryFn: async () => {
       const res = await fetch(
-        `/api/categories`
+        `http://localhost:5000/api/categories`
       );
       const data = await res.json();
       return data;

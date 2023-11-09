@@ -25,7 +25,7 @@ const Register = () => {
         //console.log(result.user)
         if (result?.user?.email) {
             axios
-              .post(`/api/user`, userData)
+              .post(`http://localhost:5000/api/user`, userData)
               .then((response) => {
                  toast.success('Register Successfully')
               })

@@ -21,7 +21,7 @@ const EditProfile = () => {
       userPhoneNumber,
     };
     const res = await axios.put(
-      `/api/user?email=${user?.email}`,
+      `http://localhost:5000/api/user?email=${user?.email}`,
       userEditInfo
     );
     const { message } = res?.data;
