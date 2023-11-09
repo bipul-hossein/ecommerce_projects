@@ -17,7 +17,7 @@ const CategoryManager = ({
     const agree = window.confirm(`Are you went delete ${title} category?`);
     if (agree) {
       const res = await axios.delete(
-        `/api/categories/${slug}`
+        `http://localhost:5000/api/categories/${slug}`
       );
       const { message, payload } = res.data;
       toast.success(payload.title + " " + message);

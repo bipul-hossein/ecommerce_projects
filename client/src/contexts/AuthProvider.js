@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
   const { data: userOldDbInfo = [], refetch } = useQuery({
     queryKey: [user],
     queryFn: async () => {
-      const res = await fetch(`/api/user?email=${user?.email}`);
+      const res = await fetch(`http://localhost:5000/api/user?email=${user?.email}`);
       const data = await res.json();
       return data;
     },
@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
         setUser(currentUser);
         //get and set token
         if (currentUser) {
-          fetch(`/api/jwt?email=${currentUser?.email}`
+          fetch(`http://localhost:5000/api/jwt?email=${currentUser?.email}`
           )
             .then((res) => res.json()) 
             .then((data) => {

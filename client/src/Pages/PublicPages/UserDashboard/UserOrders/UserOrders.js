@@ -9,7 +9,7 @@ const UserOrders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/order?email=${user?.email}`)
+    axios.get(`http://localhost:5000/api/order?email=${user?.email}`)
     .then(res => setOrders(res?.data?.payload))
     .catch(err => console.log(err))
   }, [user])

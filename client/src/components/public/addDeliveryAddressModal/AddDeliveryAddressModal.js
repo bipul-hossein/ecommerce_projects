@@ -24,7 +24,7 @@ const AddDeliveryAddressModal = ({ openModal, setOpenModal, userInfo }) => {
 
     if(userInfo){
       const res = await axios.put(
-        `/api/user/address?email=${userInfo?.email}`,
+        `http://localhost:5000/api/user/address?email=${userInfo?.email}`,
         updateData
       );
       if (res?.data?.payload) {

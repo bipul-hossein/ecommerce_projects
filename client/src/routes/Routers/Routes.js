@@ -71,7 +71,7 @@ const router = createBrowserRouter([
         element: <ProductDetails />,
         loader: ({ params }) =>
           fetch(
-            `/api/products/${params.id}`
+            `http://localhost:5000/api/products/${params.id}`
           ),
       },
       {
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         element: <ProductCategory />,
         loader: ({ params }) =>
           fetch(
-            `/api/products/category/${params.slug}`
+            `http://localhost:5000/api/products/category/${params.slug}`
           ),
       },
       {
@@ -118,11 +118,11 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "/dashboard/products/operation",
+        path: "/dashboard/products",
         element: <ProductManager/>,
       },
       {
-        path: "/dashboard/products/operation/:id",
+        path: "/dashboard/products/:id",
         element: <ProductManagerDetails/>,
       },
     ],

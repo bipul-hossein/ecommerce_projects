@@ -45,7 +45,7 @@ const Checkout = () => {
     if(!validUser){
       return
     }
-    const res = await axios.put("/api/order", {
+    const res = await axios.put("http://localhost:5000/api/order", {
       userEmail,
       orders: orderProducts,
     });
