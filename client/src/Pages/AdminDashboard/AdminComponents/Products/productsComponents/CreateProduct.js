@@ -36,7 +36,7 @@ const CreateProduct = () => {
       console.log(error);
     }
   };
-
+//https://faithful-jade-tie.cyclic.app/https://localhost:5000
   const { data: categoryList } = useQuery({
     queryKey: [],
     queryFn: async () => {
