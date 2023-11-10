@@ -14,7 +14,7 @@ const productRouter = express.Router();
 // Image upload with multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    return cb(null, "./tmp/uploads");
+    return cb(null, "/tmp/uploads");
   },
   filename: function (req, file, cb) {
     return cb(
