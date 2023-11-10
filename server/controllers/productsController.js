@@ -13,7 +13,18 @@ const handleCreateProducts = async (req, res, next) => {
     const image = req?.file?.filename;
     const { title, description, price, quantity, shipping, category, sold } =
       req.body;
-    console.log("16 create image",  title, description, price, quantity, shipping, category, sold, image);
+
+    console.log(
+      "16 create image",
+      title,
+      description,
+      price,
+      quantity,
+      shipping,
+      category,
+      sold,
+      image
+    );
     const newProduct = await Product.create({
       title,
       slug: slugify(title),
