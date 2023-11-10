@@ -14,10 +14,10 @@ const productRouter = express.Router();
 // Image upload with multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    return cb(null, "../uploads");
+   cb(null, "uploads/");
   },
   filename: function (req, file, cb) {
-    return cb(
+   cb(
       null,
       file.fieldname + "_" + Date.now() + "_" + file.originalname
     );
@@ -26,10 +26,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-}).single("file");
+})
 
 //POST:api/products
-productRouter.post("/products", upload , handleCreateProducts);
+productRouter.post("/products", upload.single("file") , handleCreateProducts);
 
 //Get:api/products all product
 productRouter.get("/products", handleGetProducts);
