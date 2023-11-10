@@ -26,10 +26,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-})
+}).single("file")
 
 //POST:api/products
-productRouter.post("/products", upload.single("file") , handleCreateProducts);
+productRouter.post("/products", upload , handleCreateProducts);
 
 //Get:api/products all product
 productRouter.get("/products", handleGetProducts);
