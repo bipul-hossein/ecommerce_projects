@@ -13,6 +13,16 @@ const handleCreateProducts = async (req, res, next) => {
     const image = req?.file?.filename;
     const { title, description, price, quantity, shipping, category, sold } =
       req.body;
+      
+    exports.handler = function (event, context) {
+      fs.writeFile("/tmp/test.txt", "testing", function (err) {
+        if (err) {
+          context.fail("writeFile failed: " + err);
+        } else {
+          context.succeed("writeFile succeeded");
+        }
+      });
+    };
     const newProduct = await Product.create({
       title,
       slug: slugify(title),
@@ -22,7 +32,7 @@ const handleCreateProducts = async (req, res, next) => {
       shipping,
       category,
       sold,
-      image:`${process.env.SERVER_URL}/uploads/${image}`,
+      image: `${process.env.SERVER_URL}/uploads/${image}`,
     });
     console.log(newProduct);
     return successResponse(res, {
