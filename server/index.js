@@ -14,14 +14,12 @@ const ordersRouter = require("./routes/ordersRouter");
 const port = process.env.PORT || 5000;
 
 const app = express();
-app.use(express.json())
 app.use(cors({origin:['https://egonj-21754.firebaseapp.com','http://localhost:5000']}))
 
 //middleware
 app.use(morgan("dev"));
-app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.static("build"))
 app.use("/uploads", express.static("uploads"));
 

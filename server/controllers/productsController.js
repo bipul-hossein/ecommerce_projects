@@ -13,18 +13,6 @@ const handleCreateProducts = async (req, res, next) => {
     const image = req?.file?.filename;
     const { title, description, price, quantity, shipping, category, sold } =
       req.body;
-
-    console.log(
-      "16 create image",
-      title,
-      description,
-      price,
-      quantity,
-      shipping,
-      category,
-      sold,
-      image
-    );
     const newProduct = await Product.create({
       title,
       slug: slugify(title),
@@ -34,7 +22,7 @@ const handleCreateProducts = async (req, res, next) => {
       shipping,
       category,
       sold,
-      image: `${process.env.SERVER_URL}/uploads/${image}`,
+      image:`${process.env.SERVER_URL}/uploads/${image}`,
     });
     console.log(newProduct);
     return successResponse(res, {
