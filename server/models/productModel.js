@@ -39,7 +39,7 @@ const productSchema = new Schema({
   },
   image: {
     data: Buffer,
-    contentType: string,
+    contentType: String,
     // require: true
   },
   category: {
