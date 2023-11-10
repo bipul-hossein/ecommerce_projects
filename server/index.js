@@ -16,7 +16,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 const corsConfig = {
-  origin:["http://localhost:3000","https://faithful-jade-tie.cyclic.app"],
+  origin:["https://egonj-21754.firebaseapp.com"],
   credentials: true,
   methods: ["PUT, POST, GET, DELETE, PATCH, OPTIONS"],
 };
