@@ -26,7 +26,7 @@ const Faq = () => {
       <div className="text-center mb-6">
         <h1 className="text-lg md:text-4xl text-[#000C2A] font-bold mb-3">Frequently asked questions</h1>
       </div>
-      {userFaq.map((item, i) => (
+      {userFaq?.map((item, i) => (
         <div onClick={() => toggle(i)} className="mx-auto mt-6 bg-[#F9FAFE] max-w-[864px] p-5 border border-solid border-[#D6DCEA] rounded-md">
           <div className="text-lg font-semibold flex justify-between items-center cursor-pointer">
             <h2 >{item.question}</h2>
