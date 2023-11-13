@@ -14,7 +14,7 @@ const ordersRouter = require("./routes/ordersRouter");
 const port = process.env.PORT || 5000;
 
 const app = express();
-app.use(cors({ origin: ["https://egonj-21754.firebaseapp.com", "http://localhost:5000"] }))
+app.use(cors())
 
 //middleware
 app.use(morgan("dev"));
