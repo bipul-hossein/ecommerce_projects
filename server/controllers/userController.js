@@ -3,13 +3,13 @@ const User = require("../models/userModel");
 const createError = require("http-errors");
 const { successResponse, errorResponse } = require("./responseController");
 const jwt = require("jsonwebtoken");
+const UserFaq = require("../models/faqModel");
 // const secretJWTKey=process.env.ACCESS_WEB_SECRET
 // const { createJsonWebToken } = require("../helper/jsonwebtoken");
 
 const handleCreateUser = async (req, res, next) => {
   try {
     const { firstName, lastName, email } = req.body;
-    console.log("clg", firstName, lastName, email);
     const data = {
       name: {
         firstName: firstName,
@@ -18,7 +18,6 @@ const handleCreateUser = async (req, res, next) => {
       email: email,
     };
     const newUser = await User.create(data);
-    res.send(newUser);
     return successResponse(res, {
       statusCode: 200,
       message: "User Created Successfully",
@@ -193,6 +192,89 @@ const handleGetAddress = async (req, res, next) => {
     next(error);
   }
 };
+//faq
+const handleCreateFaq = async (req, res, next) => {
+  try {
+    const { question, answer } = req.body;
+    const data = {
+      question: question,
+      answer:answer,
+    };
+    const newFaq = await UserFaq.create(data);
+    return successResponse(res, {
+      statusCode: 200,
+      message: "User faq Return Successfully",
+      payload: newFaq,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+const handleAllGetFaq = async (req, res, next) => {
+  try {
+    const getAllUserFaq= await UserFaq.find({}).lean();
+    return successResponse(res, {
+      statusCode: 200,
+      message: "User faq Return Successfully",
+      payload: getAllUserFaq,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+const handleGetFaq = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const getUserFaq= await UserFaq.findOne({ _id: id }).lean();
+    return successResponse(res, {
+      statusCode: 200,
+      message: "User faq Return Successfully",
+      payload: getUserFaq,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+const handleUpdateFaq = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const filter = { _id: id };
+    const updates = {
+      $set: {
+        question: req.body?.question,
+        answer: req.body?.answer,
+      },
+    };
+    const option = {
+      new: true,
+    };
+    const getUpdateFaq= await UserFaq.findOneAndUpdate(filter, updates, option);
+    return successResponse(res, {
+      statusCode: 200,
+      message: "User faq Update Successfully",
+      payload: getUpdateFaq,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+const handleDeleteFaq = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const deleteFaq = await UserFaq.findOneAndDelete({ _id:id });
+    if (!deleteFaq) {
+      throw createError(404, "faq not found");
+    }
+    return successResponse(res, {
+      statusCode: 200,
+      message: "User faq Delete Successfully",
+      payload: deleteFaq,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   handleCreateUser,
@@ -203,4 +285,9 @@ module.exports = {
   handleGetAddress,
   handleJWT,
   verifyJWT,
+  handleAllGetFaq,
+  handleCreateFaq,
+  handleGetFaq,
+  handleUpdateFaq,
+  handleDeleteFaq,
 };
