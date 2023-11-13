@@ -29,12 +29,12 @@ const Faq = () => {
       {userFaq?.map((item, i) => (
         <div onClick={() => toggle(i)} className="mx-auto mt-6 bg-[#F9FAFE] max-w-[864px] p-5 border border-solid border-[#D6DCEA] rounded-md">
           <div className="text-lg font-semibold flex justify-between items-center cursor-pointer">
-            <h2 >{item.question}</h2>
+            <h2 >{item?.question}</h2>
             <span>{selected === i ? <AiOutlineMinus className="font-semibold" /> || "-" : <AiOutlinePlus className="font-semibold" /> || "+"}</span>
           </div>
    
           <article className={selected === i ? "content show hr" : "content"} 
-          >{item.answer}</article>
+          >{item?.answer}</article>
         </div>
       ))}
     </section>
@@ -42,34 +42,3 @@ const Faq = () => {
 };
 
 export default Faq;
-
-
-// const questions = [
-//   {
-//     question: "Proin congue viverra imperdiet nam laoreet blandit fermentum?",
-//     answer:
-//       "Egestas maximus ullamcorper quis vestibulum nibh aptent dignissim donec imperdiet. Dui ridiculus dictumst auctor proin vivamus efficitur aptent tempus. Curae tincidunt libero vulputate montes odio non maecenas justo ullamcorper enim.",
-//   },
-//   {
-//     question:
-//       "Ultrices mauris morbi congue viverra netus litora consectetuer?",
-//     answer:
-//       "Egestas maximus ullamcorper quis vestibulum nibh aptent dignissim donec imperdiet. Dui ridiculus dictumst auctor proin vivamus efficitur aptent tempus. Curae tincidunt libero vulputate montes odio non maecenas justo ullamcorper enim.",
-//   },
-//   {
-//     question: "Ut phasellus litora in metus molestie?",
-//     answer:
-//       "Egestas maximus ullamcorper quis vestibulum nibh aptent dignissim donec imperdiet. Dui ridiculus dictumst auctor proin vivamus efficitur aptent tempus. Curae tincidunt libero vulputate montes odio non maecenas justo ullamcorper enim.",
-//   },
-//   {
-//     question:
-//       "Ad quisque eleifend mauris himenaeos mattis amet fermentum ac vel?",
-//     answer:
-//       "Egestas maximus ullamcorper quis vestibulum nibh aptent dignissim donec imperdiet. Dui ridiculus dictumst auctor proin vivamus efficitur aptent tempus. Curae tincidunt libero vulputate montes odio non maecenas justo ullamcorper enim.",
-//   },
-//   {
-//     question: "Cras non felis tristique nostra si ipsum sodales accumsan ex?",
-//     answer:
-//       "Egestas maximus ullamcorper quis vestibulum nibh aptent dignissim donec imperdiet. Dui ridiculus dictumst auctor proin vivamus efficitur aptent tempus. Curae tincidunt libero vulputate montes odio non maecenas justo ullamcorper enim.",
-//   },
-// ];
