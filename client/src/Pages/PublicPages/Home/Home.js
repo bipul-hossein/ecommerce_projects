@@ -6,9 +6,9 @@ import TopCategories from "./TopCategories/TopCategories";
 import Faq from "./FAQ/Faq";
 import OfferBanners from "./OfferBanners/OfferBanners";
 import MainFacilities from "../../../components/public/mainFacilities/MainFacilities";
-import Newsletter from "./Newsletter/Newsletter";
-import AvailableAreas from "./AvailableAreas/AvailableAreas";
-import TopSellingAndTrending from "./TopSellingAndTrending/TopSellingAndTrending";
+// import Newsletter from "./Newsletter/Newsletter";
+// import AvailableAreas from "./AvailableAreas/AvailableAreas";
+// import TopSellingAndTrending from "./TopSellingAndTrending/TopSellingAndTrending";
 
 const Home = () => {
   window.scrollTo(0, 0);
@@ -25,9 +25,9 @@ const Home = () => {
       <TopProducts />
       <OfferBanners />
       <MainFacilities />
-      <TopSellingAndTrending />
+      {/* <TopSellingAndTrending />
       <AvailableAreas />
-      <Newsletter />
+      <Newsletter /> */}
       <Faq />
     </div>
   );
