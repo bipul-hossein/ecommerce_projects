@@ -1,5 +1,9 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import availablity from "../../../../../Images/Banner/availablity_banner.jpg"
+import hena from "../../../../../Images/Banner/hana_banner.jpg"
+import honey from "../../../../../Images/Banner/honey_ghee_banner.jpg"
+import oil from "../../../../../Images/Banner/oil_satu_banner.jpg"
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -10,26 +14,19 @@ import "./BannerSwiper.css";
 import { Pagination, Autoplay } from "swiper/modules";
 
 const BannerSwiper = () => {
+
   const swiperItems = [
     {
-      subTitle: "Up to 30%",
-      title: "Extra Discounts up to 30% on Mobile App",
-      img: "https://www.pngplay.com/wp-content/uploads/7/Grocery-Transparent-PNG.png",
+      img: availablity,
     },
     {
-      subTitle: "Up to 10%",
-      title: "Extra Discounts up to 10% on Mobile App",
-      img: "https://www.pngplay.com/wp-content/uploads/7/Grocery-Transparent-PNG.png",
+      img: honey,
     },
     {
-      subTitle: "Up to 25%",
-      title: "Extra Discounts up to 25%",
-      img: "https://www.pngplay.com/wp-content/uploads/7/Grocery-Transparent-PNG.png",
+      img: oil,
     },
     {
-      subTitle: "Up to 40%",
-      title: "Extra Discounts up to 40% on Mobile App",
-      img: "https://www.pngplay.com/wp-content/uploads/7/Grocery-Transparent-PNG.png",
+      img: hena,
     },
   ];
 
@@ -53,7 +50,7 @@ const BannerSwiper = () => {
         {swiperItems.map((item, i) => (
           <SwiperSlide key={i}>
             <div className="flex gap-2 items-center justify-evenly px-2 md:px-8">
-              <div className="w-1/2">
+              {/* <div className="w-1/2">
                 <p className="text-sm md:text-base text-red-500 font-bold my-3">
                   {item.subTitle}
                 </p>
@@ -61,8 +58,8 @@ const BannerSwiper = () => {
                 <button className="bg-yellow-400 p-2 rounded-md text-sm font-bold mt-5">
                   Shop New!
                 </button>
-              </div>
-              <img className="w-1/2" src={item.img} alt="" />
+              </div> */}
+              <img className="w-full" src={item?.img} alt="" />
             </div>
           </SwiperSlide>
         ))}
