@@ -13,7 +13,7 @@ const Categories = () => {
   const { data: categories = [], refetch } = useQuery({
     queryKey: ["categoryData"],
     queryFn: async () => {
-      const res = await fetch(`https://faithful-jade-tie.cyclic.app/api/categories`);
+      const res = await fetch(`${process.env.REACT_APP_ServerUrl}/api/categories`);
       const data = await res.json();
       return data;
     },
@@ -26,7 +26,7 @@ const Categories = () => {
     const form = e.target;
     const categoryEditData = form.categoryEditField.value;
     const res = await axios.put(
-      `https://faithful-jade-tie.cyclic.app/api/categories/${categoryEditInfo?.slug}`,
+      `${process.env.REACT_APP_ServerUrl}/api/categories/${categoryEditInfo?.slug}`,
       { title: `${categoryEditData}` }
     );
     const { payload, message } = res?.data;

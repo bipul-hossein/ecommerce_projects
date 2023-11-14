@@ -10,13 +10,11 @@ const Faq = () => {
   const { data: userFaq = []} = useQuery({
     queryKey: ["faq"],
     queryFn: async () => {
-      const res = await fetch(`https://faithful-jade-tie.cyclic.app/api/faqs`);
+      const res = await fetch(`${process.env.REACT_APP_ServerUrl}/api/faqs`);
       const data = await res.json();
       return data?.payload;
     },
   });
-
-console.log(userFaq);
 
   const toggle = (i) => {
     if (selected === i) {

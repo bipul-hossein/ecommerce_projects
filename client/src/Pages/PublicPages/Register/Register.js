@@ -25,7 +25,7 @@ const Register = () => {
         //console.log(result.user)
         if (result?.user?.email) {
             axios
-              .post(`https://faithful-jade-tie.cyclic.app/api/user`, userData)
+              .post(`${process.env.REACT_APP_ServerUrl}/api/user`, userData)
               .then((response) => {
                  toast.success('Register Successfully')
               })

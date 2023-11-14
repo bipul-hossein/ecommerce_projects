@@ -5,10 +5,10 @@ const useMainCategories = () => {
 
     useEffect(()=> {
         //fetch('')
-       fetch('https://faithful-jade-tie.cyclic.app/api/categories')
+       fetch(`${process.env.REACT_APP_ServerUrl}/api/categories`)
         .then(res => res.json())
         .then(data => {
-        //  console.log(data);
+          console.log(data);
           setMainCategories(data?.payload)
         })
     }, [])

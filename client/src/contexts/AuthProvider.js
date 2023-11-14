@@ -21,7 +21,7 @@ const AuthProvider = ({ children }) => {
   const { data: userOldDbInfo = [], refetch } = useQuery({
     queryKey: [user],
     queryFn: async () => {
-      const res = await fetch(`https://faithful-jade-tie.cyclic.app/api/user?email=${user?.email}`);
+      const res = await fetch(`${process.env.REACT_APP_ServerUrl}/api/user?email=${user?.email}`);
       const data = await res.json();
       return data;
     },
@@ -59,7 +59,7 @@ const AuthProvider = ({ children }) => {
         setUser(currentUser);
         //get and set token
         if (currentUser) {
-          fetch(`https://faithful-jade-tie.cyclic.app/api/jwt?email=${currentUser?.email}`
+          fetch(`${process.env.REACT_APP_ServerUrl}/api/jwt?email=${currentUser?.email}`
           )
             .then((res) => res.json()) 
             .then((data) => {
