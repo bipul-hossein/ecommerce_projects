@@ -17,7 +17,7 @@ const ProductOperationsDetails = () => {
     queryKey: ["CategoryProduct "],
     queryFn: async () => {
       const res = await fetch(
-        `https://faithful-jade-tie.cyclic.app/api/products/category/${categoryId?.id}`
+        `${process.env.REACT_APP_ServerUrl}/api/products/category/${categoryId?.id}`
       );
       const data = await res.json();
       return data?.payload;
@@ -41,7 +41,7 @@ const ProductOperationsDetails = () => {
     formData.append("file", file);
 
     const res = await axios.put(
-      `https://faithful-jade-tie.cyclic.app/api/products/${productId}`,
+      `${process.env.REACT_APP_ServerUrl}/api/products/${productId}`,
       formData
     );
     const { message } = res?.data;
@@ -64,7 +64,7 @@ const ProductOperationsDetails = () => {
     );
     if (agree) {
       const res = await axios.delete(
-        `https://faithful-jade-tie.cyclic.app/api/products/${product?._id}`
+        `${process.env.REACT_APP_ServerUrl}/api/products/${product?._id}`
       );
       const { message } = res?.data;
       if (message) {

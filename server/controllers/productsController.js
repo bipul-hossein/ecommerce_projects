@@ -32,7 +32,7 @@ const handleCreateProducts = async (req, res, next) => {
       shipping,
       category,
       sold,
-      image: `${process.env.SERVER_URL}/uploads/${image}`,
+      image: `${process.env.REACT_APP_ServerUrl}/uploads/${image}`,
     });
     console.log(newProduct);
     return successResponse(res, {
@@ -132,7 +132,7 @@ const handleUpdateProduct = async (req, res, next) => {
         shipping,
         category,
         sold,
-        image: `${process.env.SERVER_URL}/uploads/${image}`,
+        image: `${process.env.REACT_APP_ServerUrl}/uploads/${image}`,
       },
     };
     const filedWithOutImage = {

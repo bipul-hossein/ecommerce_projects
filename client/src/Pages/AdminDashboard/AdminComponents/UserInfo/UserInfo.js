@@ -5,7 +5,7 @@ const UserInfo = () => {
   const { data: users = [],} = useQuery({
     queryKey: ["usersData"],
     queryFn: async () => {
-      const res = await fetch(`https://faithful-jade-tie.cyclic.app/api/users`);
+      const res = await fetch(`${process.env.REACT_APP_ServerUrl}/api/users`);
       const data = await res.json();
       return data?.payload;
     },

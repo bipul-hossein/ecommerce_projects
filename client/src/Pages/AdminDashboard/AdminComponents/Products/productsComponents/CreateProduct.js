@@ -23,7 +23,7 @@ const CreateProduct = () => {
 
     try {
       const res = await axios.post(
-        "https://faithful-jade-tie.cyclic.app/api/products",
+        `${process.env.REACT_APP_ServerUrl}/api/products`,
         formData
       );
       const { message } = res?.data;
@@ -36,12 +36,12 @@ const CreateProduct = () => {
       console.log(error);
     }
   };
-//https://faithful-jade-tie.cyclic.app/https://localhost:5000
+//${process.env.REACT_APP_ServerUrl}/https://localhost:5000
   const { data: categoryList } = useQuery({
     queryKey: [],
     queryFn: async () => {
       const res = await fetch(
-        `https://faithful-jade-tie.cyclic.app/api/categories`
+        `${process.env.REACT_APP_ServerUrl}/api/categories`
       );
       const data = await res.json();
       return data;

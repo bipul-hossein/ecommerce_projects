@@ -45,7 +45,7 @@ const Checkout = () => {
     if(!validUser){
       return
     }
-    const res = await axios.put("https://faithful-jade-tie.cyclic.app/api/order", {
+    const res = await axios.put(`${process.env.REACT_APP_ServerUrl}/api/order`, {
       userEmail,
       orders: orderProducts,
     });

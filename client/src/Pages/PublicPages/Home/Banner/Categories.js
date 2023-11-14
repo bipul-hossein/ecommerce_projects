@@ -5,6 +5,7 @@ import useCategoryData from "../../../../hooks/useCategoryData";
 const Categories = () => {
   const [categoryData] = useCategoryData();
   const categoriesItem = categoryData?.payload;
+  console.log(categoriesItem);
 
   const navigate = useNavigate();
   const handleContentDetails = (slug) => {

@@ -71,7 +71,7 @@ const router = createBrowserRouter([
         element: <ProductDetails />,
         loader: ({ params }) =>
           fetch(
-            `https://faithful-jade-tie.cyclic.app/api/products/${params.id}`
+            `${process.env.REACT_APP_ServerUrl}/api/products/${params.id}`
           ),
       },
       {
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         element: <ProductCategory />,
         loader: ({ params }) =>
           fetch(
-            `https://faithful-jade-tie.cyclic.app/api/products/category/${params.slug}`
+            `${process.env.REACT_APP_ServerUrl}/api/products/category/${params.slug}`
           ),
       },
       {
