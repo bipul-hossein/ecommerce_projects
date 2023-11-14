@@ -1,11 +1,10 @@
 const { mongoose, Schema } = require("mongoose");
 
-
 const productSchema = new Schema({
   title: {
     type: String,
     trim: true,
-    require: true
+    require: true,
   },
   slug: {
     type: String,
@@ -17,17 +16,17 @@ const productSchema = new Schema({
   description: {
     type: String,
     trim: true,
-    require: true
+    require: true,
   },
   price: {
     type: Number,
     trim: true,
-    require: true
+    require: true,
   },
   stock: {
     type: Number,
     trim: true,
-    require: true
+    require: true,
   },
   sold: {
     type: Number,
@@ -36,16 +35,17 @@ const productSchema = new Schema({
   },
   shipping: {
     type: Number,
-    default: 0, 
+    default: 0,
   },
   image: {
-    type: String,
-    require: true
+    data: Buffer,
+    contentType: String,
+    // require: true
   },
   category: {
     type: String,
     ref: "Category",
-    require: true
+    require: true,
   },
 });
 

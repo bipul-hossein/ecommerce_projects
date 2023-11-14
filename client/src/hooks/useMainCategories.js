@@ -4,11 +4,11 @@ const useMainCategories = () => {
     const [mainCategories, setMainCategories] = useState([])
 
     useEffect(()=> {
-        //fetch('https://faithful-jade-tie.cyclic.app')
-       fetch('https://faithful-jade-tie.cyclic.app/api/categories')
+        //fetch('')
+       fetch(`${process.env.REACT_APP_ServerUrl}/api/categories`)
         .then(res => res.json())
         .then(data => {
-        //  console.log(data);
+          console.log(data);
           setMainCategories(data?.payload)
         })
     }, [])

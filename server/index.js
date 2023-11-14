@@ -1,12 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config();
 const cors = require("cors");
-const bodyParser = require('body-parser')
+require("dotenv").config();
+const bodyParser = require("body-parser");
 const categoriesRouter = require("./routes/categoriesRouter");
 const seedRouter = require("./routes/seedRouter");
 const productRouter = require("./routes/productRouter");
-const createError = require('http-errors')
+const createError = require("http-errors");
 const { errorResponse } = require("./controllers/responseController");
 const morgan = require("morgan");
 const userRouter = require("./routes/userRouter");
@@ -14,18 +14,13 @@ const ordersRouter = require("./routes/ordersRouter");
 const port = process.env.PORT || 5000;
 
 const app = express();
+app.use(cors())
 
-const corsConfig = {
-  origin: '*',
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
-  }
-  app.use(cors(corsConfig))
 //middleware
 app.use(morgan("dev"));
-app.use(express.json());
-app.use(bodyParser.json())
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(express.static("build"))
 app.use("/uploads", express.static("uploads"));
 
 //routes
@@ -35,28 +30,27 @@ app.use("/api", productRouter); //seeding data base
 app.use("/api", userRouter);
 app.use("/api", ordersRouter);
 
-
 // connect to DataBase
 // const url = `mongodb://localhost:27017/LocalDb`
 const url = process.env.DB_URL;
-const connectDB = async() => {
+const connectDB = async () => {
   try {
     // await mongoose.connect(url);
-    await mongoose.connect(url, {dbName: 'egonj'} );
+    await mongoose.connect(url, { dbName: "egonj" });
     console.log("Database is connected now");
   } catch (error) {
     console.log("Database is not connected", error);
   }
 };
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Home Page");
+app.get("/api", (req, res) => {
+  res.send("Welcome to Backend Home Page");
 });
 
 // express error handling middleware
 // client error handling
 app.use((req, res, next) => {
-  next(createError(404,"Route Not Found"))
+  next(createError(404, "Route Not Found"));
 });
 
 // server error handling -all the error coming here.

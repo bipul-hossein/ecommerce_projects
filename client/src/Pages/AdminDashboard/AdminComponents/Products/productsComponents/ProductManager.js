@@ -8,13 +8,14 @@ const ProductOperations = () => {
   const { data: categories = []} = useQuery({
     queryKey: ["categoryData"],
     queryFn: async () => {
-      const res = await fetch(`https://faithful-jade-tie.cyclic.app/api/categories`);
+      const res = await fetch(`${process.env.REACT_APP_ServerUrl}/api/categories`);
       const data = await res.json();
       return data?.payload;
     },
   });
-  const handleRedirect = (id) => {
-    navigate(`/dashboard/products/operation/${id}`);
+  const handleRedirect = (slug) => {
+    console.log(slug);
+    navigate(`/dashboard/products/${slug}`);
   };
 
   if(!categories?.length){
@@ -29,7 +30,7 @@ const ProductOperations = () => {
         <div className="grid grid-cols-2 gap-2">
           {categories?.map((category) => (
             <p
-              onClick={() => handleRedirect(category?._id)}
+              onClick={() => handleRedirect(category?.slug)}
               key={category?._id}
               className="py-5 px-2 text-center text-base bg-blue-50 rounded"
             >

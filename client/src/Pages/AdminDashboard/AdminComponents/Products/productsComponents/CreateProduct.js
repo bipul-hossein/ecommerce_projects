@@ -21,26 +21,32 @@ const CreateProduct = () => {
     formData.append("category", form.category.value);
     formData.append("file", file);
 
-    const res = await axios.post(
-      "https://faithful-jade-tie.cyclic.app/api/products",
-      formData
-    );
-    if (res?.data) {
-      toast.success("product successfully added");
-      form.reset();
-      setRequiredCategory("");
+    try {
+      const res = await axios.post(
+        `${process.env.REACT_APP_ServerUrl}/api/products`,
+        formData
+      );
+      const { message } = res?.data;
+      if (message) {
+        toast.success(message);
+        setRequiredCategory("");
+        form.reset();
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
-
+//${process.env.REACT_APP_ServerUrl}/https://localhost:5000
   const { data: categoryList } = useQuery({
     queryKey: [],
     queryFn: async () => {
-      const res = await fetch(`https://faithful-jade-tie.cyclic.app/api/categories`);
+      const res = await fetch(
+        `${process.env.REACT_APP_ServerUrl}/api/categories`
+      );
       const data = await res.json();
       return data;
     },
   });
-
 
   return (
     <div className="w-11/12 mx-auto mb-24 min-h-screen">

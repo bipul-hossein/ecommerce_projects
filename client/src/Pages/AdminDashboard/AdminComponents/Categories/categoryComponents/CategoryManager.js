@@ -17,7 +17,7 @@ const CategoryManager = ({
     const agree = window.confirm(`Are you went delete ${title} category?`);
     if (agree) {
       const res = await axios.delete(
-        `https://faithful-jade-tie.cyclic.app/api/categories/${slug}`
+        `${process.env.REACT_APP_ServerUrl}/api/categories/${slug}`
       );
       const { message, payload } = res.data;
       toast.success(payload.title + " " + message);

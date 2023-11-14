@@ -13,7 +13,7 @@ const AdminEditProductModal = ({
   const { data: categoryList } = useQuery({
     queryKey: [],
     queryFn: async () => {
-      const res = await fetch(`https://faithful-jade-tie.cyclic.app/api/categories`);
+      const res = await fetch(`${process.env.REACT_APP_ServerUrl}/api/categories`);
       const data = await res.json();
       return data;
     },

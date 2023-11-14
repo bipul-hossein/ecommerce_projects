@@ -11,26 +11,20 @@ const ProductOperationsDetails = () => {
   const [defaultCategory, setDefaultCategory] = useState("");
   const [file, setFile] = useState({});
   const categoryId = useParams();
-
+  console.log(categoryId.id);
   // fetch data
-  const { data: CategoryProducts = [], refetch } = useQuery({
+  const { data: categoryProducts = [], refetch } = useQuery({
     queryKey: ["CategoryProduct "],
     queryFn: async () => {
       const res = await fetch(
-        `https://faithful-jade-tie.cyclic.app/api/products/category/${categoryId?.id}`
+        `${process.env.REACT_APP_ServerUrl}/api/products/category/${categoryId?.id}`
       );
       const data = await res.json();
       return data?.payload;
     },
   });
-
-  //get single category with Id
-  useEffect(() => {
-    axios
-      .get(`https://faithful-jade-tie.cyclic.app/api/categories/${categoryId?.id}`)
-      .then((data) => setDefaultCategory(data?.data?.payload))
-      .catch((err) => console.log(err));
-  }, [categoryId]);
+  const { categoryName, getProducts: products } = categoryProducts;
+  console.log(categoryProducts);
 
   //   edit product
   const handleUpdateProduct = async (event) => {
@@ -47,14 +41,14 @@ const ProductOperationsDetails = () => {
     formData.append("file", file);
 
     const res = await axios.put(
-      `https://faithful-jade-tie.cyclic.app/api/products/${productId}`,
+      `${process.env.REACT_APP_ServerUrl}/api/products/${productId}`,
       formData
     );
     const { message } = res?.data;
     if (message) {
       toast.success(message);
       setFile({});
-      form.reset()
+      form.reset();
       setOpenModal(false);
     } else {
       toast.error(message);
@@ -70,7 +64,7 @@ const ProductOperationsDetails = () => {
     );
     if (agree) {
       const res = await axios.delete(
-        `https://faithful-jade-tie.cyclic.app/api/products/${product?._id}`
+        `${process.env.REACT_APP_ServerUrl}/api/products/${product?._id}`
       );
       const { message } = res?.data;
       if (message) {
@@ -84,7 +78,7 @@ const ProductOperationsDetails = () => {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-      {CategoryProducts.map((product, index) => (
+      {products?.map((product, index) => (
         <AdminCard
           key={index}
           data={product}
