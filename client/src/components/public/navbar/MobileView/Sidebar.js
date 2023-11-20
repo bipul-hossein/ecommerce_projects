@@ -1,5 +1,6 @@
 import React from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
+import logo from "../../../../Images/Logo/eGonj_logo.png";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const menuItems = ["shops", "about", "services", "FAQ", "Contacts"];
@@ -14,8 +15,8 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       <div>
         <div className="flex justify-between">
           <img
-            className=""
-            src="https://fullkit.moxcreative.com/electrodeals/wp-content/uploads/sites/8/elementor/thumbs/Logo_electrodeals-1-pqh2rs7jj702t6120hf28oa9rgzhabts8ff3d9id4w.png"
+            className="mx-auto h-14 pr-14"
+            src={logo}
             alt=""
           />
           <button onClick={() => setIsOpen(false)}>
@@ -23,9 +24,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           </button>
         </div>
       </div>
-      <div>
+      <div className="mt-6 ml-3">
         {menuItems.map((item, i) => (
-          <p className="my-4" key={i}>
+          <p className="my-4 " key={i}>
             {item}
           </p>
         ))}

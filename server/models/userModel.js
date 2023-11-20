@@ -19,10 +19,13 @@ const userSchema = new Schema({
     trim: true,
     unique: true,
   },
+  position:{
+    type: String,
+  },
   phone: {
     type: Number,
     trim: true,
-    unique: true,
+    //unique: true,
   },
   address: {
     division: {

@@ -1,16 +1,23 @@
 import React from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Navigate, Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../components/public/navbar/Navbar";
 import { FcBusinessman } from "react-icons/fc";
 import RecentOrders from "./AdminComponents/Orders/RecentOrders";
+import useAuth from "../../hooks/useAuth";
 
 const AdminDashboard = () => {
+  const { logOut } = useAuth();
   const pathname = useLocation()?.pathname;
 
   let subMenu = false;
   if (pathname === "/dashboard/" || pathname === "/dashboard") {
     subMenu = true;
   }
+
+  const handleLogOut = () => {
+    logOut();
+    Navigate("/login");
+  };
 
   return (
     <div className="mb-5">
@@ -27,32 +34,36 @@ const AdminDashboard = () => {
             </h3>
           </div>
           <div>
-            <button className="bg-red-200 text-black hover:bg-red-500 hover:text-white font-semibold px-3 py-2 rounded-md">
-            logOut
+            <button
+              onClick={handleLogOut}
+              className="bg-red-200 text-black hover:bg-red-500 hover:text-white font-semibold px-3 py-2 rounded-md"
+            >
+              logOut
             </button>
           </div>
         </div>
       </div>
       <div
-          className={`w-full p-2 rounded-md border borer-1px mt-2 bg-blue-200 hidden ${
-            subMenu ? "md:hidden" : "md:block"
-          }`}
-        >
-          <div className="ml-10 flex items-center gap-10 font-bold text-sm text-gray-600">
-            <Link to="/dashboard">Dashboard</Link>
-            {subMenuItems?.map((item, i) => (
-              <NavLink 
+        className={`w-full p-2 rounded-md border borer-1px mt-2 bg-blue-200 hidden ${
+          subMenu ? "md:hidden" : "md:block"
+        }`}
+      >
+        <div className="ml-10 flex items-center gap-10 font-bold text-sm text-gray-600">
+          <Link to="/dashboard">Dashboard</Link>
+          {subMenuItems?.map((item, i) => (
+            <NavLink
               key={i}
-                to={item.to}
-                className={({ isActive }) =>
-                  isActive ? "text-blue-500 underline" : ""
-                }
-              >
-                {item.text}
-              </NavLink>
-            ))}
-          </div>
+              id="RouterNavLink"
+              to={item.to}
+              className={({ isActive }) =>
+                isActive ? "text-blue-500 underline" : ""
+              }
+            >
+              {item.text}
+            </NavLink>
+          ))}
         </div>
+      </div>
       <div className="min-h-[70vh]">
         <Outlet />
       </div>
@@ -65,31 +76,29 @@ const AdminDashboard = () => {
 
 export default AdminDashboard;
 
-
-
 const subMenuItems = [
-    {
-      to: "/dashboard/orders",
-      text: "Orders",
-    },
-    {
-      to: "/dashboard/categories",
-      text: "Categories",
-    },
-    {
-      to: "/dashboard/products",
-      text: "Products",
-    },
-    {
-      to: "/dashboard/users",
-      text: "User Info",
-    },
-    {
-      to: "/dashboard/",
-      text: "Transactions",
-    },
-    {
-      to: "/dashboard/",
-      text: "Message",
-    },
-  ];
+  {
+    to: "/dashboard/orders",
+    text: "Orders",
+  },
+  {
+    to: "/dashboard/categories",
+    text: "Categories",
+  },
+  {
+    to: "/dashboard/products",
+    text: "Products",
+  },
+  {
+    to: "/dashboard/users",
+    text: "User Info",
+  },
+  {
+    to: "/dashboard/",
+    text: "Transactions",
+  },
+  {
+    to: "/dashboard/",
+    text: "Message",
+  },
+];
