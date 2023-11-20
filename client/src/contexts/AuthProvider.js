@@ -66,12 +66,13 @@ const AuthProvider = ({ children }) => {
               if (data.payload.accessToken) {
                 //console.log(data.accessToken);
                 localStorage.setItem("accessToken",data?.payload?.accessToken);
-                setLoading(false);
+                
               }
             });
         } else {
           localStorage.removeItem("accessToken");
-        }    
+        }  
+        setLoading(false);  
       });
   }, []);
 

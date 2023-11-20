@@ -10,6 +10,7 @@ const UserFaq = require("../models/faqModel");
 const handleCreateUser = async (req, res, next) => {
   try {
     const { firstName, lastName, email } = req.body;
+    console.log(req.body);
     const data = {
       name: {
         firstName: firstName,
@@ -32,9 +33,19 @@ const handleCreateUser = async (req, res, next) => {
   }
 };
 
-// create jwt
-// const token = createJsonWebToken({email},secretJWTKey,'10m')
-// console.log(token);
+//checking admin
+const handleGetAdmin = async (req, res, next) => {
+  const email = req.params.email;
+  if (email !== req.decoded.email) {
+    return createError(403, "forbidden access");
+  }
+  const user = await User.findOne({ email: email });
+  let admin = false;
+  if (user) {
+    admin = user?.position === "admin";
+  }
+  res.send({ admin });
+};
 
 const verifyJWT = async (req, res, next) => {
   try {
@@ -66,17 +77,15 @@ const verifyJWT = async (req, res, next) => {
     });
   }
 };
-
+// create jwt
 const handleJWT = async (req, res, next) => {
   try {
     const email = req.query.email;
-    const query = { email: email };
-    const user = await User.findOne(query);
+    const user = await User.findOne({ email: email });
     if (user) {
       const token = jwt.sign({ email }, process.env.ACCESS_WEB_SECRET, {
         expiresIn: "1d",
       });
-
       return successResponse(res, {
         statusCode: 200,
         message: "User Get Successfully",
@@ -87,7 +96,6 @@ const handleJWT = async (req, res, next) => {
     next(error);
   }
 };
-
 const handleGetAllUser = async (req, res, next) => {
   try {
     const getAllUser = await User.find({}).lean();
@@ -100,7 +108,6 @@ const handleGetAllUser = async (req, res, next) => {
     next(error);
   }
 };
-
 const handleGetUser = async (req, res, next) => {
   try {
     const { email } = req.query;
@@ -114,7 +121,6 @@ const handleGetUser = async (req, res, next) => {
     next(error);
   }
 };
-
 const handleUpdateUser = async (req, res, next) => {
   try {
     const { email } = req.query;
@@ -146,7 +152,6 @@ const handleUpdateUser = async (req, res, next) => {
     next(error);
   }
 };
-
 const handleCreateAddress = async (req, res, next) => {
   try {
     const { email } = req.query;
@@ -175,7 +180,6 @@ const handleCreateAddress = async (req, res, next) => {
     next(error);
   }
 };
-
 const handleGetAddress = async (req, res, next) => {
   try {
     const { email } = req.query;
@@ -198,7 +202,7 @@ const handleCreateFaq = async (req, res, next) => {
     const { question, answer } = req.body;
     const data = {
       question: question,
-      answer:answer,
+      answer: answer,
     };
     const newFaq = await UserFaq.create(data);
     return successResponse(res, {
@@ -212,7 +216,7 @@ const handleCreateFaq = async (req, res, next) => {
 };
 const handleAllGetFaq = async (req, res, next) => {
   try {
-    const getAllUserFaq= await UserFaq.find({}).lean();
+    const getAllUserFaq = await UserFaq.find({}).lean();
     return successResponse(res, {
       statusCode: 200,
       message: "User faq Return Successfully",
@@ -226,7 +230,7 @@ const handleGetFaq = async (req, res, next) => {
   try {
     const { id } = req.params;
     console.log(id);
-    const getUserFaq= await UserFaq.findOne({ _id: id }).lean();
+    const getUserFaq = await UserFaq.findOne({ _id: id }).lean();
     return successResponse(res, {
       statusCode: 200,
       message: "User faq Return Successfully",
@@ -249,7 +253,11 @@ const handleUpdateFaq = async (req, res, next) => {
     const option = {
       new: true,
     };
-    const getUpdateFaq= await UserFaq.findOneAndUpdate(filter, updates, option);
+    const getUpdateFaq = await UserFaq.findOneAndUpdate(
+      filter,
+      updates,
+      option
+    );
     return successResponse(res, {
       statusCode: 200,
       message: "User faq Update Successfully",
@@ -262,7 +270,7 @@ const handleUpdateFaq = async (req, res, next) => {
 const handleDeleteFaq = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const deleteFaq = await UserFaq.findOneAndDelete({ _id:id });
+    const deleteFaq = await UserFaq.findOneAndDelete({ _id: id });
     if (!deleteFaq) {
       throw createError(404, "faq not found");
     }
@@ -285,6 +293,7 @@ module.exports = {
   handleGetAddress,
   handleJWT,
   verifyJWT,
+  handleGetAdmin,
   handleAllGetFaq,
   handleCreateFaq,
   handleGetFaq,

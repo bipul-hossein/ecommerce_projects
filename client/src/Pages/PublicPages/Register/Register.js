@@ -22,7 +22,7 @@ const Register = () => {
     
     createUser(data.email, data.password)
       .then((result) => {
-        //console.log(result.user)
+        console.log(result.user.email)
         if (result?.user?.email) {
             axios
               .post(`${process.env.REACT_APP_ServerUrl}/api/user`, userData)

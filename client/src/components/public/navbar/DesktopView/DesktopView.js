@@ -4,9 +4,19 @@ import { GoSearch } from "react-icons/go";
 import { CgProfile, CgShoppingCart } from "react-icons/cg";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import logo from "../../../../Images/Logo/egonj_logo3.png";
+import useAdmin from "../../../../hooks/useAdmin";
+import useAuth from "../../../../hooks/useAuth";
 
 const DesktopView = ({ cartQuantity }) => {
   const [isFixed, setIsFixed] = useState(false);
+  const { user } = useAuth();
+  const [isAdmin, isAdminLoading] = useAdmin();
+
+
+
+if(isAdminLoading){
+  <p>waiting...</p>
+}
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,21 +55,29 @@ const DesktopView = ({ cartQuantity }) => {
           </div>
         </div>
         <div className="flex gap-12 items-center">
-          <Link to="/account">
-            <div className="flex gap-2 items-center">
-              <div>
-                <CgProfile className="text-[28px] text-primary hover:cursor-pointer" />
+          {user && !isAdmin ? (
+            <Link to="/account">
+              <div className="flex gap-2 items-center">
+                <div>
+                  <CgProfile className="text-[28px] text-primary hover:cursor-pointer" />
+                </div>
+                <div>
+                  <p className="text-sm text-gray-400">Sing in</p>
+                  <p>Account</p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm text-gray-400">Sing in</p>
-                <p>Account</p>
-              </div>
-            </div>
-          </Link>
-              
-          <Link to="/dashboard" className="font-bold">
-              Admin Dashboard
             </Link>
+          ) : (
+            <Link to="/login">
+              <p>Please <span className="underline text-blue-500">Login</span></p>
+            </Link>
+          )}
+
+          {isAdmin && (
+            <Link to="/dashboard" className="font-bold">
+             Dashboard
+            </Link>
+          )}
           <Link to="/cart" className="relative">
             <span className=" bg-yellow-400 text-sm text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
               {cartQuantity}
@@ -83,11 +101,10 @@ const DesktopView = ({ cartQuantity }) => {
             <Link to="/" className="font-bold">
               Home
             </Link>
-            
+
             <Link to="/about" className="font-bold">
               About
             </Link>
-
 
             <p className="font-bold">Shop</p>
             <p className="font-bold">Contact Us</p>
@@ -96,7 +113,7 @@ const DesktopView = ({ cartQuantity }) => {
           <div className="w-[30%] flex gap-2 justify-evenly">
             <p className="text-sm font-bold flex justify-center items-center">
               <BiSolidPhoneCall className="w-5 h-5 mr-2" /> Call Us Now:
-              018-3234-5423
+              01728-525953
             </p>
             <Link
               to="/cart"

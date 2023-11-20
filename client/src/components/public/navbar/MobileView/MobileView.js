@@ -1,18 +1,22 @@
 import React, { useState } from "react";
-import { AiOutlineHome, AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineSearch} from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
 import { IoPersonOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import Sidebar from "./Sidebar";
 
 const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
   const [active, setActive] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
 
   const Menus = [
-    { name: "Menu", icon: <AiOutlineMenu /> },
+    {
+      name: "Home",
+      icon: (
+        <Link to={"/"}>
+          <AiOutlineHome />
+        </Link>
+      ),
+    },
     { name: "Search", icon: <AiOutlineSearch /> },
-    { name: "Home", icon: <AiOutlineHome /> },
     {
       name: "Cart",
       icon: (
@@ -36,18 +40,16 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
 
   const handleClick = (i) => {
     setActive(i);
-    if (i === 0) {
-      setIsOpen(true);
+    if (i === 0){
+      setActiveSearchBar(false);
     }
-
-    if (i === 1) {
-      setActiveSearchBar(!activeSearchBar);
-    }
+      if (i === 1 ) {
+        setActiveSearchBar(!activeSearchBar);
+      }
   };
 
   return (
     <>
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="bg-[#e7e7e7] max-h-[4.4rem] w-full">
         <ul className="flex relative">
           {Menus.map((menu, i) => {
