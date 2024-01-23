@@ -23,7 +23,7 @@ app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(express.static("build"))
+app.use(express.static("build"))
 app.use("/uploads", express.static("uploads"));
 
 //routes
