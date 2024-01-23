@@ -14,7 +14,10 @@ const ordersRouter = require("./routes/ordersRouter");
 const port = process.env.PORT || 5000;
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin:"*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",};
+app.use(cors(corsOptions));
 
 //middleware
 app.use(morgan("dev"));
@@ -31,8 +34,8 @@ app.use("/api", userRouter);
 app.use("/api", ordersRouter);
 
 // connect to DataBase
-const url = `mongodb://localhost:27017/LocalDb`
-// const url = process.env.DB_URL;
+// const url = `mongodb://localhost:27017/LocalDb`
+const url = process.env.DB_URL;
 const connectDB = async () => {
   try {
     // await mongoose.connect(url);
