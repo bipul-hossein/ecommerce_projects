@@ -1,6 +1,6 @@
 import React from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
-import logo from "../../../../Images/Logo/eGonj_logo.png";
+import logo from "../../../../Images/Logo/egonj_logo3.png";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const menuItems = ["shops", "about", "services", "FAQ", "Contacts"];
