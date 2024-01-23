@@ -30,6 +30,7 @@ const Card = ({ data, icon }) => {
               className="aspect-square w-full min-h-[210px] group-hover:scale-110 duration-700 ease-in-out"
               src={data?.image}
               alt=""
+              loading="lazy"
             />
           </div>
         </Link>

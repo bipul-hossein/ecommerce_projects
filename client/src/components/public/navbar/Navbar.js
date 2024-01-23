@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import MobileView from "./MobileView/MobileView";
 import DesktopView from "./DesktopView/DesktopView";
 import SearchBar from "./MobileView/SearchBar";
-import logo from "../../../Images/Logo/eGonj_logo.png";
+import logo from "../../../Images/Logo/egonj_logo3.png";
 import { ProductContext } from "../../../contexts/ProductsProvider";
 import { AiOutlineMenu } from "react-icons/ai";
 import Sidebar from "./MobileView/Sidebar";

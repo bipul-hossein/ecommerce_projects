@@ -9,7 +9,7 @@ import CartDetails from "../../Pages/PublicPages/CartDetails/CartDetails";
 import ProductDetails from "../../Pages/PublicPages/ProductDetails/ProductDetails";
 import ProductCategory from "../../Pages/PublicPages/ProductCategory/ProductCategory";
 import UserDashboard from "../../Pages/PublicPages/UserDashboard/UserDashboard";
-import AdminLayout from "../../Layout/AdminDashboardLayout/AdminLayout";
+// import AdminLayout from "../../Layout/AdminDashboardLayout/AdminLayout";
 import SpecificOrderDetails from "../../Pages/AdminDashboard/AdminComponents/Orders/SpecificOrderDetails";
 import UserOrders from "../../Pages/PublicPages/UserDashboard/UserOrders/UserOrders";
 import AccountOptions from "../../Pages/PublicPages/UserDashboard/AccountOptions/AccountOptions";
@@ -28,6 +28,8 @@ import Categories from "../../Pages/AdminDashboard/AdminComponents/Categories/Ca
 import AdminOptions from "../../Pages/AdminDashboard/AdminComponents/AdminOptions/AdminOptions";
 import AboutPage from "../../Pages/PublicPages/AboutPage/AboutPage";
 import AdminPrivateRouters from "../PrivateRouters/AdminPrivateRouters";
+import Shop from "../../Pages/PublicPages/ShopPage/Shop";
+import Contact from "../../Pages/PublicPages/ContactPage/Contact";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,18 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/shop",
+        element: <Shop />,
+      },
+      {
+        path: "/about",
+        element: <AboutPage />,
+      },
+      {
+        path: "/contact_us",
+        element: <Contact />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
@@ -50,10 +64,6 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
-      },
-      {
-        path: "/about",
-        element: <AboutPage />,
       },
       {
         path: "/cart",
@@ -91,9 +101,9 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
-        <AdminPrivateRouters>
-          <AdminDashboard />
-        </AdminPrivateRouters>
+      <AdminPrivateRouters>
+        <AdminDashboard />
+      </AdminPrivateRouters>
     ),
     children: [
       {
