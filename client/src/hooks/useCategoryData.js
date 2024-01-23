@@ -8,7 +8,6 @@ const useCategoryData = () => {
             //fetch('${process.env.REACT_APP_ServerUrl}/categories')
             .then(res => res.json())
             .then(data =>{ 
-                console.log(data);
                 setCategoryData(data)
             })
     }, [])

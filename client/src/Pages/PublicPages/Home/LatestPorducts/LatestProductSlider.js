@@ -30,7 +30,7 @@ const LatestProductSlider = () => {
         >
             {products?.slice(0, 8)?.map((data, i) => (
                 <SwiperSlide key={i}>
-                    <Card id={data._id} data={data} />
+                    <Card icon={"new"} data={data} />
                 </SwiperSlide>
             ))}
         </Swiper>

@@ -1,9 +1,9 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import availablity from "../../../../../Images/Banner/availablity_banner.jpg"
-import hena from "../../../../../Images/Banner/hana_banner.jpg"
-import honey from "../../../../../Images/Banner/honey_ghee_banner.jpg"
-import oil from "../../../../../Images/Banner/oil_satu_banner.jpg"
+import location from "../../../../../Images/Banner/service_location.jpg";
+import henna from "../../../../../Images/Banner/henna.jpg";
+import honey from "../../../../../Images/Banner/honey_ghee.jpg";
+import oil from "../../../../../Images/Banner/oil.jpg";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -14,10 +14,9 @@ import "./BannerSwiper.css";
 import { Pagination, Autoplay } from "swiper/modules";
 
 const BannerSwiper = () => {
-
   const swiperItems = [
     {
-      img: availablity,
+      img: location,
     },
     {
       img: honey,
@@ -26,7 +25,7 @@ const BannerSwiper = () => {
       img: oil,
     },
     {
-      img: hena,
+      img: henna,
     },
   ];
 
@@ -38,9 +37,9 @@ const BannerSwiper = () => {
         loop={true}
         speed={1200}
         autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
@@ -49,8 +48,8 @@ const BannerSwiper = () => {
       >
         {swiperItems.map((item, i) => (
           <SwiperSlide key={i}>
-            <div className="flex gap-2 items-center justify-evenly px-2 md:px-8">
-              {/* <div className="w-1/2">
+            {/* <div className="flex gap-2 items-center justify-evenly px-2 md:px-8">
+              <div className="w-1/2">
                 <p className="text-sm md:text-base text-red-500 font-bold my-3">
                   {item.subTitle}
                 </p>
@@ -58,8 +57,10 @@ const BannerSwiper = () => {
                 <button className="bg-yellow-400 p-2 rounded-md text-sm font-bold mt-5">
                   Shop New!
                 </button>
-              </div> */}
-              <img className="w-full" src={item?.img} alt="" />
+              </div>
+            </div> */}
+            <div className="">
+              <img className="w-full rounded-xl" src={item?.img} alt="" />
             </div>
           </SwiperSlide>
         ))}

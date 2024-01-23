@@ -1,24 +1,27 @@
 import React from "react";
 import { useQuery } from "react-query";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 
 const UserInfo = () => {
-  const { data: users = [],} = useQuery({
+  const [axiosSecure] = useAxiosSecure();
+  const { data: users = [] } = useQuery({
     queryKey: ["usersData"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_ServerUrl}/api/users`);
-      const data = await res.json();
-      return data?.payload;
+      const res = await axiosSecure.get(
+        `${process.env.REACT_APP_ServerUrl}/api/users`
+      );
+      return res?.data?.payload;
     },
   });
-
+  console.log(users);
   return (
     <div>
-      <p className="text-xl text-center font-semibold mb-3">User Info</p>
-      {users?.map((user) => (
-        <div key={user?._id}>
-          <p>{user?.name?.firstName+" "+user?.name?.lastName}</p>
+      <p className="text-xl text-center font-semibold my-3">User Info</p>
+      <p>all user</p>
+      {users?.map((user, i) => (
+        <div key={i}>
+          <p>{user?.name?.firstName + " " + user?.name?.lastName} user</p>
           <p>{user?.email}</p>
-  
         </div>
       ))}
     </div>

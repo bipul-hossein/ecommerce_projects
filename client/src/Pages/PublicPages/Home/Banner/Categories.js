@@ -5,7 +5,6 @@ import useCategoryData from "../../../../hooks/useCategoryData";
 const Categories = () => {
   const [categoryData] = useCategoryData();
   const categoriesItem = categoryData?.payload;
-  console.log(categoriesItem);
 
   const navigate = useNavigate();
   const handleContentDetails = (slug) => {
@@ -13,8 +12,8 @@ const Categories = () => {
   };
 
   return (
-    <div className="w-[250px] border py-2 px-4 rounded-md hidden md:block">
-      <h2 className="text-xl font-bold my-2">All Department</h2>
+    <div className="w-[250px] border px-4 rounded-md hidden md:block">
+      <h2 className="text-xl font-bold my-2">All Categories</h2>
       {categoriesItem?.slice(0, 8)?.map((category, i) => (
         <div
           key={i}

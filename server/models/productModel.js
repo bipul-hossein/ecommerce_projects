@@ -8,6 +8,8 @@ const productSchema = new Schema({
   },
   slug: {
     type: String,
+    required: true,
+    lowercase: true,
   },
   createdAt: {
     type: Date,
@@ -38,9 +40,8 @@ const productSchema = new Schema({
     default: 0,
   },
   image: {
-    data: Buffer,
-    contentType: String,
-    // require: true
+    type: String,
+    require: true,
   },
   category: {
     type: String,

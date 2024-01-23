@@ -1,18 +1,26 @@
 import React, { useState } from "react";
-import { AiOutlineHome, AiOutlineSearch, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
 import { IoPersonOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import Sidebar from "./Sidebar";
+import useAdmin from "../../../../hooks/useAdmin";
+import useAuth from "../../../../hooks/useAuth";
 
 const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
   const [active, setActive] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
+  const { user } = useAuth();
+  const [isAdmin, isAdminLoading] = useAdmin();
 
   const Menus = [
-    { name: "Menu", icon: <AiOutlineMenu /> },
+    {
+      name: "Home",
+      icon: (
+        <Link to={"/"}>
+          <AiOutlineHome />
+        </Link>
+      ),
+    },
     { name: "Search", icon: <AiOutlineSearch /> },
-    { name: "Home", icon: <AiOutlineHome /> },
     {
       name: "Cart",
       icon: (
@@ -32,14 +40,37 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
         </Link>
       ),
     },
+
+    // {user && !isAdmin ? (
+    //   <Link to="/account">
+    //     <div className="flex gap-2 items-center">
+    //       <div>
+    //         <CgProfile className="text-[28px] text-primary hover:cursor-pointer" />
+    //       </div>
+    //       <div>
+    //         <p className="text-sm text-gray-400">Sing in</p>
+    //         <p>Account</p>
+    //       </div>
+    //     </div>
+    //   </Link>
+    // ) : (
+    //   <Link to="/login">
+    //     <p>Please <span className="underline text-blue-500">Login</span></p>
+    //   </Link>
+    // )}
+
+    // {isAdmin && (
+    //   <Link to="/dashboard" className="font-bold">
+    //    Dashboard
+    //   </Link>
+    // )}
   ];
 
   const handleClick = (i) => {
     setActive(i);
     if (i === 0) {
-      setIsOpen(true);
+      setActiveSearchBar(false);
     }
-
     if (i === 1) {
       setActiveSearchBar(!activeSearchBar);
     }
@@ -47,7 +78,6 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
 
   return (
     <>
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="bg-[#e7e7e7] max-h-[4.4rem] w-full">
         <ul className="flex relative">
           {Menus.map((menu, i) => {

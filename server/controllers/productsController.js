@@ -1,20 +1,22 @@
 const Product = require("../models/productModel");
-const { successResponse } = require("./responseController");
+const { successResponse, errorResponse } = require("./responseController");
 const slugify = require("slugify");
 const createError = require("http-errors");
 require("dotenv").config();
 const fs = require("fs");
 const path = require("path");
 const Category = require("../models/categoryModel");
+const { error } = require("console");
 const uploadsDirectory = "uploads";
 
 const handleCreateProducts = async (req, res, next) => {
   try {
     const image = req?.file?.filename;
+    console.log(image);
     const { title, description, price, quantity, shipping, category, sold } =
       req.body;
-      
-    exports.handler = function (event, context) {
+
+    /*     exports.handler = function (event, context) {
       fs.writeFile("/tmp/test.txt", "testing", function (err) {
         if (err) {
           context.fail("writeFile failed: " + err);
@@ -22,24 +24,33 @@ const handleCreateProducts = async (req, res, next) => {
           context.succeed("writeFile succeeded");
         }
       });
-    };
-    const newProduct = await Product.create({
-      title,
-      slug: slugify(title),
-      description,
-      price,
-      stock: quantity,
-      shipping,
-      category,
-      sold,
-      image: `${process.env.REACT_APP_ServerUrl}/uploads/${image}`,
-    });
-    console.log(newProduct);
-    return successResponse(res, {
-      statusCode: 200,
-      message: "Product was created successfully",
-      payload: newProduct,
-    });
+    }; */
+    const exitingCategory = await Category.findOne({ _id: category });
+
+    if (exitingCategory) {
+      const newProduct = await Product.create({
+        title,
+        slug: slugify(title),
+        description,
+        price,
+        stock: quantity,
+        shipping,
+        category,
+        sold,
+        image: `${process.env.SERVER_URL}/uploads/${image}`,
+      });
+      console.log(newProduct);
+      return successResponse(res, {
+        statusCode: 200,
+        message: "Product was created successfully",
+        payload: newProduct,
+      });
+    }else{
+      return errorResponse(res, {
+        statusCode:500,
+        message:"don't found category"
+      })
+    }
   } catch (error) {
     next(error);
   }
@@ -132,7 +143,7 @@ const handleUpdateProduct = async (req, res, next) => {
         shipping,
         category,
         sold,
-        image: `${process.env.REACT_APP_ServerUrl}/uploads/${image}`,
+        image: `${process.env.SERVER_URL}/uploads/${image}`,
       },
     };
     const filedWithOutImage = {
