@@ -3,13 +3,13 @@ import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
 import { IoPersonOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import useAdmin from "../../../../hooks/useAdmin";
-import useAuth from "../../../../hooks/useAuth";
+// import useAdmin from "../../../../hooks/useAdmin";
+// import useAuth from "../../../../hooks/useAuth";
 
 const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
   const [active, setActive] = useState(0);
-  const { user } = useAuth();
-  const [isAdmin, isAdminLoading] = useAdmin();
+  // const { user } = useAuth();
+  // const [isAdmin, isAdminLoading] = useAdmin();
 
   const Menus = [
     {
