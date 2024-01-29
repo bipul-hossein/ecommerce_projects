@@ -10,7 +10,7 @@ const UserFaq = require("../models/faqModel");
 const handleCreateUser = async (req, res, next) => {
   try {
     const { firstName, lastName, email } = req.body;
-    console.log(req.body);
+    console.log(req.body,email,'erer');
     const data = {
       name: {
         firstName: firstName,

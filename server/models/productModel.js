@@ -18,7 +18,7 @@ const productSchema = new Schema({
   description: {
     type: String,
     trim: true,
-    require: true,
+    // require: true,
   },
   price: {
     type: Number,
@@ -28,7 +28,7 @@ const productSchema = new Schema({
   stock: {
     type: Number,
     trim: true,
-    require: true,
+    // require: true,
   },
   sold: {
     type: Number,
@@ -41,7 +41,7 @@ const productSchema = new Schema({
   },
   image: {
     type: String,
-    require: true,
+    // require: true,
   },
   category: {
     type: String,

@@ -4,7 +4,7 @@ import { ProductContext } from "../../../contexts/ProductsProvider";
 
 const Card = ({ data, icon }) => {
   const { handleAddToLocalStorage, cartItems } = useContext(ProductContext);
-
+// console.log(data);
   const findCartItem = cartItems?.find((item) => item?._id === data?._id);
 
   return (
@@ -24,7 +24,7 @@ const Card = ({ data, icon }) => {
             </p>
           </div>
         )}
-        <Link to={`/product-details/${data?._id}`}>
+        <Link to={`/product/${data?._id}`}>
           <div className=" overflow-hidden rounded-sm flex justify-center">
             <img
               className="aspect-square w-full min-h-[210px] group-hover:scale-110 duration-700 ease-in-out"
@@ -40,7 +40,7 @@ const Card = ({ data, icon }) => {
       </h2>
       <div className="my-2 ">
         <span className="text-xs md:text-sm whitespace-no-wrap text-[#fa6602] leading-6 font-bold">
-          ৳{data.price}
+          ৳{data?.price}
         </span>
         {/* <span className="ml-2 text-xs md:text-sm text-[#132a36] opacity-50  line-through pl-1">
           ৳354

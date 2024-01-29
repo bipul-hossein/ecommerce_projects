@@ -3,45 +3,61 @@ import { AiOutlineHome, AiOutlineSearch } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
 import { IoPersonOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-// import useAdmin from "../../../../hooks/useAdmin";
-// import useAuth from "../../../../hooks/useAuth";
+import useAdmin from "../../../../hooks/useAdmin";
+import useAuth from "../../../../hooks/useAuth";
 
 const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
   const [active, setActive] = useState(0);
-  // const { user } = useAuth();
-  // const [isAdmin, isAdminLoading] = useAdmin();
+  const { user } = useAuth();
+  const [isAdmin, isAdminLoading] = useAdmin();
 
   const Menus = [
     {
       name: "Home",
-      icon: (
-        <Link to={"/"}>
-          <AiOutlineHome />
-        </Link>
-      ),
+      icon:  <AiOutlineHome />,
+      link:"/"
     },
     { name: "Search", icon: <AiOutlineSearch /> },
     {
       name: "Cart",
-      icon: (
-        <Link to={"/cart"} className="relative">
-          <CgShoppingCart />
-          <span className="bg-yellow-400 text-xs text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
-            {cartQuantity}
-          </span>
-        </Link>
-      ),
+      icon:<CgShoppingCart />,
+      link:"/cart"
     },
     {
       name: "Profile",
-      icon: (
-        <Link to={"/account"}>
-          <IoPersonOutline />
-        </Link>
-      ),
+      icon: <IoPersonOutline />,
+      link:"/account"
     },
+    // {
+    //   name: "Home",
+    //   icon: (
+    //     <Link to={"/"}>
+    //       <AiOutlineHome />
+    //     </Link>
+    //   ),
+    // },
+    // { name: "Search", icon: <AiOutlineSearch /> },
+    // {
+    //   name: "Cart",
+    //   icon: (
+    //     <Link to={"/cart"} className="relative">
+    //       <CgShoppingCart />
+    //       <span className="bg-yellow-400 text-xs text-primary rounded-full px-1 absolute -top-2 -right-2 font-bold">
+    //         {cartQuantity}
+    //       </span>
+    //     </Link>
+    //   ),
+    // },
+    // {
+    //   name: "Profile",
+    //   icon: (
+    //     <Link to={"/account"}>
+    //       <IoPersonOutline />
+    //     </Link>
+    //   ),
+    // },
 
-    // {user && !isAdmin ? (
+    // {(user && !isAdmin )? (
     //   <Link to="/account">
     //     <div className="flex gap-2 items-center">
     //       <div>
@@ -67,12 +83,21 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
   ];
 
   const handleClick = (i) => {
+    console.log(i);
     setActive(i);
+    
     if (i === 0) {
       setActiveSearchBar(false);
     }
     if (i === 1) {
       setActiveSearchBar(!activeSearchBar);
+    }
+    if(i ===2){
+
+    }
+    if(i ===3){
+      
+
     }
   };
 
@@ -84,7 +109,7 @@ const MobileView = ({ activeSearchBar, setActiveSearchBar, cartQuantity }) => {
             return (
               <li key={i} className="w-full">
                 <Link
-                  href="/"
+                  to={menu?.link}
                   className={`flex flex-col justify-center items-center text-center ${
                     i === active
                       ? "text-white bg-primary pt-2"

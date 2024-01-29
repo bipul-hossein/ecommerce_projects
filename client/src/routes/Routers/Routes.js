@@ -30,12 +30,22 @@ import AboutPage from "../../Pages/PublicPages/AboutPage/AboutPage";
 import AdminPrivateRouters from "../PrivateRouters/AdminPrivateRouters";
 import Shop from "../../Pages/PublicPages/ShopPage/Shop";
 import Contact from "../../Pages/PublicPages/ContactPage/Contact";
+import DisplayError from "../../components/errorPage/DisplayError";
+import NotFound from "../../components/errorPage/NotFound";
+import { projectLoader } from "../../components/loader/loader";
+import PreLoader from "../../components/loader/preLoader/PreLoader";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    loader: projectLoader,
+    errorElement:<DisplayError></DisplayError>,
     children: [
+      {
+        path: "*",
+        element: <NotFound />,
+      },
       {
         path: "/",
         element: <Home />,
