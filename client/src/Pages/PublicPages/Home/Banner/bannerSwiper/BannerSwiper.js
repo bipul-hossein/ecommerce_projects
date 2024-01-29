@@ -46,7 +46,7 @@ const BannerSwiper = () => {
         modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
-        {swiperItems.map((item, i) => (
+        {swiperItems?.map((item, i) => (
           <SwiperSlide key={i}>
             {/* <div className="flex gap-2 items-center justify-evenly px-2 md:px-8">
               <div className="w-1/2">
@@ -60,7 +60,12 @@ const BannerSwiper = () => {
               </div>
             </div> */}
             <div className="">
-              <img className="w-full rounded-xl" src={item?.img} alt="" />
+              <img
+                loading="lazy"
+                  className="w-full rounded-xl"
+                src={item?.img}
+                alt=""
+              />
             </div>
           </SwiperSlide>
         ))}

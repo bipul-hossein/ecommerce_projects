@@ -17,7 +17,7 @@ const banner = [
 
 const OfferBanners = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-4 justify-center my-10">
+    <div className="flex flex-col md:flex-row gap-4 justify-center my-10 md:mx-auto">
       {banner?.map((item, i) => (
         <div key={i} className="relative hover:scale-105 duration-1000"
         style={{ boxShadow: "0 10px 30px rgba(0, 0, 0, 0.1)" }}>

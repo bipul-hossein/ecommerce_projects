@@ -5,18 +5,15 @@ import { CgProfile, CgShoppingCart } from "react-icons/cg";
 import { FaRegUser } from "react-icons/fa";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import logo from "../../../../Images/Logo/egonj_logo3.png";
-import useAdmin from "../../../../hooks/useAdmin";
-import useAuth from "../../../../hooks/useAuth";
+import { RiHome2Fill } from "react-icons/ri";
 
-const DesktopView = ({ cartQuantity }) => {
+const DesktopView = ({ cartQuantity,user,isAdmin,isAdminLoading }) => {
   const [isFixed, setIsFixed] = useState(false);
-  const { user } = useAuth();
-  const [isAdmin, isAdminLoading] = useAdmin();
-
+ 
   if (isAdminLoading) {
     <p>waiting...</p>;
   }
-
+// console.log(user?.displayName);
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -35,7 +32,7 @@ const DesktopView = ({ cartQuantity }) => {
 
   return (
     <div className="py-4">
-      <div className="flex justify-between items-center gap-10 max-w-[1200px] mx-auto px-4 mb-4">
+      <div className="flex justify-between items-center gap-10 max-w-[1200px] mx-auto mb-4">
         <Link to="/">
           <img className="h-[45px]" src={logo} alt="" />
         </Link>
@@ -54,19 +51,13 @@ const DesktopView = ({ cartQuantity }) => {
           </div>
         </div>
         <div className="flex gap-12 items-center max-h-full">
-          {user && !isAdmin ? (
-            <Link to="/account">
-              <div className="flex gap-2 items-center">
-                <div>
-                  <CgProfile className="text-[28px] text-primary hover:cursor-pointer" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-400">Sing in</p>
-                  <p>Account</p>
-                </div>
-              </div>
+        {user && !isAdmin && (
+            <Link to="/account" className="inline-flex cursor-pointer items-center text-base justify-center h-full md:w-[120px] gap-2 md:hover:border rounded-md transition-colors md:hover:bg-gray-50">
+            <CgProfile className="h-5 w-5"/>
+             {user?.displayName}
             </Link>
-          ) : (
+          )}
+          {!user && !isAdmin && (
             <Link to="/login" className="max-h-full">
               <p className="inline-flex cursor-pointer items-center text-base justify-center h-full md:w-[120px] gap-2 md:hover:border rounded-md transition-colors md:hover:bg-gray-50">
                   <FaRegUser className="h-5 w-5"/>
@@ -74,10 +65,9 @@ const DesktopView = ({ cartQuantity }) => {
               </p>
             </Link>
           )}
-
           {isAdmin && (
-            <Link to="/dashboard" className="font-bold">
-              Dashboard
+            <Link to="/dashboard" className="font-bold bg-red-500 text-white px-4 py-2 rounded uppercase hover:bg-primary">
+              hi admin !!
             </Link>
           )}
           <Link to="/cart" className="relative">
@@ -98,9 +88,10 @@ const DesktopView = ({ cartQuantity }) => {
           isFixed ? "fixed top-0" : ""
         }`}
       >
-        <div className="px-4 text-white flex justify-between items-center max-w-[1200px] mx-auto">
+        <div className="text-white flex justify-between items-center max-w-[1200px] mx-auto">
           <div className="flex gap-[3%] w-full">
-            <Link to="/" className="font-bold">
+            <Link to="/" className="inline-flex items-center gap-2 text-base text-white group hover:text-[#8b2e2e] whitespace-nowrap font-bold ">
+            <RiHome2Fill />
               Home
             </Link>
 

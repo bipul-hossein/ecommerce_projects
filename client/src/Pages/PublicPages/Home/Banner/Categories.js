@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useCategoryData from "../../../../hooks/useCategoryData";
 
 const Categories = () => {
-  const [categoryData] = useCategoryData();
-  const categoriesItem = categoryData?.payload;
+  const [categoriesItem] = useCategoryData();
 
   const navigate = useNavigate();
   const handleContentDetails = (slug) => {

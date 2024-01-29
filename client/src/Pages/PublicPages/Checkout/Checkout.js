@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import AddDeliveryAddressModal from "../../../components/public/addDeliveryAddressModal/AddDeliveryAddressModal";
 import { FiPlus } from "react-icons/fi";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../../contexts/AuthProvider";
 import axios from "axios";
 import { ProductContext } from "../../../contexts/ProductsProvider";
@@ -70,8 +70,15 @@ const Checkout = () => {
 
   
   return (
-    <>
-      <div className="max-w-[1200px] mx-auto my-10 p-2 flex gap-5 flex-col md:flex-row">
+    <div className="min-h-screen">
+    <nav className="flex flex-row gap-2 py-4 pl-2">
+        <Link to="/" className="hover:cursor-pointer">Home</Link>
+        <span> / </span>
+        <Link to="/cart" className="hover:cursor-pointer">Cart</Link>
+        <span> / </span>
+        <span className="font-bold">Checkout</span>
+      </nav>
+      <div className="max-w-[1200px] mx-auto my-7 p-2 flex gap-5 flex-col md:flex-row">
         <div className="md:w-[70%]">
 
       <div className={`${!validUser ? "block" : "hidden"}`} style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}>
@@ -173,6 +180,7 @@ const Checkout = () => {
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
+                  checked
                   name=""
                   required
                   id="payment"
@@ -207,13 +215,13 @@ const Checkout = () => {
                 <p className="text-sm font-semibold">৳ {subTotal + 60}</p>
               </div>
               <div className="my-2 flex justify-between items-center mt-5">
-                <button
+                <Link to="/checkout/order-confirm"
                 type="onsubmit"
                 disabled={!validUser}
                   className={`bg-primary text-white p-2 w-full font-bold rounded-sm flex justify-center items-center ${!validUser && "bg-blue-300"}`}
                 >
                   Place Order
-                </button>
+                </Link>
               </div>
             </div>
           </form>
@@ -222,7 +230,7 @@ const Checkout = () => {
       <div className={`${openModal ? "block" : "hidden"}`}>
         <AddDeliveryAddressModal openModal={openModal} setOpenModal={setOpenModal} userInfo={userInfo}/>
       </div>
-    </>
+    </div>
   );
 };
 

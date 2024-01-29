@@ -12,7 +12,7 @@ const uploadsDirectory = "uploads";
 const handleCreateProducts = async (req, res, next) => {
   try {
     const image = req?.file?.filename;
-    console.log(image);
+    console.log(image,"sdff");
     const { title, description, price, quantity, shipping, category, sold } =
       req.body;
 
@@ -26,7 +26,7 @@ const handleCreateProducts = async (req, res, next) => {
       });
     }; */
     const exitingCategory = await Category.findOne({ _id: category });
-
+console.log(exitingCategory,' 4654 629');
     if (exitingCategory) {
       const newProduct = await Product.create({
         title,
