@@ -91,7 +91,6 @@ const DesktopView = ({ cartQuantity,user,isAdmin,isAdminLoading }) => {
         <div className="text-white flex justify-between items-center max-w-[1200px] mx-auto">
           <div className="flex gap-[3%] w-full">
             <Link to="/" className="inline-flex items-center gap-2 text-base text-white group hover:text-[#8b2e2e] whitespace-nowrap font-bold ">
-            <RiHome2Fill />
               Home
             </Link>
 

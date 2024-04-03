@@ -88,7 +88,13 @@ const router = createBrowserRouter([
         element: <OrderConfirmMessage />,
       },
       {
-        path: "/product-details/:id",
+        path: "/product/:id",
+        element: <ProductDetails />,
+        loader: ({ params }) =>
+          fetch(`${process.env.REACT_APP_ServerUrl}/api/products/${params.id}`),
+      },
+      {
+        path: "/:slug/:id",
         element: <ProductDetails />,
         loader: ({ params }) =>
           fetch(`${process.env.REACT_APP_ServerUrl}/api/products/${params.id}`),

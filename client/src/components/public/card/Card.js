@@ -1,11 +1,22 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ProductContext } from "../../../contexts/ProductsProvider";
 
-const Card = ({ data, icon }) => {
+const Card = ({ data, icon, categoryName }) => {
   const { handleAddToLocalStorage, cartItems } = useContext(ProductContext);
-// console.log(data);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  // console.log(pathname);
+
   const findCartItem = cartItems?.find((item) => item?._id === data?._id);
+
+  const handleNavigate = (data) => {
+    // console.log(data);
+    if (pathname === ("/shop" && "/")) {
+      navigate(`/product/${data._id}`);
+    } else
+     navigate(`${pathname}/${data._id}`);
+  };
 
   return (
     <div className="group flex flex-col rounded-md justify-between w-full bg-white p-2 md:p-4 border-[1px] hover:border-[#fa6602] relative ">
@@ -24,18 +35,20 @@ const Card = ({ data, icon }) => {
             </p>
           </div>
         )}
-        <Link to={`/product/${data?._id}`}>
-          <div className=" overflow-hidden rounded-sm flex justify-center">
-            <img
-              className="aspect-square w-full min-h-[210px] group-hover:scale-110 duration-700 ease-in-out"
-              src={data?.image}
-              alt=""
-              loading="lazy"
-            />
-          </div>
-        </Link>
+
+        <div
+          onClick={() => handleNavigate(data)}
+          className="hover:cursor-pointer overflow-hidden rounded-sm flex justify-center"
+        >
+          <img
+            className="aspect-square w-full min-h-[210px] group-hover:scale-110 duration-700 ease-in-out"
+            src={data?.image}
+            alt=""
+            loading="lazy"
+          />
+        </div>
       </div>
-      <h2 className="text-sm md:text-base font-medium md:font-semibold md:tracking-[-.2px] mt-2">
+      <h2 onClick={() => handleNavigate(data)} className="hover:cursor-pointer text-sm md:text-base font-medium md:font-semibold md:tracking-[-.2px] mt-2">
         {data.title}
       </h2>
       <div className="my-2 ">
