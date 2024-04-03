@@ -34,8 +34,8 @@ app.use("/api", userRouter);
 app.use("/api", ordersRouter);
 
 // connect to DataBase on server site
-// const url = `mongodb://localhost:27017/LocalDb`
-const url = process.env.DB_URL;
+const url = `mongodb://localhost:27017/LocalDb`
+// const url = process.env.DB_URL;
 const connectDB = async () => {
   try {
     // await mongoose.connect(url);

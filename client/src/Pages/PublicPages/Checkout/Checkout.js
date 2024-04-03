@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import AddDeliveryAddressModal from "../../../components/public/addDeliveryAddressModal/AddDeliveryAddressModal";
 import { FiPlus } from "react-icons/fi";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../../contexts/AuthProvider";
 import axios from "axios";
 import { ProductContext } from "../../../contexts/ProductsProvider";
@@ -18,11 +18,9 @@ const Checkout = () => {
 
   const userInfo = userOldDbInfo?.payload;
   let validUser = false;
-  if(userInfo?.phone && userInfo?.address){
+  if (userInfo?.phone && userInfo?.address) {
     validUser = true;
   }
-  
-
 
   useEffect(() => {
     if (cartItems) {
@@ -31,24 +29,25 @@ const Checkout = () => {
       cartItems.forEach((item, i) => {
         newOrderProducts[i] = {
           id: item._id,
-          quantity: item.quantity ? item.quantity : 1, 
+          quantity: item.quantity ? item.quantity : 1,
         };
       });
-
       setOrderProducts([...orderProducts, ...newOrderProducts]);
     }
-    
   }, [cartItems]); //eslint-disable-line
 
   const handlePlaceOrder = async (e) => {
-    e.preventDefault()
-    if(!validUser){
-      return
+    e.preventDefault();
+    if (!validUser) {
+      return;
     }
-    const res = await axios.put(`${process.env.REACT_APP_ServerUrl}/api/order`, {
-      userEmail,
-      orders: orderProducts,
-    });
+    const res = await axios.put(
+      `${process.env.REACT_APP_ServerUrl}/api/order`,
+      {
+        userEmail,
+        orders: orderProducts,
+      }
+    );
     if (res?.data) {
       localStorage.removeItem("e-bazar");
       setAdded(!added);
@@ -59,7 +58,8 @@ const Checkout = () => {
   const calculateSubTotal = () => {
     let total = 0;
     cartItems?.forEach((item, i) => {
-      total  = total + (item?.quantity ? item?.quantity : 1)* parseInt(item?.price);
+      total =
+        total + (item?.quantity ? item?.quantity : 1) * parseInt(item?.price);
     });
     return total;
   };
@@ -68,18 +68,30 @@ const Checkout = () => {
     setSubTotal(calculateSubTotal());
   }, [cartItems]); //eslint-disable-line
 
-  
   return (
-    <>
-      <div className="max-w-[1200px] mx-auto my-10 p-2 flex gap-5 flex-col md:flex-row">
+    <div className="min-h-screen">
+      <nav className="flex flex-row gap-2 py-4 pl-2">
+        <Link to="/" className="hover:cursor-pointer">
+          Home
+        </Link>
+        <span> / </span>
+        <Link to="/cart" className="hover:cursor-pointer">
+          Cart
+        </Link>
+        <span> / </span>
+        <span className="font-bold">Checkout</span>
+      </nav>
+      <div className="max-w-[1200px] mx-auto my-7 p-2 flex gap-5 flex-col md:flex-row">
         <div className="md:w-[70%]">
-
-      <div className={`${!validUser ? "block" : "hidden"}`} style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}>
-          <div>
-            {/* <h4 className="text-lg font-bold text-center text-gray-600">
+          <div
+            className={`${!validUser ? "block" : "hidden"}`}
+            style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}
+          >
+            <div>
+              {/* <h4 className="text-lg font-bold text-center text-gray-600">
               Checkout
             </h4> */}
-              <div 
+              <div
                 onClick={() => setOpenModal(true)}
                 className="p-4 rounded-md border-[1px] flex gap-4 justify-center items-center cursor-pointer"
               >
@@ -88,17 +100,15 @@ const Checkout = () => {
                   Add Your Delivery Address
                 </span>
               </div>
+            </div>
           </div>
-      </div>
-
-
-
           <div
-            className={`p-4 rounded-md w-full ${validUser ? "block" : "hidden"}`}
+            className={`p-4 rounded-md w-full ${
+              validUser ? "block" : "hidden"
+            }`}
             style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}
           >
             <div>
-              
               <div className={`flex justify-between`}>
                 <div>
                   <p className="text-base font-semibold my-2">Deliver to:</p>
@@ -163,7 +173,8 @@ const Checkout = () => {
           </div>
         </div>
         <div>
-          <form onSubmit={(e)=>handlePlaceOrder(e)}
+          <form
+            onSubmit={(e) => handlePlaceOrder(e)}
             className="p-4 rounded-md w-full"
             style={{ boxShadow: "0 6px 16px rgba(0,0,0,.25)" }}
           >
@@ -173,6 +184,7 @@ const Checkout = () => {
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
+                  checked
                   name=""
                   required
                   id="payment"
@@ -208,9 +220,11 @@ const Checkout = () => {
               </div>
               <div className="my-2 flex justify-between items-center mt-5">
                 <button
-                type="onsubmit"
-                disabled={!validUser}
-                  className={`bg-primary text-white p-2 w-full font-bold rounded-sm flex justify-center items-center ${!validUser && "bg-blue-300"}`}
+                  type="onsubmit"
+                  disabled={!validUser}
+                  className={`bg-primary text-white p-2 w-full font-bold rounded-sm flex justify-center items-center ${
+                    !validUser && "bg-blue-300"
+                  }`}
                 >
                   Place Order
                 </button>
@@ -220,9 +234,13 @@ const Checkout = () => {
         </div>
       </div>
       <div className={`${openModal ? "block" : "hidden"}`}>
-        <AddDeliveryAddressModal openModal={openModal} setOpenModal={setOpenModal} userInfo={userInfo}/>
+        <AddDeliveryAddressModal
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          userInfo={userInfo}
+        />
       </div>
-    </>
+    </div>
   );
 };
 

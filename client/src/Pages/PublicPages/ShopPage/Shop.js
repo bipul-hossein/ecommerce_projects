@@ -1,11 +1,12 @@
-import React from 'react';
+import { React } from "react";
+import useProductsData from "../../../hooks/useProductsData";
+import ProductsPage from "../../../components/public/productsPage/ProductsPage";
 
 const Shop = () => {
-    return (
-        <div className='min-h-screen pt-4 pl-2'>
-            <h1>this shop page</h1>
-        </div>
-    );
+  const [products] = useProductsData();
+  return (
+ <ProductsPage products={products} categoryName="All Products"/>
+  );
 };
 
 export default Shop;

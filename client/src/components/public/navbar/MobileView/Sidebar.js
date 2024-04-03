@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             alt=""
           />
           <button onClick={() => setIsOpen(false)}>
-            <AiFillCloseCircle className="w-12 h-12" />
+            <AiFillCloseCircle className="w-12 h-12 mr-3" />
           </button>
         </div>
       </div>
